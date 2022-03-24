@@ -22,4 +22,5 @@ urlpatterns = [
     path('Jun/', include("Jun.urls")),
     path('Leyhara/', include("Leyhara.urls")),
     path('products/', include("products.urls")),
+    path('wonjun/', include("wonjun.urls")),
 ]
