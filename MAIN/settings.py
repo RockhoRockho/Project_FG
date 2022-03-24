@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'Jun',
     'Leyhara',
     'products',
-    'asda'
 ]
 
 MIDDLEWARE = [
