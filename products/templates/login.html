@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'bs/css/bootstrap.min.css' %}" rel="stylesheet">
+    <script src="{% static 'bs/js/bootstrap.bundle.min.js' %}"></script>
+
+</head>
+
+<body>
+    <div class="loginWrap">
+        <ul>
+            <li class="" name="member">회원</li>
+            <li class="" name="Nomember">비회원</li>
+            <li class="" name="seller">판매자</li>
+        </ul>
+    </div>
+
+    <section class="login_body">
+        <form name="frm">
+            <div class = 'member_input'>
+                <input type="text" class="memberIn_input" name="mb_id" placeholder="아이디">
+            </div>
+            <div class = 'member_input'>
+                <input type="password" class="memberIn_input" name="mb_password" placeholder="비밀번호">
+            </div>
+            <div class="login_button">
+                <button type="button" id="login_btn" onclick="inputForm()">로그인</button>
+            </div>
+            <div class="checkbox_remem">
+                <label>
+                <input type="checkbox" value="check" id="remem_login">
+                <span>자동로그인</span>
+                <input type="checkbox" value="check" id="remem_id">
+                <span>아이디 저장</span>
+                </label>
+            </div>
+    </section>
+    <section class="login_sns">
+        <ul class="sns_btn">
+            <li><button><span>네이버로 로그인</span></button></li>
+            <li><button><span>카카오로 로그인</span></button></li>
+            <li><button><span>구글로 로그인</span></button></li>
+        </ul>
+        
+    </section>
+
+            <hr>
+            <div class="member_find">
+                <a href="#" class="member_In">회원가입</a>
+                <a href="#" class="forget_id">아이디 찾기</a>
+                <a href="#" class="forget_pw">비밀번호 찾기</a>
+        </form>
+    
+</body>
+
+
+
+
+
+
