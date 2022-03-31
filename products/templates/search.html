@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% block title %}
+페이지 이름
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+{% block contents %}
+<body>
+<div class="container-fluid">
+    <div class="row-fluid d-inline-flex p-2">
+        <nav id="sidebarMenu" class="col-md-2 d-none d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>카테고리</span>
+                </h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span>뷰티</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span>식품</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span>스포츠/레저/자동차</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span>출산/육아</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span>가구/인테리어</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span>생활/건강</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span>가전/디지털</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span>도서/취미/펫</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span>여행/티켓</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span>해외직구</span></a>
+                    </li>
+                </ul>
+                <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1">
+                    <span>정렬</span>
+                </h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span>가나다순</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span>평점순</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span>조회순</span></a>
+                    </li>
+            </div>
+        </nav>
+
+
+        <div class="flex-wrap flex-md-nowrap align-items-center pt-4 pl-3 pb-3 mb-3">
+            <h2>평점순</h2>
+            <h5>총 n개의 상품</h5>
+        
+
+<div class="container d-flex justify-content-between">
+  <div class=" col-md-3">
+    <a href="#">
+      <div class="thumbnail">
+        <img class="col-md-12"
+          src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+          alt="...">
+        <div class="caption">
+          <h3>Thumbnail label</h3>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class=" col-md-3">
+    <a href="#">
+      <div class="thumbnail">
+        <img class="col-md-12"
+          src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+          alt="...">
+        <div class="caption">
+          <h3>Thumbnail label</h3>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class=" col-md-3">
+    <a href="#">
+      <div class="thumbnail">
+        <img class="col-md-12"
+          src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+          alt="...">
+        <div class="caption">
+          <h3>Thumbnail label</h3>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class=" col-md-3">
+    <a href="#">
+      <div class="thumbnail">
+        <img class="col-md-12"
+          src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+          alt="...">
+        <div class="caption">
+          <h3>Thumbnail label</h3>
+        </div>
+      </div>
+    </a>
+  </div>  
+</div>
+
+       
+
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+{% for i in number %}
+<div class="container d-flex justify-content-between">
+  <div class=" col-md-3">
+    <a href="#">
+      <div class="thumbnail">
+        <img class="col-md-12"
+          src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+          alt="...">
+        <div class="caption">
+          <h3>Thumbnail label</h3>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class=" col-md-3">
+    <a href="#">
+      <div class="thumbnail">
+        <img class="col-md-12"
+          src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+          alt="...">
+        <div class="caption">
+          <h3>Thumbnail label</h3>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class=" col-md-3">
+    <a href="#">
+      <div class="thumbnail">
+        <img class="col-md-12"
+          src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+          alt="...">
+        <div class="caption">
+          <h3>Thumbnail label</h3>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class=" col-md-3">
+    <a href="#">
+      <div class="thumbnail">
+        <img class="col-md-12"
+          src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+          alt="...">
+        <div class="caption">
+          <h3>Thumbnail label</h3>
+        </div>
+      </div>
+    </a>
+  </div>  
+</div>
+{% endfor %}
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+{% endblock %}
