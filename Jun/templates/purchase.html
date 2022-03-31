@@ -6,90 +6,119 @@
 
 {% block contents %}
 
-<div class="border container mt-5">
-    <div class="border row">
-        <div class="border row-fluid float-right">
-            <div class="border col-md-3 text-center text-primary mx-3">
-                <span class="border bg-secondary text-white">장바구니</span> >
-                <span class="border bg-black text-white">주문결제</span> >
-                <span class="border bg-secondary text-white">주문완료</span>
-            </div>
-            <div class="border col-md-12 mx-3">
-                <div class="col-md-12 bg-primary text-white">주문상품</div>
-            </div>
-        </div>
+<style>
+    .title {
+        margin: 20px 0px 10px 0px;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 10px;
+        border-bottom: 1px solid black;
+    }
 
-        {% for i in items %}
-        <div class="border row m-3">
-            <div class="border col-md-1 bg-success text-white">상품이미지{# 상품이미지 #}</div>
-            <div class="border col-md-7">
-                <div class="border">상품명{# 상품명 #}</div>
-                <div class="border">상품옵션{# 상품옵션 #}</div>
-            </div>
-            <div class="border col-md-4">
-                <div class="border">%개{# 정가 #}</div>
-                <div class="border">판매금액{# 판매금액 #}</div>
-            </div>
-        </div>
-        {% endfor %}
+    .pad-5 {
+        padding: 5px 0px;
+    }
 
-        <div>
-            <div class="border bg-primary text-white">배송정보</div>
-            <div class="border bg-light">
-                <div>
-                    <input type="radio" checked>기본배송지
-                    <input type="radio">최근배송지
-                    <input type="radio">직접입력
-                </div>
-                <div>
-                    <input type="text" placeholder="받는사람">
-                </div>
-                <div>
-                    <button class="btn btn-secondary">주소찾기</button>
-                    <input type="text" placeholder="우편번호">
-                </div>
-                <div>
-                    <input type="text" placeholder="기본주소">
-                </div>
-                <div>
-                    <input type="text" placeholder="상세주소 및 상세건물명">
-                </div>
-                <div>
-                    <select name="phone_firstNum" id="phone_firstNum">
-                        <option value="010" selected>010</option>
-                        <option value="011">011</option>
-                        <option value="012">012</option>
-                        <option value="018">018</option>
-                        <option value="019">019</option>
-                    </select>
-                    <input type="text" placeholder="휴대폰앞자리">
-                    <input type="text" placeholder="휴대폰뒷자리">
-                    <button>안심번호 사용</button>
-                </div>
-                <div>
-                    <select name="phone_firstNum" id="phone_firstNum">
-                        <option value="1" selected>배송시 요청사항 선택하기</option>
-                        <option value="2">부재시 전화/문자주세요</option>
-                        <option value="3">집 앞에 놓고가주세요</option>
-                        <option value="4">경비실에 맡겨주세요</option>
-                        <option value="5">택배함에 넣어주세요</option>
-                    </select>
-                </div>
-            </div>
-        </div>
+    .pad-10 {
+        padding: 10px 0px;
+    }
+</style>
 
-        <div>
-            <div class="border bg-primary text-white">결제정보</div>
-            <div class="border bg-light">
-                <input type="radio" checked>현금결제
-                <input type="radio">카드
-                <input type="radio">무통장입금
-            </div>
-        </div>
+<div class="row pad-10">
+    <div class="col-md-3">
     </div>
-    <div class="border row justify-content-center p-3">
-        <button class="btn btn-primary col-md-1 mx-3">주문하기</button>
-        <button class="btn btn-danger col-md-1 mx-3">취소하기</button>
+    <div class="col-md-6">
+        <!-- // 주문 단계 표시 HTML -->
+        <div class="col-md-12 d-flex flex-row-reverse" style="padding-top: 10px;">
+            <span class="border bg-secondary text-white">장바구니</span> >
+            <span class="border bg-black text-white">주문결제</span> >
+            <span class="border bg-secondary text-white">주문완료</span>
+        </div>
+
+        <!-- // 상품 이미지 등 상세정보 HTML -->
+        <div class="col-md-12 bg-primary text-white w-100 title">주문상품</div>
+        <div class="col-md-12">
+            {% for i in items %}
+            <div class="d-flex pad-10 col-md-12">
+                <div class="col-md-1 bg-success text-white" style="width: 64px; height: 64px; padding-right: 10px;">
+                    {# 상품이미지 #}</div>
+                <div class="col-md-7">
+                    <div>상품명{# 상품명 #}</div>
+                    <div>상품옵션{# 상품옵션 #}</div>
+                </div>
+                <div class="col-md-4">
+                    <div>%개{# 정가 #}</div>
+                    <div>판매금액{# 판매금액 #}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- // 배송정보 HTML -->
+        <div class="col-md-12 bg-primary text-white w-100 title">배송정보</div>
+        <div class="col-md-12 pad-10">
+            <input type="radio" class="form-check-label" name="add_type" checked> 기본배송지
+            <input type="radio" class="form-check-label" name="add_type"> 최근배송지
+            <input type="radio" class="form-check-label" name="add_type"> 직접입력
+        </div>
+        <div class="col-md-12 pad-10">
+            <input type="text" class="form-control" placeholder="받는사람">
+        </div>
+
+        <!-- // 우편번호 조회 HTML -->
+        <div class="col-md-12 d-flex pad-5">
+            <div style="padding-right: 10px;">
+                <button class="btn btn-primary" style="width: 100px;">주소찾기</button>
+            </div>
+            <div class="w-100">
+                <input type="text" class="form-control" placeholder="우편번호">
+            </div>
+        </div>
+
+        <!-- // 주소 관련 HTML -->
+        <div class="col-md-12 pad-5">
+            <input type="text" class="form-control" placeholder="기본주소">
+        </div>
+        <div class="col-md-12 pad-5">
+            <input type="text" class="form-control" placeholder="상세주소 및 상세건물명">
+        </div>
+
+
+        <!-- // 상세정보 HTML -->
+        <div class="col-md-12 bg-primary text-white w-100 title">상세정보</div>
+        <div class="d-flex col-md-12 pad-5">
+            <select class="form-select" name="phone_firstNum" id="phone_firstNum" style="width: 200px;">
+                <option value="010" selected>010</option>
+                <option value="011">011</option>
+                <option value="012">012</option>
+                <option value="018">018</option>
+                <option value="019">019</option>
+            </select>
+            <input type="text" class="form-control" placeholder="휴대폰앞자리">
+            <input type="text" class="form-control" placeholder="휴대폰뒷자리">
+        </div>
+
+        <div class="col-md-12 pad-5">
+            <select class="form-select" name="phone_firstNum" id="phone_firstNum">
+                <option value="1" selected>배송시 요청사항 선택하기</option>
+                <option value="2">부재시 전화/문자주세요</option>
+                <option value="3">집 앞에 놓고가주세요</option>
+                <option value="4">경비실에 맡겨주세요</option>
+                <option value="5">택배함에 넣어주세요</option>
+            </select>
+        </div>
+
+        <!-- // 결제정보 HTML -->
+        <div class="col-md-12 bg-primary text-white w-100 title">결제정보</div>
+        <div class="col-md-12 pad-10">
+            <input type="radio" class="form-check-label" name="purchase_type" checked> 현금결제
+            <input type="radio" class="form-check-label" name="purchase_type"> 카드
+            <input type="radio" class="form-check-label" name="purchase_type"> 무통장입금
+        </div>
+        <div class="border row justify-content-center p-3">
+            <button class="btn btn-primary col-md-1 mx-3" style="width: 100px;">주문하기</button>
+            <button class="btn btn-danger col-md-1 mx-3" style="width: 100px;">취소하기</button>
+        </div>
     </div>
 </div>
 {% endblock %}
