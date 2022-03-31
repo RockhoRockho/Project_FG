@@ -27,14 +27,28 @@ def search_category(request):
 
 def cart(request):
     context = {
-        'items' : range(3),
-        'zero' : range(0)
+        'items' : range(3), # order_items_id 수
+        'zero' : range(0),
+        'range' : range(25),
+        'product_id' : '',
+        'product_name' : '',
+        'product_price' : '',
+        'product_count': '',
+        'order_items_price': '', # product_count * product_price
+        'product_rating' : '', # review 평점 평균으로 계산
+        'product_delivery': '',
+        'seller_name': '',
     }
     return render(request, 'cart.html', context)
 
 def purchase(request):
     context = {
-        'items' : range(0),
-        'zero' : range(0)
+        'items' : range(2), # order_items_id 수
+        'product_id' : '',
+        'product_name' : '',
+        'product_price' : '',
+        'product_count': '',
+        'order_items_price': '', # product_count * product_price
+        'product_delivery': '',
     }
     return render(request, 'purchase.html', context)

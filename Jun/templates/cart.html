@@ -5,8 +5,7 @@
 {% endblock %}
 
 {% block contents %}
-<br><br><br><br><br><br><br><br><br><br><br>
-<div class="border container">
+<div class="border container mt-5">
     <div class="border container row justify-content-end p-3">
         <div class="border col-md-3 d-flex justify-content-center">
             <span class="border bg-black text-white">장바구니</span>>
@@ -14,7 +13,7 @@
             <span class="border bg-secondary text-white">주문완료</span>
             </div>
             <div class="border row">
-                <div class="border col-md-6">상품명</div>
+                <div class="border col-md-6">주문상품</div>
                 <div class="border col-md-3">금액</div>
                 <div class="border col-md-3">수량</div>
             </div>
@@ -28,21 +27,25 @@
         </div>
         {% else %}
         {% for i in items %}
-        <div class="border row m-2">
-            <div class="border col-md-1 bg-primary text-white">상품이미지{# 상품이미지 #}</div>
-            <div class="border col-md-5">
-                <div class="border col-md-12">상품명{# 상품명 #}</div>
-                <div class="border col-md-12">상품옵션{# 상품옵션 #}</div>
+        <form action="#" method="POST">
+            <div class="border row m-2">
+                <div class="border col-md-1 bg-primary text-white p-2">상품이미지{# 상품이미지 #}
+                    <img src="#" alt="">
+                </div>
+                <div class="border col-md-5">
+                    <div class="border col-md-12 m-2">상품명{{ product_name }}</div>
+                    <div class="border col-md-12 m-2">상품옵션{# 상품옵션 #}</div>
+                </div>
+                <div class="border col-md-3">
+                    <div class="border m-2">정가{{ product_price }}</div>
+                    <div class="border m-2">판매금액{# 판매금액 #}</div>
+                </div>
+                <div class="border col-md-3 text-center p-2">
+                    <input type="number" class="border m-1" placeholder="수량">
+                    <button type='button' class="btn btn-danger m-1">취소하기</button>
+                </div>
             </div>
-            <div class="border col-md-3">
-                <div class="border">정가{# 정가 #}</div>
-                <div class="border">판매금액{# 판매금액 #}</div>
-            </div>
-            <div class="border col-md-3">
-                <div class="border">수량{# 상품이미지 #}</div>
-                <div class="border">취소하기</div>
-            </div>
-        </div>
+        </form>
         {% endfor %}
         {% endif %}
     </div>
