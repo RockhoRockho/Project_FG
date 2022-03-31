@@ -14,11 +14,12 @@
             <div class="col-md-6 border" >
                 <img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/22/3/7/9/5/1/1/qEmIN/1431379511_B.jpg" class="img-fluid" alt="">
             </div>
-            <div class="col-md-6 border p-4" >
+            <div class="p-4 col-md-6 border" >
                 <h4>{# 상품이름 #} 상품이름</h4>
                 <br>
                 <p>{# 상품가격 #} 상품가격</p>
-                <br>
+                <i class="bi bi-box2-heart" style="font-size:42px; float:right;"></i>
+                <br><br><br>
                 <select class="form-select" name="delivery" id="delivery">
                     <option selected>
                         배송비
@@ -26,25 +27,29 @@
                     <option value="free">
                         {# 배송비 #} 무료
                     </option>
+                    
                     <option value="onarrival">
                         {# 배송비 #} 착불
                     </option>
                 </select>
-                <br><br>
+                <br><br><br>
                 <select class="form-select" name="quantity" id="quantity">
                     <option selected>
                         수량
                     </option>
-                    {% for i in range %}
+                    {% for i in range1 %}
                         <option value="{{i}}">
                             {{i}}
                         </option>
                     {% endfor %}
                 </select>
-                <i class="bi bi-box2-heart float-right" style="font-size:42px;"></i>
+                
+                
+                
+                
                 <br><br><br><br><br><br><br>
                 <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-success btn-lg mr-9" >장바구니</button>
+                    <button type="button" class="btn btn-success btn-lg" >장바구니</button>&emsp;&emsp;&emsp;
                     <button type="button" class="btn btn-primary btn-lg" >바로결제</button>
                 </div>
             </div>
@@ -62,8 +67,22 @@
         <div class="row content">
             <div class="col-md-12 border p-4">
                 <h4>상품리뷰/평점</h4>
-                <div class="container">
-
+                <div class="container p-4">
+                    {% for z in range3 %}
+                    <div class="row border p-3">
+                        <div>
+                            <h5>{# 평점 #} 평점</h5>
+                            {% for j in range2 %}
+                                <i class="bi bi-star" style="font-size:28px;"></i>
+                            {% endfor %}
+                            <h5 style="float:right;">구매자ID: {# 구매자 ID #}  작성날짜: {# 작성날짜 #}</h5>
+                            <br><br>
+                            <h5>상세리뷰: </h5> <br>
+                            <p>{# 상세리뷰 #}ㄹㅇㄴㅁㄹㅇㄴㅁㄹㅇㄴ</p>
+                        </div>
+                    </div>
+                    <br>
+                    {% endfor %}
                 </div>
             </div>
         </div>

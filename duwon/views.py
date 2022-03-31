@@ -3,7 +3,9 @@ from django.shortcuts import render
 
 def product_detail(request):
     context = {
-        'range' : range(1, 26),
+        'range1' : range(1, 26),
+        'range2' : range(5),
+        'range3' : range(3),
     }
     #try:
     #    ProductT = Product.objects.get(pk=pk) 
