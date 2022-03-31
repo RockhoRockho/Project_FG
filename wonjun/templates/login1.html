@@ -4,8 +4,10 @@
 {% block title %}
 Login_Page
 {% endblock %}
-
-
+{% block stylesheet %}
+{% load static %}
+<link href="{% static 'wonjun/css/login.css' %}" rel="stylesheet">
+{% endblock %}
 
 <script>
     window.onload = function () {
@@ -27,7 +29,6 @@ Login_Page
 
 {% block contents %}
 
-<link href="{% static 'wonjun/css/login.css' %}" rel="stylesheet">
 <div id="wrap">
     <div id="container">
         <!-- 로그인 시작 -->
