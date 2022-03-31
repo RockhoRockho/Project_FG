@@ -7,3 +7,21 @@ def login(request):
 
     }
     return render(request, 'login1.html', context)
+
+def agreement(request):
+    return render(request, "agreement.html")
+
+def join(request):
+    return render(request, "join.html")
+
+def question(request):
+    return render(request, "question.html")
+
+def questionOK(request):
+    return render(request, "questionOK.html")
+
+def question_update(request):
+    return render(request, "question_update.html")
+
+def question_detail(request):
+    return render(request, "question_detail.html")

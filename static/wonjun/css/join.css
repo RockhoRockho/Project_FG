@@ -1,0 +1,36 @@
+#wrap{
+    width: 100%;
+    margin: 0 auto;
+}
+#container{
+    width: 550px;
+    margin: 100px 39%;
+}
+#container > div{
+    border-bottom: 1px solid gray;
+    margin-bottom: 10px;
+    width: 80%;
+}
+#container > div > span{
+    font-size: 18px;
+    font-weight: bold;
+}
+#container > div > input{
+    border: none;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+#container > .sub{
+    border: none;
+}
+#container > .sub label{
+    font-size: 12px;    
+}
+#container > .sub div+div{
+    font-size: 11px;    
+    color: gray;
+    margin: 20px 0 20px 0;
+}
+#container .sub div:last-child > button{
+    width: 100%;
+}

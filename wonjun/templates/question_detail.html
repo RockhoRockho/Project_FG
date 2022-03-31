@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load mathfilters %}
+
+{% block title %}
+Login_Page
+{% endblock %}
+{% block stylesheet %}
+{% load static %}
+<link href="{% static 'wonjun/css/question.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block contents %}
+<div id="wrap">
+    <div id="wraps">
+        <div id="side_menu">
+            <div>
+                <p><a href="#">로그인 정보</a></p>
+                <p><a href="#">회원이름</a></p>
+            </div>
+            <div>
+                <ul>
+                    <li><a href="#">개인정보 수정</a></li>
+                    <li><a href="#">구매/배송 조회</a></li>
+                    <li><a href="#">선물함</a></li>
+                    <li><a href="#">찜 목록</a></li>
+                    <li><a href="#">나의 상품평가/리뷰</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="container">
+            <div class="main_content">
+                <h2>메일상담 상세</h2>
+                <p>* 표시는 필수 입력 항목입니다.</p>
+            </div>
+            <div class="title">
+                <span>상담제목 *</span>
+                <span>----상담제목----</span>
+            </div>
+            <div class="content">
+                <span>상담내용 *</span>
+                <span>----상담내용----</span>
+            </div>
+            <div class="file">
+                <span>이미지 파일첨부</span>
+                <span>----이미지파일명----</span>
+            </div>
+            <div class="email">
+                <span>답변받을 이메일 *</span>
+                <span>----이메일----</span>
+            </div>
+            <div>
+                <button type="button" class="btn btn-info">수정</button>
+                <button type="button" class="btn btn-info">목록</button>
+                <button type="button" class="btn btn-info">삭제</button>
+            </div>
+        <div style="clear: both;"></div>
+    </div>
+</div>
+{% endblock %}

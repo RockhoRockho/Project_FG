@@ -1,0 +1,18 @@
+#wrap{
+    width: 100%;
+    margin: 0 auto;
+}
+#wraps{
+    width: 1200px;
+    margin: 0 auto;
+}
+#side_menu{
+    float: left;
+}
+#container{
+    float: left;
+    margin-left: 150px;
+}
+.contents > span{
+    vertical-align: middle;
+}
