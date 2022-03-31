@@ -15,12 +15,43 @@
     </title>
 </head>
 {% block script %}
+<script>
+    function navigo() {
+        const header = document.querySelector('header');
+        const headerheight = header.clientHeight / 2;
+        console.log(headerheight);
+        document.addEventListener('scroll', onScroll, {
+            passive: true
+        }); //스크롤 이벤트
+        function onScroll() {
+            const scrollposition = pageYOffset;
+            const nav = document.querySelector('sch-nav');
+            if (headerheight <= scrollposition) {
+                nav.classList.add('sch-fix')
+            } else {
+                nav.classList.remove('sch-fix');
+            }
+        }
+
+    }
+    navigo()
+</script>
 {% endblock %}
 
 {% block header %}
 <header>
-    <div class="header-line">
-        &#9776;
+    <div class="header-container">
+        <div class="sch-nav">
+            <span class="sch-ico-side"> &#9776;</span>
+        </div>
+        <div class="sch-service">
+            <span class="sch-text-side"> 로그인</span>
+            <span class="sch-text-side"> 마이페이지</span>
+            <span class="sch-text-side"> 장바구니</span>
+        </div>
+        <div class="sch-search">
+            <input type="text" class="form-control sch-search-box" id="text_search" placeholder="검색어를 입력해 주세요">
+        </div>
     </div>
 </header>
 {% endblock %}
