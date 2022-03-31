@@ -11,7 +11,7 @@
 }
 
 header {
-    width: 100%;
+    width: 100vw;
     height: 160px;
     background-color: black;
 }
@@ -28,7 +28,6 @@ header {
 .sch-nav {
     position: absolute;
     top: 0;
-    left: 0;
     z-index: 20;
 }
 
@@ -57,17 +56,16 @@ header {
 }
 
 .sch-service {
-    background-color: var(--color-gainsboro);
     position: absolute;
     top: 0;
-    right: 0;
     z-index: 20;
+    align-content: center;
 }
 
 .sch-search {
     display: inline-block;
     position: relative;
-    min-width: 488px;
+    width: 100%;
     height: 40px;
     left: 50%;
     transform: translateX(-50%);
