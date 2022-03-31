@@ -12,7 +12,7 @@
 {% block contents %}
 
 <div class="container col-md-3 m-5 mb-5">
-  <h2>카테고리 이름별 상품조회{# 카테고리 이름 #}</h2>
+  <h2>카테고리 이름별 상품조회{{ product_category }}</h2>
 </div>
 <div class="container align-items-center">
 {% for i in range %}
@@ -27,69 +27,69 @@
             alt="...">
         </div>
         <div class="row">
-          <p class="col-md-12">상품이름 {# 상품이름 #}</p>
-          <div class="col-md-6">가격 {# 상품가격 #}</div>
-          <div class="col-md-4 col-md-offset-4">평점 {# 상품평점평균값 #}</div>
-          <div class="col-md-4">배송비 {# 배송비 #}</div>
+          <p class="col-md-12">상품이름 {{ product_name }}</p>
+          <div class="col-md-6">가격 {{ product_price }}</div>
+          <div class="col-md-4 col-md-offset-4">평점 {{ product_rating }}</div>
+          <div class="col-md-4">배송비 {{ product_delivery }}</div>
         </div>
-        <div class="col-md-3">판매자</div>
+        <div class="col-md-3">판매자{{ seller_name }}</div>
       </a>
     </div>
   </div>
   <div class="col-md-3">
     <div class="container row">
       <a href="#" style="text-decoration: none; color: black;">
-        <span>{{ i|mul:4|add:2 }}</span>
+        <span>{{ i|mul:4|add:1 }}</span>
         <div class="container">
           <img class="col-md-12"
             src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
             alt="...">
         </div>
         <div class="row">
-          <p class="col-md-12">상품이름 {# 상품이름 #}</p>
-          <div class="col-md-6">가격 {# 상품가격 #}</div>
-          <div class="col-md-4 col-md-offset-4">평점 {# 상품평점평균값 #}</div>
-          <div class="col-md-4">배송비 {# 배송비 #}</div>
+          <p class="col-md-12">상품이름 {{ product_name }}</p>
+          <div class="col-md-6">가격 {{ product_price }}</div>
+          <div class="col-md-4 col-md-offset-4">평점 {{ product_rating }}</div>
+          <div class="col-md-4">배송비 {{ product_delivery }}</div>
         </div>
-        <div class="col-md-3">판매자</div>
+        <div class="col-md-3">판매자{{ seller_name }}</div>
       </a>
     </div>
   </div>
   <div class="col-md-3">
     <div class="container row">
       <a href="#" style="text-decoration: none; color: black;">
-        <span>{{ i|mul:4|add:3 }}</span>
+        <span>{{ i|mul:4|add:1 }}</span>
         <div class="container">
           <img class="col-md-12"
             src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
             alt="...">
         </div>
         <div class="row">
-          <p class="col-md-12">상품이름 {# 상품이름 #}</p>
-          <div class="col-md-6">가격 {# 상품가격 #}</div>
-          <div class="col-md-4 col-md-offset-4">평점 {# 상품평점평균값 #}</div>
-          <div class="col-md-4">배송비 {# 배송비 #}</div>
+          <p class="col-md-12">상품이름 {{ product_name }}</p>
+          <div class="col-md-6">가격 {{ product_price }}</div>
+          <div class="col-md-4 col-md-offset-4">평점 {{ product_rating }}</div>
+          <div class="col-md-4">배송비 {{ product_delivery }}</div>
         </div>
-        <div class="col-md-3">판매자</div>
+        <div class="col-md-3">판매자{{ seller_name }}</div>
       </a>
     </div>
   </div>
   <div class="col-md-3">
     <div class="container row">
       <a href="#" style="text-decoration: none; color: black;">
-        <span>{{ i|mul:4|add:4 }}</span>
+        <span>{{ i|mul:4|add:1 }}</span>
         <div class="container">
           <img class="col-md-12"
             src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
             alt="...">
         </div>
         <div class="row">
-          <p class="col-md-12">상품이름 {# 상품이름 #}</p>
-          <div class="col-md-6">가격 {# 상품가격 #}</div>
-          <div class="col-md-4 col-md-offset-4">평점 {# 상품평점평균값 #}</div>
-          <div class="col-md-4">배송비 {# 배송비 #}</div>
+          <p class="col-md-12">상품이름 {{ product_name }}</p>
+          <div class="col-md-6">가격 {{ product_price }}</div>
+          <div class="col-md-4 col-md-offset-4">평점 {{ product_rating }}</div>
+          <div class="col-md-4">배송비 {{ product_delivery }}</div>
         </div>
-        <div class="col-md-3">판매자</div>
+        <div class="col-md-3">판매자{{ seller_name }}</div>
       </a>
     </div>
   </div>
