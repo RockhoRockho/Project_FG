@@ -5,65 +5,91 @@
 {% endblock %}
 
 {% block contents %}
-<br><br><br><br><br><br><br><br><br><br><br>
-<div class="border container">
-    <div class="border container row justify-content-end p-3">
-        <div class="border col-md-3 d-flex justify-content-center text-primary">
-            <span class="border bg-secondary text-white">장바구니</span>>
-            <span class="border bg-black text-white">주문결제</span>>
-            <span class="border bg-secondary text-white">주문완료</span>
+
+<div class="border container mt-5">
+    <div class="border row">
+        <div class="border row-fluid float-right">
+            <div class="border col-md-3 text-center text-primary mx-3">
+                <span class="border bg-secondary text-white">장바구니</span> >
+                <span class="border bg-black text-white">주문결제</span> >
+                <span class="border bg-secondary text-white">주문완료</span>
             </div>
-        <div class="border row">
-            <div class="col-md-6">상품명</div>
-            <div class="col-md-3">금액</div>
-            <div class="col-md-3">수량</div>
+            <div class="border col-md-12 mx-3">
+                <div class="col-md-12 bg-primary text-white">주문상품</div>
+            </div>
         </div>
-    </div>
-    <div class="border container p-3">
+
         {% for i in items %}
-        {% if items %}
-        <div class="border row my-3">
-            <div class="border col-md-1 bg-primary text-white">상품이미지{# 상품이미지 #}</div>
-            <div class="border col-md-5">
+        <div class="border row m-3">
+            <div class="border col-md-1 bg-success text-white">상품이미지{# 상품이미지 #}</div>
+            <div class="border col-md-7">
                 <div class="border">상품명{# 상품명 #}</div>
                 <div class="border">상품옵션{# 상품옵션 #}</div>
             </div>
-            <div class="border col-md-3">
-                <div class="border">정가{# 정가 #}</div>
+            <div class="border col-md-4">
+                <div class="border">%개{# 정가 #}</div>
                 <div class="border">판매금액{# 판매금액 #}</div>
             </div>
-            <div class="border col-md-3">
-                <div class="border">수량{# 상품이미지 #}</div>
-                <div class="border">취소하기</div>
-            </div>
         </div>
-        {% else %}
-        <div>
-            <div>
-                장바구니가 비어있어요!
-            </div>
-        </div>
-        {% endif %}
         {% endfor %}
+
+        <div>
+            <div class="border bg-primary text-white">배송정보</div>
+            <div class="border bg-light">
+                <div>
+                    <input type="radio" checked>기본배송지
+                    <input type="radio">최근배송지
+                    <input type="radio">직접입력
+                </div>
+                <div>
+                    <input type="text" placeholder="받는사람">
+                </div>
+                <div>
+                    <button class="btn btn-secondary">주소찾기</button>
+                    <input type="text" placeholder="우편번호">
+                </div>
+                <div>
+                    <input type="text" placeholder="기본주소">
+                </div>
+                <div>
+                    <input type="text" placeholder="상세주소 및 상세건물명">
+                </div>
+                <div>
+                    <select name="phone_firstNum" id="phone_firstNum">
+                        <option value="010" selected>010</option>
+                        <option value="011">011</option>
+                        <option value="012">012</option>
+                        <option value="018">018</option>
+                        <option value="019">019</option>
+                    </select>
+                    <input type="text" placeholder="휴대폰앞자리">
+                    <input type="text" placeholder="휴대폰뒷자리">
+                    <button>안심번호 사용</button>
+                </div>
+                <div>
+                    <select name="phone_firstNum" id="phone_firstNum">
+                        <option value="1" selected>배송시 요청사항 선택하기</option>
+                        <option value="2">부재시 전화/문자주세요</option>
+                        <option value="3">집 앞에 놓고가주세요</option>
+                        <option value="4">경비실에 맡겨주세요</option>
+                        <option value="5">택배함에 넣어주세요</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="border bg-primary text-white">결제정보</div>
+            <div class="border bg-light">
+                <input type="radio" checked>현금결제
+                <input type="radio">카드
+                <input type="radio">무통장입금
+            </div>
+        </div>
     </div>
     <div class="border row justify-content-center p-3">
-        <button class="btn btn-primary col-md-1">주문하기</button>
-    </div>
-    <div class="border container p-3">추천상품
-        <div class="border row  justify-content-around p-3">
-            <div class="border col-md-2 p-1">
-                <img class="col-md-12" src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg" alt="">
-            </div>
-            <div class="border col-md-2 p-1">
-                <img class="col-md-12" src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg" alt="">
-            </div>
-            <div class="border col-md-2 p-1">
-                <img class="col-md-12" src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg" alt="">
-            </div>
-            <div class="border col-md-2 p-1">
-                <img class="col-md-12" src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg" alt="">
-            </div>
-        </div>
+        <button class="btn btn-primary col-md-1 mx-3">주문하기</button>
+        <button class="btn btn-danger col-md-1 mx-3">취소하기</button>
     </div>
 </div>
 {% endblock %}
