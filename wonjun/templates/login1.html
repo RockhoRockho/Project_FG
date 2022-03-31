@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load mathfilters %}
+
+{% block title %}
+Login_Page
+{% endblock %}
+
+
+
+<script>
+    window.onload = function () {
+
+        function onClick() {
+            document.querySelector('.modal_wrap').style.display = 'block';
+            document.querySelector('.black_bg').style.display = 'block';
+        }
+
+        function offClick() {
+            document.querySelector('.modal_wrap').style.display = 'none';
+            document.querySelector('.black_bg').style.display = 'none';
+        }
+
+        document.getElementById('modal_btn').addEventListener('click', onClick);
+        document.querySelector('.modal_close').addEventListener('click', offClick);
+    };
+</script>
+
+{% block contents %}
+
+<link href="{% static 'wonjun/css/login.css' %}" rel="stylesheet">
+<div id="wrap">
+    <div id="container">
+        <!-- 로그인 시작 -->
+        <div class="login_box">
+            <div class="login_wrap">
+                <form name="login" action="" id="login_input">
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">ID</span>
+                        <input type="text" class="id_input" placeholder="Username">
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">PW</span>
+                        <input type="text" class="pw_input" placeholder="Username">
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-secondary">Login</button>
+                    </div>
+                </form>
+                <div class="btn_sub">
+                    <div class="login_auto">
+                        <input id="auto" type="checkbox">
+                        <label for="auto" style="font-size: 13px;">자동로그인</label>
+                    </div>
+                    <div class="login_save">
+                        <input id="save" type="checkbox">
+                        <label for="save" style="font-size: 13px;">아이디저장</label>
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
+                <div class="login_list">
+                    <a href="#" class="kakao">
+                        <div class="kakao">
+                            <strong>카카오로그인</strong>
+                        </div>
+                    </a>
+                    <a href="#" class="naver">
+                        <div class="naver">
+                            <strong>네이버로그인</strong>
+                        </div>
+                    </a>
+                    <a href="#" class="Apple">
+                        <div class="Apple">
+                            <strong>Apple로그인</strong>
+                        </div>
+                    </a>
+                </div>
+                <div class="sub_find">
+                    <a href="#" id="modal_btn">아이디 찾기 <small>|</small></a>
+                    <!-- <button type="button" idbutton> -->
+                    <a href="#">비밀번호 찾기 <small>|</small></a>
+                    <a href="#">회원가입</a>
+                </div>
+            </div>
+
+        </div>
+        <!-- <button type='button' id="modal_btn">모달창아 나와랏</button> -->
+        <div class="black_bg"></div>
+        <div class="modal_wrap">
+            <div class="modal_close"><a href="#">close</a></div>
+            <div>
+                모달창 내용
+            </div>
+        </div>
+    </div>
+    <!-- 로그인 끝 -->
+    <!-- footer 시작 -->
+    <footer>
+
+    </footer>
+    <!-- footer 끝 -->
+</div>
+{% endblock %}

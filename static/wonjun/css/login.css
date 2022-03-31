@@ -1,0 +1,175 @@
+#container {
+    margin: 0 auto;
+    /* outline: 1px solid green; */
+}
+
+.login_box {
+    margin: 50px auto;
+    width: 520px;
+    /* outline: 1px solid purple; */
+    padding: 0 10px 0;
+}
+
+.login_wrap {
+    margin: 0 auto;
+}
+
+#login_input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 500px;
+    /* outline: 1px solid red; */
+}
+
+#login_input>div {
+    margin-top: 10px;
+}
+
+#login_input>div>span {
+    width: 10%;
+}
+
+#login_input>div>input {
+    width: 90%;
+    border: 1px solid rgb(212, 203, 203);
+    border-radius: 0 5px 5px 0;
+}
+
+#login_input button {
+    width: 100%;
+    height: 40px;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btn_sub>div {
+    float: left;
+}
+
+.btn_sub>div:last-child {
+    float: left;
+    margin-left: 20px;
+}
+
+.login_list {
+    clear: both;
+    /* outline: 1px solid red; */
+    width: 500px;
+    list-style: none;
+    margin-top: 10px;
+}
+
+.login_list a {
+    text-decoration: none;
+    width: 400px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 7px;
+}
+
+/* .login_list > div > a{
+    text-decoration: none;
+} */
+.login_list div {
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 7px;
+    margin-bottom: 5px;
+}
+
+.login_list strong {
+    margin-left: 37%;
+    line-height: 50px;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.kakao {
+    background: url(../img/katalk.png) no-repeat #FEE500;
+    background-size: contain;
+    border: none;
+}
+
+.kakao strong {
+    color: #fff;
+    margin-top: 30px;
+}
+
+.naver {
+    background: url(../img/naver.png) no-repeat #00C43B;
+    background-size: contain;
+    border: none;
+}
+
+.naver strong {
+    color: #fff;
+}
+
+.Apple {
+    background: url(../img/Apple.png) no-repeat rgb(240, 238, 238) 5px;
+    background-size: 40px;
+    border: none;
+}
+
+.Apple strong {
+    color: black;
+}
+
+.sub_find>a {
+    text-decoration: none;
+    font-size: 13px;
+    color: black;
+}
+
+
+.modal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.modal_wrap {
+    display: none;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -250px 0 0 -250px;
+    background: #eee;
+    z-index: 2;
+}
+
+.black_bg {
+    display: none;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.modal_close {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+
+.modal_close>a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(https://img.icons8.com/metro/26/000000/close-window.png);
+    text-indent: -9999px;
+}
