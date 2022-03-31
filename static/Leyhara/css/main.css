@@ -3,6 +3,7 @@
 :root {
     --color-white: #fff;
     --color-black: #000;
+    --color-gainsboro: #DCDCDC;
 }
 
 .font-notosanskr * {
@@ -10,25 +11,83 @@
 }
 
 header {
-    display: fixed;
     width: 100%;
-    height: 120px;
+    height: 160px;
     background-color: black;
 }
 
-.header-line {
+.header-container {
+    background-color: var(--color-gainsboro);
     position: relative;
     z-index: 0;
-    padding: 80px;
-    min-height: 312px;
+    padding-top: 80px;
+    min-height: 160px;
     box-sizing: border-box;
 }
 
-
-.logo-text {
-    color: var(--color-white);
-    text-decoration: none;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 2vw;
-    font-style: bold;
+.sch-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
 }
+
+.sch-ico-side {
+    display: inline-block;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    margin: 8px;
+
+    font-size: 24px;
+    text-align: center;
+}
+
+.sch-text-side {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    height: 44px;
+    line-height: 44px;
+    margin: 8px;
+
+    font-size: 16px;
+    text-align: center;
+}
+
+.sch-service {
+    background-color: var(--color-gainsboro);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 20;
+}
+
+.sch-search {
+    display: inline-block;
+    position: relative;
+    min-width: 488px;
+    height: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+}
+
+.sch-search-box {
+    height: 52px;
+}
+
+.shc-fix {
+    position:fixed;
+    animation: down 0.5s ease
+  }
+  
+  @keyframes down {
+    0%{
+      transform: translateY(-50px)
+    }
+    100%{
+      transform: translateY(0px)
+    }
+  }
