@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load mathfilters %}
+
+{% block title %}
+상품상세정보
+{% endblock %}
+
+{% block contents %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">  
+
+<body>
+    <div class="container">
+        <div class="row content">
+            <div class="col-md-6 border" >
+                <img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/22/3/7/9/5/1/1/qEmIN/1431379511_B.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-6 border p-4" >
+                <h4>{# 상품이름 #} 상품이름</h4>
+                <br>
+                <p>{# 상품가격 #} 상품가격</p>
+                <br>
+                <select class="form-select" name="delivery" id="delivery">
+                    <option selected>
+                        배송비
+                    </option>
+                    <option value="free">
+                        {# 배송비 #} 무료
+                    </option>
+                    <option value="onarrival">
+                        {# 배송비 #} 착불
+                    </option>
+                </select>
+                <br><br>
+                <select class="form-select" name="quantity" id="quantity">
+                    <option selected>
+                        수량
+                    </option>
+                    {% for i in range %}
+                        <option value="{{i}}">
+                            {{i}}
+                        </option>
+                    {% endfor %}
+                </select>
+                <i class="bi bi-box2-heart float-right" style="font-size:42px;"></i>
+                <br><br><br><br><br><br><br>
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-success btn-lg mr-9" >장바구니</button>
+                    <button type="button" class="btn btn-primary btn-lg" >바로결제</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row content">
+            <div class="col-md-12 border" >
+                <img src="https://ai.esmplus.com/yashim76/02_MONITOR/03_product/27/REANTEC/Q2775P_TN/Q2775P_TN_01.jpg" class="img-fluid mx-auto d-block" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row content">
+            <div class="col-md-12 border p-4">
+                <h4>상품리뷰/평점</h4>
+                <div class="container">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+{% endblock %}
+
+
