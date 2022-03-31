@@ -1,38 +1,32 @@
 {% extends "base.html" %}
 
 {% block title %}
-장바구니
+주문하기
 {% endblock %}
 
 {% block contents %}
 <br><br><br><br><br><br><br><br><br><br><br>
 <div class="border container">
     <div class="border container row justify-content-end p-3">
-        <div class="border col-md-3 d-flex justify-content-center">
-            <span class="border bg-black text-white">장바구니</span>>
-            <span class="border bg-secondary text-white">주문결제</span>>
+        <div class="border col-md-3 d-flex justify-content-center text-primary">
+            <span class="border bg-secondary text-white">장바구니</span>>
+            <span class="border bg-black text-white">주문결제</span>>
             <span class="border bg-secondary text-white">주문완료</span>
             </div>
-            <div class="border row">
-                <div class="border col-md-6">상품명</div>
-                <div class="border col-md-3">금액</div>
-                <div class="border col-md-3">수량</div>
-            </div>
+        <div class="border row">
+            <div class="col-md-6">상품명</div>
+            <div class="col-md-3">금액</div>
+            <div class="col-md-3">수량</div>
+        </div>
     </div>
     <div class="border container p-3">
-        {% if items == zero %}
-        <div class="border justify-content-center">
-            <div class="border text-center p-5 m-5">
-                장바구니가 비었습니다.
-            </div>
-        </div>
-        {% else %}
         {% for i in items %}
-        <div class="border row m-2">
+        {% if items %}
+        <div class="border row my-3">
             <div class="border col-md-1 bg-primary text-white">상품이미지{# 상품이미지 #}</div>
             <div class="border col-md-5">
-                <div class="border col-md-12">상품명{# 상품명 #}</div>
-                <div class="border col-md-12">상품옵션{# 상품옵션 #}</div>
+                <div class="border">상품명{# 상품명 #}</div>
+                <div class="border">상품옵션{# 상품옵션 #}</div>
             </div>
             <div class="border col-md-3">
                 <div class="border">정가{# 정가 #}</div>
@@ -43,8 +37,14 @@
                 <div class="border">취소하기</div>
             </div>
         </div>
-        {% endfor %}
+        {% else %}
+        <div>
+            <div>
+                장바구니가 비어있어요!
+            </div>
+        </div>
         {% endif %}
+        {% endfor %}
     </div>
     <div class="border row justify-content-center p-3">
         <button class="btn btn-primary col-md-1">주문하기</button>

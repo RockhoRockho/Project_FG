@@ -14,6 +14,14 @@ def search_category(request):
 
 def cart(request):
     context = {
-        
+        'items' : range(3),
+        'zero' : range(0)
     }
     return render(request, 'cart.html', context)
+
+def purchase(request):
+    context = {
+        'items' : range(0),
+        'zero' : range(0)
+    }
+    return render(request, 'purchase.html', context)
