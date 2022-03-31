@@ -36,26 +36,26 @@
         </div>
 
         <!-- // 상품 이미지 등 상세정보 HTML -->
-        <div class="col-md-12 bg-primary text-white w-100 title">주문상품</div>
+        <div class="col-md-12 bg-primary text-white title">주문상품</div>
         <div class="col-md-12">
             {% for i in items %}
             <div class="d-flex pad-10 col-md-12">
                 <div class="col-md-1 bg-success text-white" style="width: 64px; height: 64px; padding-right: 10px;">
                     {# 상품이미지 #}</div>
-                <div class="col-md-7">
-                    <div>상품명{# 상품명 #}</div>
-                    <div>상품옵션{# 상품옵션 #}</div>
+                <div class="col-md-7" style="padding-left: 10px;">
+                    <div style="height: 40px; line-height: 40px; font-size: 20px;">상품명{# 상품명 #}</div>
+                    <div style="height: 24px; line-height: 24px;">상품옵션{# 상품옵션 #}</div>
                 </div>
                 <div class="col-md-4">
-                    <div>%개{# 정가 #}</div>
-                    <div>판매금액{# 판매금액 #}</div>
+                    <div style="height: 32px; line-height: 32px;">%개{# 정가 #}</div>
+                    <div style="height: 32px; line-height: 32px;">판매금액{# 판매금액 #}</div>
                 </div>
             </div>
             {% endfor %}
         </div>
 
         <!-- // 배송정보 HTML -->
-        <div class="col-md-12 bg-primary text-white w-100 title">배송정보</div>
+        <div class="col-md-12 bg-primary text-white title">배송정보</div>
         <div class="col-md-12 pad-10">
             <input type="radio" class="form-check-label" name="add_type" checked> 기본배송지
             <input type="radio" class="form-check-label" name="add_type"> 최근배송지
@@ -85,7 +85,7 @@
 
 
         <!-- // 상세정보 HTML -->
-        <div class="col-md-12 bg-primary text-white w-100 title">상세정보</div>
+        <div class="col-md-12 bg-primary text-white title">상세정보</div>
         <div class="d-flex col-md-12 pad-5">
             <select class="form-select" name="phone_firstNum" id="phone_firstNum" style="width: 200px;">
                 <option value="010" selected>010</option>
@@ -109,7 +109,7 @@
         </div>
 
         <!-- // 결제정보 HTML -->
-        <div class="col-md-12 bg-primary text-white w-100 title">결제정보</div>
+        <div class="col-md-12 bg-primary text-white title">결제정보</div>
         <div class="col-md-12 pad-10">
             <input type="radio" class="form-check-label" name="purchase_type" checked> 현금결제
             <input type="radio" class="form-check-label" name="purchase_type"> 카드
@@ -119,6 +119,8 @@
             <button class="btn btn-primary col-md-1 mx-3" style="width: 100px;">주문하기</button>
             <button class="btn btn-danger col-md-1 mx-3" style="width: 100px;">취소하기</button>
         </div>
+    </div>
+    <div class="col-md-3">
     </div>
 </div>
 {% endblock %}
