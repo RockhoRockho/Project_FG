@@ -69,7 +69,67 @@
 </header>
 {% endblock %}
 
-{% block contents %}
-{% endblock %}
+<body>
+    <div class="row pad-10">
+        <div class="col-md-2">
+        </div>
+        <div class="row flex-row col-md-8">
+            <div class="col-md-2 border">
+                <a href="/" class="d-flex align-items-center me-md-auto link-dark text-decoration-none">
+                    <svg class="" width="0" height="0">
+                        <use xlink:href="#bootstrap" /></svg>
+                    <span class="fs-4 d-flex mb-auto ">{#회원ID#}회원ID님</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto ">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link link-dark" aria-current="page">
+                            <svg class="" width="0" height="0">
+                                <use xlink:href="#home" /></svg>
+                            개인정보 수정
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link active">
+                            <svg class="" width="0" height="0">
+                                <use xlink:href="#speedometer2" /></svg>
+                            구매/배송 조회
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <svg class="" width="0" height="0">
+                                <use xlink:href="#table" /></svg>
+                            선물함
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <svg class="" width="0" height="0">
+                                <use xlink:href="#grid" /></svg>
+                            찜 목록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <svg class="" width="0" height="0">
+                                <use xlink:href="#people-circle" /></svg>나의 상품 리뷰
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <svg class="" width="0" height="0">
+                                <use xlink:href="#people-circle" /></svg>고객센터 문의
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-10 border">
+                {% block contents %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
 
 </html>
