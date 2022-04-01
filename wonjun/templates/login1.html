@@ -102,23 +102,9 @@ Login_Page
             var btn2 = document.getElementById("myBtn2");
             var span = document.getElementsByClassName("close")[0];
 
-            btn1.onclick = function () {
-                modal.style.display = "block";
-            }
-            btn2.onclick = function () {
-                modal.style.display = "block";
-            }
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-
+            
             const items = document.querySelectorAll('.question');
-
+            
             function openCloseAnswer() {
                 const answerId = this.id.replace('que', 'ans');
                 if (document.getElementById(answerId).style.display === 'block') {
@@ -131,6 +117,34 @@ Login_Page
             }
 
             items.forEach(item => item.addEventListener('click', openCloseAnswer));
+
+            const ans = document.querySelectorAll('.answer');
+
+            function CloseAnswer(i) {
+                const answerId = i.id
+                if (document.getElementById(answerId).style.display === 'block') {
+                    document.getElementById(answerId).style.display = 'none';
+                    document.getElementById(i.id.replace('ans', 'que') + '-toggle').textContent = '∨';
+                }
+            }
+
+            btn1.onclick = function () {
+                modal.style.display = "block";
+            }
+            btn2.onclick = function () {
+                modal.style.display = "block";
+            }
+            span.onclick = function () {
+                modal.style.display = "none";
+                ans.forEach(i => CloseAnswer(i));
+            }
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    ans.forEach(i => CloseAnswer(i));
+                }
+            }
+
         </script>
         <!-- 로그인 끝 -->
         <!-- footer 시작 -->
