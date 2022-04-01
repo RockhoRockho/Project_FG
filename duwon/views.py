@@ -14,3 +14,16 @@ def product_detail(request):
     #    raise Http404('제품을 찾을수 없습니다')
 
     return render(request, 'detail.html', context) 
+
+
+def order(request):
+    context = {
+        
+    }
+    #try:
+    #    ProductT = Product.objects.get(pk=pk) 
+    #    ProductT.save() 
+    #except Product.DoesNotExist:
+    #    raise Http404('제품을 찾을수 없습니다')
+
+    return render(request, 'order.html', context) 
