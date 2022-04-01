@@ -148,20 +148,39 @@
 }
 
 /* Modal Content */
+#myModal{
+    width: 100%;
+}
 .modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 40%;
+    position: relative;
+}
+.row{
+    width: 100%;
+}
+.find_id{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin-top: -13px;
 }
 
 /* The Close Button */
+
 .close {
     color: #aaaaaa;
-    float: right;
     font-size: 28px;
     font-weight: bold;
+    z-index: 100;
+    position: absolute;
+    top: -4px;
+    right: 0;
+    width: 30px;
 }
 
 .close:hover,

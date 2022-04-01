@@ -4,26 +4,31 @@
 {% block title %}
 Login_Page
 {% endblock %}
+{% block stylesheet %}
+{% load static %}
+<link href="{% static 'wonjun/css/login.css' %}" rel="stylesheet">
+{% endblock %}
 
-<!-- <script>
-    window.onload = function () {
+<script>
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
 
-        function onClick() {
-            document.querySelector('.modal_wrap').style.display = 'block';
-            document.querySelector('.black_bg').style.display = 'block';
-        }
-
-        function offClick() {
-            document.querySelector('.modal_wrap').style.display = 'none';
-            document.querySelector('.black_bg').style.display = 'none';
-        }
-
-        document.getElementById('modal_btn').addEventListener('click', onClick);
-        document.querySelector('.modal_close').addEventListener('click', offClick);
-    };
-</script> -->
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+span.onclick = function() {
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 
 {% block contents %}
+
 <div id="wrap">
     <div id="container">
         <!-- 로그인 시작 -->
@@ -32,11 +37,11 @@ Login_Page
                 <form name="login" action="" id="login_input">
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">ID</span>
-                        <input type="text" class="id_input" placeholder="Username">
+                        <input type="text" class="id_input" placeholder="ID를 입력하세요.">
                     </div>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">PW</span>
-                        <input type="text" class="pw_input" placeholder="Username">
+                        <input type="text" class="pw_input" placeholder="Password를 입력하세요.">
                     </div>
                     <div>
                         <button type="button" class="btn btn-secondary">Login</button>
@@ -71,23 +76,27 @@ Login_Page
                     </a>
                 </div>
                 <div class="sub_find">
-                    <a href="#" id="modal_btn">아이디 찾기 <small>|</small></a>
+                    <a href="#" data-target="#MyModal" data-toggle="modal">아이디 찾기 <small>|</small></a>
                     <!-- <button type="button" idbutton> -->
                     <a href="#">비밀번호 찾기 <small>|</small></a>
                     <a href="#">회원가입</a>
                 </div>
             </div>
+        <h2>Modal Example</h2>
 
-        </div>
-        <!-- <button type='button' id="modal_btn">모달창아 나와랏</button> -->
-        <div class="black_bg"></div>
-        <div class="modal_wrap">
-            <div class="modal_close"><a href="#">close</a></div>
-            <div>
-                모달창 내용
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn">Open Modal</button>
+        
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+        
+            <!-- Modal content -->
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
             </div>
+        
         </div>
-    </div>
     <!-- 로그인 끝 -->
     <!-- footer 시작 -->
     <footer>
