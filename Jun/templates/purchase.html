@@ -6,28 +6,6 @@
 
 {% block contents %}
 
-<style>
-    .title {
-        margin: 20px 0px 10px 0px;
-        height: 40px;
-        line-height: 40px;
-        padding-left: 10px;
-        border-bottom: 1px solid black;
-    }
-
-    .pad-5 {
-        padding: 5px 0px;
-    }
-
-    .pad-10 {
-        padding: 10px 0px;
-    }
-
-    .pt-10 {
-        padding-top: 10px
-    }
-</style>
-
 <div class="row pad-10">
     <div class="col-md-2">
     </div>
@@ -43,7 +21,7 @@
             </div>
 
             <!-- // 상품 이미지 등 상세정보 HTML -->
-            <div class="col-md-12 bg-primary text-white title">주문상품</div>
+            <div class="col-md-12 bg-primary text-white title pad-10">주문상품</div>
             <div class="col-md-12">
                 {% for i in items %}
                 <div class="d-flex pad-10 col-md-12">

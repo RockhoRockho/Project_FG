@@ -6,66 +6,59 @@
 {% endblock %}
 
 {% block contents %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 <body>
-    <div class="container">
-        <div class="row content">
-            <div class="col-md-6 border" >
-                <img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/22/3/7/9/5/1/1/qEmIN/1431379511_B.jpg" class="img-fluid" alt="">
+    <div class="row pad-10">
+        <div class="col-md-2">
+        </div>
+        <div class="row col-md-8">
+            <div class="col-md-2 border">
             </div>
-            <div class="p-4 col-md-6 border" >
-                <h4>{# 상품이름 #} 상품이름</h4>
-                <br>
-                <p>{# 상품가격 #} 상품가격</p>
-                <i class="bi bi-box2-heart" style="font-size:42px; float:right;"></i>
-                <br><br><br>
-                <select class="form-select" name="delivery" id="delivery">
-                    <option selected>
-                        배송비
-                    </option>
-                    <option value="free">
-                        {# 배송비 #} 무료
-                    </option>
-                    
-                    <option value="onarrival">
-                        {# 배송비 #} 착불
-                    </option>
-                </select>
-                <br><br><br>
-                <select class="form-select" name="quantity" id="quantity">
-                    <option selected>
-                        수량
-                    </option>
-                    {% for i in range1 %}
+            <div class="col-md-10 border row">
+                <div class="col-md-6 border">
+                    <img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/22/3/7/9/5/1/1/qEmIN/1431379511_B.jpg"
+                        class="img-fluid" alt="">
+                </div>
+                <div class="p-4 col-md-6 border pad-5">
+                    <h4>{# 상품이름 #} 상품이름</h4>
+                    <br>
+                    <p>{# 상품가격 #} 상품가격</p>
+                    <i class="bi bi-box2-heart" style="font-size:42px; float:right;"></i>
+
+                    <!-- // 배송비 선택 필드 -->
+                    <select class="form-select" name="delivery" id="delivery">
+                        <option selected>
+                            배송비
+                        </option>
+                        <option value="free">
+                            {# 배송비 #} 무료
+                        </option>
+
+                        <option value="onarrival">
+                            {# 배송비 #} 착불
+                        </option>
+                    </select>
+
+                    <!-- // 수량 선택 필드 -->
+                    <select class="form-select" name="quantity" id="quantity">
+                        <option selected>
+                            수량
+                        </option>
+                        {% for i in range1 %}
                         <option value="{{i}}">
                             {{i}}
                         </option>
-                    {% endfor %}
-                </select>
-                
-                
-                
-                
-                <br><br><br><br><br><br><br>
-                <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-success btn-lg" >장바구니</button>&emsp;&emsp;&emsp;
-                    <button type="button" class="btn btn-primary btn-lg" >바로결제</button>
+                        {% endfor %}
+                    </select>
+
+                    <div class="d-flex justify-content-center pad-10">
+                        <button type="button" class="btn btn-success btn-lg">장바구니</button>&emsp;&emsp;&emsp;
+                        <button type="button" class="btn btn-primary btn-lg">바로결제</button>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="container">
-        <div class="row content">
-            <div class="col-md-12 border" >
-                <img src="https://ai.esmplus.com/yashim76/02_MONITOR/03_product/27/REANTEC/Q2775P_TN/Q2775P_TN_01.jpg" class="img-fluid mx-auto d-block" alt="">
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row content">
-            <div class="col-md-12 border p-4">
+                <img src="https://ai.esmplus.com/yashim76/02_MONITOR/03_product/27/REANTEC/Q2775P_TN/Q2775P_TN_01.jpg"
+                    class="img-fluid mx-auto d-block" alt="">
                 <h4>상품리뷰/평점</h4>
                 <div class="container p-4">
                     {% for z in range3 %}
@@ -73,9 +66,9 @@
                         <div>
                             <h5>{# 평점 #} 평점</h5>
                             {% for j in range2 %}
-                                <i class="bi bi-star" style="font-size:28px;"></i>
+                            <i class="bi bi-star" style="font-size:28px;"></i>
                             {% endfor %}
-                            <h5 style="float:right;">구매자ID: {# 구매자 ID #}  작성날짜: {# 작성날짜 #}</h5>
+                            <h5 style="float:right;">구매자ID: {# 구매자 ID #} 작성날짜: {# 작성날짜 #}</h5>
                             <br><br>
                             <h5>상세리뷰: </h5> <br>
                             <p>{# 상세리뷰 #}ㄹㅇㄴㅁㄹㅇㄴㅁㄹㅇㄴ</p>
@@ -86,10 +79,6 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </body>
 {% endblock %}
-
-

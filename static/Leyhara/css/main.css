@@ -77,15 +77,36 @@ header {
 }
 
 .shc-fix {
-    position:fixed;
+    position: fixed;
     animation: down 0.5s ease
-  }
-  
-  @keyframes down {
-    0%{
-      transform: translateY(-50px)
+}
+
+@keyframes down {
+    0% {
+        transform: translateY(-50px)
     }
-    100%{
-      transform: translateY(0px)
+
+    100% {
+        transform: translateY(0px)
     }
-  }
+}
+
+.title {
+    margin: 20px 0px 10px 0px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    border-bottom: 1px solid black;
+}
+
+.pad-5 {
+    padding: 5px 0px;
+}
+
+.pad-10 {
+    padding: 10px 0px;
+}
+
+.pt-10 {
+    padding-top: 10px
+}
