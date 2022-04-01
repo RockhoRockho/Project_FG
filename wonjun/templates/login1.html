@@ -9,23 +9,7 @@ Login_Page
 <link href="{% static 'wonjun/css/login.css' %}" rel="stylesheet">
 {% endblock %}
 
-<script>
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-span.onclick = function() {
-    modal.style.display = "none";
-}
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
 
 {% block contents %}
 
@@ -76,27 +60,36 @@ window.onclick = function(event) {
                     </a>
                 </div>
                 <div class="sub_find">
-                    <a href="#" data-target="#MyModal" data-toggle="modal">아이디 찾기 <small>|</small></a>
+                    <a href="#" id="myBtn" data-target="#MyModal" data-toggle="modal">아이디 찾기 <small>|</small></a>
                     <!-- <button type="button" idbutton> -->
                     <a href="#">비밀번호 찾기 <small>|</small></a>
                     <a href="#">회원가입</a>
                 </div>
             </div>
-        <h2>Modal Example</h2>
 
-        <!-- Trigger/Open The Modal -->
-        <button id="myBtn">Open Modal</button>
-        
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-        
-            <!-- Modal content -->
-            <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="find_id">아이디 찾기</div>
+                    <div class="col-2 close">&times;</div>
+                </div>
             </div>
-        
-        </div>
+        <script>
+            var modal = document.getElementById("myModal");
+            var btn = document.getElementById("myBtn");
+            var span = document.getElementsByClassName("close")[0];
+            
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
     <!-- 로그인 끝 -->
     <!-- footer 시작 -->
     <footer>
