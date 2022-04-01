@@ -47,7 +47,7 @@
 
                 </td>
                 <td>
-                    <button class="btn btn-primary btn-sm">수정</button>
+                    <button id= "mod_btn" class="btn btn-primary btn-sm">수정</button>
                     <button class="btn btn-primary btn-sm">삭제</button>
                 </td>
                 </tbody>
@@ -59,7 +59,74 @@
 
 </div>
 
+<div id="modify" class="modal" style="width: 80%; margin-left: 10%; top: 10%;">
+    <form class="modal-content animate modal-center">
+        <div class="modal-header p-3 pb-3 border-bottom">
+            <h3>상품리뷰 수정</h3>
+        </div>
+        <div class="modal-body row">
+            <div class="clearfix">
+                <span class="float-end me-2">조회수</span><br>
+                <span class="float-end ms-4">작성일자</span>
+            </div>
+            <div class="col-md-3" style="margin-left: 10px;">
+                <li class="d-flex">
+                    <h5>구매</h5>
 
+                </li>
+                <button type="button" class="btn btn-secondary btn-sm">파일첨부</button>
+                <li class="d-flex mt-3 mb-3">
+                    <h5>평점</h5>
+                </li>
+                <li class="d-flex mt-3 mb-3">
+                    <h5>상세리뷰</h5>
+                </li>            
+            </div>
+
+            <div class="col-md-8">
+                <div class="col-md-8 mt-1">
+                    <textarea class="form-control" cols="80" style="float: right;"></textarea>
+                </div>
+                <div class="col-md-8 mt-3">
+                    {% for i in range %}
+                    <i class="bi bi-star" style="font-size:14px;"></i>
+                    {% endfor %}
+                </div>
+                <div class="col-md-8 mt-2">
+                    <textarea class="form-control" cols="80"></textarea>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="modal-footer justify-content-center">
+            <button type="button" id = "close" class="btn btn-primary btn-lg">취소</button>
+            <button type="button" class="btn btn-primary btn-lg">수정</button>
+        </div>
+
+    </form>
 
 </div>
+
+<script>
+    var modal = document.getElementById('modify')
+    var btn = document.getElementById('mod_btn')
+    var btn_close = document.getElementById('close')
+
+    btn.onclick = function(){
+        modal.style.display = "block";
+    }
+
+    btn_close.onclick = function() {
+        modal.style.display = "none"
+    }
+    window.onclick = function(event){
+	if(event.target == modal){
+		modal.style.display = 'none';
+	}
+}
+</script>
+
+
 {% endblock %}

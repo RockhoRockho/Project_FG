@@ -76,3 +76,21 @@ def purchase_success(request):
         'cart_items_quantity': '',
     }
     return render(request, 'purchase_success.html', context)
+
+def present(request):
+    context = {
+        'items' : range(2), # order_items_id 수
+        'order_id': '',
+        'order_date': '',
+        'member_id': '',
+        'member_name': '',
+        'receiver_name': '',
+        'delivery_address': '',
+        'product_id' : '',
+        'product_name' : '',
+        'product_img' : '',
+        'seller_name': '',
+        'product_price' : '',
+        'cart_items_quantity': '',
+    }
+    return render(request, 'present.html', context)

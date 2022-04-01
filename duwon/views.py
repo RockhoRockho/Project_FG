@@ -18,7 +18,14 @@ def product_detail(request):
 
 def order(request):
     context = {
-        
+        'range' : range(3),
+    }
+
+    return render(request, 'order.html', context) 
+
+def order_detail(request):
+    context = {
+        'range' : range(3),
     }
     #try:
     #    ProductT = Product.objects.get(pk=pk) 
@@ -26,4 +33,4 @@ def order(request):
     #except Product.DoesNotExist:
     #    raise Http404('제품을 찾을수 없습니다')
 
-    return render(request, 'order.html', context) 
+    return render(request, 'order_detail.html', context) 
