@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load mathfilters %}
+
+{% block title %}
+주문상세조회
+{% endblock %}
+
+{% block contents %}
+
+<style>
+    th {
+        font-size: 15px;
+    }
+    td {
+        font-size: 12px;
+    }
+    img {
+        width: 50px;
+        height: 50px;
+    }
+    table {
+        text-align: center;
+
+    }
+</style>
+
+<body>
+    <h2>주문/배송 조회</h2>
+    <br>
+    <div>
+        <h4>배송정보</h4>
+        <div style="float: right;">
+            <button type="button" class="btn btn-primary btn-xs" style="font-size:10px;">배송지 변경</button>
+            <button type="button" class="btn btn-primary btn-xs" style="font-size:10px;">주문 취소</button>
+        </div>
+        <br>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>주문번호</th>
+                    <td>fdsa1341</th>
+                    <th>주문접수일</th>
+                    <td>2022년 04월 04일 21시 24분</th>
+                </tr>
+                <tr>
+                    <th>결제일</th>
+                    <td>2022년 04월 04일</th>
+                    <th>수령예상일</th>
+                    <td>2022년 04월 11일</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>주문자명</th>
+                    <td>홍길동</th>
+                    <th>받으시는 분</th>
+                    <td>가나다</th>
+                </tr>
+                <tr>
+                    <th>배송주소</th>
+                    <td colspan="3">도로명 주소(도로명주소 API 사용) </th>
+                </tr>
+                <tr>
+                    <th>연락처</th>
+                    <td>010-1234-5678</th>
+                    <th>선물주문</th>
+                    <td>X</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <div>
+        <h4>주문 상품 정보</h4>
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>주문상품</th>
+                <th>상품명</th>
+                <th>수량</th>
+                <th>총가격</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for i in range %}
+                <tr>
+                    <td><img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/22/3/7/9/5/1/1/qEmIN/1431379511_B.jpg" alt="..." class="img-thumbnail"></td>
+                    <td>제닉스 게이밍 의자</td>
+                    <td>1</td>
+                    <td>10,000</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    <br>
+    <div>
+        <h4>결제 정보</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>총 주문 금액</th>
+                    <td>(상품가격*수량)+(상품가격*수량)+(상품가격*수량)</td>
+                </tr>
+                <tr>
+                    <th>결제방법</th>
+                    <td>국민카드 결제</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+
+{% endblock %}
