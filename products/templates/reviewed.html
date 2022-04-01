@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}
+리뷰
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+{% block contents %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+
+<div class="col-md-10 border">
+    <div class="col-md-10 d-flex flex-row pt-10" style="margin-left: 10px;">
+        <div class="border bg-secondary text-white">리뷰 작성 가능한 목록</div>
+        <div class="border bg-primary text-white">작성한 리뷰 목록</div>
+    </div>
+
+    <div class="row col-md-10 border pt-4" style="width: 100%; margin-left: 10px;">
+        <table class="table table-bordered text-center">
+            <th class="col-md-2">작성일자</th>
+            <th class="col-md-1">구분</th>
+            <th class="col-md-3">상품명</th>
+            <th class="col-md-1">배송비</th>
+            <th class="col-md-3">평점+내용</th>
+            <th class="col-md-2">수정/삭제</th>
+            <tr class="align-middle text-center" style="height: 150px;">
+                <td>
+                    주문일자
+                </td>
+                <td>
+                    <img>
+                    주문상품정보
+                </td>
+                <td>
+                    상품금액
+                </td>
+                <td>
+                    배송비
+                </td>
+                <td>
+                    {% for i in range %}
+                    <i class="bi bi-star" style="font-size:14px;"></i>
+                    {% endfor %}
+                    <br>
+                    대충 내용(간략히)
+
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-sm">수정</button>
+                    <button class="btn btn-primary btn-sm">삭제</button>
+                </td>
+                </tbody>
+        </table>
+        <div class="d-flex justify-content-center p-3">
+            pagination
+        </div>
+    </div>
+
+</div>
+
+
+
+</div>
+{% endblock %}
