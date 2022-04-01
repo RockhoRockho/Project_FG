@@ -63,8 +63,7 @@ Login_Page
                 </div>
                 <div class="sub_find">
                     <a href="#" id="myBtn" data-target="#MyModal" data-toggle="modal">아이디 찾기 <small>|</small></a>
-                    <!-- <button type="button" idbutton> -->
-                    <a href="#">비밀번호 찾기 <small>|</small></a>
+                    <a href="#" id="myBtn1" data-target="#Modal1" data-toggle="modal1">비밀번호 찾기 <small>|</small></a>
                     <a href="#">회원가입</a>
                 </div>
             </div>
@@ -73,12 +72,56 @@ Login_Page
                 <div class="modal-content">
                     <div class="find_id">아이디 찾기</div>
                     <div class="col-2 close">&times;</div>
-                  </div>
+                    <div class="menu">
+                        <div class="faq-content">
+                            <button class="question" id="que-1"><span>등록된 휴대폰번호로 찾기</span><span id="que-1-toggle">∨</span></button>
+                            <div class="answer" id="ans-1">
+                                <div><input type="text" class="ininput" placeholder="이름을 입력하세요"></div>
+                                <div><input type="text" class="ininput" placeholder="휴대폰 번호를 입력하세요"></div>
+                                <button type="button" class="btn btn-secondary btnn">인증번호 전송하기</button>
+                            </div>
+                        </div>
+                        <div class="faq-content">
+                            <button class="question" id="que-2"><span>등록된 이메일로 찾기</span><span id="que-2-toggle">∨</span></button>
+                            <div class="answer" id="ans-2">                                 <div><input type="text" class="ininput" placeholder="이름을 입력하세요"></div>
+                                <div><input type="text" class="ininput" placeholder="이메일을 입력하세요"></div>
+                                <button type="button" class="btn btn-secondary btnn">인증번호 전송하기</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="myModal1" class="modal1">
+                <div class="modal-content1">
+                    <div class="find_id1">비밀번호 찾기</div>
+                    <div class="col-2 close1">&times;</div>
+                    <div class="menu1">
+                        <div class="faq-content1">
+                            <button class="question1" id="que1-1"><span>등록된 휴대폰번호로 찾기</span><span id="que1-1-toggle1">∨</span></button>
+                            <div class="answer1" id="ans1-1">
+                                <div><input type="text" class="ininput" placeholder="아이디를 입력하세요"></div>
+                                <div><input type="text" class="ininput" placeholder="이름을 입력하세요"></div>
+                                <button type="button" class="btn btn-secondary btnn">인증번호 전송하기</button>
+                            </div>
+                        </div>
+                        <div class="faq-content1">
+                            <button class="question1" id="que1-2"><span>등록된 로 찾기</span><span id="que1-2-toggle1">∨</span></button>
+                            <div class="answer1" id="ans1-2">                                 <div><input type="text" class="ininput" placeholder="이름을 입력하세요"></div>
+                                <div><input type="text" class="ininput1" placeholder="이메일을 입력하세요"></div>
+                                <button type="button" class="btn btn-secondary btnn">인증번호 전송하기</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         <script>
             var modal = document.getElementById("myModal");
             var btn = document.getElementById("myBtn");
             var span = document.getElementsByClassName("close")[0];
+
+            var modal1 = document.getElementById("myModal1");
+            var btn1 = document.getElementById("myBtn1");
+            var span1 = document.getElementsByClassName("close1")[0];
             
             btn.onclick = function() {
                 modal.style.display = "block";
@@ -91,6 +134,51 @@ Login_Page
                     modal.style.display = "none";
                 }
             }
+
+            btn1.onclick = function() {
+                modal1.style.display = "block";
+            }
+            span1.onclick = function() {
+                modal1.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal1) {
+                    modal1.style.display = "none";
+                }
+            }
+
+
+
+
+            const items = document.querySelectorAll('.question');
+
+            function openCloseAnswer() {
+            const answerId = this.id.replace('que', 'ans');
+                if(document.getElementById(answerId).style.display === 'block') {
+                    document.getElementById(answerId).style.display = 'none';
+                    document.getElementById(this.id + '-toggle').textContent = '∨';
+                } 
+                else {
+                    document.getElementById(answerId).style.display = 'block';
+                    document.getElementById(this.id + '-toggle').textContent = '∧';
+                }
+            }
+
+            items.forEach(item => item.addEventListener('click', openCloseAnswer));
+
+            function openCloseAnswer1() {
+            const answerId1 = this.id.replace('que1', 'ans1');
+                if(document.getElementById(answerId1).style.display === 'block') {
+                    document.getElementById(answerId1).style.display = 'none';
+                    document.getElementById(this.id + '-toggle1').textContent = '∨';
+                } 
+                else {
+                    document.getElementById(answerId).style.display = 'block';
+                    document.getElementById(this.id + '-toggle1').textContent = '∧';
+                }
+            }
+
+            items.forEach(item => item.addEventListener('click', openCloseAnswer1));
         </script>
     <!-- 로그인 끝 -->
     <!-- footer 시작 -->
