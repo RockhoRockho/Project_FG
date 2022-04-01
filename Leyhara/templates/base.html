@@ -44,7 +44,7 @@
 {% block header %}
 <header>
     <div class="header-container">
-        <div class="row">
+        <div class="row w-100">
             <div class="col-md-2"></div>
             <div class="col-md-8 h-100">
                 <div class="sch-search">
@@ -63,19 +63,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2"></div>
         </div>
     </div>
 </header>
 {% endblock %}
 
 <body>
-    <div class="row pad-10">
+    <div class="row pad-10 w-100">
         <div class="col-md-2">
         </div>
         <div class="row flex-row col-md-8">
+            {% block nav %}
             <div class="col-md-2 border">
-                {% block nav %}
+                {% block nav-type-mypage %}
                 <a href="/" class="d-flex align-items-center me-md-auto link-dark text-decoration-none">
                     <svg class="" width="0" height="0">
                         <use xlink:href="#bootstrap" /></svg>
@@ -125,11 +125,66 @@
                     </li>
                 </ul>
                 {% endblock %}
-            </div>
-            <div class="col-md-10 border">
-                {% block contents %}
+
+                {% block nav-type-category %}
+                <nav id="sidebarMenu" class="d-md-block bg-light sidebar collapse">
+                    <div class="position-sticky pt-3">
+                        <h5
+                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>카테고리</span>
+                        </h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span>뷰티</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span>식품</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span>스포츠/레저/자동차</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span>출산/육아</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span>가구/인테리어</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span>생활/건강</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span>가전/디지털</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span>도서/취미/펫</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span>여행/티켓</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span>해외직구</span></a>
+                            </li>
+                        </ul>
+                        <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1">
+                            <span>정렬</span>
+                        </h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span>가나다순</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span>평점순</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span>조회순</span></a>
+                            </li>
+                    </div>
+                </nav>
                 {% endblock %}
             </div>
+            {% endblock %}
+            {% block contents %}
+            {% endblock %}
         </div>
     </div>
 </body>

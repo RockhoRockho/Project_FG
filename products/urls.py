@@ -8,4 +8,5 @@ urlpatterns = [
     path('order_by_view/', views.order_by_view, name="order_by_view"),
     path('search_error/', views.search_error, name='search_error'),
     path('review/', views.review, name='review'),
+    path('reviewed/', views.reviewed, name='reviewed'),
 ]
