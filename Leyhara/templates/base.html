@@ -75,6 +75,7 @@
         </div>
         <div class="row flex-row col-md-8">
             <div class="col-md-2 border">
+                {% block nav %}
                 <a href="/" class="d-flex align-items-center me-md-auto link-dark text-decoration-none">
                     <svg class="" width="0" height="0">
                         <use xlink:href="#bootstrap" /></svg>
@@ -90,7 +91,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link active">
+                        <a href="#" class="nav-link link-dark">
                             <svg class="" width="0" height="0">
                                 <use xlink:href="#speedometer2" /></svg>
                             구매/배송 조회
@@ -123,6 +124,7 @@
                         </a>
                     </li>
                 </ul>
+                {% endblock %}
             </div>
             <div class="col-md-10 border">
                 {% block contents %}
