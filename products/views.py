@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 
 def search(request):
 
@@ -22,3 +23,19 @@ def search_error(request):
 
 def review(request):
     return render(request, 'review.html')
+
+def reviewed(request):
+
+
+    # write_pages = int(request.session.get('write_pages', 10))
+    # per_page = int(request.session.get('per_page', 5)) 
+    # page = int(request.GET.get('page', 1))
+
+    # paginator = Paginator(all_boards)
+
+    context = {
+        'range' : range(5),
+    }
+    return render(request, 'reviewed.html', context)
+
+

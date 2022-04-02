@@ -4,92 +4,68 @@
 장바구니
 {% endblock %}
 
+{% block script %}
+
+{% endblock %}
+
 {% block contents %}
-
-<style>
-    .title {
-        margin: 20px 0px 10px 0px;
-        height: 40px;
-        line-height: 40px;
-        padding-left: 10px;
-        border-bottom: 1px solid black;
-    }
-
-    .pad-5 {
-        padding: 5px 0px;
-    }
-
-    .pad-10 {
-        padding: 10px 0px;
-    }
-
-    .pt-10 {
-        padding-top: 10px
-    }
-</style>
-
-<div class="row pad-10">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <div class="col-md-12 d-flex flex-row-reverse pt-10">
-            <span class="border bg-black text-white">장바구니</span>>
-            <span class="border bg-secondary text-white">주문결제</span>>
-            <span class="border bg-secondary text-white">주문완료</span>
+<div class="col-md-10 border">
+    <div class="col-md-12 d-flex flex-row-reverse pt-10">
+        <span class="border bg-black text-white">장바구니</span>>
+        <span class="border bg-secondary text-white">주문결제</span>>
+        <span class="border bg-secondary text-white">주문완료</span>
+    </div>
+    <div class="border col-md-12 d-flex justify-content-center bg-light pad-10 my-3" style="height: 300px;">
+        <div class="border col-md-4 pad-10 align-items-stretch align-self-center">
+            <div class="col-md-12 text-center">주문이 성공적으로 완료되었습니다.</div>
+            <div class="col-md-12 text-center">주문번호 1234{# 주문번호 #}</div>
+            <div class="col-md-12 text-center">서울특별시 OO동 OO대로 OOO-OOOO{# 주소 #}(으)로 보내실 주문이 완료 되었습니다.</div>
         </div>
-        <div class="border col-md-12 d-flex justify-content-center bg-light pad-10 my-3" style="height: 300px;">
-            <div class="border col-md-4 pad-10 align-items-stretch align-self-center" >
-                <div class="col-md-12 text-center">주문이 성공적으로 완료되었습니다.</div>
-                <div class="col-md-12 text-center">주문번호 1234{# 주문번호 #}</div>
-                <div class="col-md-12 text-center">서울특별시 OO동 OO대로 OOO-OOOO{# 주소 #}(으)로 보내실 주문이 완료 되었습니다.</div>
+    </div>
+    <div class="d-flex justify-content-center p-3">
+        <button class="btn btn-primary col-md-1 mx-3" style="width: 120px;">마이페이지</button>
+        <button class="btn btn-secondary col-md-1 mx-3" style="width: 120px;">고객센터</button>
+    </div>
+    <div class="col-md-12 bg-primary text-white title">주문상품</div>
+    <div class="col-md-12">
+        {% for i in items %}
+        <div class="d-flex pad-10 col-md-12">
+            <div class="col-md-1 bg-success text-white" style="width: 64px; height: 64px; padding-right: 10px;">
+                {# 상품이미지 #}</div>
+            <div class="col-md-7">
+                <div>상품명{# 상품명 #}</div>
+                <div>상품옵션{# 상품옵션 #}</div>
+            </div>
+            <div class="col-md-4">
+                <div>%개{# 정가 #}</div>
+                <div>판매금액{# 판매금액 #}</div>
             </div>
         </div>
-        <div class="d-flex justify-content-center p-3">
-            <button class="btn btn-primary col-md-1 mx-3" style="width: 120px;">마이페이지</button>
-            <button class="btn btn-secondary col-md-1 mx-3" style="width: 120px;">고객센터</button>
-        </div>
-        <div class="col-md-12 bg-primary text-white title">주문상품</div>
-        <div class="col-md-12">
-            {% for i in items %}
-            <div class="d-flex pad-10 col-md-12">
-                <div class="col-md-1 bg-success text-white" style="width: 64px; height: 64px; padding-right: 10px;">
-                    {# 상품이미지 #}</div>
-                <div class="col-md-7">
-                    <div>상품명{# 상품명 #}</div>
-                    <div>상품옵션{# 상품옵션 #}</div>
-                </div>
-                <div class="col-md-4">
-                    <div>%개{# 정가 #}</div>
-                    <div>판매금액{# 판매금액 #}</div>
-                </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-12 bg-primary text-white title">추천상품
+        <div class="d-flex pad-10 col-md-12">
+            <div class="col-md-3">
+                <img class="col-md-12 p-5"
+                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
+                    alt="">
             </div>
-            {% endfor %}
-        </div>
-        <div class="col-md-12 bg-primary text-white title">추천상품
-            <div class="d-flex pad-10 col-md-12">
-                <div class="col-md-3">
-                    <img class="col-md-12 p-5"
-                        src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
-                        alt="">
-                </div>
-                <div class="col-md-3">
-                    <img class="col-md-12 p-5"
-                        src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
-                        alt="">
-                </div>
-                <div class="col-md-3">
-                    <img class="col-md-12 p-5"
-                        src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
-                        alt="">
-                </div>
-                <div class="col-md-3">
-                    <img class="col-md-12 p-5"
-                        src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
-                        alt="">
-                </div>
+            <div class="col-md-3">
+                <img class="col-md-12 p-5"
+                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
+                    alt="">
+            </div>
+            <div class="col-md-3">
+                <img class="col-md-12 p-5"
+                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
+                    alt="">
+            </div>
+            <div class="col-md-3">
+                <img class="col-md-12 p-5"
+                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
+                    alt="">
             </div>
         </div>
     </div>
-    <div class="col-md-2"></div>
-</div>
 </div>
 {% endblock %}
