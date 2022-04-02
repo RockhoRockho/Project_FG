@@ -9,7 +9,12 @@
 
 {% block contents %}
 <style>
-
+    * {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        box-sizing: border-box;
+    }
 </style>
 
 <!-- // 주문 단계 표시 HTML -->
@@ -18,7 +23,7 @@
         <div class="col-md-9" style="font-size:xx-large">주문결제</div>
         <div class="col-md-3 border text-center row" style="border-radius:15px; width: 26%;">
             <span class="col-md-4" style="border-top-left-radius : 15px; border-bottom-left-radius: 15px;">상품선택</span>
-            <span class="col-md-4 bg-black text-white" >주문결제</span>
+            <span class="col-md-4 bg-black text-white">주문결제</span>
             <span class="col-md-4" style="border-top-right-radius : 15px; border-bottom-right-radius: 15px;">주문완료</span>
         </div>
     </div>
@@ -26,29 +31,93 @@
 <hr>
 <div class="row">
     <div class="col-md-9">
-        <div class="col-md-12" >
+        <div class="col-md-12 row">
             <div class="col-md-12 title" style="font-size:x-large">배송정보</div>
-            <div class="col-md-12 border row pad-10 mt-5" style="border-radius:15px;">
-                <div class="col-md-6">
-                    <img src="https://cdn.011st.com/browsing/space/banner/2022/3/23/2203232027306501315_742.png" alt="">
-                </div>
-                <div class="col-md-6">
-                    <div>
-                        <h3>선물 받는 사람</h3>
-                        <dl>
-                            <dt>선물 받는분에게 배송지 입력을 위한 문자메세지가 발송됩니다</dt>
-                            <dd>
+            <!-- 선물하기 테마 -->
+            <div class="col-md-12">
+                <!-- 선물하기 메세지 -->
+                <div class="col-md-12 border row pad-10 mt-5" style="border-radius:15px;">
+                    <div class="col-md-6">
+                        <p>
+                            <img src="https://cdn.011st.com/browsing/space/banner/2022/3/23/2203232027306501315_742.png"
+                                alt="">
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <h3>선물 받는 사람</h3>
+                            <dl>
+                                <dt>선물 받는분에게 배송지 입력을 위한 문자메세지가 발송됩니다</dt>
+                                <dd>
                                 <dt><input type="text" placeholder="받는 사람"></dt>
-                            </dd>
-                            <dd>
+                                </dd>
+                                <dd>
                                 <dt><input type="text" placeholder="휴대폰번호"></dt>
-                            </dd>
-                            <dd>
+                                </dd>
+                                <dd>
                                 <dt><input type="text" placeholder="메세지 내용 입력"></dt>
-                            </dd>
-                        </dl>
+                                </dd>
+                            </dl>
+                        </div>
                     </div>
                 </div>
+                <!-- 선물하기 테마고르기 -->
+                <div class="col-md-12 mt-5">
+                    <h3><strong>메시지 테마</strong>를 선택해주세요.</h3>
+                    <!-- inner -->
+                    <div>
+                        <!-- tab item -->
+                        <ul role="tablist" class="col-md-12 d-flex flex-wrap p-0">
+                            <li role="presentation" style="flex-grow: 0; flex-shrink: 0; flex-basis: 25%;">
+                                <button type="button" id="tab1" class="active btn btn-white w-100 border" style="height: 50px;" role="tab"
+                                    aria-selected="true" aria-controls="panel1" tabindex="0">
+                                    감사
+                                </button>
+                            </li>
+                            <li role="presentation" style="flex-grow: 0; flex-shrink: 0; flex-basis: 25%;">
+                                <button type="button" id="tab2" class="btn btn-white border w-100" style="height: 50px;" role="tab"
+                                    aria-selected="false" aria-controls="panel2" tabindex="0">
+                                    축하
+                                </button>
+                            </li>
+                            <li role="presentation" style="flex-grow: 0; flex-shrink: 0; flex-basis: 25%;">
+                                <button type="button" id="tab3" class="btn btn-white border w-100" style="height: 50px;" role="tab"
+                                    aria-selected="false" aria-controls="panel3" tabindex="0">
+                                    사랑
+                                </button>
+                            </li>
+                            <li role="presentation" style="flex-grow: 0; flex-shrink: 0; flex-basis: 25%;">
+                                <button type="button" id="tab4" class="btn btn-white border w-100" style="height: 50px;" role="tab"
+                                    aria-selected="false" aria-controls="panel4" tabindex="0">
+                                    격려
+                                </button>
+                            </li>
+                        </ul>
+                        <!-- tab content -->
+                        <div id="panel1" role="tabpanel" aria-labelledby="tab1" aria-hidden="false">
+                            <ul>
+                                <li>
+                                    <label>
+                                        <input type="radio" data-text="설렘 가득한 봄을 선물합니다!" data-background-color="#DEF596" data-font-color="#111111" data-img-src="//cdn.011st.com/browsing/space/banner/2022/3/23/2203232027306501315_742.png">
+                                        <span>
+                                            <img src="//cdn.011st.com/browsing/space/banner/2022/3/23/2203232027332401315_768.png" alt="설렘 가득한 봄을 선물합니다!">
+                                        </span>
+                                    </label>
+                                </li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                        <div id="panel2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true"></div>
+                        <div id="panel3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true"></div>
+                        <div id="panel4" role="tabpanel" aria-labelledby="tab4" aria-hidden="true"></div>
+                    </div>
+                </div>
+                <script src="/Project_FG/static/js/Jun/present.js"></script>
             </div>
         </div>
         <div class="col-md-12">
@@ -60,7 +129,8 @@
             {% for i in items %}
             <div class="col-md-12 d-flex flex-row">
                 <div class="col-md-2">
-                    <img src="https://cdn.011st.com/11dims/thumbnail/120x120/11src/pd/21/4/1/8/5/1/2/OhMDg/2014418512_L300.jpg" alt="">
+                    <img src="https://cdn.011st.com/11dims/thumbnail/120x120/11src/pd/21/4/1/8/5/1/2/OhMDg/2014418512_L300.jpg"
+                        alt="">
                 </div>
                 <div class="col-md-5">
                     <div>상품이름</div>
@@ -100,7 +170,7 @@
             <div>
                 <button>(해당가격)원 결제하기</button>
             </div>
-            </div>
+        </div>
         <div class="col-md-12">이용약관
 
         </div>
