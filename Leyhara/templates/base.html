@@ -78,60 +78,61 @@
         <div class="d-flex flex-row col-md-8">
             {% block nav %}
             <div class="d-none d-sm-block col-md-2 border">
-                {% block nav-type-mypage %}
-                <a href="/" class="d-flex align-items-center me-md-auto link-dark text-decoration-none">
-                    <svg class="" width="0" height="0">
-                        <use xlink:href="#bootstrap" /></svg>
-                    <span class="fs-4 d-flex mb-auto ">{#회원ID#}회원ID님</span>
-                </a>
-                <hr>
-                <ul class="nav nav-pills flex-column mb-auto ">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link link-dark" aria-current="page">
-                            <svg class="" width="0" height="0">
-                                <use xlink:href="#home" /></svg>
-                            개인정보 수정
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg class="" width="0" height="0">
-                                <use xlink:href="#speedometer2" /></svg>
-                            구매/배송 조회
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg class="" width="0" height="0">
-                                <use xlink:href="#table" /></svg>
-                            선물함
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg class="" width="0" height="0">
-                                <use xlink:href="#grid" /></svg>
-                            찜 목록
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg class="" width="0" height="0">
-                                <use xlink:href="#people-circle" /></svg>나의 상품 리뷰
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg class="" width="0" height="0">
-                                <use xlink:href="#people-circle" /></svg>고객센터 문의
-                        </a>
-                    </li>
-                </ul>
-                {% endblock %}
-
-                {% block nav-type-category %}
                 <nav id="sidebarMenu" class="d-md-block bg-light sidebar collapse">
-                    <div class="position-sticky pt-3">
+                    <!-- 유저 정보 네비게이션 -->
+                    <div id="nav-user" class="d-none">
+                        <a href="/" class="d-flex align-items-center me-md-auto link-dark text-decoration-none">
+                            <svg class="" width="0" height="0">
+                                <use xlink:href="#bootstrap" /></svg>
+                            <span class="fs-4 d-flex mb-auto ">{#회원ID#}회원ID님</span>
+                        </a>
+                        <hr>
+                        <ul class="nav nav-pills flex-column mb-auto ">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link link-dark" aria-current="page">
+                                    <svg class="" width="0" height="0">
+                                        <use xlink:href="#home" /></svg>
+                                    개인정보 수정
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link link-dark">
+                                    <svg class="" width="0" height="0">
+                                        <use xlink:href="#speedometer2" /></svg>
+                                    구매/배송 조회
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link link-dark">
+                                    <svg class="" width="0" height="0">
+                                        <use xlink:href="#table" /></svg>
+                                    선물함
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link link-dark">
+                                    <svg class="" width="0" height="0">
+                                        <use xlink:href="#grid" /></svg>
+                                    찜 목록
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link link-dark">
+                                    <svg class="" width="0" height="0">
+                                        <use xlink:href="#people-circle" /></svg>나의 상품 리뷰
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link link-dark">
+                                    <svg class="" width="0" height="0">
+                                        <use xlink:href="#people-circle" /></svg>고객센터 문의
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 카테고리 네비게이션  -->
+                    <div id="nav-category" class="d-none position-sticky pt-3">
                         <h5
                             class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                             <span>카테고리</span>
@@ -183,7 +184,6 @@
                             </li>
                     </div>
                 </nav>
-                {% endblock %}
             </div>
             {% endblock %}
             {% block contents %}
