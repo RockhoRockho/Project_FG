@@ -5,7 +5,11 @@
 베스트 100
 {% endblock %}
 
+{% block script %}
 <script>
+  var nav_bar = document.getElementById("nav-category");
+  nav_bar.classList.remove("d-none");
+
   $(document).ready(function () {
     $(document).height() = 1000
 
@@ -16,12 +20,14 @@
     });
   });
 </script>
+{% endblock %}
+
 
 {% block nav %}
 {% endblock %}
 
 {% block contents %}
-<div class="col-md-12 border">
+<div class="col-md-12">
   <div class="container col-md-12 my-5">
     <h2>베스트 100</h2>
   </div>
