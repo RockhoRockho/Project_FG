@@ -1,3 +1,7 @@
 *.sqlite3
 *.pyc
-//__pycache__
+/Leyhara/__pycache__
+/products/__pycache__
+/wonjun/__pycache__
+/duwon/__pycache__
+/Jun/__pycache__
