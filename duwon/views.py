@@ -34,3 +34,10 @@ def order_detail(request):
     #    raise Http404('제품을 찾을수 없습니다')
 
     return render(request, 'order_detail.html', context) 
+
+def pick(request):
+    context = {
+        'range' : range(3),
+    }
+
+    return render(request, 'pick.html', context) 
