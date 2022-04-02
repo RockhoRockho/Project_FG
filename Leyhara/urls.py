@@ -5,6 +5,7 @@ app_name = "Leyhara"
 
 urlpatterns = [
     path("main/", views.main, name='main'),
+    path("login/check/", views.login_check, name='login_check'),
     path("register/", views.register, name='reg'),
     path("register/personal/", views.register_personal, name='reg_personal'),
 ]
