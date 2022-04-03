@@ -1,49 +1,41 @@
 {% extends "base.html" %}
+{% load mathfilters %}
+
 {% block title %}
-리뷰
+보낸 선물함 조회
 {% endblock %}
 
 {% block script %}
+
 {% endblock %}
 
 {% block contents %}
-
-
-<div class="col-md-10 border">
-    <div class="col-md-10 d-flex flex-row pt-10" style="margin-left: 10px;">
-        <div class="border bg-primary text-white">리뷰 작성 가능한 목록</div>
-        <div class="border bg-secondary text-white">작성한 리뷰 목록</div>
-    </div>
-
-    <div class="row col-md-10 border" style="width: 100%; margin-left: 3px;">
-        <table class="table table-bordered text-center">
-            <th class="col-md-2">주문일자</th>
-            <th class="col-md-5">주문상품정보</th>
-            <th class="col-md-2">상품금액</th>
-            <th class="col-md-2">배송비(판매자)</th>
-            <th class="col-md-2">삭제</th>
-            <tr class="align-middle text-center" style="height: 150px;">
-                <td>
-                    주문일자
-                </td>
-                <td>
-                    <img>
-                    주문상품정보
-                </td>
-                <td>
-                    상품금액
-                </td>
-                <td>
-                    배송비(판매자)
-                </td>
-                <td>
-                    <button class="btn btn-primary btn-sm">삭제</button>
-                </td>
-                </tbody>
-        </table>
-        <div class="d-flex justify-content-center p-3">
-            pagination
-        </div>
+<div class="col-md-10">
+    <h4 class="p-4" style="color: red; font-weight: bold;">보낸 선물함 조회</h4>
+    <table class="table table-bordered text-center mb-4 m-3">
+        <thead>
+            <tr>
+                <th>보낸일자</th>
+                <th>보낸 선물 조회</th>
+                <th>보낸사람</th>
+                <th>주문상황</th>
+            </tr>
+        <tbody class="align-items-center" style="height: auto;">
+            <td>2022-03-26</td>
+            <td>제닉스 게이밍 의자</td>
+            <td>홍길동</td>
+            <td>주문대기중</td>
+        </tbody>
+        </thead>
+    </table>
+    <hr>
+    <!--Pagination-->
+    <div class="container mt-1">
+        <ul class="pagination justify-content-center">
+            <span>
+                < 1>
+            </span>
+        </ul>
     </div>
     <br><br><br><br><br><br><br>
     <h4 style="margin-left: 10px;">이런 상품은 어떠세요?</h4>
@@ -126,9 +118,14 @@
 
 
 
-</div>
+
+
 <script>
     var nav_bar = document.getElementById("nav-user");
     nav_bar.classList.remove("d-none");
 </script>
+
+
+
+
 {% endblock %}
