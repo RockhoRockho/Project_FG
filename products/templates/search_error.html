@@ -9,7 +9,7 @@
 {% block contents %}
 
 <div class="col-md-10 border">
-    <div class="col-md-12 align-items-center pt-5 mt-5" style="height: 25%;">
+    <div class="col-md-12 text-center pt-5 mt-5" style="height: 25%;">
         <h2>일치하는 검색어를 찾을 수 없습니다</h2>
     </div>
     <hr>
@@ -175,4 +175,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    var nav_bar = document.getElementById("nav-category");
+    nav_bar.classList.remove("d-none");
+</script>
 {% endblock %}

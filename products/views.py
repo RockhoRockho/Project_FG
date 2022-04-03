@@ -38,4 +38,5 @@ def reviewed(request):
     }
     return render(request, 'reviewed.html', context)
 
-
+def present_view(request):
+    return render(request, 'present_view.html')
