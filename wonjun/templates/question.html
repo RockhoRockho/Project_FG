@@ -1,33 +1,17 @@
 {% extends "base.html" %}
-{% load mathfilters %}
 
 {% block title %}
-Login_Page
+문의사항 작성
 {% endblock %}
+
 {% block stylesheet %}
 {% load static %}
 <link href="{% static 'wonjun/css/question.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block contents %}
-<div id="wrap">
-    <div id="wraps">
-        <div id="side_menu">
-            <div>
-                <p><a href="#">로그인 정보</a></p>
-                <p><a href="#">회원이름</a></p>
-            </div>
-            <div>
-                <ul>
-                    <li><a href="#">개인정보 수정</a></li>
-                    <li><a href="#">구매/배송 조회</a></li>
-                    <li><a href="#">선물함</a></li>
-                    <li><a href="#">찜 목록</a></li>
-                    <li><a href="#">나의 상품평가/리뷰</a></li>
-                    <li><a href="#">고객센터</a></li>
-                </ul>
-            </div>
-        </div>
+<div class="col-md-10">
+    <div id="wrap">
         <div id="container">
             <div>
                 <p>메일상담</p>
@@ -66,4 +50,9 @@ Login_Page
         <div style="clear: both;"></div>
     </div>
 </div>
+<script>
+    var nav_bar = document.getElementById("nav-category");
+    // var nav_bar = document.getElementById("nav-user");
+    nav_bar.classList.remove("d-none");
+</script>
 {% endblock %}
