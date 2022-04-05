@@ -22,15 +22,13 @@ h3{
     /* outline: 1px solid red; */
     border-bottom: none;
     /* border-bottom: 1px solid #000; */
+    margin-bottom: 1em;
 }
 
 .title > .row {
     /* border: 1px solid black; */
 }
-.title > div > div > input{
-    width: 90%;
-    height: 80%;
-}
+
 /* ----------------------------------------------- */
 .contents{
     /* outline: 1px solid blue; */
@@ -43,6 +41,10 @@ h3{
 .contents > .row {
     /* border: 1px solid black; */
     margin-left: 0;
+}
+.contents > .row > div{
+    height: 15em;
+    text-align: center;
 }
 /* ----------------------------------------------- */
 .file{
@@ -68,9 +70,6 @@ h3{
 .email > .row{
     margin-left: 0;
 }
-.email input{
-    width: 50%;
-}
 /* ----------------------------------------------- */
 .p_num{
     margin-top: 2.5em;
@@ -79,15 +78,17 @@ h3{
 .p_num > .row{
     margin-left: 0;
 }
-.p_num input{
-    width: 50%;
-}
 /* ----------------------------------------------- */
 button{
     background-color: rgb(119, 118, 177) !important;
     border: none !important;
     box-shadow: 1px 1px 5px rgb(119, 118, 177);
 }
-button:last-child{
-    margin-left: 40%;
+.foo_btn > div{
+    margin: 0 auto;
+    width: 50%;
+}
+.foo_btn > div > button{
+    width: 31%;
+    margin-right: 2%;
 }

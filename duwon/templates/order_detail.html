@@ -22,18 +22,18 @@
         text-align: center;
 
     }
+
+    .table-hover th {
+        background-color: #EAEEFF;
+    }
 </style>
 
-<div class="col-md-10">
+<div class="col-md-10 p-3">
     <h2>주문/배송 조회</h2>
     <br>
     <div>
         <h4>배송정보</h4>
-        <div style="float: right;">
-            <button type="button" class="btn btn-primary btn-xs" style="font-size:10px;">주문 취소</button>
-        </div>
-        <br>
-        <table class="table table-bordered">
+        <table class="table table-hover">
             <tbody>
                 <tr>
                     <th>주문번호</th>
@@ -50,7 +50,7 @@
             </tbody>
         </table>
         <br>
-        <table class="table table-bordered">
+        <table class="table table-hover">
             <tbody>
                 <tr>
                     <th>주문자명</th>
@@ -74,7 +74,7 @@
     <br>
     <div>
         <h4>주문 상품 정보</h4>
-        <table class="table table-bordered">
+        <table class="table table-hover">
             <thead>
               <tr>
                 <th>주문상품</th>
@@ -98,7 +98,7 @@
     <br>
     <div>
         <h4>결제 정보</h4>
-        <table class="table table-bordered">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th>총 주문 금액</th>
@@ -111,8 +111,10 @@
             </thead>
         </table>
     </div>
+    <div class="text-center">
+        <button type="button" class="btn btn-primary btn-lg" id="cancel">주문 취소</button>
+    </div>
 </div>
-
 <script>
     var nav_bar = document.getElementById("nav-category");
     nav_bar.classList.remove("d-none");
