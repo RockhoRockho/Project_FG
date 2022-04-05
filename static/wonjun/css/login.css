@@ -200,34 +200,36 @@
     height: 50px;
     left: 0;
     top: 0;
-    text-align: center;
+    /* text-align: left; */
+    padding-left: 3%;
     padding-top: 10px;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
-    border-bottom: 1px solid black;
-    /* margin-top: -13px; */
+    border-bottom: none;
+    background-color: rgb(119, 118, 177);
+    color: white;
 }
 
 /* The Close Button */
 
 .close1 {
-    color: #aaaaaa;
+    color: #ffffff;
     font-size: 28px;
     font-weight: bold;
     z-index: 100;
     position: absolute;
-    top: -4px;
+    top: 0px;
     right: 0;
     width: 30px;
 }
 
 .close2 {
-    color: #aaaaaa;
+    color: #ffffff;
     font-size: 28px;
     font-weight: bold;
     z-index: 100;
     position: absolute;
-    top: -4px;
+    top: 0px;
     right: 0;
     width: 30px;
 }
