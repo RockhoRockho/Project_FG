@@ -52,7 +52,7 @@ def showitem(item):
     print("이미지:"+item['image'])
     print("최저가:"+item['lprice'])
     print("최고가:"+item['hprice'])
-    print("상품품ID:"+item['producId'])
+    print("상품품ID:"+item['productId'])
     print("카테고리1:"+item['category1'])
     print("카테고리2:"+item['category2'])
     print("카테고리3:"+item['category3'])
