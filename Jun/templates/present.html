@@ -7,18 +7,9 @@
 {% block stylesheet %}
 {% load static %}
 <link href="{% static 'Jun/css/present.css' %}" rel="stylesheet">
-<script src="{% static 'Jun/js/present.js' %}"></script>
-{% endblock %}
-
-{% block nav %}
 {% endblock %}
 
 {% block contents %}
-<script>
-    var nav_bar = document.getElementById("nav-category");
-    nav_bar.classList.remove("d-none");
-</script>
-
 <!-- // 주문 단계 표시 HTML -->
 <div class="col-md-12" style="margin: 30px 0; height: 40px; line-height: 40px;">
     <div class="col-md-12 d-flex">
@@ -40,7 +31,7 @@
                 <!-- 선물하기 메세지 -->
                 <div class="gift_message border mt-5">
                     <!-- 선물하기 이미지 -->
-                    <div class="gift_image">
+                    <div class="gift_image" style="background-color: #ffffff; color: #000;">
                         <p>
                             <img class="gift_img" src="" alt="">
                         </p>
@@ -500,4 +491,9 @@
         </div>
     </div>
 </div>
+
+<script src="{% static 'Jun/js/present.js' %}">
+    var nav_bar = document.getElementById("nav-category");
+    nav_bar.classList.remove("d-none");
+</script>
 {% endblock %}
