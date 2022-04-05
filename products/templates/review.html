@@ -8,6 +8,58 @@
 
 {% block contents %}
 
+<style>
+    .pro_modi {
+        float: left;
+        width: 50%;
+        color: white;
+        line-height: 20px;
+        margin: 14px 0 15px 2px;
+        font-size: 1.1em;
+    }
+
+    .close {
+        float: right;
+        height: 20px;
+        color: white;
+        line-height: 20px;
+        margin: 0.32em 0.3em 20px;
+        text-align: left;
+        font-size: 30px;
+    }
+
+    .title {
+        height: 8%;
+    }
+
+    .content>div>p {
+        float: right;
+        font-size: 0.8em;
+    }
+
+    .sub_title div {
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: rgb(146, 143, 143);
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .prod {
+        background: url(/static/img/cat.jpg) no-repeat;
+        background-size: cover;
+        height: 7em;
+    }
+
+    .modal-footer>button {
+        background-color: rgb(119, 118, 177);
+        border: none;
+    }
+</style>
 
 <div class="col-md-10 border">
     <div class="col-md-10 d-flex flex-row pt-10" style="margin-left: 10px;">
@@ -37,6 +89,7 @@
                     배송비(판매자)
                 </td>
                 <td>
+                    <button class="btn btn-primary btn-sm" id="mod_btn" style="margin-bottom: 5px;">작성</button>
                     <button class="btn btn-primary btn-sm">삭제</button>
                 </td>
                 </tbody>
@@ -124,10 +177,62 @@
 
 </div>
 
-
-
+<div id="modify" class="modal" style="background-color: rgba(0,0,0,0.4);">
+    <div class="modal-content" style="width: 36%; margin: 13% auto; background-color: rgb(252, 252, 252);">
+        <div class="title" style="border: none; background-color: rgb(119, 118, 177); margin-top: 0;">
+            <div>
+                <div class="pro_modi">상품리뷰 작성</div>
+                <div class="close" id="close">&times;</div>
+            </div>
+        </div>
+        <div class="content row" style="width: 96%; margin: auto; margin-top: 2em;">
+            <div class="col-md-12 sub_title">
+                <div class="row" style="width: 100%;">
+                    <div class="col-md-3">구매상품</div>
+                    <div class="col-md-3 prod"></div>
+                    <div class="col-md-6">
+                        <p style="margin-bottom: -0.03em; font-size: 12px;">상품이름 :</p>
+                        <p style="margin-bottom: -0.03em; font-size: 12px;">옵션 :</p>
+                        <textarea rows="3.8" style="width: 100%;"></textarea>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+                    <div class="col-md-3">평점</div>
+                    <div class="col-md-9">★★★★★</div>
+                </div>
+                <div class="row" style="margin-bottom: 2%;">
+                    <div class="col-md-3">상세리뷰</div>
+                    <textarea name="review" id="reivew" class="col-md-8"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+            <button type="button" id="close" class="btn btn-primary btn-sm col-md-4">취소</button>
+            <button type="button" class="btn btn-primary btn-sm col-md-4">작성완료</button>
+        </div>
+    </div>
 </div>
 <script>
+    var modal = document.getElementById('modify')
+    var btn = document.getElementById('mod_btn')
+    var btn_close = document.getElementById('close')
+
+    btn.onclick = function () {
+        modal.style.display = "block";
+        $('body').css("overflow", "hidden");
+    }
+
+    btn_close.onclick = function () {
+        modal.style.display = "none"
+        $('body').css("overflow", "scroll");
+    }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+            $('body').css("overflow", "scroll");
+        }
+    }
+
     var nav_bar = document.getElementById("nav-user");
     nav_bar.classList.remove("d-none");
 </script>
