@@ -25,3 +25,12 @@ def question_update(request):
 
 def question_detail(request):
     return render(request, "question_detail.html")
+
+def question_main(request):
+    context = {
+        'range' : range(5),
+    }
+    return render(request, "question_main.html", context)
+
+def question_answer(request):
+    return render(request, "question_answer.html")
