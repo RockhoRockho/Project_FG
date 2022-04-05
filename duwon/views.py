@@ -41,3 +41,11 @@ def pick(request):
     }
 
     return render(request, 'pick.html', context) 
+
+
+def footer(request):
+    context = {
+        
+    }
+
+    return render(request, 'footer.html', context) 

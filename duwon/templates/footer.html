@@ -1,0 +1,55 @@
+<footer class="bg-dark text-white">
+  <div class="container p-4">
+    <div class="row d-flex justify-content-center ">
+      <div class="col-auto">
+        <button type="submit" class="btn btn-outline-light mb-4">
+          로그아웃
+        </button>&emsp;
+        <button type="submit" class="btn btn-outline-light mb-4" id="btn-back-to-top">
+          위로
+        </button>&emsp;
+        <button type="submit" class="btn btn-outline-light mb-4">
+          홈으로
+        </button>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4" style="float: left;">
+      <h6>FG Mall(주)</h6>
+      <p style="font-size: 9px;">
+        대표이사 : 홍길동, 주소 : 서울특별시 강남구 테헤란로 146 현익빌딩 3층, 4층 (신한은행건물)
+        <br>Tel : 1234-5678, 사업자등록번호 : 000-00-00000 <br><br>
+        FG Mall(주)는 통신판매중개자로서 오픈마켓 FG Mall의 거래당사자가 아니며, <br> 입점판매자가 등록한 상품정보 및 거래에 대해 FG Mall(주)는 일체 책임을 지지 않습니다.
+      </p>
+    </div>
+    <div class="col-md-6 mb-4" style="float: right;">
+      <h6>고객센터 1234-5678(유료)</h6>
+      <p style="font-size: 9px;">
+        주소 : 서울특별시 강남구 테헤란로 146 현익빌딩 3층, 4층 (신한은행건물)
+        <br>Fax : 02-234-5678 / email : customerservice@fgmall.com <br>
+        <a href="#">고객센터 바로가기 ></a>
+      </p>
+      <h6>전자금융거래분쟁담당</h6>
+      <p style="font-size: 9px;">
+        Tel : 9876-5432 / Fax : 02-876-5432
+        <br>email : customerservice@fgmall.com
+      </p>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-white" href="#">FG Mall Co.,Ltd. All Rights Reserved.</a>
+  </div>
+</footer>
+
+<script>
+  let mybutton = document.getElementById("btn-back-to-top");
+
+  mybutton.addEventListener("click", backToTop);
+
+  function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+</script>
