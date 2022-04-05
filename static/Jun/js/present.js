@@ -120,16 +120,11 @@ var giftImage = document.querySelector('.gift_img')
 var giftform = document.querySelector('.gift_message')
 
 function handleClick(element) {
-  console.log(element.dataset)
-  var bgColor = element.dataset['backgroundColor']
-  var ftColor = element.dataset['fontColor']
-  var img = element.dataset['imgSrc']
-  
-  giftform.style.backgroundColor = bgColor
-  giftform.style.color = ftColor
-  giftImage.src = img
+  giftform.style.backgroundColor = element.currentTarget.dataset['backgroundColor']
+  giftform.style.color = element.currentTarget.dataset['fontColor']
+  giftImage.src = element.currentTarget.dataset['imgSrc']
 }
 
 for (var i = 0; i < mRadio.length; i++) {
-  mRadio[i].getElementsByClassName('message_img')[0].addEventListener("click", handleClick(mRadio[i].firstElementChild));
+  mRadio[i].firstElementChild.addEventListener('change', handleClick);
 }
