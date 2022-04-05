@@ -9,6 +9,17 @@ ul {
     padding-left: 0;
 }
 
+
+.page {
+    position: relative;
+}
+
+.present_side {
+    border: 1px solid rgb(240, 240, 240);
+    border-width: 0 1px 0 0;
+    padding-right: 20px;
+}
+
 .gift_message {
     position: relative;
     width: 100%;
@@ -178,4 +189,113 @@ ul {
 .message_radio>span img {
     width: 100px;
     height: 78px;
+}
+
+
+.order_side {
+    position: absolute;
+    top: 7.4%;
+    right: -40px;
+    z-index: 1;
+    width: 300px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.order_side .order_sticky {
+    background-color: #fff;
+    height: 300px;
+    padding-top: 30px;
+}
+
+.order_side .order_sticky.is_fixed {
+    top: 0;
+    width: 16.8%;
+    position: fixed;
+    z-index: 1100;
+    background-color: #fff;
+}
+
+.order_title {
+    width: 100%;
+    height: 28px;
+    zoom: 1;
+}
+
+.order_subtitle {
+    float: left;
+    font-size: 19px;
+    line-height: 28px;
+}
+
+.order_total_price {
+    position: relative;
+    margin-top: 50px;
+    padding-bottom: 10px;
+}
+
+.order_total_price .txt_total {
+    position: absolute;
+    left: 0;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 22px;
+    color: #4f008a;
+}
+
+.order_total_price .price {
+    display: block;
+    padding-left: 40px;
+    font-size: 15px;
+    color: #4f008a;
+    text-align: right;
+}
+
+.order_total_price .price .number {
+    display: inline-block;
+    margin-right: 3px;
+    font-size: 34px;
+    font-weight: bold;
+    line-height: 41px;
+    vertical-align: -3px;
+}
+
+.order_text_agree {
+    width: 100%;
+    padding-top: 27px;
+    border-top: 1px dashed #ddd;
+    font-size: 14px;
+    color: #666;
+    letter-spacing: -1px;
+}
+
+.order_button {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 64px;
+    padding-top: 25px;
+    padding-bottom: 23px;
+}
+
+.btn_purple {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 64px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0;
+    color: #fff;
+    background: #4f008a;
+    background: -webkit-gradient(linear, left top, right top, from(#4f008a), color-stop(45%, #5b00a0), to(#6800b8));
+    background: -webkit-linear-gradient(left, #4f008a 0%, #5b00a0 45%, #6800b8 100%);
+    background: linear-gradient(to right, #4f008a 0%, #5b00a0 45%, #6800b8 100%);
+    -webkit-box-shadow: 0 8px 8px 0 rgb(244 49 66 / 20%);
+    box-shadow: 0 8px 8px 0 rgb(244 49 66 / 20%);
+}
+
+.order_button .number {
+    font-size: 19px;
+    font-weight: bold;
 }
