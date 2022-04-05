@@ -43,8 +43,8 @@ h3{
     margin-left: 0;
 }
 .contents > .row > div{
-    height: 100px;
-    border: 1px solid black;
+    height: 15em;
+    text-align: center;
 }
 /* ----------------------------------------------- */
 .file{
@@ -70,9 +70,6 @@ h3{
 .email > .row{
     margin-left: 0;
 }
-.email input{
-    width: 50%;
-}
 /* ----------------------------------------------- */
 .p_num{
     margin-top: 2.5em;
@@ -81,15 +78,17 @@ h3{
 .p_num > .row{
     margin-left: 0;
 }
-.p_num input{
-    width: 50%;
-}
 /* ----------------------------------------------- */
 button{
     background-color: rgb(119, 118, 177) !important;
     border: none !important;
     box-shadow: 1px 1px 5px rgb(119, 118, 177);
 }
-button:last-child{
-    margin-left: 40%;
+.foo_btn > div{
+    margin: 0 auto;
+    width: 50%;
+}
+.foo_btn > div > button{
+    width: 31%;
+    margin-right: 2%;
 }
