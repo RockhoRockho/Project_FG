@@ -1,0 +1,180 @@
+@import 'reset';
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+
+ul {
+    padding-left: 0;
+}
+
+.gift_message {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    border-radius: 20px;
+    display: flex;
+    zoom: 1;
+    overflow: hidden;
+}
+
+.gift_image {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    flex-grow: 1;
+    float: left;
+}
+
+.gift_image > p {
+    height: 100%;
+}
+
+.gift_image > p > img {
+    height: 100%;
+}
+
+.gift_form {
+    flex-grow: 1;
+    margin-top: 40px;
+    float: left;
+}
+
+.order_gift_theme .gift_message .gift_form .subject {
+    font-size: 20px;
+    line-height: 29px;
+    color: inherit;
+    font-weight: 700;
+}
+
+.order_gift_theme .gift_message .gift_form input{
+    width: 100%;
+    height: 5vh;
+}
+
+.order_gift_theme .gift_message .gift_form dl {
+    width: 385px;
+    margin-top: 20px;
+    zoom: 1;
+}
+
+.order_gift_theme .gift_message .gift_form dl dd {
+    margin-top: 10px;
+    zoom: 1;
+}
+
+.order_gift_theme .gift_message .gift_form dl dt {
+    padding-bottom: 5px;
+    font-size: 12px;
+    line-height: 19px;
+}
+
+.order_gift_theme .gift_message .gift_form .box_message {
+    position: relative;
+    margin-top: 20px;
+    padding: 20px;
+    height: 15vh;
+    background-color: rgba(255, 255, 255, 0.2);
+    text-align: right;
+    color: inherit;
+}
+
+.order_gift_theme .gift_message .gift_form .box_message .gift_textarea {
+    width: 100%;
+    font-size: 16px;
+    border: 0 none;
+    background-color: transparent;
+    resize: none;
+    color: inherit;
+}
+
+.tab_gift_theme {
+    margin: 0 0 23px;
+}
+
+.tab_gift_theme li {
+    flex-grow: 1;
+}
+
+.tab_gift_theme li>button {
+    position: relative;
+    display: block;
+}
+
+.tab__button-active button {
+    color: red;
+}
+
+.tab__panel {
+    display: none;
+}
+
+.tab__panel-active {
+    display: block;
+}
+
+.message_select {
+    position: relative;
+}
+
+.message_select .message_list:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.swiper-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.inner .swiper-wrapper li {
+    position: relative;
+    width: 100px;
+    max-width: 100px;
+    flex-shrink: 0;
+    margin-right: 9px;
+    margin-bottom: 9px
+}
+
+.message_select .message_list li .message_radio {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 100px;
+    height: 78px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.message_select .message_list li .message_radio::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.message_select .message_list li .message_radio input[type="radio"] {
+    position: absolute;
+    width: 100px;
+    height: 78px;
+    margin: 0;
+    opacity: 0;
+    vertical-align: middle;
+}
+
+.message_radio input[type="radio"] {
+    position: absolute;
+}
+
+.message_radio span {
+    position: absolute;
+}
+
+.message_radio>span img {
+    width: 100px;
+    height: 78px;
+}
