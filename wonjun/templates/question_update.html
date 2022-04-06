@@ -1,69 +1,73 @@
 {% extends "base.html" %}
-{% load mathfilters %}
 
 {% block title %}
-Login_Page
+문의사항 수정
 {% endblock %}
+
 {% block stylesheet %}
 {% load static %}
-<link href="{% static 'wonjun/css/question_update.css' %}" rel="stylesheet">
+<link href="{% static 'wonjun/css/question.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block contents %}
-<div id="wrap">
-    <div id="wraps">
-        <div id="side_menu">
-            <div>
-                <p><a href="#">로그인 정보</a></p>
-                <p><a href="#">회원이름</a></p>
-            </div>
-            <div>
-                <ul>
-                    <li><a href="#">개인정보 수정</a></li>
-                    <li><a href="#">구매/배송 조회</a></li>
-                    <li><a href="#">선물함</a></li>
-                    <li><a href="#">찜 목록</a></li>
-                    <li><a href="#">나의 상품평가/리뷰</a></li>
-                    <li><a href="#">고객센터</a></li>
-                </ul>
-            </div>
-        </div>
+<div class="col-md-10">
+    <div id="wrap">
         <div id="container">
             <div>
-                <p>메일상담 수정</p>
-                <h4>쇼핑몰 이용중에 생긴 불편한 점이나 문의사항을 보내주세요<br>
-                    <strong>반품, 교환, 배송정보</strong>는 <strong>아래버튼을 클릭</strong>하여 바로 확인하실 수 있습니다.</h4>
+                <h3>메일상담 수정</h4>
             </div>
             <form class="main_area" name="main_area">
-                <div>
+                <div class="re">
                     <p>* 표시는 필수 입력 항목입니다.</p>
                 </div>
                 <div class="title">
-                    <span>상담제목 *</span>
-                    <input type="text" placeholder="상담제목을 입력주세요.">
+                    <div class="row">
+                        <span class="col-md-3">상담제목 *</span>
+                        <div class="col-md-9" style="height: 40px;"><input type="text" placeholder="상담제목을 입력주세요."></div>
+                    </div>
                 </div>
+                <hr>
                 <div class="contents">
-                    <span>상담내용 *</span>
-                    <textarea name="content" id="content" cols="70" rows="10"></textarea>
+                    <div class="row">
+                        <span class="col-md-3">상담내용 작성 *</span>
+                        <div class="col-md-9"><textarea name="content" id="content" rows="5"></textarea></div>
+                    </div>
                 </div>
+                <hr>
                 <div class="file">
-                    <span>이미지파일 첨부</span>
-                    <button type="button" class="btn btn-primary btn-lg active">파일첨부</button>
-                    <p>* 이미지파일 10MB 이내 첨부가능<br>
-                        * 내용과 첨부 이미지에 개인정보가 포함되지 않도록 주의해주세요</p>
+                    <div class="row">
+                        <span class="col-md-3">이미지파일 첨부</span>
+                        <div class="col-md-9">
+                            <button type="button" class="btn btn-primary btn-lg active">파일첨부</button>
+                            <p>* 이미지파일 10MB 이내 첨부가능<br>
+                                * 내용과 첨부 이미지에 개인정보가 포함되지 않도록 주의해주십시오.</p>
+                        </div>
+                    </div>
                 </div>
+                <hr>
                 <div class="email">
-                    <span>담변받을 이메일</span>
-                    <input type="email" value="사용자이메일">
+                    <div class="row">
+                        <span class="col-md-3">답변받을 이메일</span>
+                        <div class="col-md-9"><input type="email" placeholder="사용자이메일"></div>
+                    </div>
                 </div>
-                <div>
-                    <span>알림받을 휴대폰번호</span>
-                    <input type="number" name="phone_num">
+                <hr>
+                <div class="p_num">
+                    <div class="row">
+                        <span class="col-md-3">알림받을 휴대폰번호</span>
+                        <div class="col-md-9"><input type="text" name="phone_num" placeholder="사용자 휴대폰번호"></div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-secondary btn-lg">상담내용 수정완료</button>
+                <hr>
+                <div style="width: 100%;"><button type="button" class="btn btn-primary btn-lg active">상담내용 수정완료</button></div>
             </form>
         </div>
         <div style="clear: both;"></div>
     </div>
 </div>
+<script>
+    var nav_bar = document.getElementById("nav-category");
+    // var nav_bar = document.getElementById("nav-user");
+    nav_bar.classList.remove("d-none");
+</script>
 {% endblock %}

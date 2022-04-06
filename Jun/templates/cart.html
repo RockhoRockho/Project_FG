@@ -4,80 +4,200 @@
 장바구니
 {% endblock %}
 
+{% block nav %}
+{% endblock %}
+
+{% block stylesheet %}
+{% load static %}
+<link href="{% static 'Jun/css/cart.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block contents %}
 
-<script>
-    var nav_bar = document.getElementById("nav-category");
-    nav_bar.classList.remove("d-none");
-</script>
-
-<div class="col-md-10 border">
-    <div class="col-md-12 d-flex flex-row-reverse pt-10">
-        <span class="border bg-black text-white">장바구니</span>>
-        <span class="border bg-secondary text-white">주문결제</span>>
-        <span class="border bg-secondary text-white">주문완료</span>
-    </div>
-    <div class="d-flex col-md-12 bg-primary text-white title">
-        <div class="col-md-6">주문상품</div>
-        <div class="col-md-3">금액</div>
-        <div class="col-md-3">수량</div>
-    </div>
-    {% if items == zero %}
-    <div class="col-md-12 border justify-content-center">
-        <div class="border text-center p-5 m-5">
-            장바구니가 비었습니다.
-        </div>
-    </div>
-    {% else %}
-    {% for i in items %}
-    <form action="#" method="POST">
-        <div class="d-flex pad-10 col-md-12">
-            <div class="col-md-1 bg-success text-white" style="width: 64px; height: 64px; padding-right: 10px;">
-                {# 상품이미지 #}
-                <img src="#" alt="">
-            </div>
-            <div class="col-md-5">
-                <div>상품명{{ product_name }}</div>
-                <div>상품옵션{# 상품옵션 #}</div>
-            </div>
-            <div class="col-md-3">
-                <div>정가{{ product_price }}</div>
-                <div>판매금액{# 판매금액 #}</div>
-            </div>
-            <div class="col-md-3 text-center p-2">
-                <input type="number" class="border m-1" placeholder="수량">
-                <button type='button' class="btn btn-danger m-1">취소하기</button>
+<div class="order_page col-md-12 col-sm-12">
+    <div class="cart_title">
+        <div class="d-flex">
+            <div class="col-md-9 ft-xxl">주문결제</div>
+            <div class="col-md-3 border text-center row order_procedure">
+                <span class="col-md-4 bg-black text-white order_procedure_left">1.장바구니</span>
+                <span class="col-md-4 y-border">2.주문결제</span>
+                <span class="col-md-4">3.주문완료</span>
             </div>
         </div>
-    </form>
-    {% endfor %}
-    {% endif %}
-    <div class="d-flex justify-content-center">
-        <button class="btn btn-primary col-md-1">주문하기</button>
     </div>
-    <div class="col-md-12 bg-primary text-white title">추천상품
-        <div class="d-flex pad-10 col-md-12">
-            <div class="col-md-3">
-                <img class="col-md-12 p-5"
-                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
-                    alt="">
+    <hr>
+    <div class="col-md-9 col-sm-9 pe-3">
+        <div class="d-flex col-md-12 cart_subtitle">
+            <span class="col-md-5">주문상품</span>
+            <span class="col-md-4 ps-5">금액</span>
+            <span class="col-md-3">수량</span>
+        </div>
+        {% if items == zero %}
+        <div class="col-md-12 border justify-content-center">
+            <div class="border text-center p-5 m-5">
+                장바구니가 비었습니다.
             </div>
-            <div class="col-md-3">
-                <img class="col-md-12 p-5"
-                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
-                    alt="">
+        </div>
+        {% else %}
+        {% for i in items %}
+        <form class="product_form" action="#" method="POST">
+            <div class="d-flex col-md-12 cart_product">
+                <div class="col-md-1 bg-success text-white" style="width: 64px; height: 64px; margin: 10px;">
+                    {# 상품이미지 #}
+                    <img src="#" alt="">
+                </div>
+                <div class="col-md-5">
+                    <div>상품명{{ product_name }}</div>
+                </div>
+                <div class="col-md-3">
+                    <div>정가{{ product_price }}</div>
+                    <div>판매금액{# 판매금액 #}</div>
+                </div>
+                <div class="col-md-3 text-center p-2">
+                    <input type="number" class="col-md-5 m-1" placeholder="수량">
+                    <button type='button' class="btn btn-danger m-1">취소하기</button>
+                </div>
             </div>
-            <div class="col-md-3">
-                <img class="col-md-12 p-5"
-                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
-                    alt="">
+        </form>
+        {% endfor %}
+        {% endif %}
+        <hr style="margin: 0;">
+        <div class="col-md-12 cart_subtitle">추천상품
+            <div class="d-flex pad-10 col-md-12">
+                <div class="col-md-3">
+                    <img class="col-md-12 p-5"
+                        src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
+                        alt="">
+                </div>
+                <div class="col-md-3">
+                    <img class="col-md-12 p-5"
+                        src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
+                        alt="">
+                </div>
+                <div class="col-md-3">
+                    <img class="col-md-12 p-5"
+                        src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
+                        alt="">
+                </div>
+                <div class="col-md-3">
+                    <img class="col-md-12 p-5"
+                        src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
+                        alt="">
+                </div>
             </div>
-            <div class="col-md-3">
-                <img class="col-md-12 p-5"
-                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
-                    alt="">
+        </div>
+    </div>
+    <!-- 결제창 -->
+    <div class="order_side col-md-3 col-sm-3">
+        <div class="order_sticky">
+            <div class="order_amount">
+                <div class="order_title">
+                    <h4 class="order_subtitle">결제 예정금액</h4>
+                </div>
+                <div class="order_total_price">
+                    <h4 class="txt_total">합계</h4>
+                    <span class="price">
+                        <em class="number" id="CalcAmountInDsc"></em>원
+                    </span>
+                </div>
+            </div>
+            <p class="order_text_agree">하기 필수약관을 확인하였으며 결제에 동의합니다.</p>
+            <div class="order_button">
+                <button type="button" id="btnAccount" class="btn_purple" onclick="">
+                    <em class="number" id="FinalOrderPrice"></em>원 결제하기
+                </button>
+            </div>
+        </div>
+        <div class="order_agree">
+            <div class="order_low" id="agreeToSeller">
+                <div class="low_tit">
+                    <p>개인정보 판매자 제공 동의</p>
+                </div>
+                <div class="low_cont">
+                    <div class="id_agrmt">
+                        <ul>
+                            <li>고객님께서는 아래 내용에 대하여 동의를 거부하실 수 있으며, 거부시 상품 배송, CS가 제한됩니다.</li>
+                            <li>개인정보를 제공받는 자 : <strong class="txt_point">[주식회사 수다]</strong></li>
+                            <li>개인정보를 제공받는 자의 개인정보 이용 목적 : <strong class="txt_point">주문상품의 배송, 고객상담 및 불만처리</strong></li>
+                            <li>제공하는 개인정보의 항목 : 아이디(ID), 성명, 주소, 연락처(안심번호 적용 시 연락처는 제외), 개인통관고유부호(선택시), 공동현관
+                                출입번호(입력,저장선택시)<br>
+                                ※ 구매자와 수취인이 다른 경우에는 입력하신 수취인의 정보가 제공될 수 있습니다.</li>
+                            <li>개인정보를 제공받는 자의 개인정보 보유 및 이용기간 : <strong class="txt_point">구매확정 후 3개월까지(e쿠폰 상품의 경우 유효기간
+                                    연장, CS 등을 위해 1년까지)</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="order_low" id="agreePersonal">
+                <div class="low_tit">
+                    <p>개인정보 수집 및 이용 동의</p>
+                </div>
+                <div class="low_cont">
+                    <div class="id_agrmt">
+                        <p>고객님께서는 아래 내용에 대하여 동의를 거부하실 수 있으며, 거부 시 상품배송, 구매 및 결제, 일부 포인트 적립이 제한됩니다.</p>
+                        <table>
+                            <caption>개인정보 수집 내용</caption>
+                            <colgroup>
+                                <col width="35%">
+                                <col width="30%">
+                                <col width="35%">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="col">수집이용목적</th>
+                                    <th scope="col">수집 항목</th>
+                                    <th scope="col">보유기간
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>대금 결제/환불 서비스 제공, 주문/배송/거래 내역 조회 서비스 제공, 전자상거래법 준수 등</td>
+                                    <td>신용카드 정보, 계좌 정보, 주문/배송/거래 내역</td>
+                                    <td rowspan="3">
+                                        <strong class="txt_point">
+                                            고객님의 개인정보는 서비스를 제공하는 기간 동안 보유 및 이용하며, 개인정보의 수집 및 이용목적이 달성되면 지체없이 파기합니다. 다만,
+                                            관계법령의 규정 및 내부지침에 의하여 고객님의 개인정보를 보관할 필요성이 있는 경우에는 아래와 같이 고객님의 개인정보를 보관할 수
+                                            있으며, 이 경우 해당 개인정보는 보관의 목적으로만 이용합니다.<br><br>
+                                            가. 개별적으로 고객님의 동의를 받은 경우에는 약속한 보유기간<br>
+                                            나. 통신사실확인자료 제공 시 필요한 로그기록자료, IP주소 등 : 3개월 (통신비밀보호법)<br>
+                                            다. 계약 또는 청약철회 등에 관한 기록 : 5년 (전자상거래법)<br>
+                                            라. 대금결제 및 재화 등의 공급에 관한 기록 : 5년 (전자상거래법)<br>
+                                            마. 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년 (전자상거래법)<br>
+                                            바. 서비스제공과 관련된 문의사항 응대를 위해 서비스사용로그는 서비스 종료 후 1개월간 회사방침에 의해 보존<br>
+                                        </strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>현금영수증 발급(현금영수증 신청 시)</td>
+                                    <td>현금영수증 신청정보(현금영수증카드번호, 휴대전화번호)</td>
+                                </tr>
+                                <tr>
+                                    <td>상품 및 경품(포인트, 쿠폰 포함) 배송(반품/환불/취소등), 배송지 확인, 최초 입력 후 불러오기 기능 제공</td>
+                                    <td>아이디, 배송지 정보 (수령인,전화번호,주소), 공동현관 출입번호(입력,저장선택시)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>이용계약(이용약관)이 존속중인 탈퇴하지 않은 회원의 경우 보유기간은 보존의무기간 이상 보관할 수 있으며 이 기간이 경과된 기록에 대해서 파기요청이 있는 경우 파기함
+                        </p>
+                        <p>결제수단에 따른 개인정보 수집.이용 항목이 상이할 수 있음</p>
+                    </div>
+                </div>
+            </div>
+            <div class="order_low" id="agreeToSeller">
+                <div class="low_tit">
+                        <p>개인정보 판매자 제공 동의</p>
+                </div>
+                <div class="low_cont">
+                    <div class="id_agrmt">
+                        <p>주문 상품의 상품명, 가격, 배송정보에 동의합니다.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="{% static 'Jun/js/cart.js' %}">
+    var nav_bar = document.getElementById("nav-category");
+    nav_bar.classList.remove("d-none");
+</script>
 {% endblock %}

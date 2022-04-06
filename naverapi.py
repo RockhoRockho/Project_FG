@@ -28,7 +28,7 @@ def searchtitle(title):
     
     
     url = "https://openapi.naver.com/v1/search/shop"
-    option = "&display=3&sort=count"    
+    option = "&display=100&sort=sim"    
     query = "?query=" + urllib.parse.quote(title)
     url_query = url + query + option
     
@@ -48,15 +48,21 @@ def searchtitle(title):
 #검색 결과 항목 정보 출력하기
 def showitem(item):
     print("제목:"+item['title'])
+    print("링크:"+item['link'])
     print("이미지:"+item['image'])
-    print("카테고리:"+item['category1'])
+    print("최저가:"+item['lprice'])
+    print("최고가:"+item['hprice'])
+    print("상품품ID:"+item['productId'])
+    print("카테고리1:"+item['category1'])
+    print("카테고리2:"+item['category2'])
+    print("카테고리3:"+item['category3'])
     print("================")
 
 
 #프로그램 진입점
 def main():
     #검색 질의 요청
-    res = searchtitle(input("질의:"))
+    res = searchtitle(input("물품검색:"))
     if(res == None):
         print("검색 실패")
         exit()
@@ -65,11 +71,16 @@ def main():
     if(jres == None):
         print("json.loads 실패")
         exit()
- 
+
     #검색 결과의 items 목록의 각 항목(post)을 출력
     for post in jres['items']:
         showitem(post)
+
+    # 검색 문서 항목(총 개수, 결과..)
+    print(jres['total'])
+    print(jres['display'])
  
 #진입점 함수를 main으로 지정
 if __name__ == '__main__':
     main()
+

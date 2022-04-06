@@ -1,9 +1,10 @@
+// tablist
 $(function () {
   var tabContainer = document.querySelector('.tab__container');
   if (!tabContainer) return;
 
   $(tabContainer).on('click', '.tab__button', handleClickEvent);
-  $(tabContainer).on('keydown', '.tab__list', handleKeyEvent);
+  $(tabContainer).on('keydown', '.tab__list', handleKeyEvent);  
 
   function handleClickEvent(event) {
     event = event || window.event;
@@ -12,44 +13,6 @@ $(function () {
 
     activateTab(currTab);
     activateTabPanel(currTab);
-  }
-
-  function activateTab(tab) {
-    if (!tab) return;
-
-    $(tab)
-      .addClass('tab__button-active')
-      .attr({
-        'tabindex': '0',
-        'aria-selected': 'true'
-      })
-      .focus()
-      .siblings()
-      .removeClass('tab__button-active')
-      .attr({
-        'tabindex': '-1',
-        'aria-selected': 'false'
-      })
-  }
-
-  function activateTabPanel(tab) {
-    if (!tab) return;
-    $('#' + tab.getAttribute('aria-controls'))
-      .attr({
-        'tabindex': '0'
-      })
-      .prop({
-        'hidden': false
-      })
-      .addClass('tab__panel-active')
-      .siblings('.tab__panel')
-      .removeClass('tab__panel-active')
-      .attr({
-        'tabindex': '-1'
-      })
-      .prop({
-        'hidden': true
-      })
   }
 
   function handleKeyEvent(event) {
@@ -104,7 +67,7 @@ $(function () {
             .focus()
         }
         break;
-      case 32:
+      case 33:
       case 13:
         event.preventDefault();
         activateTab(event.target);
@@ -112,19 +75,71 @@ $(function () {
         break;
     }
   }
+
+  function activateTab(tab) {
+    if (!tab) return;
+
+    $(tab)
+      .addClass('tab__button-active')
+      .attr({
+        'tabindex': '0',
+        'aria-selected': 'true'
+      })
+      .focus()
+      .siblings()
+      .removeClass('tab__button-active')
+      .attr({
+        'tabindex': '-1',
+        'aria-selected': 'false'
+      })
+  }
+
+  function activateTabPanel(tab) {
+    if (!tab) return;
+    $('#' + tab.getAttribute('aria-controls'))
+      .attr({
+        'tabindex': '0'
+      })
+      .prop({
+        'hidden': false
+      })
+      .addClass('tab__panel-active')
+      .siblings('.tab__panel')
+      .removeClass('tab__panel-active')
+      .attr({
+        'tabindex': '-1'
+      })
+      .prop({
+        'hidden': true
+      })
+  }
 });
 
+// message_radio
 var mRadio = document.getElementsByClassName('message_radio');
 
 var giftImage = document.querySelector('.gift_img')
 var giftform = document.querySelector('.gift_message')
 
 function handleClick(element) {
+  console.log(element)
   giftform.style.backgroundColor = element.currentTarget.dataset['backgroundColor']
   giftform.style.color = element.currentTarget.dataset['fontColor']
   giftImage.src = element.currentTarget.dataset['imgSrc']
 }
 
 for (var i = 0; i < mRadio.length; i++) {
-  mRadio[i].firstElementChild.addEventListener('change', handleClick);
+  console.log(mRadio[i])
+  mRadio[i].firstElementChild.addEventListener('click', handleClick);
 }
+
+var stickyOrder = $('.order_sticky').offset();
+
+$(window).scroll(function() {
+  if ($(document).scrollTop() > stickyOrder.top) {
+    $('.order_sticky').addClass('is_fixed');
+  }
+  else {
+    $('.order_sticky').removeClass('is_fixed')
+  }
+})
