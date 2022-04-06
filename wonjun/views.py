@@ -34,3 +34,4 @@ def question_main(request):
 
 def question_answer(request):
     return render(request, "question_answer.html")
+

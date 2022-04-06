@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-주문하기
+선물하기
 {% endblock %}
 
 {% block stylesheet %}
@@ -12,22 +12,20 @@
 {% block contents %}
 <!-- // 주문 단계 표시 HTML -->
 <div class="col-md-12 page">
-    <div class="col-md-12" style="margin: 30px 0; height: 40px; line-height: 40px;">
-        <div class="col-md-12 d-flex">
-            <div class="col-md-9" style="font-size:xx-large">주문결제</div>
-            <div class="col-md-3 border text-center row" style="border-radius:15px; width: 26%;">
-                <span class="col-md-4"
-                    style="border-top-left-radius : 15px; border-bottom-left-radius: 15px;">상품선택</span>
-                <span class="col-md-4 bg-black text-white">주문결제</span>
-                <span class="col-md-4"
-                    style="border-top-right-radius : 15px; border-bottom-right-radius: 15px;">주문완료</span>
+    <div class="present_title col-md-12">
+        <div class="d-flex">
+            <div class="col-md-9 ft-xxl">주문결제</div>
+            <div class="col-md-3 border text-center row order_procedure">
+                <span class="col-md-4 bg-black text-white order_procedure_left">1.장바구니</span>
+                <span class="col-md-4 y-border">2.주문결제</span>
+                <span class="col-md-4 order_procedure_right">3.주문완료</span>
             </div>
         </div>
     </div>
-    <hr>
-    <div class="col-md-9 present_side">
+    <hr style="width: 105%;">
+    <div class="present_side col-md-9">
         <div class="row">
-            <div class="col-md-12 title" style="font-size:x-large">배송정보</div>
+            <div class="col-md-12 present_subtitle" style="font-size:x-large">배송정보</div>
             <!-- 선물하기 테마 -->
             <div class="order_gift_theme">
                 <!-- 선물하기 메세지 -->
@@ -469,9 +467,9 @@
             </div>
         </div>
         <div class="col-md-12">
-            <div class="col-md-12 title">
-                <span style="font-size:x-large;">주문상품</span>
-                <span>상품수량 및 옵션변경 상품상세 또는 장바구니에서 가능합니다</span>
+            <div class="col-md-12 present_subtitle">
+                <span>주문상품</span>
+                <span style="font-size: 13px; color: gray;">상품수량 및 옵션변경 상품상세 또는 장바구니에서 가능합니다</span>
             </div>
             <div class="col-md-12">판매자이름</div>
             {% for i in items %}
@@ -491,15 +489,15 @@
             {% endfor %}
         </div>
         <div class="col-md-12">
-            <div class="col-md-12 title">결제방법</div>
+            <div class="col-md-12 present_subtitle">결제방법</div>
             <div></div>
         </div>
         <div class="col-md-12">
-            <div class="col-md-12 title">결제방식</div>
+            <div class="col-md-12 present_subtitle">결제방식</div>
             <div></div>
         </div>
         <div class="col-md-12">
-            <div class="col-md-12 title">할부방식</div>
+            <div class="col-md-12 present_subtitle">할부방식</div>
             <div></div>
         </div>
     </div>
@@ -530,4 +528,5 @@
     var nav_bar = document.getElementById("nav-category");
     nav_bar.classList.remove("d-none");
 </script>
+<script src="{% static 'Jun/js/sticky.js' %}"></script>
 {% endblock %}

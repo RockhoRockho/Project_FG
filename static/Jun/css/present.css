@@ -1,8 +1,9 @@
 * {
-    margin: 0;
     padding: 0;
-    list-style-type: none;
+    margin: 0;
     box-sizing: border-box;
+    font-family: "Noto Sans KR", "Helvetica Neue", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", "돋움", dotum, sans-serif;
+    list-style-type: none;
 }
 
 ul {
@@ -14,8 +15,47 @@ ul {
     position: relative;
 }
 
+.present_title {
+    margin: 30px 0; 
+    height: 40px; 
+    line-height: 40px;
+    width: 105%;
+}
+
+.ft-xxl {
+    font-size:xx-large
+}
+
+.order_procedure {
+    border-radius:15px; 
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.order_procedure_left {
+    border-top-left-radius : 15px; 
+    border-bottom-left-radius: 15px;
+}
+.order_procedure_right {
+    border-top-right-radius : 15px; 
+    border-bottom-right-radius: 15px;
+}
+
+.y-border { 
+    border: 1px solid gainsboro;
+    border-width: 0 1px;
+}
+
+.present_subtitle {
+    padding-left: 10px;
+    margin: 40px 0 0 0;
+    height: 5vh;
+    font-size: x-large;
+    border-bottom: 1px solid rgb(235, 235, 235);
+}
+
 .present_side {
-    border: 1px solid rgb(240, 240, 240);
+    border: 1px solid rgb(235, 235, 235);
     border-width: 0 1px 0 0;
     padding-right: 20px;
 }

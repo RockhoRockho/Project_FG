@@ -28,6 +28,7 @@ def search_category(request):
 def cart(request):
     context = {
         'items' : range(3), # order_items_id 수
+        'recommend': range(4),
         'zero' : range(0),
         'range' : range(25),
         'product_id' : '',
@@ -43,7 +44,7 @@ def cart(request):
 
 def purchase(request):
     context = {
-        'items' : range(2), # order_items_id 수
+        'items' : range(10), # order_items_id 수
         'order_id': '',
         'order_date': '',
         'member_id': '',
@@ -62,6 +63,7 @@ def purchase(request):
 def purchase_success(request):
     context = {
         'items' : range(2), # order_items_id 수
+        'recommend': range(4),
         'order_id': '',
         'order_date': '',
         'member_id': '',

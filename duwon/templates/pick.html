@@ -5,89 +5,49 @@
 찜한 상품
 {% endblock %}
 
+{% block stylesheet %}
+{% load static %}
+<link href="{% static 'wonjun/css/pick.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block contents %}
 
-<style>
-    th {
-        font-size: 15px;
-    }
-
-    td {
-        font-size: 12px;
-    }
-
-    img {
-        width: 50px;
-        height: 50px;
-    }
-
-    table {
-        text-align: center;
-
-    }
-</style>
-
 <div class="col-md-10">
-    <h2>찜한 상품</h2><br>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th><input class="form-check-input" type="checkbox" value="" id="checkAll" style="float: left;">상품</th>
-                <th>가격</th>
-                <th>배송비</th>
-                <th>평점</th>
-                <th>My Comment</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in range %}
-            <tr>
-                <td><input class="form-check-input" type="checkbox" value="" id="" style="float: left;"><img
-                        src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/22/3/7/9/5/1/1/qEmIN/1431379511_B.jpg"
-                        alt="..." class="img-thumbnail"> 제닉스 게이밍 의자</td>
-                <td>10,000</td>
-                <td>무료</td>
-                <td>4.5/5</td>
-                <td><button type="button" class="btn btn-primary btn-xs" data-bs-toggle="modal" data-bs-target="#jjim"
-                        data-bs-whatever="{{i}}" style="font-size: 10px;">My Comment</button></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    &emsp;&emsp;
-    <button type="button" class="btn btn-success btn-xs" style="font-size: 10px;">장바구니에 담기</button>
-    <button type="button" class="btn btn-danger btn-xs" style="font-size: 10px;">삭제하기</button>
+    <div class="wrap">
+        <h4><strong>찜</strong>한 상품</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th><input class="form-check-input" type="checkbox" value="" id="checkAll" style="float: left;">상품</th>
+                    <th>가격</th>
+                    <th>배송비</th>
+                    <th>평점</th>
+                    <th>My Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range %}
+                <tr>
+                    <td><input class="form-check-input" type="checkbox" value="" id="" style="float: left;"><img
+                            src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/22/3/7/9/5/1/1/qEmIN/1431379511_B.jpg"
+                            alt="..." class="img-thumbnail"> 제닉스 게이밍 의자</td>
+                    <td>10,000</td>
+                    <td>무료</td>
+                    <td>4.5/5</td>
+                    <td><button type="button" class="btn btn-primary btn-xs" data-bs-toggle="modal" data-bs-target="#jjim"
+                            data-bs-whatever="{{i}}">My Comment</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="last_btn">
+            <button type="button" class="btn btn-success btn-xs" style="font-size: 10px;">선택목록 장바구니에 담기</button>
+            <button type="button" class="btn btn-danger btn-xs" style="font-size: 10px;">삭제하기</button>
+        </div>
+    </div>
 </div>
-<style>
-    .modal-header{
-        background-color: rgb(119, 118, 177);
-        padding: 0.6em;
-    }
-    .modal-header > button{
-        background: none;
-        margin-bottom: 55px;
-    }
-    .modal-header > button > div{
-        font-size: 2.3em;
-        margin-top: -23px;
-        margin-left: -10px;
-        color: white;
-    }
-    .modal-footer{
-        margin: 0 auto;
-        width: 100%;
-    }
-    .modal-footer > div > button{
-        width: 47%;
-    }
-    .modal-footer > div > button:last-child{
-        width: 47%;
-        float: right;
-    }
-    form label{
-        font-weight: bold;
-    }
-</style>
+
 <div class="modal fade" id="jjim" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
