@@ -11,109 +11,124 @@
 
 {% block contents %}
 <style>
+    .page {
+        padding-left: 30px;
+    }
 
+    .subtitle {
+        padding: 30px;
+        color: #4f008a;
+        font-weight: bold;
+    }
+
+    .table-hover th {
+        background-color: #f0e8ff;
+    }
+
+    .r_subtitle {
+    padding: 0 0 20px 10px;
+    margin: 40px 0 0 0;
+    font-size: medium;
+    border-bottom: 1px solid rgb(235, 235, 235);
+    }
+    
+    .r_container {
+        background-color: #e9ecef;
+        height: 400px;
+    }
+
+    .product_list {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    text-align: center;
+    }
+
+    .product {
+    background-color: white;
+    margin: 5px 0 0 9px;
+    }
+
+    .pup_info {
+        position: relative;
+        padding: 20px 0 15px 15px;
+        height: 170px;
+        text-align: left;
+    }
+
+    .pup_title {
+        position: absolute;
+        top: 12px;
+        height: 30px;   
+        padding-right: 14px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .pup_price {
+    position: absolute;
+    top: 22px;
+    padding: 20px 14px 0 0;
+    font-weight: bold;
+    }
+
+    .satisf_wrap {
+    position: absolute;
+    bottom: 0;
+    padding-top: 20px;
+    color: #757575;
+    line-height: 30px;
+    }
 </style>
 
-<div class="col-md-10">
-    <h4 class="p-4 subtitle" style="color: red; font-weight: bold;">보낸 선물함 조회</h4>
-    <table class="table table-bordered text-center mb-4 m-3">
-        <thead>
-            <tr>
+<div class="page col-md-10">
+    <h4 class="subtitle">보낸 선물함 조회</h4>
+    <table class="table table-hover text-center mb-4 m-3">
+            <tr style="background-color: #f0e8ff;">
                 <th>보낸일자</th>
                 <th>보낸 선물 조회</th>
                 <th>보낸사람</th>
                 <th>주문상황</th>
             </tr>
-        <tbody class="align-items-center" style="height: auto;">
-            <td>2022-03-26</td>
-            <td>제닉스 게이밍 의자</td>
-            <td>홍길동</td>
-            <td>주문대기중</td>
-        </tbody>
-        </thead>
+            {% for i in items %}
+            <tr>
+                <td>2022-03-26</td>
+                <td>제닉스 게이밍 의자</td>
+                <td>홍길동</td>
+                <td>주문대기중</td>
+            </tr>
+            {% endfor %}
     </table>
-    <hr>
     <!--Pagination-->
     <div class="container mt-1">
         <ul class="pagination justify-content-center">
             <span>
-                < 1>
+                < 1 >
             </span>
         </ul>
     </div>
-    <br><br><br><br><br><br><br>
-    <h4 style="margin-left: 10px;">이런 상품은 어떠세요?</h4>
-    <div class="container row">
-        <div class="row col-md-6 border text-center g-0">
-            <h6 class="mt-3">최근 인기 상품</h6>
-            <hr>
-            <div class="col-md-6">
-                <img class="col-md-10"
-                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
-                    alt="...">
-                <div class="text-center">
-                    <span>상품명</span>
+
+    <div>
+        <h4 class="r_subtitle">이런 상품은 어떠세요?</h4>
+        <div class="r_container">
+            <div class="product_list col-md-12">
+                {% for i in recommend %}
+                <div class="product col-md-3">
+                    <a href="#">    
+                        <img class="col-md-10"
+                            src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+                            alt="...">
+                    </a>
+                    <div class="pup_info">
+                        <div class="pup_title">상품명</div>
+                        <div class="pup_price">가격</div>
+                        <div class="satisf_wrap">
+                            <div class="rating">별점</div>
+                            <p class="seller_id">판매자 이름</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <img class="col-md-10"
-                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
-                    alt="...">
-                <div class="text-center">
-                    <span>상품명</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <img class="col-md-10"
-                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
-                    alt="...">
-                <div class="text-center">
-                    <span>상품명</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <img class="col-md-10"
-                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
-                    alt="...">
-                <div class="text-center">
-                    <span>상품명</span>
-                </div>
-            </div>
-        </div>
-        <div class="row col-md-6 border text-center g-0">
-            <h6 class="mt-3">최근 인기 상품</h6>
-            <hr>
-            <div class="col-md-6">
-                <img class="col-md-10"
-                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
-                    alt="...">
-                <div class="text-center">
-                    <span>상품명</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <img class="col-md-10"
-                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
-                    alt="...">
-                <div class="text-center">
-                    <span>상품명</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <img class="col-md-10"
-                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
-                    alt="...">
-                <div class="text-center">
-                    <span>상품명</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <img class="col-md-10"
-                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
-                    alt="...">
-                <div class="text-center">
-                    <span>상품명</span>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

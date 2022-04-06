@@ -132,6 +132,7 @@
 
 .order_side .order_sticky.is_fixed {
     top: 0;
+    width: 280px;
     position: fixed;
     z-index: 1100;
     background-color: #fff;

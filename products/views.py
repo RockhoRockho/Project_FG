@@ -39,4 +39,8 @@ def reviewed(request):
     return render(request, 'reviewed.html', context)
 
 def present_view(request):
-    return render(request, 'present_view.html')
+    context = {
+        'items' : range(4),
+        'recommend' : range(4),
+    }
+    return render(request, 'present_view.html', context)
