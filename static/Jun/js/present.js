@@ -132,14 +132,3 @@ for (var i = 0; i < mRadio.length; i++) {
   console.log(mRadio[i])
   mRadio[i].firstElementChild.addEventListener('click', handleClick);
 }
-
-var stickyOrder = $('.order_sticky').offset();
-
-$(window).scroll(function() {
-  if ($(document).scrollTop() > stickyOrder.top) {
-    $('.order_sticky').addClass('is_fixed');
-  }
-  else {
-    $('.order_sticky').removeClass('is_fixed')
-  }
-})
