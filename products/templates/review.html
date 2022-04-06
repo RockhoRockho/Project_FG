@@ -3,84 +3,39 @@
 리뷰
 {% endblock %}
 
-{% block script %}
+
+{% block stylesheet %}
+{% load static %}
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css'/>
+<link href="{% static 'products/css/review.css' %}" rel="stylesheet">
 {% endblock %}
+
 
 {% block contents %}
 
-<style>
-    .pro_modi {
-        float: left;
-        width: 50%;
-        color: white;
-        line-height: 20px;
-        margin: 14px 0 15px 2px;
-        font-size: 1.1em;
-    }
-
-    .close {
-        float: right;
-        height: 20px;
-        color: white;
-        line-height: 20px;
-        margin: 0.32em 0.3em 20px;
-        text-align: left;
-        font-size: 30px;
-    }
-
-    .title {
-        height: 8%;
-    }
-
-    .content>div>p {
-        float: right;
-        font-size: 0.8em;
-    }
-
-    .sub_title div {
-        font-size: 15px;
-        font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: rgb(146, 143, 143);
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .prod {
-        background: url(/static/img/cat.jpg) no-repeat;
-        background-size: cover;
-        height: 7em;
-    }
-
-    .modal-footer>button {
-        background-color: rgb(119, 118, 177);
-        border: none;
-    }
-</style>
-
 <div class="col-md-10 border">
-    <div class="col-md-10 d-flex flex-row pt-10" style="margin-left: 10px;">
-        <div class="border bg-primary text-white">리뷰 작성 가능한 목록</div>
-        <div class="border bg-secondary text-white">작성한 리뷰 목록</div>
+    <div class="col-md-12 m-3" style="font-size:xx-large;">상품 리뷰</div>
+    <hr><br>
+    <div class="rev_btns col-md-12 d-flex flex-row pt-10 text-center align-middle">
+        <div class="col-md-3 review_button" id="review1">리뷰 작성 가능한 목록</div>
+        <div class="col-md-3 reviewed_button" id="review2">작성한 리뷰 목록</div>
     </div>
 
-    <div class="row col-md-10 border" style="width: 100%; margin-left: 3px;">
-        <table class="table table-bordered text-center">
+    <div class="row col-md-10 border cont_table" style="width:100%; margin-left:0;">
+        <!--리뷰작성가능한 목록-->
+        <table class="table table-bordered text-center review_table" id="review_table">
             <th class="col-md-2">주문일자</th>
-            <th class="col-md-5">주문상품정보</th>
+            <th class="col-md-4">주문상품정보</th>
             <th class="col-md-2">상품금액</th>
             <th class="col-md-2">배송비(판매자)</th>
-            <th class="col-md-2">삭제</th>
+            <th class="col-md-2">작성/삭제</th>
             <tr class="align-middle text-center" style="height: 150px;">
                 <td>
                     주문일자
                 </td>
-                <td>
-                    <img>
-                    주문상품정보
+                <td class="flex-row align-middle">
+                    <div class="col-md-6 productimg1"></div>
+                    <div class="col-md-6">주문상품명</div>
                 </td>
                 <td>
                     상품금액
@@ -89,19 +44,57 @@
                     배송비(판매자)
                 </td>
                 <td>
-                    <button class="btn btn-primary btn-sm" id="mod_btn" style="margin-bottom: 5px;">작성</button>
-                    <button class="btn btn-primary btn-sm">삭제</button>
+                    <button class="btn btn-primary btn-sm" id="mod_write" style="margin-bottom: 5px;">작성</button>
+                    <button class="btn btn-primary btn-sm" style="margin-bottom: 5px;">삭제</button>
                 </td>
                 </tbody>
         </table>
+
+        <!--리뷰작성한 목록-->
+        <table class="table table-bordered text-center reviewed_table" id="reviewed_table">
+                <th class="col-md-2">작성일자</th>
+                <th class="col-md-1">구분</th>
+                <th class="col-md-3">상품명</th>
+                <th class="col-md-1">배송비</th>
+                <th class="col-md-3">평점+내용</th>
+                <th class="col-md-2">수정/삭제</th>
+                <tr class="align-middle text-center" style="height: 150px;">
+                    <td>
+                        주문일자
+                    </td>
+                    <td>
+                        카테고리
+                    </td>
+                    <td>
+                        상품금액
+                    </td>
+                    <td>
+                        배송비
+                    </td>
+                    <td>
+                        <div class='RatingStar'>
+                            <div class='RatingScore'>
+                              <div class='outer-star'><div class='inner-star'></div></div>
+                            </div>
+                        </div>
+                        <br>
+                        대충 내용(간략히)
+                    </td>
+                    <td>
+                        <button id= "mod_btn" class="btn btn-primary btn-sm" style="margin-bottom: 5px;">수정</button>
+                        <button class="btn btn-primary btn-sm" style="margin-bottom: 5px;">삭제</button>
+                    </td>
+                    </tbody>
+            </table>
+    
         <div class="d-flex justify-content-center p-3">
             pagination
         </div>
     </div>
     <br><br><br><br><br><br><br>
     <h4 style="margin-left: 10px;">이런 상품은 어떠세요?</h4>
-    <div class="container row">
-        <div class="row col-md-6 border text-center g-0">
+    <div class="container row border-left mb-3" id="recom_box">
+        <div class="row col-md-6 text-center g-0 box1">
             <h6 class="mt-3">최근 인기 상품</h6>
             <hr>
             <div class="col-md-6">
@@ -137,7 +130,8 @@
                 </div>
             </div>
         </div>
-        <div class="row col-md-6 border text-center g-0">
+
+        <div class="row col-md-6 text-center g-0 box2">
             <h6 class="mt-3">최근 인기 상품</h6>
             <hr>
             <div class="col-md-6">
@@ -177,7 +171,9 @@
 
 </div>
 
-<div id="modify" class="modal" style="background-color: rgba(0,0,0,0.4);">
+
+<!--작성모달-->
+<div id="write" class="modal" style="background-color: rgba(0,0,0,0.4);">
     <div class="modal-content" style="width: 36%; margin: 13% auto; background-color: rgb(252, 252, 252);">
         <div class="title" style="border: none; background-color: rgb(119, 118, 177); margin-top: 0;">
             <div>
@@ -191,14 +187,17 @@
                     <div class="col-md-3">구매상품</div>
                     <div class="col-md-3 prod"></div>
                     <div class="col-md-6">
-                        <p style="margin-bottom: -0.03em; font-size: 12px;">상품이름 :</p>
-                        <p style="margin-bottom: -0.03em; font-size: 12px;">옵션 :</p>
-                        <textarea rows="3.8" style="width: 100%;"></textarea>
+                        <p style="margin-bottom: -0.03em; font-size: 12px;">상품명</p>
+                        <input type="text" style="width: 100%;">
                     </div>
                 </div>
                 <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
                     <div class="col-md-3">평점</div>
-                    <div class="col-md-9">★★★★★</div>
+                    <div class='col-md-9 RatingStar'>
+                        <div class='RatingScore'>
+                          <div class='outer-star'><div class='inner-star'></div></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row" style="margin-bottom: 2%;">
                     <div class="col-md-3">상세리뷰</div>
@@ -207,33 +206,158 @@
             </div>
         </div>
         <div class="modal-footer justify-content-center">
-            <button type="button" id="close" class="btn btn-primary btn-sm col-md-4">취소</button>
+            <button type="button" id="close_sec" class="btn btn-primary btn-sm col-md-4">취소</button>
             <button type="button" class="btn btn-primary btn-sm col-md-4">작성완료</button>
         </div>
     </div>
 </div>
-<script>
-    var modal = document.getElementById('modify')
-    var btn = document.getElementById('mod_btn')
-    var btn_close = document.getElementById('close')
 
-    btn.onclick = function () {
-        modal.style.display = "block";
+<!--수정모달-->
+<div id="modify" class="modal" style="background-color: rgba(0,0,0,0.4);">
+    <div class="modal-content" style="width: 36%; margin: 13% auto; background-color: rgb(252, 252, 252);">
+        <div class="title" style="border: none; background-color: rgb(119, 118, 177); margin-top: 0;">
+            <span class="pro_modi col-10">상품리뷰 수정</span>
+            <span class="col-1 close" id="close3">&times;</span>
+        </div>
+        <div class="content row" style="width: 96%; margin: auto;">
+            <div class="col-md-12" style="margin-bottom: -15px;"><p>조회수 : </p></div>
+            <div class="col-md-12"><p>작성일 : </p></div>
+            <div class="col-md-12 sub_title">
+                <div class="row" style="width: 100%;">
+                    <div class="col-md-3">구매상품</div>
+                    <div class="col-md-3 prod"></div>
+                    <div class="col-md-6">
+                        <p style="margin-bottom: -0.03em; font-size: 12px;">상품명</p>
+                        <input type="text" width="100%">
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+                    <div class="col-md-3">평점</div>
+                    <div class='col-md-9 RatingStar'>
+                        <div class='RatingScore'>
+                          <div class='outer-star'><div class='inner-star'></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 2%;">
+                    <div class="col-md-3">상세리뷰</div>
+                    <textarea name="review" id="reivew" class="col-md-9"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+            <button type="button" id = "close4" class="btn btn-primary btn-sm col-md-4">취소</button>
+            <button type="button" class="btn btn-primary btn-sm col-md-4">수정</button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // 작성모달
+    var nav_bar = document.getElementById("nav-user");
+    nav_bar.classList.remove("d-none");
+
+    var write = document.getElementById('write')
+    var mod_write = document.getElementById('mod_write')
+    var btn_close = document.getElementById('close')
+    var btn_close2 = document.getElementById('close_sec')
+
+    mod_write.onclick = function () {
+        write.style.display = "block";
         $('body').css("overflow", "hidden");
     }
 
     btn_close.onclick = function () {
-        modal.style.display = "none"
+        write.style.display = "none"
         $('body').css("overflow", "scroll");
     }
+
+    btn_close2.onclick = function () {
+        write.style.display = "none"
+        $('body').css("overflow", "scroll");
+    }
+
     window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
+        if (event.target == write) {
+            write.style.display = 'none';
             $('body').css("overflow", "scroll");
         }
     }
 
-    var nav_bar = document.getElementById("nav-user");
-    nav_bar.classList.remove("d-none");
+
+    // 수정 모달
+    var modal = document.getElementById('modify')
+    var btn = document.getElementById('mod_btn')
+    var btn_close3 = document.getElementById('close3')
+    var btn_close4 = document.getElementById('close4')
+
+    btn.onclick = function(){
+        modal.style.display = "block";
+        $('body').css("overflow", "hidden");
+    }
+
+    btn_close3.onclick = function() {
+        modal.style.display = "none"
+        $('body').css("overflow", "scroll");
+    }
+
+    btn_close4.onclick = function() {
+        modal.style.display = "none"
+        $('body').css("overflow", "scroll");
+    }
+    
+    window.onclick = function(event){
+        if(event.target == modal){
+            modal.style.display = 'none';
+            $('body').css("overflow", "scroll");
+	}
+}
+
+
+    var review = document.getElementById('review1')
+    var reviewed = document.getElementById('review2')
+    var review_table = document.getElementById('reveiw_table')
+    var reviewed_table = document.getElementById('reveiwed_table')
+    
+    
+
+
+    $(document).ready(function() {
+        $('.review_table').show();
+        $('.reviewed_table').hide();
+        $('#review1').click(function(){
+            $('#review1').css('background-color', '#4f008a')
+            $('#review2').css('background-color', '#e2e2e2')
+            $('#review1').css('color', 'white')
+            $('#review2').css('color', 'black')
+            $('.review_table').show()
+            $('.reviewed_table').hide()
+            
+        })
+        $('#review2').click(function(){
+            $('#review2').css('background-color', '#4f008a')
+            $('#review1').css('background-color', '#e2e2e2')
+            $('#review2').css('color', 'white')
+            $('#review1').css('color', 'black')
+            $('.review_table').hide()
+            $('.reviewed_table').show()
+        })
+    })
+    ratings = {RatingScore: 4.5} 
+    totalRating = 5;
+    table = document.querySelector('.RatingStar');
+    function rateIt() {
+        for (rating in ratings) {
+            ratingPercentage = ratings[rating] / totalRating * 100;
+            ratingRounded = Math.round(ratingPercentage / 10) * 10 + '%';
+            star = table.querySelector(`.${rating} .inner-star`);
+            numberRating = table.querySelector(`.${rating} .numberRating`);
+            star.style.width = ratingRounded;
+            numberRating.innerText = ratings[rating];
+        }}rateIt()
+
+
+
 </script>
 {% endblock %}
