@@ -132,7 +132,6 @@
 
 .order_side .order_sticky.is_fixed {
     top: 0;
-    width: 16.8%;
     position: fixed;
     z-index: 1100;
     background-color: #fff;
@@ -213,17 +212,13 @@
     background: -webkit-gradient(linear, left top, right top, from(#4f008a), color-stop(45%, #5b00a0), to(#6800b8));
     background: -webkit-linear-gradient(left, #4f008a 0%, #5b00a0 45%, #6800b8 100%);
     background: linear-gradient(to right, #4f008a 0%, #5b00a0 45%, #6800b8 100%);
-    -webkit-box-shadow: 0 8px 8px 0 rgb(244 49 66 / 20%);
-    box-shadow: 0 8px 8px 0 rgb(244 49 66 / 20%);
+    -webkit-box-shadow: 0 8px 8px 0 #bc69fc;
+    box-shadow: 0 8px 8px 0 #bc69fc;
 }
 
 .order_button .number {
     font-size: 19px;
     font-weight: bold;
-}
-
-.order_agree {
-    width: 100%;
 }
 
 .order_agree .order_low {
