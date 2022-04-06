@@ -2,7 +2,7 @@
 {% load mathfilters %}
 
 {% block title %}
-Login_Page
+상담문의 완료확인
 {% endblock %}
 {% block stylesheet %}
 {% load static %}
@@ -10,41 +10,44 @@ Login_Page
 {% endblock %}
 
 {% block contents %}
-<div id="wrap">
-    <div id="wraps">
-        <div class="main_content">
-            <div>
-                <h2><strong>상담문의</strong>가 완료되었습니다.</h2>
-                <p>아래 상담관련 내용을 확인해보세요.</p>
-            </div>
-            <div class="row row1">
-                <div class="col-3">상담제목</div>
-                <div class="col-9">상담제목란</div>
-            </div>
-            <div class="row row2">
-                <div class="col-3">이메일</div>
-                <div class="col-9">email@email.com</div>
-            </div>
-            <div class="row row3">
-                <div class="col-3">휴대폰 번호</div>
-                <div class="col-9">010-1234-1234</div>
-            </div>
-            <div class="sub_summary">
-                <table>
-                    <tr>
-                        <td rowspan="2" class="warning">sad</td>
-                        <td>asdsad</td>
-                    </tr>
-                    <tr>
-                        <td>dsaasd</td>
-                    </tr>
-                </table>
-            </div>
+<div class="col-md-10 wrap">
+    <div class="main_content">
+        <div>
+            <h2><strong>상담문의</strong>가 완료되었습니다.</h2>
+            <p>아래 상담관련 내용을 확인해보세요.</p>
         </div>
-        <div class="btn">
-            <button type="button" class="btn btn-primary">마이페이지</button>
-            <button type="button" class="btn btn-warning">고객센터</button>
+        <div class="row row1">
+            <div class="col-3">상담제목</div>
+            <div class="col-9">상담제목란</div>
+        </div>
+        <div class="row row2">
+            <div class="col-3">이메일</div>
+            <div class="col-9">email@email.com</div>
+        </div>
+        <div class="row row3">
+            <div class="col-3">휴대폰 번호</div>
+            <div class="col-9">010-1234-1234</div>
+        </div>
+        <div class="sub_summary">
+            <table>
+                <tr>
+                    <td rowspan="2" class="warning">sad</td>
+                    <td>asdsad</td>
+                </tr>
+                <tr>
+                    <td>dsaasd</td>
+                </tr>
+            </table>
         </div>
     </div>
+    <div class="btn">
+        <button type="button" class="btn btn-primary">마이페이지</button>
+        <button type="button" class="btn btn-warning">고객센터</button>
+    </div>
 </div>
+<script>
+    var nav_bar = document.getElementById("nav-category");
+    // var nav_bar = document.getElementById("nav-user");
+    nav_bar.classList.remove("d-none");
+</script>
 {% endblock %}

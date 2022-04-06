@@ -1,0 +1,94 @@
+#wrap{
+    margin-left: 2em;
+    margin-top: 1em;
+}
+h3{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+#container > div > h4 {
+    font-size: 1em;
+}
+.main_area{
+    margin-top: 3em;
+}
+.re{
+    border-bottom: 4px solid rgb(163, 157, 157);
+    height: 30px;
+}
+.title{
+    width: 100%;
+    margin-left: 0;
+    /* outline: 1px solid red; */
+    border-bottom: none;
+    /* border-bottom: 1px solid #000; */
+    margin-bottom: 1em;
+}
+
+.title > .row {
+    /* border: 1px solid black; */
+}
+
+/* ----------------------------------------------- */
+.contents{
+    /* outline: 1px solid blue; */
+    margin-top: 2.5em;
+    /* border-bottom: 1px solid #000; */
+}
+.contents > .row > div > textarea{
+    width: 90%;
+}
+.contents > .row {
+    /* border: 1px solid black; */
+    margin-left: 0;
+}
+.contents > .row > div{
+    height: 15em;
+    text-align: center;
+}
+/* ----------------------------------------------- */
+.file{
+    margin-top: 2.5em;
+}
+.file > .row{
+    margin-left: 0;
+}
+.file > .row > div > button{
+    height: 40px;
+    line-height: 20px;
+    font-size: 17px;
+}
+.file > .row > div > p {
+    margin-top: 1em;
+    font-size: 0.7em;
+}
+/* ----------------------------------------------- */
+.email{
+    margin-top: 2.5em;
+    margin-bottom: 2em;
+}
+.email > .row{
+    margin-left: 0;
+}
+/* ----------------------------------------------- */
+.p_num{
+    margin-top: 2.5em;
+    margin-bottom: 2em;
+}
+.p_num > .row{
+    margin-left: 0;
+}
+/* ----------------------------------------------- */
+button{
+    background-color: rgb(119, 118, 177) !important;
+    border: none !important;
+    box-shadow: 1px 1px 5px rgb(119, 118, 177);
+}
+.foo_btn > div{
+    margin: 0 auto;
+    width: 50%;
+}
+.foo_btn > div > button{
+    width: 31%;
+    margin-right: 2%;
+}
