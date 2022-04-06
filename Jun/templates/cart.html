@@ -15,7 +15,7 @@
 {% block contents %}
 
 <div class="page col-md-12 col-sm-12">
-    <div class="purchase_title">
+    <div class="cart_title">
         <div class="d-flex">
             <div class="col-md-9 ft-xxl">주문결제</div>
             <div class="col-md-3 border text-center row order_procedure">
@@ -62,8 +62,8 @@
         {% endfor %}
         {% endif %}
         <hr style="margin: 0;">
-        <div class="col-md-12 cart_subtitle">추천상품
-            <div class="d-flex pad-10 col-md-12">
+        <div class="col-md-12 cart_subtitle recommend_container">추천상품
+            <div class="d-flex col-md-12 recommend_product">
                 {% for i in recommend %}
                 <div class="col-md-3">
                     <img class="col-md-12 p-3"
@@ -95,7 +95,7 @@
                 </button>
             </div>
         </div>
-        <div class="order_agree">
+        <div class="order_agree" style="margin-top: 30px;">
             <div class="order_low" id="agreeToSeller">
                 <div class="low_tit">
                     <p>개인정보 판매자 제공 동의</p>

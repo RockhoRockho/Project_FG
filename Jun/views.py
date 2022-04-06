@@ -63,6 +63,7 @@ def purchase(request):
 def purchase_success(request):
     context = {
         'items' : range(2), # order_items_id 수
+        'recommend': range(4),
         'order_id': '',
         'order_date': '',
         'member_id': '',

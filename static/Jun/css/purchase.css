@@ -96,7 +96,7 @@ ul {
 
 .order_side {
     position: absolute;
-    top: 11%;
+    top: 5%;
     right: -40px;
     z-index: 1;
     width: 300px;

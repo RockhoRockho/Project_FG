@@ -104,9 +104,19 @@
     transform: translateY(6%);
 }
 
+.recommend_container {
+    margin-bottom: 250px;
+}
+
+.recommend_product {
+    margin-top: 10px;
+    border: 1px solid rgb(235, 235, 235);
+    border-width: 0 0 1px 0
+}
+
 .order_side {
     position: absolute;
-    top: 15%;
+    top: 11%;
     right: 0;
     z-index: 1;
     width: 300px;
