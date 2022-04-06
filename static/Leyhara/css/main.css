@@ -105,3 +105,15 @@ header {
 .pt-10 {
     padding-top: 10px
 }
+
+
+#fbuttons button {
+    color: #4f008a;
+    background-color: white;
+    border:1px solid #4f008a;
+}
+
+#fbuttons button:hover {
+    color: white;
+    background-color: #4f008a;
+}
