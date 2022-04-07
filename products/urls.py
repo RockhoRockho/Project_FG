@@ -10,5 +10,11 @@ urlpatterns = [
     path('review/', views.review, name='review'),
     path('reviewed/', views.reviewed, name='reviewed'),
     path('present_view/', views.present_view, name='present_view'),
+
     
+    # path('kakaopay/', views.kakaopay, name="kakaopay"),
+    # path('paySuccess/', views.paySuccess, name='paySuccess'),
+    # path('address/', views.address, name='address'),
+    path('naverLogin/', views.naverLogin, name = 'naverLogin'),
+    path('naverCallback', views.naverCallback, name = 'naverCallback'),
 ]
