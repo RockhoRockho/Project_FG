@@ -66,9 +66,10 @@
             max-width: 700px;
         }        
     }
+
 </style>
 
-<div class="col-md-10">
+<div class="col-md-10 container">
     <h2>주문/배송 조회</h2>
     <div>
         <table class="table table-bordered">
@@ -96,6 +97,7 @@
                         <br><br>
                         <h6>&#9642;상품검색</h6>
                         <h7>상품명: </h7><input type="text" maxlength="30" size="30">
+                        <br><br>
                         <div style="float: right;">
                             <button type="button" class="btn btn-primary btn-lg">찾기</button>
                         </div>
@@ -105,8 +107,8 @@
         </table>
     </div>
     <h4>주문내역</h4>
-    <div class="b">
-        <table class="table table-bordered">
+    <div class="b table-responsive">
+        <table class="table table-bordered" style="word-break: keep-all;">
             <thead>
                 <tr>
                     <th>주문일자</th>
