@@ -7,7 +7,7 @@
 }
 
 .login_box {
-    margin: 50px auto;
+    margin: 150px auto 100px;
     width: 520px;
     /* outline: 1px solid purple; */
     padding: 0 10px 0;
@@ -45,6 +45,7 @@
     font-weight: bold;
     letter-spacing: 1px;
 }
+
 
 .btn_sub>div {
     float: left;

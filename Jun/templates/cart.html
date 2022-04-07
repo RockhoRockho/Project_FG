@@ -26,14 +26,14 @@
         </div>
     </div>
     <hr>
-    <div class="cart_side col-xl-9 col-md-10">
-        <div class="d-flex col-md-12 cart_subtitle">
-            <span class="col-md-6">주문상품</span>
-            <span class="col-md-4 ps-5">금액</span>
-            <span class="col-md-2">수량</span>
+    <div class="cart_side col-xl-9 col-sm-10">
+        <div class="d-flex col-sm-12 cart_subtitle">
+            <span class="col-sm-6">주문상품</span>
+            <span class="col-sm-4 ps-5">금액</span>
+            <span class="col-sm-2">수량</span>
         </div>
         {% if items == zero %}
-        <div class="col-md-12 border justify-content-center">
+        <div class="col-sm-12 border justify-content-center">
             <div class="border text-center p-5 m-5">
                 장바구니가 비었습니다.
             </div>
@@ -41,19 +41,20 @@
         {% else %}
         {% for i in items %}
         <form class="product_form" action="#" method="POST">
-            <div class="d-flex col-md-12 product">
-                <div class="col-md-2 outer">
+            <div class="d-flex col-sm-12 product">
+                <div class="col-sm-2 outer">
                     {# 상품이미지 #}
-                    <img src="https://cdn.011st.com/11dims/resize/560x560/quality/75/11src/pd/22/2/6/4/0/0/9/vNTAr/3718264009_B.jpg" alt="">
+                    <img src="https://cdn.011st.com/11dims/resize/560x560/quality/75/11src/pd/22/2/6/4/0/0/9/vNTAr/3718264009_B.jpg"
+                        alt="">
                 </div>
-                <div class="col-md-5 outer">
+                <div class="col-sm-5 outer">
                     <div class="inner">상품명{{ product_name }}</div>
                 </div>
-                <div class="col-md-3 outer">
+                <div class="col-sm-3 outer">
                     <div class="inner">정가{{ product_price }}</div>
                     <div class="inner">판매금액{# 판매금액 #}</div>
                 </div>
-                <div class="col-md-2 text-center p-2 outer">
+                <div class="col-sm-2 text-center p-2 outer">
                     <input type="number" class="col-md-5 inner_2" placeholder="수량">
                     <button type='button' class="btn btn-cancel inner_2">취소하기</button>
                 </div>
@@ -62,17 +63,17 @@
         {% endfor %}
         {% endif %}
         <hr style="margin: 0;">
-        <div class="col-md-12 cart_subtitle recommend_container">추천상품
-            <div class="d-flex col-md-12 recommend_product">
-                {% for i in recommend %}
-                <div class="col-md-3">
-                    <img class="col-md-12 p-3"
-                        src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
-                        alt="">
-                </div>
-                {% endfor %}
+        <div class="col-md-12 cart_subtitle recommend_container">추천상품</div>
+        <div class="d-flex col-md-12 recommend-product">
+            {% for i in recommend %}
+            <div class="col-md-3">
+                <img class="col-md-12 p-3"
+                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
+                    alt="">
             </div>
+            {% endfor %}
         </div>
+
     </div>
     <!-- 결제창 -->
     <div class="order_side col-xl-3 col-md-2">
@@ -95,7 +96,7 @@
                 </button>
             </div>
         </div>
-        <div class="order_agree col-md-12" style="margin-top: 30px;">
+        <div class="order_agree col-md-12" style="margin-top: 60px;">
             <div class="order_low" id="agreeToSeller">
                 <div class="low_tit">
                     <p>개인정보 판매자 제공 동의</p>
@@ -171,7 +172,7 @@
             </div>
             <div class="order_low" id="agreeToSeller">
                 <div class="low_tit">
-                        <p>개인정보 판매자 제공 동의</p>
+                    <p>개인정보 판매자 제공 동의</p>
                 </div>
                 <div class="low_cont">
                     <div class="id_agrmt">

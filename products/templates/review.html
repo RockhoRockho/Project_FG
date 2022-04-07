@@ -21,7 +21,7 @@
         <div class="col-md-3 reviewed_button" id="review2">작성한 리뷰 목록</div>
     </div>
 
-    <div class="row col-md-10 border cont_table" style="width:100%; margin-left:0;">
+    <div class="row col-md-10 border table-responsive" style="width:100%; margin-left:0; word-break: keep-all;">
         <!--리뷰작성가능한 목록-->
         <table class="table table-bordered text-center review_table" id="review_table">
             <th class="col-md-2">주문일자</th>
@@ -170,12 +170,15 @@
     </div>
 
 </div>
+<div class="col-md-2">
+</div>
+
 
 
 <!--작성모달-->
 <div id="write" class="modal" style="background-color: rgba(0,0,0,0.4);">
     <div class="modal-content" style="width: 36%; margin: 13% auto; background-color: rgb(252, 252, 252);">
-        <div class="title" style="border: none; background-color: rgb(119, 118, 177); margin-top: 0;">
+        <div class="title">
             <div>
                 <div class="pro_modi">상품리뷰 작성</div>
                 <div class="close" id="close">&times;</div>
@@ -206,7 +209,7 @@
             </div>
         </div>
         <div class="modal-footer justify-content-center">
-            <button type="button" id="close_sec" class="btn btn-primary btn-sm col-md-4">취소</button>
+            <button type="button" id="close_sec" class="btn btn-secondary btn-sm col-md-4">취소</button>
             <button type="button" class="btn btn-primary btn-sm col-md-4">작성완료</button>
         </div>
     </div>
@@ -215,7 +218,7 @@
 <!--수정모달-->
 <div id="modify" class="modal" style="background-color: rgba(0,0,0,0.4);">
     <div class="modal-content" style="width: 36%; margin: 13% auto; background-color: rgb(252, 252, 252);">
-        <div class="title" style="border: none; background-color: rgb(119, 118, 177); margin-top: 0;">
+        <div class="title">
             <span class="pro_modi col-10">상품리뷰 수정</span>
             <span class="col-1 close" id="close3">&times;</span>
         </div>
