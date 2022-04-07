@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load mathfilters %}
+
+{% block title %}
+카테고리 평점순
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+{% block contents %}
+<div class="col-md-10 border">
+    <div class="container col-md-6 m-5 mb-5">
+        <h2>{# 카테고리 이름 #} 카테고리의 평점순 상품</h2>
+        <div class="container mt-4" style="color: red;">
+            '검색이름'
+            <span style="color:black">에 해당하는 상품 검색결과</span>
+        </div>
+    </div>
+    <div class="container align-items-center">
+        {% for i in range %}
+        <div class="container d-flex justify-content-around">
+            <div class="col-md-3">
+                <div class="container row">
+                    <span>{{ i|mul:4|add:1 }}</span>
+                    <img class="col-md-12"
+                        src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+                        alt="...">
+                    <a href="#" style="text-decoration: none; color: black;">
+                        <div class="row text-center border">
+                            <p>상품명</p>
+                            <div>가격</div>
+                            <div>평점</div>
+                            <div>배송비</div>
+                            <div>판매자</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container row">
+                    <span>{{ i|mul:4|add:2 }}</span>
+                    <img class="col-md-12"
+                        src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+                        alt="...">
+                    <a href="#" style="text-decoration: none; color: black;">
+                        <div class="row text-center border">
+                            <p>상품명</p>
+                            <div>가격</div>
+                            <div>평점</div>
+                            <div>배송비</div>
+                            <div>판매자</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container row">
+                    <span>{{ i|mul:4|add:3 }}</span>
+                    <img class="col-md-12"
+                        src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+                        alt="...">
+                    <a href="#" style="text-decoration: none; color: black;">
+                        <div class="row text-center border">
+                            <p>상품명</p>
+                            <div>가격</div>
+                            <div>평점</div>
+                            <div>배송비</div>
+                            <div>판매자</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container row">
+                    <span>{{ i|mul:4|add:4 }}</span>
+                    <img class="col-md-12"
+                        src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+                        alt="...">
+                    <a href="#" style="text-decoration: none; color: black;">
+                        <div class="row text-center border">
+                            <p>상품명</p>
+                            <div>가격</div>
+                            <div>평점</div>
+                            <div>배송비</div>
+                            <div>판매자</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center m-5">
+        <button class="btn btn-primary col-md-1">top</button>
+    </div>
+</div>
+
+<script>
+    var nav_bar = document.getElementById("nav-category");
+    nav_bar.classList.remove("d-none");
+</script>
+{% endblock %}

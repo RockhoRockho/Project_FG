@@ -23,4 +23,10 @@ urlpatterns = [
     path('Leyhara/', include("Leyhara.urls")),
     path('products/', include("products.urls")),
     path('wonjun/', include("wonjun.urls")),
+    path('member/', include("member.urls")),
+    path('order/', include("order.urls")),
+    path('pick/', include("pick.urls")),
+    path('present/', include("present.urls")),
+    path('product/', include("product.urls")),
+    path('service/', include("service.urls")),
 ]

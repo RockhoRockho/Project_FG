@@ -43,6 +43,12 @@ INSTALLED_APPS = [
     'Jun',
     'products',
     'wonjun',
+    'member',
+    'order',
+    'pick',
+    'present',
+    'review',
+    'service',
 ]
 
 MIDDLEWARE = [

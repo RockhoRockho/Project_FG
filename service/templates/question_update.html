@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+문의사항 수정
+{% endblock %}
+
+{% block stylesheet %}
+{% load static %}
+<link href="{% static 'wonjun/css/question.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block contents %}
+<div class="col-md-10">
+    <div id="wrap">
+        <div id="container">
+            <div>
+                <h3>메일상담 수정</h4>
+            </div>
+            <form class="main_area" name="main_area">
+                <div class="re">
+                    <p>* 표시는 필수 입력 항목입니다.</p>
+                </div>
+                <div class="title">
+                    <div class="row">
+                        <span class="col-md-3">상담제목 *</span>
+                        <div class="col-md-9" style="height: 40px;"><input type="text" placeholder="상담제목을 입력주세요."></div>
+                    </div>
+                </div>
+                <hr>
+                <div class="contents">
+                    <div class="row">
+                        <span class="col-md-3">상담내용 작성 *</span>
+                        <div class="col-md-9"><textarea name="content" id="content" rows="5"></textarea></div>
+                    </div>
+                </div>
+                <hr>
+                <div class="file">
+                    <div class="row">
+                        <span class="col-md-3">이미지파일 첨부</span>
+                        <div class="col-md-9">
+                            <button type="button" class="btn btn-primary btn-lg active">파일첨부</button>
+                            <p>* 이미지파일 10MB 이내 첨부가능<br>
+                                * 내용과 첨부 이미지에 개인정보가 포함되지 않도록 주의해주십시오.</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="email">
+                    <div class="row">
+                        <span class="col-md-3">답변받을 이메일</span>
+                        <div class="col-md-9"><input type="email" placeholder="사용자이메일"></div>
+                    </div>
+                </div>
+                <hr>
+                <div class="p_num">
+                    <div class="row">
+                        <span class="col-md-3">알림받을 휴대폰번호</span>
+                        <div class="col-md-9"><input type="text" name="phone_num" placeholder="사용자 휴대폰번호"></div>
+                    </div>
+                </div>
+                <hr>
+                <div style="width: 100%;"><button type="button" class="btn btn-primary btn-lg active">상담내용 수정완료</button></div>
+            </form>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</div>
+<script>
+    var nav_bar = document.getElementById("nav-category");
+    // var nav_bar = document.getElementById("nav-user");
+    nav_bar.classList.remove("d-none");
+</script>
+{% endblock %}
