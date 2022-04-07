@@ -14,14 +14,14 @@
 
 {% block contents %}
 
-<div class="page col-md-12 col-sm-12">
+<div class="page col-md-12">
     <div class="purchase_title">
         <div class="d-flex">
-            <div class="col-md-9 ft-xxl">주문결제</div>
-            <div class="col-md-3 row order_procedure">
-                <span class="col-md-4 order_procedure_left">1.장바구니</span>
-                <span class="col-md-4 y-border">2.주문결제</span>
-                <span class="col-md-4 bg-black text-white order_procedure_right">3.주문완료</span>
+            <div class="col-xxl-8 col-md-5 col-sm-5 ft-xxl">주문결제</div>
+            <div class="col-xxl-4 col-md-7 col-sm-7 border text-center row order_procedure">
+                <span class="col-sm-4 order_procedure_left">1.장바구니</span>
+                <span class="col-sm-4 y-border">2.주문결제</span>
+                <span class="col-sm-4 bg-black text-white order_procedure_right">3.주문완료</span>
             </div>
         </div>
     </div>
@@ -34,8 +34,8 @@
         </div>
     </div>
 
-    <div class="col-md-12 purchase_subtitle">주문상품</div>
-    <div class="col-md-12">
+    <div class="col-sm-12 purchase_subtitle">주문상품</div>
+    <div class="col-sm-12">
         {% for i in items %}
         <div class="product col-md-12 d-flex product">
             <div class="col-md-2 outer">
@@ -55,8 +55,8 @@
         {% endfor %}
     </div>
     <div class="btn_container">
-        <button class="btn btn_main col-md-1">마이페이지</button>
-        <button class="btn btn_sub col-md-1">고객센터</button>
+        <button class="btn btn-primary col-md-1 mx-3" style="width: 110px;">마이페이지</button>
+        <button class="btn btn-secondary col-md-1 mx-3" style="width: 110px;">고객센터</button>
     </div>
     <div class="col-md-12 cart_subtitle recommend_container">추천상품
         <div class="d-flex col-md-12 recommend_product">

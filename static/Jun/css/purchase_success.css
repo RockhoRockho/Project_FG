@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: "Noto Sans KR", "Helvetica Neue", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", "돋움", dotum, sans-serif;
     list-style-type: none;
+    word-break: keep-all;
 }
 
 ul {
@@ -101,6 +102,10 @@ ul {
     transform: translateY(20%);
 }
 
+.product {
+    overflow-x: auto;
+}
+
 .product > div:nth-of-type(2) {
     border: 1px solid rgb(235, 235, 235);
     border-width: 0 1px;
@@ -114,30 +119,6 @@ ul {
     display: flex;
     justify-content: center;
     margin: 50px 0;
-}
-
-.btn_main {
-    width: 100px;
-    margin: 0 30px;
-    border: 1px solid #4f008a;
-    color: #4f008a;
-}
-
-.btn_main:hover {
-    background-color: #4f008a;
-    color: white;
-}
-
-.btn_sub {
-    width: 100px;
-    margin: 0 30px;
-    border: 1px solid #B6D0E2;
-    color: #B6D0E2;
-}
-
-.btn_sub:hover {
-    background-color: #B6D0E2;
-    color: white;
 }
 
 .recommend_container {

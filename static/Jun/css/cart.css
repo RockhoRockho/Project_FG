@@ -96,7 +96,7 @@
     width: 90%;
 }
 
-.product > div:nth-of-type(2), div:nth-of-type(3) {
+.product > div:nth-of-type(2), .product > div:nth-of-type(3) {
     border: 1px solid rgb(235, 235, 235);
     border-width: 0 1px;
 }
@@ -107,14 +107,16 @@
     transform: translateY(6%);
 }
 
-.recommend_container {
-    margin-bottom: 250px;
+.recommend-product {
+    margin-top: 30px;
+    border: 1px solid rgb(235, 235, 235);
+    border-width: 1px 0;
+    overflow-x: auto;
 }
 
-.recommend_product {
-    margin-top: 10px;
+.recommend-product > div {
     border: 1px solid rgb(235, 235, 235);
-    border-width: 0 0 1px 0
+    border-width: 0 1px;
 }
 
 .order_side {

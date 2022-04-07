@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: "Noto Sans KR", "Helvetica Neue", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", "돋움", dotum, sans-serif;
     list-style-type: none;
+    word-break: keep-all;
 }
 
 ul {
@@ -68,6 +69,7 @@ ul {
     zoom: 1;
     overflow: hidden;
     display: flex;
+    overflow-x: auto;
 }
 
 .gift_image {
@@ -90,7 +92,7 @@ ul {
 .gift_form {
     float: left;
     flex-grow: 1;
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .order_gift_theme .gift_message .gift_form .subject {
@@ -235,9 +237,8 @@ ul {
 .order_side {
     position: absolute;
     top: 7.4%;
-    right: -40px;
+    right: 0;
     z-index: 1;
-    width: 300px;
     padding: 10px;
     background-color: #fff;
 }
@@ -250,7 +251,8 @@ ul {
 
 .order_side .order_sticky.is_fixed {
     top: 0;
-    width: 16.8%;
+    flex: 0 0 auto;
+    width: 14.37%;
     position: fixed;
     z-index: 1100;
     background-color: #fff;
@@ -338,4 +340,15 @@ ul {
 .order_button .number {
     font-size: 19px;
     font-weight: bold;
+}
+
+@media (min-width:1200px) {
+    .order_side .order_sticky.is_fixed {
+        top: 0;
+        flex: 0 0 auto;
+        width: 15%;
+        position: fixed;
+        z-index: 1100;
+        background-color: #fff;
+    }
 }

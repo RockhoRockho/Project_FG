@@ -9,20 +9,23 @@
 <link href="{% static 'Jun/css/present.css' %}" rel="stylesheet">
 {% endblock %}
 
+{% block nav %}
+{% endblock %}    
+
 {% block contents %}
 <!-- // 주문 단계 표시 HTML -->
-<div class="col-md-12 page">
-    <div class="present_title col-md-12">
+<div class="page col-md-12">
+    <div class="present_title">
         <div class="d-flex">
-            <div class="col-md-9 ft-xxl">주문결제</div>
-            <div class="col-md-3 border text-center row order_procedure">
-                <span class="col-md-4 bg-black text-white order_procedure_left">1.장바구니</span>
-                <span class="col-md-4 y-border">2.주문결제</span>
-                <span class="col-md-4 order_procedure_right">3.주문완료</span>
+            <div class="col-xxl-8 col-md-5 col-sm-5 ft-xxl">주문결제</div>
+            <div class="col-xxl-4 col-md-7 col-sm-7 border text-center row order_procedure">
+                <span class="col-sm-4 order_procedure_left">1.장바구니</span>
+                <span class="col-sm-4 bg-black text-white y-border">2.주문결제</span>
+                <span class="col-sm-4 order_procedure_right">3.주문완료</span>
             </div>
         </div>
     </div>
-    <hr style="width: 105%;">
+    <hr>
     <div class="present_side col-md-9">
         <div class="row">
             <div class="col-md-12 present_subtitle" style="font-size:x-large">배송정보</div>
