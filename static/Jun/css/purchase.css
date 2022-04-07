@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: "Noto Sans KR", "Helvetica Neue", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", "돋움", dotum, sans-serif;
     list-style-type: none;
+    word-break: keep-all;
 }
 
 ul {
@@ -64,7 +65,7 @@ ul {
 }
 
 .product {
-    height: 15vh;
+    height: 23vh;
     border: 1px solid rgb(235, 235, 235);
     border-width: 1px 0;
 }
@@ -83,23 +84,24 @@ ul {
     transform: translateY(20%);
 }
 
+.product {
+    overflow-x: auto;
+}
+
 .product > div:nth-of-type(2) {
     border: 1px solid rgb(235, 235, 235);
     border-width: 0 1px;
 }
 
 .product > div > img {
-    padding: 10px;
     width: 100%;
-    transform: translateY(6%);
 }
 
 .order_side {
     position: absolute;
     top: 5%;
-    right: -40px;
+    right: 0;
     z-index: 1;
-    width: 300px;
     padding: 10px;
     background-color: #fff;
 }
@@ -112,7 +114,7 @@ ul {
 
 .order_side .order_sticky.is_fixed {
     top: 0;
-    width: 16.8%;
+    width: 14.37%;
     position: fixed;
     z-index: 1100;
     background-color: #fff;
@@ -200,4 +202,15 @@ ul {
 .order_button .number {
     font-size: 19px;
     font-weight: bold;
+}
+
+@media (min-width:1200px) {
+    .order_side .order_sticky.is_fixed {
+        top: 0;
+        flex: 0 0 auto;
+        width: 15%;
+        position: fixed;
+        z-index: 1100;
+        background-color: #fff;
+    }
 }
