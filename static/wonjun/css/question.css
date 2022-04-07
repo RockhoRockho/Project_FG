@@ -24,8 +24,7 @@ h3{
     /* border-bottom: 1px solid #000; */
 }
 
-.title > .row {
-    /* border: 1px solid black; */
+.title > #row1 {
 }
 .title > div > div > input{
     width: 90%;
@@ -83,11 +82,11 @@ h3{
     width: 50%;
 }
 /* ----------------------------------------------- */
-button{
+/* button{
     background-color: rgb(119, 118, 177) !important;
     border: none !important;
     box-shadow: 1px 1px 5px rgb(119, 118, 177);
 }
 button:last-child{
     margin-left: 40%;
-}
+} */
