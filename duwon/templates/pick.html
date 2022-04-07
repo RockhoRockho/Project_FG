@@ -79,22 +79,27 @@
 </div>
 
 <div id="sidenav" class="sidenav">
-    <a href="#" class="sidenav_close" onclick="closenav()">&times;</a>
+    <div class="modal-top row">
+        <div class="col-10"><img src="/static/img/login (1).png"> 사용자 이름</div>
+        <div class="col-2"><a href="#" class="sidenav_close" onclick="closenav()">&times;</a></div>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="cut"></div>
     <a href="#" class="catego">카테고리</a>
-    <a href="#">뷰티</a>
-    <a href="#">식품</a>
-    <a href="#">스포츠/레저/자동차</a>
-    <a href="#">출산/육아</a>
-    <a href="#">가구/인테리어</a>
-    <a href="#">생활/건강</a>
-    <a href="#">가전/디지털</a>
-    <a href="#">도서/취미/펫</a>
-    <a href="#">여행/티켓</a>
-    <a href="#">해외직구</a>
+    <a href="#" class="little_menu">뷰티</a>
+    <a href="#" class="little_menu">식품</a>
+    <a href="#" class="little_menu">스포츠/레저/자동차</a>
+    <a href="#" class="little_menu">출산/육아</a>
+    <a href="#" class="little_menu">가구/인테리어</a>
+    <a href="#" class="little_menu">생활/건강</a>
+    <a href="#" class="little_menu">가전/디지털</a>
+    <a href="#" class="little_menu">도서/취미/펫</a>
+    <a href="#" class="little_menu">여행/티켓</a>
+    <a href="#" class="little_menu">해외직구</a>
     <a href="#" class="sort">정렬</a>
-    <a href="#">가나다순</a>
-    <a href="#">평점순</a>
-    <a href="#">조회순</a>
+    <a href="#" class="little_menu">가나다순</a>
+    <a href="#" class="little_menu">평점순</a>
+    <a href="#" class="little_menu">조회순</a>
 </div>
 
 <script>
@@ -112,7 +117,7 @@
     });
 
     function opennav(){
-        document.getElementById("sidenav").style.width = "20%";
+        document.getElementById("sidenav").style.width = "18%";
     }
 
     function closenav(){

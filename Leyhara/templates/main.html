@@ -1,13 +1,121 @@
 {% extends "base.html" %}
+
+{% block stylesheet %}
+{% load static %}
+<link href="{% static 'Leyhara/css/main.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block title %}
 * FG MALL Main *
 {% endblock %}
 
-{% block contents %}
-<!-- 내용 -->
 
-<script>
-    var nav_bar = document.getElementById("nav-user");
-    nav_bar.classList.remove("d-none");
-</script>
+{% block nav %}
+{% endblock %}
+
+{% block slideBar %}
+<div class="d-flex col-md-12 justify-content-center sb-color">
+    <img
+        src="https://cdn.011st.com/11dims/resize/1240x400/quality/99/11src/http://cdn.011st.com/ds/2022/02/28/1376/ca254f98c1cf9652431e09c9fee537a9.jpg">
+</div>
+<div class="pb-3"></div>
+{% endblock %}
+
+{% block contents %}
+<!-- 베스트 트렌드 상품 -->
+<div class="d-flex flex-wrap justify-content-center col-md-12 pt-3">
+    <div class="d-flex col-md-12">
+        <h3>베스트 트렌드 상품</h3>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center col-md-2 m-container-trand">
+        <div class="d-flex justify-content-center p-3">
+            <img src="//cdn.011st.com/11dims/resize/160x160/quality/75/11src/pd/21/3/0/8/3/7/0/YYDxk/2886308370_L300.jpg"
+                width="160" height="160" alt="">
+        </div>
+        <div class="px-3 pb-3">
+            <a>맛을 그리다 캘리포니아 1/4태 햇 호두 1kg (21년) 22년02월통관</a>
+        </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center col-md-2 m-container-trand">
+        <div class="d-flex justify-content-center p-3">
+            <img src="//cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/22/4/9/6/3/1/2/fsqNh/2331496312_L300.jpg"
+                width="100%" height="100%" alt="">
+        </div>
+        <div class="px-3 pb-3">
+            <a>(21년산) 황금약단밤 칼집밤 골드 1kg</a>
+        </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center col-md-2 m-container-trand">
+        <div class="d-flex justify-content-center p-3">
+            <img src="//cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/2/1/6/4/9/6/rMdvv/7216496_L300.jpg"
+                width="100%" height="100%" alt="">
+        </div>
+        <div class="px-3 pb-3">
+            <a>톡까먹는 노릇노릇 칼집약단밤 1kg/500g</a>
+        </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center col-md-2 m-container-trand">
+        <div class="d-flex justify-content-center p-3">
+            <img src="//cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/21/1/7/4/2/2/1/qlSfp/1690174221_L300.jpg"
+                width="100%" height="100%" alt="">
+        </div>
+        <div class="px-3 pb-3">
+            <a>키즈 약단밤1kg-3개이상 유기농아이스 군밤 덤</a>
+        </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center col-md-2 m-container-trand">
+        <div class="d-flex justify-content-center p-3">
+            <img src="//cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/21/3/0/8/2/7/1/qvJYp/3843308271_L300.jpg"
+                width="100%" height="100%" alt="">
+        </div>
+        <div class="px-3 pb-3">
+            <a>[21년산 햇밤] 황금약단밤 칼집밤 골드 1kg</a>
+        </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center col-md-2 m-container-trand">
+        <div class="d-flex justify-content-center p-3">
+            <img src="//cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/19/1/9/1/2/0/1/MsSQd/2496191201_L300.jpg"
+                width="100%" height="100%" alt="">
+        </div>
+        <div class="px-3 pb-3">
+            <a>캘리포니아 햇 호두 (2021년산) 1kg 2021년 12월통관 햇제품 햇수확</a>
+        </div>
+    </div>
+</div>
+<!-- 검색 횟수가 가장 높은 상품 -->
+<div class="d-flex flex-wrap justify-content-center col-md-12 pt-3">
+    <div class="col-md-12">
+        <h3>검색 횟수가 가장 높은 상품</h3>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center col-md-4 m-container-best">
+        <div class="d-flex justify-content-center p-3">
+            <img src="//cdn.011st.com/11dims/resize/720x360/quality/75/11src/browsing/seller/2022/03/02/2022030211560223837.jpg"
+                width="360" height="180" alt="">
+        </div>
+        <div class="px-3 pb-3">
+            <a>애니가드 식품용 고중량 라텍스/니트릴장갑 100매 외</a>
+            <h4>11,200원 ~</h4>
+        </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center col-md-4 m-container-best">
+        <div class="d-flex justify-content-center p-3">
+            <img src="//cdn.011st.com/11dims/resize/720x360/quality/75/11src/browsing/space/banner/2022/4/6/2204061313094400706_21.jpg"
+                width="360" height="180" alt="">
+        </div>
+        <div class="px-3 pb-3">
+            <a>[GSfresh] 밥값하는쌀20kg (21년산)</a>
+            <h4>11,200원 ~</h4>
+        </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center col-md-4 m-container-best">
+        <div class="d-flex justify-content-center p-3">
+            <img src="//cdn.011st.com/11dims/resize/720x360/quality/75/11src/browsing/space/banner/2022/4/6/2204061143462400706_16.jpg"
+                width="360" height="180" alt="">
+        </div>
+        <div class="px-3 pb-3">
+            <a>[최종혜택가 15,730원]보타니컬테라피 대용량 베이비 로션 + 증정 외 썬케어</a>
+            <h4>11,200원 ~</h4>
+        </div>
+    </div>
+</div>
 {% endblock %}

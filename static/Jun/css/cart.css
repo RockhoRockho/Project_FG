@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: "Noto Sans KR", "Helvetica Neue", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", "돋움", dotum, sans-serif;
     list-style-type: none;
+    word-break: keep-all;
 }
 
 .page {
@@ -41,7 +42,7 @@
 }
 
 .cart_side {
-    padding-right: 40px;
+    padding-right: 10px;
 }
 
 .cart_subtitle {
@@ -56,6 +57,7 @@
     border: 1px solid rgb(235, 235, 235);
     border-width: 1px 0;
     padding: 0 16px;
+    overflow-x: auto;
 }
 
 .product_form:first-of-type {
@@ -91,6 +93,7 @@
 .inner_2 {
     margin: 10px;
     transform: translateY(20%);
+    width: 90%;
 }
 
 .product > div:nth-of-type(2), div:nth-of-type(3) {
@@ -119,7 +122,6 @@
     top: 11%;
     right: 0;
     z-index: 1;
-    width: 300px;
     padding: 10px;
     background-color: #fff;
 }
@@ -132,7 +134,8 @@
 
 .order_side .order_sticky.is_fixed {
     top: 0;
-    width: 280px;
+    flex: 0 0 auto;
+    width: 14.37%;
     position: fixed;
     z-index: 1100;
     background-color: #fff;
@@ -256,3 +259,13 @@
     border: 1px solid #d8dce5;
 }
 
+@media (min-width:1200px) {
+    .order_side .order_sticky.is_fixed {
+        top: 0;
+        flex: 0 0 auto;
+        width: 15%;
+        position: fixed;
+        z-index: 1100;
+        background-color: #fff;
+    }
+}

@@ -130,17 +130,20 @@ form label{
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #250141;
+    background-color: #1b0130;
     overflow: hidden;
     transition: 0.5s;
     padding-top: 20px;
     text-align: left;
 }
+.little_menu:hover{
+    background-color: #4f008a;
+}
 
 .sidenav a{
     color: white;
     display: block;
-    font-size: 1.3em;
+    font-size: 1em;
     padding: 5px 30px 0.5em 2em;
     text-decoration: none;
     font-weight: bold;
@@ -148,11 +151,37 @@ form label{
 .catego,.sort{
     margin-top: 1em !important;
     font-size: 1.6em !important;
-    color: rgb(151, 149, 179) !important;
-    margin-left: -10px;
+    color: rgb(204, 202, 226) !important;
+    margin-left: -25px;
 }
 .sidenav_close{
     float: right;
-    margin-top: -25px;
+    margin-top: -10px;
     font-size: 2.2em !important;
+}
+.sidenav_close:hover{
+    color: #c5b4e3;
+}
+.modal-top > div{
+    float: left;
+    color: white;
+    vertical-align: middle;
+    padding-bottom: 0.7em;
+}
+.modal-top > div:first-child{
+    font-size: 1.4em;
+    font-weight: bold;
+}
+img{
+    width: 3em;
+    height: 3em;
+}
+.cut{
+    width: 100%;
+    height: 0.5em;
+    background-color: rgb(240, 232, 232);
+}
+.sch-ico-side:focus {
+    color: #c5b4e3;
+    cursor: pointer;
 }

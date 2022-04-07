@@ -19,12 +19,9 @@
     margin-bottom: 20px;
 }
 .Essential > div{
-    margin-bottom: 1em;
+    margin-bottom: 5px;
 }
-.select > div{
-    margin-bottom: 1em;
-}
-.join{
-    width: 100%;
-    margin-top: 1em;
+.btn{
+    width: 80%;
+    margin-top: 20px;
 }
