@@ -2,7 +2,7 @@
 {% load mathfilters %}
 
 {% block title %}
-Login_Page
+약관 동의
 {% endblock %}
 {% block stylesheet %}
 {% load static %}
@@ -14,40 +14,40 @@ Login_Page
     <div id="container">
         <form action="" id="agree">
             <div class="agree_all">
-                <input class="form-check-input" id="checkALL" type="radio" name="aa" onclick="selectALL(this)">
+                <input class="form-check-input" id="checkALL" type="checkbox" onclick="selectALL(this)">
                 <label for="checkALL">약관 전체 동의</label>
             </div>
             <div class="Essential">
                 <p>필수 동의 항목</p>
                 <div>
-                    <input class="form-check-input" type="radio" id="Essential1" name="aa">
+                    <input class="form-check-input" type="checkbox" id="Essential1" name="chk">
                     <label for="Essential1">[필수] 쇼핑몰 이용약관 ></label>
                 </div>
                 <div>
-                    <input class="form-check-input" type="radio" id="Essential2" name="aa">
+                    <input class="form-check-input" type="checkbox" id="Essential2" name="chk">
                     <label for="Essential2">[필수] 전자금융거래 이용약관 ></label>
                 </div>
                 <div>
-                    <input class="form-check-input" type="radio" id="Essential3">
+                    <input class="form-check-input" type="checkbox" id="Essential3" name="chk">
                     <label for="Essential3">[필수] 개인정보 수집동의서 ></label>
                 </div>
             </div>
             <div class="select">
                 <p>선택 동의 사항</p>
                 <div>
-                    <input class="form-check-input" type="radio" id="select1">
+                    <input class="form-check-input" type="checkbox" id="select1" name="chk">
                     <label for="select1">[선택] 개인정보 수집 동의서 ></label>
                 </div>
                 <div>
-                    <input class="form-check-input" type="radio" id="select2">
+                    <input class="form-check-input" type="checkbox" id="select2" name="chk">
                     <label for="select2">[선택] 위치기간 서비스 이용약관 ></label>
                 </div>
                 <div>
-                    <input class="form-check-input" type="radio" id="select3">
+                    <input class="form-check-input" type="checkbox" id="select3" name="chk">
                     <label for="select3">[선택] 제 3자 마케팅 활용동의서 전체동의 ></label>
                 </div>
             </div>
-            <button type="button" class="btn btn-secondary">회원가입</button>
+            <button type="button" class="btn btn-secondary join">회원가입</button>
         </form>
     </div>
     <!-- footer 시작 -->
@@ -56,12 +56,23 @@ Login_Page
     </footer>
     <!-- footer 끝 -->
 </div>
-{% endblock %}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    $("#checkAll").click(function () {
-        $(".form-check-input").prop('checked', $(this).prop('checked'));
+
+<script>
+    $(document).ready(function(){
+        $("#checkALL").click(function() {
+            if($("#checkALL").is(":checked")) $("input[name=chk]").prop("checked", true);
+            else $("input[name=chk]").prop("checked", false);
+        });
+        $("input[name=chk]").click(function(){
+            var total = $("input[name=chk]").length;
+            var checked = $("input[name]:checked").length;
+
+            if(total != checked) $("#checkALL").prop("checked", false);
+            else $("#checkALL").prop("checked", true);
+        });
     });
 
-
 </script>
+{% endblock %}
+{% block nav %}
+{% endblock %}

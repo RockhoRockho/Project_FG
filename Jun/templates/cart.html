@@ -14,11 +14,11 @@
 
 {% block contents %}
 
-<div class="page col-md-12 col-sm-12">
+<div class="page col-md-12">
     <div class="cart_title">
         <div class="d-flex">
-            <div class="col-md-9 ft-xxl">주문결제</div>
-            <div class="col-md-3 border text-center row order_procedure">
+            <div class="col-xxl-8 col-md-5 ft-xxl">주문결제</div>
+            <div class="col-xxl-4 col-md-7 border text-center row order_procedure">
                 <span class="col-md-4 bg-black text-white order_procedure_left">1.장바구니</span>
                 <span class="col-md-4 y-border">2.주문결제</span>
                 <span class="col-md-4 order_procedure_right">3.주문완료</span>
@@ -26,11 +26,11 @@
         </div>
     </div>
     <hr>
-    <div class="cart_side col-md-9 col-sm-9">
+    <div class="cart_side col-xl-9 col-md-10">
         <div class="d-flex col-md-12 cart_subtitle">
-            <span class="col-md-5">주문상품</span>
+            <span class="col-md-6">주문상품</span>
             <span class="col-md-4 ps-5">금액</span>
-            <span class="col-md-3">수량</span>
+            <span class="col-md-2">수량</span>
         </div>
         {% if items == zero %}
         <div class="col-md-12 border justify-content-center">
@@ -46,14 +46,14 @@
                     {# 상품이미지 #}
                     <img src="https://cdn.011st.com/11dims/resize/560x560/quality/75/11src/pd/22/2/6/4/0/0/9/vNTAr/3718264009_B.jpg" alt="">
                 </div>
-                <div class="col-md-4 outer">
+                <div class="col-md-5 outer">
                     <div class="inner">상품명{{ product_name }}</div>
                 </div>
                 <div class="col-md-3 outer">
                     <div class="inner">정가{{ product_price }}</div>
                     <div class="inner">판매금액{# 판매금액 #}</div>
                 </div>
-                <div class="col-md-3 text-center p-2 outer">
+                <div class="col-md-2 text-center p-2 outer">
                     <input type="number" class="col-md-5 inner_2" placeholder="수량">
                     <button type='button' class="btn btn-cancel inner_2">취소하기</button>
                 </div>
@@ -75,8 +75,8 @@
         </div>
     </div>
     <!-- 결제창 -->
-    <div class="order_side col-md-3 col-sm-3">
-        <div class="order_sticky">
+    <div class="order_side col-xl-3 col-md-2">
+        <div class="order_sticky col-md-12">
             <div class="order_amount">
                 <div class="order_title">
                     <h4 class="order_subtitle">결제 예정금액</h4>
@@ -95,7 +95,7 @@
                 </button>
             </div>
         </div>
-        <div class="order_agree" style="margin-top: 30px;">
+        <div class="order_agree col-md-12" style="margin-top: 30px;">
             <div class="order_low" id="agreeToSeller">
                 <div class="low_tit">
                     <p>개인정보 판매자 제공 동의</p>
