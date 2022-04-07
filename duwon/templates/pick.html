@@ -12,6 +12,14 @@
 
 {% block contents %}
 
+<style>
+    @media (max-width: 768px) {
+        .table {
+            font-size: 0.5rem;
+        }
+    }
+</style>
+
 <div class="col-md-10 container">
     <div class="wrap table-responsive">
         <h4><strong>찜</strong>한 상품</h4>
@@ -30,11 +38,11 @@
                 <tr>
                     <td><input class="form-check-input" type="checkbox" value="" id="" style="float: left;"><img
                             src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/22/3/7/9/5/1/1/qEmIN/1431379511_B.jpg"
-                            alt="..." class="img-thumbnail"> 제닉스 게이밍 의자</td>
+                            alt="..." class="img"> 제닉스 게이밍 의자</td>
                     <td>10,000</td>
                     <td>무료</td>
                     <td>4.5/5</td>
-                    <td><button type="button" class="btn btn-primary btn-xs" data-bs-toggle="modal" data-bs-target="#jjim"
+                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jjim"
                             data-bs-whatever="{{i}}">My Comment</button></td>
                 </tr>
                 {% endfor %}
