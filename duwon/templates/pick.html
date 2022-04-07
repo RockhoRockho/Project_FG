@@ -42,9 +42,10 @@
         </table>
 
         <div class="last_btn">
-            <button type="button" class="btn btn-success btn-xs" style="font-size: 10px;">선택목록 장바구니에 담기</button>
-            <button type="button" class="btn btn-danger btn-xs" style="font-size: 10px;">삭제하기</button>
+            <button type="button" class="btn btn-primary btn-xs" style="font-size: 10px;">선택목록 장바구니에 담기</button>
+            <button type="button" class="btn btn-secondary btn-xs" style="font-size: 10px;">삭제하기</button>
         </div>
+        <!-- <span id="onv" onclick="opennav()">aaaa</span> -->
     </div>
 </div>
 
@@ -77,6 +78,29 @@
     </div>
 </div>
 
+<div id="sidenav" class="sidenav">
+    <div class="modal-top row">
+        <div class="col-10"><img src="/static/img/login (1).png"> 사용자 이름</div>
+        <div class="col-2"><a href="#" class="sidenav_close" onclick="closenav()">&times;</a></div>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="cut"></div>
+    <a href="#" class="catego">카테고리</a>
+    <a href="#" class="little_menu">뷰티</a>
+    <a href="#" class="little_menu">식품</a>
+    <a href="#" class="little_menu">스포츠/레저/자동차</a>
+    <a href="#" class="little_menu">출산/육아</a>
+    <a href="#" class="little_menu">가구/인테리어</a>
+    <a href="#" class="little_menu">생활/건강</a>
+    <a href="#" class="little_menu">가전/디지털</a>
+    <a href="#" class="little_menu">도서/취미/펫</a>
+    <a href="#" class="little_menu">여행/티켓</a>
+    <a href="#" class="little_menu">해외직구</a>
+    <a href="#" class="sort">정렬</a>
+    <a href="#" class="little_menu">가나다순</a>
+    <a href="#" class="little_menu">평점순</a>
+    <a href="#" class="little_menu">조회순</a>
+</div>
 
 <script>
     $("#checkAll").click(function () {
@@ -90,7 +114,15 @@
         var modalTitle = jjim.querySelector('.modal-title')
 
         modalTitle.textContent = (parseInt(jjimNum)+1) + ' 번째 찜 사유 및 코멘트'
-    })
+    });
+
+    function opennav(){
+        document.getElementById("sidenav").style.width = "18%";
+    }
+
+    function closenav(){
+        document.getElementById("sidenav").style.width = "0";
+    }
 
     var nav_bar = document.getElementById("nav-category");
     nav_bar.classList.remove("d-none");
