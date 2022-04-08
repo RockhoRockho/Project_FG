@@ -27,10 +27,13 @@
             <div class="col-md-2"></div>
             <div class="col-md-8 h-100">
                 <div class="col-md-12">
-                    <div class="sch-search">
-                        <input type="text" class="form-control sch-search-box" id="text_search"
-                            placeholder="검색어를 입력해 주세요">
-                    </div>
+                    <form action="{% url 'product_search' product_name %}" method="POST">
+                        {% csrf_token %}
+                        <div class="sch-search">
+                            <input type="text" class="form-control sch-search-box" id="text_search" name="sch_word"
+                                placeholder="검색어를 입력해 주세요">
+                        </div>
+                    </form>
                 </div>
                 <div class="d-flex flex-row">
                     <div class="sch-nav">
@@ -201,41 +204,43 @@
     <div class="container col-md-8 p-4">
         <div class="row d-flex justify-content-center ">
             <div class="col-auto" id="fbuttons">
-            <button type="submit" class="btn mb-4">
-                로그아웃
-            </button>&emsp;
-            <button type="submit" class="btn mb-4" id="btn-back-to-top">
-                위로
-            </button>&emsp;
-            <button type="submit" class="btn mb-4">
-                홈으로
-            </button>
+                <button type="submit" class="btn mb-4">
+                    로그아웃
+                </button>&emsp;
+                <button type="submit" class="btn mb-4" id="btn-back-to-top">
+                    위로
+                </button>&emsp;
+                <button type="submit" class="btn mb-4">
+                    홈으로
+                </button>
             </div>
         </div>
         <div class="col-md-6 mb-4" style="float: left;">
             <h6>FG Mall(주)</h6>
             <p style="font-size: 9px;">
-            대표이사 : 홍길동, 주소 : 서울특별시 강남구 테헤란로 146 현익빌딩 3층, 4층 (신한은행건물)
-            <br>Tel : 1234-5678, 사업자등록번호 : 000-00-00000 <br><br>
-            FG Mall(주)는 통신판매중개자로서 오픈마켓 FG Mall의 거래당사자가 아니며, <br> 입점판매자가 등록한 상품정보 및 거래에 대해 FG Mall(주)는 일체 책임을 지지 않습니다.
+                대표이사 : 홍길동, 주소 : 서울특별시 강남구 테헤란로 146 현익빌딩 3층, 4층 (신한은행건물)
+                <br>Tel : 1234-5678, 사업자등록번호 : 000-00-00000 <br><br>
+                FG Mall(주)는 통신판매중개자로서 오픈마켓 FG Mall의 거래당사자가 아니며, <br> 입점판매자가 등록한 상품정보 및 거래에 대해 FG Mall(주)는 일체 책임을 지지
+                않습니다.
             </p>
         </div>
         <div class="col-md-6 mb-4" style="float: right;">
             <h6>고객센터 1234-5678(유료)</h6>
             <p style="font-size: 9px;">
-            주소 : 서울특별시 강남구 테헤란로 146 현익빌딩 3층, 4층 (신한은행건물)
-            <br>Fax : 02-234-5678 / email : customerservice@fgmall.com <br>
-            <a href="#">고객센터 바로가기 ></a>
+                주소 : 서울특별시 강남구 테헤란로 146 현익빌딩 3층, 4층 (신한은행건물)
+                <br>Fax : 02-234-5678 / email : customerservice@fgmall.com <br>
+                <a href="#">고객센터 바로가기 ></a>
             </p>
             <h6>전자금융거래분쟁담당</h6>
             <p style="font-size: 9px;">
-            Tel : 9876-5432 / Fax : 02-876-5432
-            <br>email : customerservice@fgmall.com
+                Tel : 9876-5432 / Fax : 02-876-5432
+                <br>email : customerservice@fgmall.com
             </p>
         </div>
         <div style="clear:both;"></div>
     </div>
-    <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0.05); font-size: 10px; color: rgba(0, 0, 0, 0.3);">
+    <div class="text-center p-2"
+        style="background-color: rgba(0, 0, 0, 0.05); font-size: 10px; color: rgba(0, 0, 0, 0.3);">
         © 2022 Copyright: FG Mall Co.,Ltd. All Rights Reserved.
     </div>
 </footer>
@@ -264,7 +269,7 @@
     // }
     // navigo()
 
-    
+
     let mybutton = document.getElementById("btn-back-to-top");
 
     mybutton.addEventListener("click", backToTop);
@@ -275,11 +280,11 @@
         document.documentElement.scrollTop = 0;
     }
 
-    function opennav(){
+    function opennav() {
         document.getElementById("sidenav").style.width = "20%";
     }
 
-    function closenav(){
+    function closenav() {
         document.getElementById("sidenav").style.width = "0";
     }
 </script>
