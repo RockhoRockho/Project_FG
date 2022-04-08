@@ -6,7 +6,7 @@
 
 {% block stylesheet %}
 {% load static %}
-<link href="{% static 'Jun/css/present.css' %}" rel="stylesheet">
+<link href="{% static 'css/present.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block nav %}
@@ -527,9 +527,9 @@
     </div>
 </div>
 
-<script src="{% static 'Jun/js/present.js' %}">
+<script src="{% static 'js/present.js' %}">
     var nav_bar = document.getElementById("nav-category");
     nav_bar.classList.remove("d-none");
 </script>
-<script src="{% static 'Jun/js/sticky.js' %}"></script>
+<script src="{% static 'js/sticky.js' %}"></script>
 {% endblock %}
