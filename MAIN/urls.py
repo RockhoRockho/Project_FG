@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('duwon/', include("duwon.urls")),
     path('Jun/', include("Jun.urls")),
-    path('Leyhara/', include("Leyhara.urls")),
+    path('', include("Leyhara.urls")),
     path('products/', include("products.urls")),
     path('wonjun/', include("wonjun.urls")),
     path('member/', include("member.urls")),
