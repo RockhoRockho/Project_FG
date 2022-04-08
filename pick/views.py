@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-def pick(request, member_pk):
+def pick(request):
     context = {
         'range' : range(3),
     }

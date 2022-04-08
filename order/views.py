@@ -1,13 +1,13 @@
 from django.shortcuts import render
 
-def order_list(request, member_pk):
+def order_list(request):
     context = {
         'range' : range(3),
     }
 
     return render(request, 'order_list.html', context) 
 
-def order_detail(request, member_pk):
+def order_detail(request):
     context = {
         'range' : range(3),
     }
@@ -19,7 +19,7 @@ def order_detail(request, member_pk):
 
     return render(request, 'order_detail.html', context) 
 
-def order_cart(request, member_pk):
+def order_cart(request):
     context = {
         'items' : range(3), # order_items_id 수
         'recommend': range(4),
@@ -36,7 +36,7 @@ def order_cart(request, member_pk):
     }
     return render(request, 'order_cart.html', context)
 
-def order_purchase(request, member_pk):
+def order_purchase(request):
     context = {
         'items' : range(10), # order_items_id 수
         'order_id': '',
@@ -54,7 +54,7 @@ def order_purchase(request, member_pk):
     }
     return render(request, 'order_purchase.html', context)
 
-def order_success(request, member_pk):
+def order_success(request):
     context = {
         'items' : range(2), # order_items_id 수
         'recommend': range(4),

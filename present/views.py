@@ -1,13 +1,13 @@
 from django.shortcuts import render
 
-def present_list(request, member_pk):
+def present_list(request):
     context = {
         'items' : range(4),
         'recommend' : range(4),
     }
     return render(request, 'present_list.html', context)
 
-def present_send(request, member_pk):
+def present_send(request):
     context = {
         'items' : range(2), # order_items_id 수
         'order_id': '',
