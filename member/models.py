@@ -7,7 +7,7 @@ class Member(models.Model):
     name = models.CharField(max_length=30, verbose_name='이름')
     gender = models.CharField(max_length=2, verbose_name='성별')
     email = models.EmailField(max_length=30, verbose_name='이메일')
-    phoneNum = models.IntegerField(max_length=11, verbose_name='폰번호')
+    phoneNum = models.IntegerField(verbose_name='폰번호')
     birth = models.DateField(verbose_name='생년월일')
     
 
