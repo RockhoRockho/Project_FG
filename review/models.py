@@ -5,9 +5,9 @@ class Review(models.Model):
     rating = models.FloatField(verbose_name='별점')
     detail = models.TextField(blank=True, verbose_name='상세리뷰')
     view_cnt = models.IntegerField(default=0, verbose_name='조회수')
-    product_id = models.ForeignKey('product.Product', on_delete=models.CASCADE)
-    member_id = models.ForeignKey('member.Member', on_delete=models.CASCADE)
-    order_items_id = models.ForeignKey('order.Order_items', on_delete=models.CASCADE)
+    product = models.ForeignKey('product.Product', on_delete=models.CASCADE)
+    member = models.ForeignKey('member.Member', on_delete=models.CASCADE)
+    order_items = models.ForeignKey('order.Order_items', on_delete=models.CASCADE)
     
     
 

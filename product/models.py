@@ -1,6 +1,7 @@
 from django.db import models
 
 class Product(models.Model):
+    product = models.IntegerField(default=0, verbose_name='물품ID', null=False)
     name = models.CharField(max_length=30, verbose_name='이름')
     price = models.IntegerField(verbose_name='가격')
     stock = models.IntegerField(verbose_name='재고')
@@ -8,9 +9,9 @@ class Product(models.Model):
     view_cnt = models.IntegerField(default=0, verbose_name='조회수')
     reg_date = models.DateTimeField(auto_now_add=True, verbose_name='등록일자')
     delivery = models.CharField(max_length=30, verbose_name='배송비')
-    seller_id = models.ForeignKey('Seller', on_delete=models.CASCADE)
+    seller = models.ForeignKey('Seller', on_delete=models.CASCADE)
     
-
+ 
     class Meta:
         db_table = 'product' 
         verbose_name='상품' 
@@ -36,7 +37,7 @@ class Product_img(models.Model):
     basic_file = models.FileField(verbose_name='원본파일') #parameter?
     add_file = models.FileField(verbose_name='변경파일') #parameter?
     thumbnail = models.FileField(verbose_name='썸네일') #parameter?
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'product_img' 

@@ -3,13 +3,14 @@ from django.db import models
 
 
 class Order(models.Model):
+    order_id = models.AutoField(primary_key=True, verbose_name='주문일련번호', default=1)
     date = models.DateTimeField(auto_now_add=True, verbose_name='주문날짜')
     delivery_address = models.CharField(max_length=30, verbose_name='배송지')
     receiver_name = models.CharField(max_length=30, verbose_name='수령인')
     receiver_phone = models.CharField(max_length=30, verbose_name='수령자전화번호')
     eta = models.DateField(verbose_name='수령예상일')
     number = models.IntegerField(verbose_name='주문번호')
-    member_id = models.ForeignKey('member.Member', on_delete=models.CASCADE)
+    member = models.ForeignKey('member.Member', on_delete=models.CASCADE)
     
 
     class Meta:
@@ -26,8 +27,8 @@ class Order(models.Model):
 class Order_items(models.Model):
     price = models.IntegerField(verbose_name='상품가격')
     quantity = models.IntegerField(verbose_name='수량')
-    member_id = models.ForeignKey('member.Member', on_delete=models.CASCADE)
-    product_id = models.ForeignKey('product.Product', on_delete=models.CASCADE)
+    member = models.ForeignKey('member.Member', on_delete=models.CASCADE)
+    product = models.ForeignKey('product.Product', on_delete=models.CASCADE)
     
     
 

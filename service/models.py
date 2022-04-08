@@ -7,7 +7,7 @@ class Service(models.Model):
     reg_date = models.DateTimeField(auto_now_add=True, verbose_name='등록일자')
     phone = models.CharField(max_length=30, verbose_name='폰번호')
     email = models.CharField(max_length=30, verbose_name='이메일')
-    member_id = models.ForeignKey('member.Member', on_delete=models.CASCADE)
+    member = models.ForeignKey('member.Member', on_delete=models.CASCADE)
     #관리자 테이블?
 
     class Meta:

@@ -2,7 +2,7 @@ from django.db import models
 from product.models import Product
 
 class Member(models.Model):
-    member_id = models.IntegerField(primary_key=True, verbose_name='물품ID')
+    member_id = models.AutoField(primary_key=True, verbose_name='회원ID')
     username = models.CharField(max_length=30, verbose_name='아이디')
     pw = models.CharField(max_length=30, verbose_name='비밀번호')
     name = models.CharField(max_length=30, verbose_name='이름')
@@ -27,7 +27,7 @@ class Address(models.Model):
     address = models.CharField(max_length=70, verbose_name='주소')
     address_detail = models.CharField(max_length=100, verbose_name='상세주소')
     type = models.IntegerField(verbose_name='타입') #???
-    member_id = models.ForeignKey(Member, on_delete=models.CASCADE)
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
     
 
     class Meta:
@@ -43,7 +43,7 @@ class Address(models.Model):
 class Recent_search(models.Model):
     search_word = models.CharField(max_length=30, unique=True, verbose_name='단어')
     search_date = models.DateTimeField(auto_now_add=True, verbose_name='일자')
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
     class Meta:
