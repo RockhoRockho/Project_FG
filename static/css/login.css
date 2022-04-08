@@ -1,0 +1,343 @@
+#wrap{
+    margin: 0 auto;
+}
+#container {
+    margin: 0 auto;
+    /* outline: 1px solid green; */
+}
+
+.login_box {
+    margin: 150px auto 100px;
+    width: 520px;
+    /* outline: 1px solid purple; */
+    padding: 0 10px 0;
+}
+
+.login_wrap {
+    margin: 0 auto;
+}
+
+#login_input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 500px;
+    /* outline: 1px solid red; */
+}
+
+#login_input>div {
+    margin-top: 10px;
+}
+
+#login_input>div>span {
+    width: 10%;
+}
+
+#login_input>div>input {
+    width: 90%;
+    border: 1px solid rgb(212, 203, 203);
+    border-radius: 0 5px 5px 0;
+}
+
+#login_input button {
+    width: 100%;
+    height: 40px;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+
+.btn_sub>div {
+    float: left;
+}
+
+.btn_sub>div:last-child {
+    float: left;
+    margin-left: 20px;
+}
+
+.login_list {
+    clear: both;
+    /* outline: 1px solid red; */
+    width: 500px;
+    list-style: none;
+    margin-top: 10px;
+}
+
+.login_list a {
+    text-decoration: none;
+    width: 400px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 7px;
+}
+
+/* .login_list > div > a{
+    text-decoration: none;
+} */
+.login_list div {
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 7px;
+    margin-bottom: 5px;
+}
+
+.login_list strong {
+    margin-left: 37%;
+    line-height: 50px;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.kakao {
+    background: url(../img/katalk.png) no-repeat #FEE500;
+    background-size: contain;
+    border: none;
+}
+
+.kakao strong {
+    color: #fff;
+    margin-top: 30px;
+}
+
+.naver {
+    background: url(../img/naver.png) no-repeat #00C43B;
+    background-size: contain;
+    border: none;
+}
+
+.naver strong {
+    color: #fff;
+}
+
+.Apple {
+    background: url(../img/Apple.png) no-repeat rgb(240, 238, 238) 5px;
+    background-size: 40px;
+    border: none;
+}
+
+.Apple strong {
+    color: black;
+}
+
+.sub_find>a {
+    text-decoration: none;
+    font-size: 13px;
+    color: black;
+}
+
+/* --------------------------------------------------------- */
+
+.modal1 {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+.modal2 {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+#myModal1 {
+    width: 100%;
+}
+#myModal2 {
+    width: 100%;
+}
+.modal-content {
+    background-color: #faf8f8;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    position: relative;
+}
+
+.row {
+    width: 100%;
+}
+
+.find_id {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    left: 0;
+    top: 0;
+    /* text-align: left; */
+    padding-left: 3%;
+    padding-top: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    border-bottom: none;
+    background-color: rgb(119, 118, 177);
+    color: white;
+}
+
+/* The Close Button */
+
+.close1 {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 100;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    width: 30px;
+}
+
+.close2 {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 100;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    width: 30px;
+}
+
+.close1:hover,
+.close1:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.close2:hover,
+.close2:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.menu{
+    margin-top: 30px;
+}
+
+.answer {
+    display: none;
+    padding-bottom: 30px;
+}
+
+.faq-content {
+    border-bottom: 1px solid #e0e0e0;
+}
+.faq-content:last-child {
+    border-bottom: 1px solid #e0e0e0;
+    margin-top: -10px;
+}
+
+.question {
+    font-size: 16px;
+    padding: 30px 0;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+.questionq {
+    font-size: 16px;
+    padding: 30px 0;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+
+.question:hover {
+    color: #2962ff;
+}
+.questionq:hover {
+    color: #2962ff;
+}
+
+#que-1-toggle{
+    /* margin-left: 50%; */
+    float: right;
+}
+#queq-1-toggle{
+    /* margin-left: 50%; */
+    float: right;
+}
+
+#que-2-toggle{
+    float: right;
+}
+#queq-2-toggle{
+    float: right;
+}
+.ininput{
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    background-color: rgb(248, 246, 246);
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.btnn{
+    margin-top: 5px;
+    width: 100%;
+}
+
+[id$="-toggle"] {
+    margin-right: 15px;
+}
+
+
+/* --------------------------------------------------------- */
+
+#sidenav > .sidenav-top > div > .sidenav_close{
+    position: absolute;
+    top: 0;
+    right: -20px !important;
+    font-size: 30px !important;
+}
+
+
+
+
+
+
+

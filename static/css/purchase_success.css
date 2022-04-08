@@ -1,0 +1,132 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", "Helvetica Neue", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", "돋움", dotum, sans-serif;
+    list-style-type: none;
+    word-break: keep-all;
+}
+
+ul {
+    padding-left: 0;
+}
+
+.page {
+    position: relative;
+}
+
+.purchase_title {
+    margin: 30px 0; 
+    height: 40px; 
+    line-height: 40px;
+}
+
+.ft-xxl {
+    font-size:xx-large
+}
+
+.order_procedure {
+    border-radius:15px; 
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid gainsboro
+}
+
+.order_procedure_left {
+    border-top-left-radius : 15px; 
+    border-bottom-left-radius: 15px;
+}
+.order_procedure_right {
+    border-top-right-radius : 15px; 
+    border-bottom-right-radius: 15px;
+}
+
+.y-border { 
+    border: 1px solid gainsboro;
+    border-width: 0 1px;
+}
+
+.success_box {
+    height: 300px;
+    padding: 10px;
+    margin: 60px 0 20px 0;
+    justify-content: center;
+    background-color: #f0e8ff;
+    border-radius: 20px;
+}
+
+.success_inner_box {
+    width: 60%;
+    padding: 10px; 
+    line-height: 50px;
+    align-items: stretch; 
+    align-self: center;
+}
+
+.purchase_page {
+    padding-right: 40px;
+}
+
+.purchase_side {
+    border: 1px solid rgb(235, 235, 235);
+    border-width: 0 1px 0 0;
+    padding-right: 20px;
+}
+
+.purchase_subtitle {
+    padding-left: 10px;
+    margin: 40px 0 0 0;
+    height: 5vh;
+    font-size: x-large;
+    border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.product {
+    height: 20vh;
+    border: 1px solid rgb(235, 235, 235);
+    border-width: 1px 0;
+}
+
+.outer {
+    display: table;
+    vertical-align: middle;
+}
+
+.inner {
+    padding: 20px;
+}
+
+.inner_2 {
+    margin: 10px;
+    transform: translateY(20%);
+}
+
+.product {
+    overflow-x: auto;
+}
+
+.product > div:nth-of-type(2) {
+    border: 1px solid rgb(235, 235, 235);
+    border-width: 0 1px;
+}
+
+.product > div > img {
+    width: 100%;
+}
+
+.btn_container {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.recommend_container {
+    margin-bottom: 150px;
+}
+
+.recommend_product {
+    margin-top: 10px;
+    border: 1px solid rgb(235, 235, 235);
+    border-width: 0 0 1px 0
+}
