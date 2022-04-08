@@ -43,7 +43,7 @@ class Order_items(models.Model):
 
 class Cart(models.Model):
     quantity = models.IntegerField(verbose_name='수량')
-    member_id = models.ForeignKey('memeber.Member', on_delete=models.CASCADE)
+    member_id = models.ForeignKey('member.Member', on_delete=models.CASCADE)
     product_id = models.ForeignKey('product.Product', on_delete=models.CASCADE)
 
 
