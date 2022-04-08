@@ -32,12 +32,12 @@
 }
 .sidenav_close{
     position: absolute;
-    top: 0;
+    top: -5px;
     right: 0em;
     font-size: 30px !important;
 }
 .sidenav_close:hover{
-    color: #c5b4e3;
+    color: #ddd6e7;
 }
 .sidenav-top > div{
     float: left;
@@ -51,8 +51,8 @@
     font-weight: bold;
 }
 #sidenav > sidenav-top > div > img{
-    width: 3em;
-    height: 3em;
+    width: 1em !important;
+    height: 1em !important;
 }
 .cut{
     width: 100%;
