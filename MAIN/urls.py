@@ -19,7 +19,7 @@ from MAIN import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.main),
+    path('', views.main, name="main"),
     path('member/', include("member.urls")),
     path('order/', include("order.urls")),
     path('pick/', include("pick.urls")),

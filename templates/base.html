@@ -27,7 +27,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8 h-100">
                 <div class="col-md-12">
-                    <form action="{% url 'product_search' product_name %}" method="POST">
+                    <form action="{% url 'main' %}" method="POST">
                         {% csrf_token %}
                         <div class="sch-search">
                             <input type="text" class="form-control sch-search-box" id="text_search" name="sch_word"

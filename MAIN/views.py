@@ -8,8 +8,7 @@ def main(request):
     elif request.method == 'POST':
         product_name = request.POST['sch_word']
         search_word = request.POST['sch_word']
+        # rcnt_word = Recent_search(search_word=search_word)
+        # rcnt_word.save()
 
-        rcnt_word = Recent_search(search_word=search_word)
-        rcnt_word.save()
-
-        return render(request, 'main.html', {"product_name": product_name})
+        return render(request, 'search.html', {"product_name": product_name})
