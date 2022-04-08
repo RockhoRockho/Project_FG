@@ -19,11 +19,8 @@ h3{
 .title{
     width: 100%;
     margin-left: 0;
-    /* outline: 1px solid red; */
     border-bottom: none;
-    /* border-bottom: 1px solid #000; */
 }
-
 .title > .row {
     /* border: 1px solid black; */
 }

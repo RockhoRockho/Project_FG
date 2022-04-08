@@ -1,10 +1,11 @@
 .wrap{
     margin: 4em auto;
-    width: 70%;
+    width: 80%;
 }
 .main_content{
     border: 3px solid rgb(179, 178, 178);
     border-radius: 2em;
+    width: 100%;
 }
 
 h2{
@@ -72,8 +73,18 @@ img{
     margin: 1em auto 1em;
 }
 .btbt > button{
-    width: 45%;
+    width: 48%;
     height: 3em;
     font-weight: bold;
     color: white;
+}
+@media ( max-width: 768px ) {
+    .wrap{
+        width: 750px;
+        margin: 5em auto 2em;
+    }
+    .main_content{
+        width: 90%;
+        margin: 0 auto;
+    }
 }

@@ -328,7 +328,12 @@
 
 /* --------------------------------------------------------- */
 
-
+#sidenav > .sidenav-top > div > .sidenav_close{
+    position: absolute;
+    top: 0;
+    right: -20px !important;
+    font-size: 30px !important;
+}
 
 
 
