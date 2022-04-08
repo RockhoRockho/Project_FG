@@ -50,7 +50,7 @@
     font-size: 1.4em;
     font-weight: bold;
 }
-img{
+#sidenav > sidenav-top > div > img{
     width: 3em;
     height: 3em;
 }
