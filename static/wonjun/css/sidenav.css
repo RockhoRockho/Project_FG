@@ -12,7 +12,7 @@
     text-align: left;
 }
 .little_menu:hover{
-    background-color: #4f008a;
+    background-color: #d5cbdd;
     color: white;
 }
 
@@ -67,5 +67,5 @@
     cursor: pointer;
 }
 .sch-ico-side:hover{
-    color: #4f008a;
+    color: #b5c2af;
 }
