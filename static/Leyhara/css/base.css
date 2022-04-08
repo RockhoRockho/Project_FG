@@ -3,7 +3,7 @@
 :root {
     --color-white: #fff;
     --color-black: #000;
-    --color-gainsboro: #DCDCDC;
+    --color-gainsboro: #4f008a;
 }
 
 .font-notosanskr * {
@@ -41,6 +41,7 @@ header {
 
     font-size: 24px;
     text-align: center;
+    color: var(--color-white);
 }
 
 .sch-text-side {
@@ -53,6 +54,7 @@ header {
 
     font-size: 16px;
     text-align: center;
+    color: var(--color-white);
 }
 
 .sch-service {
