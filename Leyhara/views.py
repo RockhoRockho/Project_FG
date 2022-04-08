@@ -12,3 +12,9 @@ def register_personal(request):
 
 def login_check(request):
     return render(request, 'login_check.html');
+
+def member_check(request):
+    return render(request, 'member_check.html');
+
+def member_info(request):
+    return render(request, 'member_info.html');
