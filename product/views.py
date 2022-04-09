@@ -25,7 +25,7 @@ def product_search(request, product_name):
     if(rescode == 200):
         res = response.read().decode('utf-8')
         # items = res.get('items')
- 
+
         items = json.loads(res)
 
         context = {
