@@ -1,5 +1,3 @@
-from itertools import product
-from multiprocessing import context
 from django.shortcuts import render
 import os, sys, json
 import urllib.request

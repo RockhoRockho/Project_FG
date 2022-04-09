@@ -4,6 +4,15 @@
 {% endblock %}
 
 {% block contents %}
+<style>
+  * { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+  }
+</style>
+
 <div class="col-md-10 border" style="word-break: keep-all;">
   <div class="flex-wrap flex-md-nowrap align-items-center pt-4 pb-3 m-3">
     <h2>평점순</h2>
@@ -103,7 +112,7 @@
             src="{{ item.image }}"
             alt="...">
           <div class="caption">
-            <h3>{{ item.title }}</h3>
+            <h4>{{ item.title|striptags }}</h4>
           </div>
         </div>
         <div class="row">
