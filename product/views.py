@@ -23,11 +23,15 @@ def product_search(request, product_name):
     if(rescode == 200):
         res = response.read().decode('utf-8')
         # items = res.get('items')
-
-        items = json.loads(res)
-
+ 
+        jrs = json.loads(res)
+        items = jrs['items']
+        for item in items:
+            item['title'] = item['title'].replace("<b>"+product_name+"</b>", "\n")
+        
+        item = items
         context = {
-            'items' : items['items']
+            'items' : items
         }
 
     return render(request, 'product_search.html', context=context)
