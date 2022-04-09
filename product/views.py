@@ -23,28 +23,47 @@ def product_search(request, product_name):
     if(rescode == 200):
         res = response.read().decode('utf-8')
         # items = res.get('items')
- 
-        jrs = json.loads(res)
-        items = jrs['items']
-        for item in items:
-            item['title'] = item['title'].replace("<b>"+product_name+"</b>", "\n")
-        
-        item = items
+
+        items = json.loads(res)
+
         context = {
-            'items' : items
+            'items' : items['items']
         }
 
     return render(request, 'product_search.html', context=context)
 
-        
 
+def product_gender(request, product_name):
+    if request.method == 'GET':
+        return render(request, 'product_gender.html')
 
+    # elif request.method == 'POST':
+    #     client_id = '1Go9cVzNHoC3yswLKLwt'
+    #     client_secret = "ozy_PNTen4"
+    #     cat_type = 'cartegories'
+    #     if 입력값 = 성별o:
+    #         cat_type = 'category/gender'
+    #     elif 입력값 = 나이:
+    #         cat_type = 'category/age'
+    #     url = f"https://openapi.naver.com/v1/datalab/shopping/{cat_type}";
+    #     body = "{\"startDate\":\"2017-08-01\",\"endDate\":\"2017-09-30\",\"timeUnit\":\"month\",\"category\":[{\"name\":\"패션의류\",\"param\":[\"50000000\"]},{\"name\":\"화장품/미용\",\"param\":[\"50000002\"]}],\"device\":\"pc\",\"ages\":[\"20\",\"30\"],\"gender\":\"f\"}";
 
-def product_rate(request):
-    context = {
-        'range' : range(25),
-    }
-    return render(request, 'product_rate.html', context)
+    #     request = urllib.request.Request(url)
+    #     request.add_header("X-Naver-Client-Id",client_id)
+    #     request.add_header("X-Naver-Client-Secret",client_secret)
+    #     request.add_header("Content-Type","application/json")
+    #     response = urllib.request.urlopen(request, data=body.encode("utf-8"))
+    #     rescode = response.getcode()
+    #     if(rescode==200):
+    #         response_body = response.read().decode("utf-8")
+    #         items = json.loads(response_body)
+
+    #         context = {
+    #             'range' : range(25),
+    #             'items' : items['items']
+    #             }
+
+    #     return render(request, 'product_gender.html', context=context)
 
 
 def product_view(request):
@@ -100,3 +119,4 @@ def product_detail(request, product_id):
     #    raise Http404('제품을 찾을수 없습니다')
 
     return render(request, 'product_detail.html', context) 
+

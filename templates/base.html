@@ -43,9 +43,9 @@
                 </div>
                 <div class="d-flex flex-row-reverse">
                     <div class="sch-service">
-                        <span class="sch-text-side"> <a href="{% url 'member_login' %}" style="text-decoration: none; color:white;">로그인</a></span>
-                        <span class="sch-text-side"> <a href="{% url 'order_detail' %}" style="text-decoration: none; color:white;">마이페이지</a></span>
-                        <span class="sch-text-side"> <a href="{% url 'order_cart' %}" style="text-decoration: none; color:white;">장바구니</a></span>
+                        <span class="sch-text-side"> 로그인</span>
+                        <span class="sch-text-side"> 마이페이지</span>
+                        <span class="sch-text-side"> 장바구니</span>
                     </div>
                 </div>
             </div>
@@ -172,27 +172,40 @@
             </div>
             {% endblock %}
             <div id="sidenav" class="sidenav">
-                <div class="sidenav-top row" style="margin-top: 0;">
+                <div class="sidenav-top row">
                     <div class="col-10"><img src="/static/img/login (1).png" style="width: 2.6em;"> 사용자 이름</div>
-                    <div class="col-2"><a href="#" class="sidenav_close" onclick="closenav()" style="right: -5%;">&times;</a></div>
+                    <div class="col-2"><a href="#" class="sidenav_close" onclick="closenav()">&times;</a></div>
                 </div>
                 <div style="clear: both;"></div>
                 <div class="cut"></div>
-                <a href="#" class="catego">카테고리</a>
-                <a href="#" class="little_menu">뷰티</a>
-                <a href="#" class="little_menu">식품</a>
-                <a href="#" class="little_menu">스포츠/레저/자동차</a>
-                <a href="#" class="little_menu">출산/육아</a>
-                <a href="#" class="little_menu">가구/인테리어</a>
-                <a href="#" class="little_menu">생활/건강</a>
-                <a href="#" class="little_menu">가전/디지털</a>
-                <a href="#" class="little_menu">도서/취미/펫</a>
-                <a href="#" class="little_menu">여행/티켓</a>
-                <a href="#" class="little_menu">해외직구</a>
-                <a href="#" class="sort">정렬</a>
-                <a href="#" class="little_menu">가나다순</a>
+                <p class="catego">카테고리</p>
+                <a href="/product/category/100000001/" class="little_menu">여성패션 </a>
+                <a href="/product/category/100000002/" class="little_menu">남성패션</a>
+                <a href="/product/category/100000004/" class="little_menu">가구/인테리어</a>
+                <a href="/product/category/100000003/" class="little_menu">화장품/미용</a>
+                <a href="/product/category/100000015/" class="little_menu">식품</a>
+                <a href="/product/category/100000008/" class="little_menu">출산/유아동</a>
+                <a href="/product/category/100000010/" class="little_menu">반려동물용품</a>
+                <a href="/product/category/100000011/" class="little_menu">생활/주방용품</a>
+                <a href="/product/category/100000005/" class="little_menu">가전</a>
+                <a href="/product/category/100000006/" class="little_menu">디지털</a>
+                <a href="/product/category/100000007/" class="little_menu">컴퓨터</a>
+                <a href="/product/category/100000014/" class="little_menu">스포츠/레저</a>
+                <a href="/product/category/100000009/" class="little_menu">건강/의료용품</a>
+                <a href="/product/category/100000013/" class="little_menu">자동차/공구</a>
+                <a href="/product/category/100000012/" class="little_menu">취미/문구/악기</a>
+                <a href="/product/category/100006534/" class="little_menu">도서</a>
+                <a href="/product/category/100007763/" class="little_menu">정기구독</a>
+                <a href="/product/category/100000016/" class="little_menu">E쿠폰/티켓</a>
+                <a href="/product/category/100000017/" class="little_menu">렌탈관</a>
+                <a href="/product/category/100000018/" class="little_menu">리퍼비시관</a>
+                <a href="/product/category/100000020/" class="little_menu">면세점</a>
+
+                <p class="sort">정렬</p>
+                <a href="#" class="little_menu">정확도순</a>
+                <a href="#" class="little_menu">조회순</a>  
+                <a href="#" class="little_menu">가격순</a>
                 <a href="#" class="little_menu">평점순</a>
-                <a href="#" class="little_menu">조회순</a>
             </div>
             {% block contents %}
             {% endblock %}
@@ -282,18 +295,7 @@
     }
 
     function opennav() {
-        if($(window).width() < 1300){
-            document.getElementById("sidenav").style.width = "40%";
-        } 
-        else {
-            document.getElementById("sidenav").style.width = "20%";
-        }
-        // if (matchMedia("screen and (max-width: 768px)").matches) {
-        //     document.getElementById("sidenav").style.width = "40%";
-        // }
-        // else{
-        //     document.getElementById("sidenav").style.width = "20%";
-        // }
+        document.getElementById("sidenav").style.width = "20%";
     }
 
     function closenav() {
