@@ -172,9 +172,9 @@
             </div>
             {% endblock %}
             <div id="sidenav" class="sidenav">
-                <div class="sidenav-top row">
+                <div class="sidenav-top row" style="margin-top: 0;">
                     <div class="col-10"><img src="/static/img/login (1).png" style="width: 2.6em;"> 사용자 이름</div>
-                    <div class="col-2"><a href="#" class="sidenav_close" onclick="closenav()">&times;</a></div>
+                    <div class="col-2"><a href="#" class="sidenav_close" onclick="closenav()" style="right: -5%;">&times;</a></div>
                 </div>
                 <div style="clear: both;"></div>
                 <div class="cut"></div>
@@ -282,7 +282,18 @@
     }
 
     function opennav() {
-        document.getElementById("sidenav").style.width = "20%";
+        if($(window).width() < 1300){
+            document.getElementById("sidenav").style.width = "40%";
+        } 
+        else {
+            document.getElementById("sidenav").style.width = "20%";
+        }
+        // if (matchMedia("screen and (max-width: 768px)").matches) {
+        //     document.getElementById("sidenav").style.width = "40%";
+        // }
+        // else{
+        //     document.getElementById("sidenav").style.width = "20%";
+        // }
     }
 
     function closenav() {

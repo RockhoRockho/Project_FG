@@ -2,57 +2,58 @@
 {% load mathfilters %}
 
 {% block title %}
-Login_Page
+회원가입
 {% endblock %}
 {% block stylesheet %}
 {% load static %}
-<link href="{% static 'css/join.css' %}" rel="stylesheet">
+<link href="{% static 'wonjun/css/join.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block contents %}
 <div id="wrap">
     <div id="container">
-        <div class="id">
-            <span>아이디</span>
-            <input type="text" placeholder="6 ~ 20자 영문, 숫자">
+        <div class="sc">
+            <div class="id">
+                <span>아이디</span>
+                <input type="text" placeholder="6 ~ 20자 영문, 숫자">
+            </div>
+            <div class="pw">
+                <span>비밀번호</span>
+                <input type="password" placeholder="8 ~ 12자 영문, 숫자, 특수문자">
+            </div>
+            <div class="pw_check">
+                <span>비밀번호 확인</span>
+                <input type="password" placeholder="6 ~ 20자 영문, 숫자, 특수문자">
+            </div>
+            <div class="name">
+                <span>이름</span>
+                <input type="text" placeholder="이름을 입력하세요.">
+            </div>
+            <div>
+                <span>생년월일</span>
+                <input type="text" placeholder="8자리 숫자 입력">
+            </div>
+            <div class="email">
+                <span>이메일</span>
+                <input type="email" placeholder="email을 입력하세요.">
+            </div>
+            <div class="phone">
+                <span>휴대폰 번호</span>
+                <input type="number" placeholder='01012341234("-" 없이 입력)'>
+            </div>
+            <div class="sub">
+                <div><input type="checkbox" id="sns">
+                    <label for="sns">SMS, 이메일로 상품 및 이벤트 정보를 받겠습니다.(선택)</label></div>
+                <div><small>만 14세 미만 회원은 회원가입이 불가능합니다.</small></div>
+                <div><button type="button" class="btn btn-secondary">회원가입</button></div>
+            </div>
         </div>
-        <div class="pw">
-            <span>비밀번호</span>
-            <input type="password" placeholder="8 ~ 12자 영문, 숫자, 특수문자">
-        </div>
-        <div class="pw_check">
-            <span>비밀번호 확인</span>
-            <input type="password" placeholder="6 ~ 20자 영문, 숫자, 특수문자">
-        </div>
-        <div class="name">
-            <span>이름</span>
-            <input type="text" placeholder="이름을 입력하세요.">
-        </div>
-        <div>
-            <span>생년월일</span>
-            <input type="text" placeholder="8자리 숫자 입력">
-        </div>
-        <div class="email">
-            <span>이메일</span>
-            <input type="email" placeholder="email을 입력하세요.">
-        </div>
-        <div class="phone">
-            <span>휴대폰 번호</span>
-            <input type="number" placeholder='01012341234("-" 없이 입력)'>
-        </div>
-        <div class="sub">
-            <div><input type="checkbox" id="sns">
-                <label for="sns">SMS, 이메일로 상품 및 이벤트 정보를 받겠습니다.(선택)</label></div>
-            <div><small>만 14세 미만 회원은 회원가입이 불가능합니다.</small></div>
-            <div><button type="button" class="btn btn-secondary">회원가입</button></div>
-        </div>
-    </div clas>
-    <footer>
+    </div>
 
-    </footer>
 </div>
 {% endblock %}
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+<script>
 </script>
+{% block nav %}
+{% endblock %}

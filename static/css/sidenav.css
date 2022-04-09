@@ -5,19 +5,20 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #1b0130;
+    background-color: #ffffff;
     overflow: hidden;
     transition: 0.5s;
-    padding-top: 20px;
+    padding-top: 0px;
     text-align: left;
+    border-right: 3px solid rgb(189, 188, 188);
 }
 .little_menu:hover{
-    background-color: #d5cbdd;
+    background-color: #4f008a;
     color: white;
 }
 
 .sidenav a{
-    color: white;
+    color: black;
     display: block;
     font-size: 1em;
     padding: 5px 30px 0.5em 2em;
@@ -27,17 +28,24 @@
 .catego,.sort{
     margin-top: 1em !important;
     font-size: 1.6em !important;
-    color: rgb(204, 202, 226) !important;
+    color: rgb(135, 128, 211) !important;
     margin-left: -25px;
 }
 .sidenav_close{
     position: absolute;
-    top: -5px;
-    right: 0em;
+    top: -8%;
+    right: 10%;
     font-size: 30px !important;
+    color: white !important;
 }
 .sidenav_close:hover{
-    color: #ddd6e7;
+    color: #6a5f77 !important;
+}
+#sidenav > .sidenav-top{
+    background-color: #4f008a;
+    padding-top: 17px;
+    margin-right: 0 !important;
+    margin-left: 0;
 }
 .sidenav-top > div{
     float: left;
