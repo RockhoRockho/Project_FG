@@ -11,15 +11,15 @@
 {% block contents %}
 <div class="col-md-12">
   <div class="container col-md-12 my-5">
-    <h2>베스트 100</h2>
+    <h2>베스트 상품전</h2>
   </div>
   <div class="container align-items-center">
-    {% for i in range %}
     <div class="container d-flex justify-content-around">
+      {% for item in items %}
       <div class="col-md-3">
         <div class="container row">
           <a href="#" style="text-decoration: none; color: black;">
-            <span>{{ i|mul:4|add:1 }}</span>
+            <span>{{ item.rank }}</span>
             <div class="container">
               <img class="col-md-12"
                 src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"

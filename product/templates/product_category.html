@@ -2,7 +2,7 @@
 {% load mathfilters %}
 
 {% block title %}
-카테고리 이름별 상품조회
+카테고리 인기 상품조회
 {% endblock %}
 
 {% block nav %}
@@ -11,30 +11,31 @@
 {% block contents %}
 <div class="col-md-12">
   <div class="row container col-md-12 my-5">
-    <h2>카테고리 이름별 상품조회{{ product_category }}</h2>
+    <h2>카테고리 인기 상품조회</h2>
   </div>
-  {% for i in range %}
   <div class="container d-flex flex-wrap justify-content-around">
+    {% for item in items %}
     <div class="col-md-3" style="padding-bottom: 30px;">
       <div class="container row">
         <a href="#" style="text-decoration: none; color: black;">
-          <span>{{ i|mul:4|add:1 }}</span>
+          <span>{{ item.rank }}</span>
           <div class="container">
             <img class="col-md-12"
-              src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+              src="{{ item.imageUrl }}"
               alt="...">
           </div>
           <div class="row">
-            <p class="col-md-12">상품이름 {{ product_name }}</p>
-            <div class="col-md-6">가격 {{ product_price }}</div>
-            <div class="col-md-4 col-md-offset-4">평점 {{ product_rating }}</div>
-            <div class="col-md-4">배송비 {{ product_delivery }}</div>
+            <p class="col-md-12">상품명 {{ item.productName }}</p>
+            <div class="col-md-6">가격 {{ item.mobileLowPrice }}</div>
+            <div class="col-md-4 col-md-offset-4">평점 4.5</div>
           </div>
-          <div class="col-md-3">판매자{{ seller_name }}</div>
+          <div class="col-md-3">판매자{{ item.mallName }}</div>
         </a>
       </div>
     </div>
-    <div class="col-md-3"  style="padding-bottom: 30px;">
+    {% endfor %}
+
+    <!-- <div class="col-md-3"  style="padding-bottom: 30px;">
       <div class="container row">
         <a href="#" style="text-decoration: none; color: black;">
           <span>{{ i|mul:4|add:2 }}</span>
@@ -90,9 +91,8 @@
           <div class="col-md-3">판매자{{ seller_name }}</div>
         </a>
       </div>
-    </div>
+    </div> -->
   </div>
   <hr>
-  {% endfor %}
 </div>
 {% endblock %}
