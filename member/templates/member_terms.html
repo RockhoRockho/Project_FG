@@ -12,7 +12,8 @@
 {% block contents %}
 <div id="wrap">
     <div id="container">
-        <form action="" id="agree">
+        <form action="{%url 'member_join' %}" id="agree" method="post" onsubmit="return checkCheckBoxes();">
+            {% csrf_token %}
             <div class="agree_all">
                 <input class="form-check-input" id="checkALL" type="checkbox" onclick="selectALL(this)">
                 <label for="checkALL">약관 전체 동의</label>
@@ -47,7 +48,7 @@
                     <label for="select3">[선택] 제 3자 마케팅 활용동의서 전체동의 ></label>
                 </div>
             </div>
-            <button type="button" class="btn btn-secondary join">회원가입</button>
+            <input type="submit" class="btn btn-secondary join" value="회원가입"></input>
         </form>
     </div>
     <!-- footer 시작 -->
@@ -72,6 +73,15 @@
         });
     });
 
+    function checkCheckBoxes() {
+        if (agree.Essential1.checked == false || agree.Essential2.checked == false || agree.Essential3.checked == false) {
+            alert ('필수항목에 동의해주세요');
+            return false;
+        } else {    
+            alert ('동의 확인');
+            return true;
+        }
+}
 </script>
 {% endblock %}
 {% block nav %}
