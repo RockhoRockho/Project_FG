@@ -1,7 +1,7 @@
 from django.db import models
 
 class Member(models.Model):
-    member_id = models.AutoField(primary_key=True, verbose_name='회원ID', default=1)
+    member_id = models.AutoField(primary_key=True, verbose_name='회원ID')
     username = models.CharField(max_length=30, verbose_name='아이디')
     pw = models.CharField(max_length=30, verbose_name='비밀번호')
     name = models.CharField(max_length=30, verbose_name='이름')

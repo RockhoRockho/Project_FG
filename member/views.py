@@ -21,7 +21,7 @@ def member_login(request):
 
             if check_password(login_password, myuser.pw):
                 request.session['user'] = myuser.id
-                return redirect('/')
+                return redirect('/member/join/')
             else:
                 response_data['error'] = '비밀번호가 틀립니다.'
         return render(request, 'member_login.html', response_data)
@@ -43,16 +43,27 @@ def member_join(request):
     if request.method =='GET':
         return render(request, 'member_join.html')
     elif request.method== 'POST':
+        print(request.POST['username'])
         username = request.POST['username']
         pw = request.POST['pw']
         name = request.POST['name']
-        birth = request.POST['pw']
+        gender = 'w'
+        birth = request.POST['birth']
         email = request.POST['email']
         phoneNum = request.POST['phoneNum']
-    
-        memberT = Member(username = username, pw= pw, name = name, birth = birth, email = email, phoneNum = phoneNum)
+        
+        #username = request.POST.get('username')
+        #pw = request.POST.get('pw')
+        #name = request.POST.get('name')
+        #gender = 'w'
+        #birth = request.POST.get('birth')
+        #email = request.POST.get('email')
+        #phoneNum = request.POST.get('phoneNum')
+
+        
+        memberT = Member(username = username, pw= pw, name = name, gender = gender, birth = birth, email = email, phoneNum = phoneNum)
         memberT.save()
-        return render(request, 'member.html', {'pk': memberT.pk})
+        return render(request, 'member/login.html')
 
 def member_terms(request):
     return render(request, "member_terms.html")

@@ -12,8 +12,8 @@
 {% block contents %}
 <div id="wrap">
     <div id="container">
-        <form action="{%url 'member_join' %}" id="agree" method="post" onsubmit="return checkCheckBoxes();">
-            {% csrf_token %}
+        <form action="{%url 'member_join' %}" id="agree" method="GET" onsubmit="return checkCheckBoxes();">
+            
             <div class="agree_all">
                 <input class="form-check-input" id="checkALL" type="checkbox" onclick="selectALL(this)">
                 <label for="checkALL">약관 전체 동의</label>
