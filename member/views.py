@@ -1,11 +1,43 @@
-from django.shortcuts import render
+from urllib import response
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.contrib.auth.hashers import check_password
 from member.models import Member
 
 def member_login(request):
-    context={
+    response_data = {}
 
-    }
-    return render(request, 'member_login.html', context)
+    if request.method == "GET":
+        return render(request, 'member_login.html')
+    elif request.method == "POST":
+        login_username = request.POST.get('username', None)
+        login_password = request.POST.get('password', None)
+
+        if not (login_username and login_password):
+            response_data['error']="아이디와 비밀번호를 모두 입력하세요."
+    
+        else:
+            myuser = Member.objects.get(username = login_username)
+
+            if check_password(login_password, myuser.pw):
+                request.session['user'] = myuser.id
+                return redirect('/')
+            else:
+                response_data['error'] = '비밀번호가 틀립니다.'
+        return render(request, 'member_login.html', response_data)
+
+def home(request):
+    user_id = request.session.get('user')
+    if user_id:
+        myuser_info = Member.objects.get(pk=user_id)
+        return HttpResponse(myuser_info.username)
+
+    return HttpResponse('로그인을 해주세요.')
+
+def member_logout(request):
+    request.session.pop('user')
+    return redirect('/')
+
     
 def member_join(request):
     if request.method =='GET':

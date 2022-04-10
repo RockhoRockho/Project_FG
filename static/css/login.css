@@ -38,12 +38,15 @@
     border-radius: 0 5px 5px 0;
 }
 
-#login_input button {
-    width: 100%;
+#login_input > input:last-child {
+    width: 100% !important;
     height: 40px;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
     letter-spacing: 1px;
+    border-radius: 5px;
+    line-height: 20px;
+    margin-top: 10px;
 }
 
 
