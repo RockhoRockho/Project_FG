@@ -20,14 +20,15 @@ Login_Page
         <!-- 로그인 시작 -->
         <div class="login_box">
             <div class="login_wrap">
-                <form name="login" action="" id="login_input">
+                <form name="login" action="{%url 'member_login' %}" method="POST" id="login_input">
+                    {% csrf_token %}
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">ID</span>
-                        <input type="text" class="id_input" placeholder="ID를 입력하세요.">
+                        <input type="text" class="id_input" name="username"  placeholder="ID를 입력하세요.">
                     </div>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">PW</span>
-                        <input type="text" class="pw_input" placeholder="Password를 입력하세요.">
+                        <input type="text" class="pw_input" name="password" placeholder="Password를 입력하세요.">
                     </div>
                     <!-- <div> -->
                         <!-- <button type="button" class="btn btn-secondary">Login</button> -->

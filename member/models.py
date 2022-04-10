@@ -46,10 +46,9 @@ class Recent_search(models.Model):
 
 
     class Meta:
-        db_table = 'recent_search' 
-        verbose_name='최근검색기록' 
+        db_table = 'recent_search'
+        verbose_name='최근검색기록'
         verbose_name_plural='최근검색기록들'
-
     
     def __str__(self):
         return self.search_word

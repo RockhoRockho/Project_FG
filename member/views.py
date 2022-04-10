@@ -13,17 +13,24 @@ def member_login(request):
         login_username = request.POST.get('username', None)
         login_password = request.POST.get('password', None)
 
+        print ("안녕!!===============================================================")
         if not (login_username and login_password):
             response_data['error']="아이디와 비밀번호를 모두 입력하세요."
     
         else:
-            myuser = Member.objects.get(
-                username = login_username)
+            myuser = Member.objects.get(username = login_username)
 
-            if check_password(login_password, myuser.pw):
+            print ("===============================================================")
+            print (myuser.pw)
+            print (login_password)
+            print ("===============================================================")
+            
+            if (login_password == myuser.pw):
                 request.session['user'] = myuser.id
+                print ("성공===============================================================")
                 return redirect('/member/join/')
             else:
+                print ("실패===============================================================")
                 response_data['error'] = '비밀번호가 틀립니다.'
         return render(request, 'member_login.html', response_data)
 

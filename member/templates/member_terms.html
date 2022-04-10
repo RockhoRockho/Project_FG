@@ -12,7 +12,7 @@
 {% block contents %}
 <div id="wrap">
     <div id="container">
-        <form action="{%url 'member_join' %}" id="agree" method="GET" onsubmit="return checkCheckBoxes();">
+        <form action="{%url 'member_join' %}" id="agree" method="GET" onsubmit="checkCheckBoxes();">
             
             <div class="agree_all">
                 <input class="form-check-input" id="checkALL" type="checkbox" onclick="selectALL(this)">
