@@ -33,9 +33,9 @@ def product_search(request, product_name):
     return render(request, 'product_search.html', context=context)
 
 
-def product_gender(request, product_name):
+def product_lprice(request, product_name):
     if request.method == 'GET':
-        return render(request, 'product_gender.html')
+        return render(request, 'product_lprice.html')
 
     # elif request.method == 'POST':
     #     client_id = '1Go9cVzNHoC3yswLKLwt'

@@ -56,5 +56,6 @@ for i in itemlist:
     name = i['productName']
     price = i['mobileLowPrice']
     image = i['imageUrl']
+    product = i['nvMid']
     
-    print(rank, name, price, image)
+    print(rank, name, price, image, product)

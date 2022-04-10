@@ -3,7 +3,7 @@ from product import views
 
 urlpatterns = [
     path('search/<str:product_name>/', views.product_search, name='product_search'),
-    path('search/gender/<str:product_name>/', views.product_gender, name='product_gender'),
+    path('search/lprice/<str:product_name>/', views.product_lprice, name='product_lprice'),
     path('search/view/<str:product_name>/', views.product_view, name="product_view"),
     path('search/error/<str:product_name>/', views.product_error, name='product_error'),
     path('best/', views.product_best, name='product_best'),
