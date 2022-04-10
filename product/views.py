@@ -2,7 +2,8 @@ from django.shortcuts import render
 import os, sys, json
 import urllib.request
 from member.models import Recent_search
-# import requests
+
+import requests
 
 
 def product_search(request, product_name):
@@ -167,4 +168,6 @@ def product_detail(request, product_id):
     #    raise Http404('제품을 찾을수 없습니다')
 
     return render(request, 'product_detail.html', context) 
+
+
 

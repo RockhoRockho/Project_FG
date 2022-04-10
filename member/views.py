@@ -17,7 +17,8 @@ def member_login(request):
             response_data['error']="아이디와 비밀번호를 모두 입력하세요."
     
         else:
-            myuser = Member.objects.get(username = login_username)
+            myuser = Member.objects.get(
+                username = login_username)
 
             if check_password(login_password, myuser.pw):
                 request.session['user'] = myuser.id
@@ -42,8 +43,8 @@ def member_logout(request):
 def member_join(request):
     if request.method =='GET':
         return render(request, 'member_join.html')
-    elif request.method== 'POST':
-        print(request.POST['username'])
+    elif request.method == 'POST':
+        # print(request.POST['username'])
         username = request.POST['username']
         pw = request.POST['pw']
         name = request.POST['name']
@@ -59,10 +60,18 @@ def member_join(request):
         #birth = request.POST.get('birth')
         #email = request.POST.get('email')
         #phoneNum = request.POST.get('phoneNum')
-
         
-        memberT = Member(username = username, pw= pw, name = name, gender = gender, birth = birth, email = email, phoneNum = phoneNum)
+        memberT = Member(
+            username = username,
+            pw= pw,
+            name = name,
+            gender = gender,
+            birth = birth, 
+            email = email, 
+            phoneNum = phoneNum)
+
         memberT.save()
+        
         return render(request, 'member/login.html')
 
 def member_terms(request):
