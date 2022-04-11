@@ -57,7 +57,7 @@ def product_search(request, product_name):
         context = {
             'page_obj' : page_obj
         }
- 
+
         return render(request, 'product_search.html', context)
 
 
