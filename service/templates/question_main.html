@@ -33,9 +33,9 @@
         </div>
         <div>
             <div style="margin-top: 20px; width: 100%; margin-left: 0; box-shadow: 2px 2px 5px gray; border-radius: 5px; background-color: #dcdcdc;" class="row">
-                <div class="col-md-5"><input type="date" id="start_date" style="border: none; color: rgb(151, 147, 147); font-weight: bold; height: 20px; margin-top: 15px; margin-bottom: 15px; float: left; background-color: #dcdcdc;" value="2012-12-12"></div>
-                <div class="col-md-2"><h2 style="text-align: center; color: rgb(151, 147, 147); font-weight: bold;">~</h2></div>
-                <div class="col-md-5"><input type="date" style="border: none; height: 20px; color: rgb(151, 147, 147); font-weight: bold; margin-top: 15px; margin-bottom: 15px; float: right; background-color: #dcdcdc;" id="end_date;" value="2012-12-13"></div>
+                <div class="col-md-5"><input type="date" id="start_date" style="border: none; color: rgb(255, 255, 255); font-weight: bold; height: 20px; margin-top: 15px; margin-bottom: 15px; float: left; background-color: #dcdcdc;" value="2012-12-12"></div>
+                <div class="col-md-2"><h2 style="text-align: center; color: rgb(255, 255, 255); font-weight: bold;">~</h2></div>
+                <div class="col-md-5"><input type="date" style="border: none; height: 20px; color: rgb(255, 255, 255); font-weight: bold; margin-top: 15px; margin-bottom: 15px; float: right; background-color: #dcdcdc;" id="end_date;" value="2012-12-13"></div>
             </div>
         </div>
         {% for i in range %}
@@ -57,7 +57,7 @@
         </div>
         <hr>
         {% endfor %}
-        <button class="btn btn-primary">작성하기</button>
+        <button class="btn btn-primary" onclick="location.href='{% url 'question_write' %}'">작성하기</button>
     </div>
 </div>
 

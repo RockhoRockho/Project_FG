@@ -34,7 +34,7 @@
             <div class="sub_summary">
                 <table>
                     <tr>
-                        <td rowspan="2" class="warning col-1"><img src="/static/wonjun/img/warning.png" alt=""></td>
+                        <td rowspan="2" class="warning col-1"><img src="/static/wonjun/img/warning.png" style="width: 35px; height: 35px;"></td>
                         <td class="col-11">위의 개인정보 수집 이용에 대한 동의를 거부할 권리가 있습니다.</td>
                     </tr>
                     <tr>
@@ -45,8 +45,8 @@
         </div>
         <div class="btn">
             <div class="btbt">
-                <button type="button" class="btn btn-primary" style="background-color: #4f008a; border: 1px solid #c5b4e3;">마이페이지</button>
-                <button type="button" class="btn btn-warning" style="background-color: #4b0cf7; border: 1px solid #c5b4e3;">고객센터</button>
+                <button type="button" class="btn btn-primary" style="background-color: #4f008a; border: 1px solid #c5b4e3;" onclick="location.href='{% url 'order_list' %}'">마이페이지</button>
+                <button type="button" class="btn btn-warning" style="background-color: #4b0cf7; border: 1px solid #c5b4e3;" onclick="location.href='{% url 'question_main' %}'">고객센터</button>
             </div>
         </div>
     </div>
