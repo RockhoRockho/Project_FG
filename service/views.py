@@ -11,6 +11,8 @@ def question_write(request):
     if request.method == "GET":
         return render(request, 'question_write.html')
     elif request.method == "POST":
+        
+        userID = request.session.get('user')
         title = request.POST['title']
         contents = request.POST['content']
         file = request.POST.get('uploadedFile', None)
@@ -18,6 +20,7 @@ def question_write(request):
         p_num = request.POST.get('p_num', None)
     
         PN = Service(
+            member = userID,
             title = title,
             content = contents,
             file = file,
