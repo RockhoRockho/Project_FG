@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 def order_list(request):
-    if request.session['user']:
+    if request.session.get('user') :
         context = {
             'range' : range(3),
         }
