@@ -9,70 +9,73 @@ import requests
 
 
 def product_search(request, product_name):
-    
-    client_id = '1Go9cVzNHoC3yswLKLwt'
-    client_secret = "ozy_PNTen4"
-    url = "https://openapi.naver.com/v1/search/shop"
-    display = "&display=100"
-    start = "&start="
-    start_num = str(1)
-    sort = "&sort=sim"    
-    query = "?query=" + urllib.parse.quote('{}'.format(product_name))
-    url_query = url + query + display + start + start_num + sort
-    
-    #Open API 검색 요청 개체 설정
-    request1 = urllib.request.Request(url_query)
-    request1.add_header("X-Naver-Client-Id",client_id)
-    request1.add_header("X-Naver-Client-Secret",client_secret)
+    # if request.method == "GET":
+        client_id = '1Go9cVzNHoC3yswLKLwt'
+        client_secret = "ozy_PNTen4"
+        url = "https://openapi.naver.com/v1/search/shop"
+        display = "&display=100"
+        start = "&start="
+        start_num = str(1)
+        sort = "&sort=sim"    
+        query = "?query=" + urllib.parse.quote('{}'.format(product_name))
+        url_query = url + query + display + start + start_num + sort
+        
+        #Open API 검색 요청 개체 설정
+        request1 = urllib.request.Request(url_query)
+        request1.add_header("X-Naver-Client-Id",client_id)
+        request1.add_header("X-Naver-Client-Secret",client_secret)
 
-    #검색 요청 및 처리
-    response = urllib.request.urlopen(request1)
-    rescode = response.getcode()
-    if(rescode == 200):
-        res = response.read().decode('utf-8')
+        #검색 요청 및 처리
+        response = urllib.request.urlopen(request1)
+        rescode = response.getcode()
+        if(rescode == 200):
+            res = response.read().decode('utf-8')
 
-        items = json.loads(res)
+            items = json.loads(res)
 
-        context = {
-            'items' : items['items'],
-        }
+            context = {
+                'items' : items['items'],
+                'product_name' : product_name,
+            }
 
-        for data in items['items']:
-            product = int(data['productId'])
-            name = data['title']
-            price = data['lprice']
-            category = data['category1']
-            image = data['image']
-            seller = data['mallName']
-            Product(product = product, name = name, price = price, category = category, image = image, seller=seller).save()
+            for data in items['items']:
+                product = int(data['productId'])
+                name = data['title']
+                price = data['lprice']
+                category = data['category1']
+                image = data['image']
+                seller = data['mallName']
+                Product(product = product, name = name, price = price, category = category, image = image, seller=seller).save()
 
 
+        # all_count = Product.objects.all().count()
+        # write_pages = int(request.session.get('write_pages', 10))
+        # per_page = int(request.session.get('per_page', 5)) # 세션에 세팅값으로 활용 (없으면 5)
+        # page = int(request.GET.get('page', 1))
 
+        # paginator = Paginator(all_count, per_page)  # 한페이지당 per_page 씩 보여주는 Paginator 생성
+        # page_obj = paginator.get_page(page)  # ★Page 는 Paginator 에 대한 정보도 담고 있다
 
-    # all_count = Product.objects.all().count()
-    # write_pages = int(request.session.get('write_pages', 10))
-    # per_page = int(request.session.get('per_page', 5)) # 세션에 세팅값으로 활용 (없으면 5)
-    # page = int(request.GET.get('page', 1))
+        # start_page = ((int)((page_obj.number - 1) / write_pages) * write_pages) + 1
+        # end_page = start_page + write_pages - 1
 
-    # paginator = Paginator(all_count, per_page)  # 한페이지당 per_page 씩 보여주는 Paginator 생성
-    # page_obj = paginator.get_page(page)  # ★Page 는 Paginator 에 대한 정보도 담고 있다
+        # if end_page >= paginator.num_pages:
+        #     end_page = paginator.num_pages
+        
+        # context = {
+        #     'count' : all_count,
+        #     'write_pages' : write_pages,
+        #     'start_page' : start_page,
+        #     'end_page' : end_page,
+        #     'page_range' : range(start_page, end_page + 1)
+        # }    
 
-    # start_page = ((int)((page_obj.number - 1) / write_pages) * write_pages) + 1
-    # end_page = start_page + write_pages - 1
+        return render(request, 'product_search.html', context)
 
-    # if end_page >= paginator.num_pages:
-    #     end_page = paginator.num_pages
-    
-    # context = {
-    #     'count' : all_count,
-    #     'write_pages' : write_pages,
-    #     'start_page' : start_page,
-    #     'end_page' : end_page,
-    #     'page_range' : range(start_page, end_page + 1)
-    # }    
+    # elif request.method == 'POST':
+    #     product = request.POST['productId']
 
-    return render(request, 'product_search.html', context)
-
+    #     return render(request, 'detail.html', {"product": product})
 
 def product_lprice(request, product_name):
     if request.method == 'GET':
@@ -231,16 +234,13 @@ def product_category(request, category):
 
 
 def product_detail(request, product_id):
+    
+    detail = Product.objects.filter(product=product_id)
+    print(detail)
     context = {
-        'range1' : range(1, 26),
-        'range2' : range(5),
-        'range3' : range(3),
+        'detail' : detail,
+        'product_id' : product_id
     }
-    #try:
-    #    ProductT = Product.objects.get(pk=pk) 
-    #    ProductT.save() 
-    #except Product.DoesNotExist:
-    #    raise Http404('제품을 찾을수 없습니다')
 
     return render(request, 'product_detail.html', context) 
 

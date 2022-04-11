@@ -39,15 +39,15 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-
+{% for i in detail %}
 <div class="col-md-6">
-    <img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/22/3/7/9/5/1/1/qEmIN/1431379511_B.jpg"
+    <img src="i.image"
     class="img-fluid" alt="">
 </div>
 <div class="p-4 col-md-6" id="a">
-    <h4>{# 상품이름 #} 27인치모니터 32인치 4K UHD LED 144hz 165hz 컴퓨터 게이밍모니터</h4>
+    <h4>{{i.name}}</h4>
     <br>
-    <p>{# 상품가격 #} 할인모음가169,000원</p>
+    <p>{{i.price}}</p>
     <button type="button" class="btn btn-danger" style="float:right;">
         <i class="bi bi-box2-heart" ></i>
     </button>
@@ -58,7 +58,7 @@
             배송비
         </option>
         <option value="free">
-            {# 배송비 #} 무료
+            {{i.delivery}}
         </option>
         
         <option value="onarrival">
