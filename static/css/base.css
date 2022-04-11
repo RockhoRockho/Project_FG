@@ -44,6 +44,12 @@ header {
     color: var(--color-white);
 }
 
+.sch-ico-logo {
+    display: inline-block;
+    position: relative;
+    margin: 8px;
+}
+
 .sch-text-side {
     display: inline-block;
     position: relative;
