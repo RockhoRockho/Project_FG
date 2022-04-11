@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from service.models import Service
 
 def question_main(request):
     context = {
@@ -7,7 +8,25 @@ def question_main(request):
     return render(request, "question_main.html", context)
 
 def question_write(request):
-    return render(request, "question_write.html")
+    if request.method == "GET":
+        return render(request, 'question_write.html')
+    elif request.method == "POST":
+        title = request.POST['title']
+        contents = request.POST['content']
+        file = request.POST.get('uploadedFile', None)
+        email = request.POST['email']
+        p_num = request.POST.get('p_num', None)
+    
+        PN = Service(
+            title = title,
+            content = contents,
+            file = file,
+            phone = p_num,
+            email = email
+        )
+        PN.save()
+        # PN = Document.objects.all().order_by("-pk")
+        return render(request, 'question_write.html')
 
 def questionOK(request):
     return render(request, "questionOK.html")
