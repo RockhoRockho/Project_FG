@@ -106,7 +106,7 @@
   <div class="container row justify-content-between">
       {% for item in items %}
       <div class=" col-md-3">
-        <a href="{% url 'product_detail' item.product %}" style="text-decoration: none;">
+        <a href="{% url 'product_detail' item.productId %}" style="text-decoration: none;">
           <div class="thumbnail">
             <img class="col-md-12" src="{{ item.image }}" alt="...">
             <div class="caption">

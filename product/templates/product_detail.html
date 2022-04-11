@@ -39,15 +39,15 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-{% for i in detail %}
+{% for d in detail %}
 <div class="col-md-6">
-    <img src="i.image"
+    <img src="{{d.image}}"
     class="img-fluid" alt="">
 </div>
 <div class="p-4 col-md-6" id="a">
-    <h4>{{i.name}}</h4>
+    <h4>{{d.name}}</h4>
     <br>
-    <p>{{i.price}}</p>
+    <p>{{d.price}}</p>
     <button type="button" class="btn btn-danger" style="float:right;">
         <i class="bi bi-box2-heart" ></i>
     </button>
@@ -58,13 +58,14 @@
             배송비
         </option>
         <option value="free">
-            {{i.delivery}}
+            {{d.delivery}}
         </option>
         
         <option value="onarrival">
             {# 배송비 #} 착불
         </option>
     </select>
+
     <br><br>
     <!-- // 수량 선택 필드 -->
     <select class="form-select" name="quantity" id="quantity">
@@ -84,6 +85,7 @@
         <button type="button" class="btn btn-warning btn-md" id="present">선물하기</button>
     </div>
 </div>
+{% endfor %}
 
 <div class="container p-4">
     <h4>상품리뷰/평점</h4>
@@ -104,11 +106,11 @@
     {% endfor %}
 </div>
 
-    
+
     
 <script>
     var nav_bar = document.getElementById("nav-category");
     nav_bar.classList.remove("d-none");
     
 </script>
-{% endblock %}
+{% endblock %}    
