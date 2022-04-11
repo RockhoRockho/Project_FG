@@ -128,13 +128,6 @@ def product_best(request):
     itemlist = json.loads(response.text)
 
     items = itemlist['pageProps']['dehydratedState']['queries'][2]['state']['data']['products']
-    
-
-    # for i in itemlist:
-    #     rank = i['rank']
-    #     name = i['productName']
-    #     price = i['mobileLowPrice']
-    #     image = i['imageUrl']
 
     context = {
         'items' : items

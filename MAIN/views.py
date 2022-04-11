@@ -13,7 +13,4 @@ def main(request):
 
         return render(request, 'search.html', {"product_name": product_name})
 
-# def sidenav(request):
-#     if request.method == 'POST':
-
         

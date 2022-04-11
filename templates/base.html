@@ -44,7 +44,7 @@
                 </div>
                 <div class="d-flex flex-row-reverse">
                     <div class="sch-service">
-                        <span class="sch-text-side"> <a href="{% url 'member_login' %}" style="text-decoration: none; color: white;">로그인</a></span>
+                        <span class="sch-text-side"> <a id="logState1" href="{% url 'member_login' %}" style="text-decoration: none; color: white;">로그인</a></span>
                         <span class="sch-text-side"> <a href="{% url 'order_list' %}" style="text-decoration: none; color: white;">마이페이지</a></span>
                         <span class="sch-text-side"> <a href="{% url 'order_cart' %}" style="text-decoration: none; color: white;">장바구니</a></span>
                     </div>
@@ -166,13 +166,24 @@
     <div class="container col-md-8 p-4">
         <div class="row d-flex justify-content-center ">
             <div class="col-auto" id="fbuttons">
-                <button type="submit" class="btn mb-4">
-                    로그아웃
-                </button>&emsp;
-                <button type="submit" class="btn mb-4" id="btn-back-to-top">
+                {% if user %}
+                <form class="btn mb-4" action="{% url 'member_logout' %}">
+                    <button type="submit">
+                        로그아웃
+                    </button>&emsp;
+                </form>
+                {% endif %}
+                {% if not user %}
+                <form class="btn mb-4" action="{% url 'member_logout' %}">
+                    <button type="submit">
+                        로그인
+                    </button>&emsp;
+                </form>
+                {% endif %}
+                <button type="submit" class="btn mb-4" id="top">
                     위로
                 </button>&emsp;
-                <button type="submit" class="btn mb-4">
+                <button type="submit" class="btn mb-4" id="home">
                     홈으로
                 </button>
             </div>
@@ -231,15 +242,17 @@
     // }
     // navigo()
 
+    let upButton = document.getElementById("top");
 
-    let mybutton = document.getElementById("btn-back-to-top");
+    upButton.addEventListener("click", backToTop);
 
-    mybutton.addEventListener("click", backToTop);
-
-    function backToTop(x) {
-        console.log(x)
+    function backToTop() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
+    }
+
+    function home() {
+        location.href= "/";
     }
 
     function opennav() {

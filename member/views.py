@@ -1,7 +1,5 @@
-from urllib import response
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.contrib.auth.hashers import check_password
 from member.models import Member
 
 def member_login(request):
@@ -26,13 +24,19 @@ def member_login(request):
             print ("===============================================================")
             
             if (login_password == myuser.pw):
-                request.session['user'] = myuser.id
+                request.session['user'] = myuser.member_id
                 print ("성공===============================================================")
-                return redirect('/member/join/')
+                print(request.session)
+                return redirect('/')
             else:
                 print ("실패===============================================================")
                 response_data['error'] = '비밀번호가 틀립니다.'
-        return render(request, 'member_login.html', response_data)
+
+        context = {
+            'user': request.session.get('user'),
+        }
+        
+        return render(request, 'member_login.html', (response_data, context))
 
 def home(request):
     user_id = request.session.get('user')
@@ -43,10 +47,12 @@ def home(request):
     return HttpResponse('로그인을 해주세요.')
 
 def member_logout(request):
-    request.session.pop('user')
-    return redirect('/')
+    print(request.session.get('user'))
+    print(request.session)
+    if request.session.get('user'):
+        del(request.session['user'])
+        return render(request, 'main.html')
 
-    
 def member_join(request):
     if request.method =='GET':
         return render(request, 'member_join.html')

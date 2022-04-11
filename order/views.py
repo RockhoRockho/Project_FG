@@ -1,12 +1,14 @@
-from django.shortcuts import render
-from multiprocessing import context
+from django.shortcuts import render, redirect
 
 def order_list(request):
-    context = {
-        'range' : range(3),
-    }
+    if request.session['user']:
+        context = {
+            'range' : range(3),
+        }
 
-    return render(request, 'order_list.html', context) 
+        return render(request, 'order_list.html', context) 
+    else:
+        return redirect('/member/login/')
 
 def order_detail(request):
     context = {
