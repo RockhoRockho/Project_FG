@@ -3,7 +3,7 @@ import os, sys, json
 import urllib.request
 from member.models import Recent_search
 from django.core.paginator import Paginator
-from .models import Product, Seller
+from .models import Product
 
 import requests
 
@@ -36,41 +36,42 @@ def product_search(request, product_name):
         context = {
             'items' : items['items'],
         }
-        
-        product_id = items['items']['productid']
-        name = items['items']['title']
-        price = items['items']['lprice']
-        category = items['items']['category1']
-        image = items['items']['image']
-        seller = items['items']['mallName']
 
-        
-        
+        for data in items['items']:
+            product = int(data['productId'])
+            name = data['title']
+            price = data['lprice']
+            category = data['category1']
+            image = data['image']
+            seller = data['mallName']
+            Product(product = product, name = name, price = price, category = category, image = image, seller=seller).save()
 
 
-    all_count = Product.objects.all().count()
-    write_pages = int(request.session.get('write_pages', 10))
-    per_page = int(request.session.get('per_page', 5)) # 세션에 세팅값으로 활용 (없으면 5)
-    page = int(request.GET.get('page', 1))
 
-    paginator = Paginator(all_count, per_page)  # 한페이지당 per_page 씩 보여주는 Paginator 생성
-    page_obj = paginator.get_page(page)  # ★Page 는 Paginator 에 대한 정보도 담고 있다
 
-    start_page = ((int)((page_obj.number - 1) / write_pages) * write_pages) + 1
-    end_page = start_page + write_pages - 1
+    # all_count = Product.objects.all().count()
+    # write_pages = int(request.session.get('write_pages', 10))
+    # per_page = int(request.session.get('per_page', 5)) # 세션에 세팅값으로 활용 (없으면 5)
+    # page = int(request.GET.get('page', 1))
 
-    if end_page >= paginator.num_pages:
-        end_page = paginator.num_pages
+    # paginator = Paginator(all_count, per_page)  # 한페이지당 per_page 씩 보여주는 Paginator 생성
+    # page_obj = paginator.get_page(page)  # ★Page 는 Paginator 에 대한 정보도 담고 있다
+
+    # start_page = ((int)((page_obj.number - 1) / write_pages) * write_pages) + 1
+    # end_page = start_page + write_pages - 1
+
+    # if end_page >= paginator.num_pages:
+    #     end_page = paginator.num_pages
     
-    context = {
-        'count' : all_count,
-        'write_pages' : write_pages,
-        'start_page' : start_page,
-        'end_page' : end_page,
-        'page_range' : range(start_page, end_page + 1)
-    }    
+    # context = {
+    #     'count' : all_count,
+    #     'write_pages' : write_pages,
+    #     'start_page' : start_page,
+    #     'end_page' : end_page,
+    #     'page_range' : range(start_page, end_page + 1)
+    # }    
 
-    return render(request, 'product_search.html', (context, product_id, name, price, category, seller))
+    return render(request, 'product_search.html', context)
 
 
 def product_lprice(request, product_name):
