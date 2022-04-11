@@ -11,7 +11,7 @@ class Product(models.Model):
     delivery = models.CharField(max_length=30, verbose_name='배송비', default='무료배송')
     seller = models.CharField(max_length=30, verbose_name='판매자')
 
- 
+
     class Meta:
         db_table = 'product' 
         verbose_name='상품' 
