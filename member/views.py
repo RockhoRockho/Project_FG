@@ -6,37 +6,29 @@ def member_login(request):
     response_data = {}
 
     if request.method == "GET":
-        return render(request, 'member_login.html')
+        context = {
+            'user': request.session.get('user'),
+        }
+
+        return render(request, 'member_login.html', context)
     elif request.method == "POST":
         login_username = request.POST.get('username', None)
         login_password = request.POST.get('password', None)
 
-        print ("안녕!!===============================================================")
         if not (login_username and login_password):
             response_data['error']="아이디와 비밀번호를 모두 입력하세요."
     
         else:
             myuser = Member.objects.get(username = login_username)
-
-            print ("===============================================================")
-            print (myuser.pw)
-            print (login_password)
-            print ("===============================================================")
             
             if (login_password == myuser.pw):
                 request.session['user'] = myuser.member_id
-                print ("성공===============================================================")
-                print(request.session)
+                print(request.session['user'])
                 return redirect('/')
             else:
-                print ("실패===============================================================")
                 response_data['error'] = '비밀번호가 틀립니다.'
-
-        context = {
-            'user': request.session.get('user'),
-        }
         
-        return render(request, 'member_login.html', (response_data, context))
+        return render(request, 'member_login.html', response_data)
 
 def home(request):
     user_id = request.session.get('user')
@@ -47,11 +39,14 @@ def home(request):
     return HttpResponse('로그인을 해주세요.')
 
 def member_logout(request):
-    print(request.session.get('user'))
-    print(request.session)
     if request.session.get('user'):
         del(request.session['user'])
-        return render(request, 'main.html')
+
+    context = {
+          'user': request.session.get('user'),
+    }
+
+    return render(request, 'main.html', context)
 
 def member_join(request):
     if request.method =='GET':
