@@ -36,12 +36,15 @@ def product_search(request, product_name):
         context = {
             'items' : items['items'],
         }
+        
         product_id = items['items']['productid']
         name = items['items']['title']
         price = items['items']['lprice']
         category = items['items']['category1']
         image = items['items']['image']
         seller = items['items']['mallName']
+
+        
         
 
 

@@ -9,10 +9,13 @@
 <link href="{% static 'css/agreement.css' %}" rel="stylesheet">
 {% endblock %}
 
+{% block nav %}
+{% endblock %}
+
 {% block contents %}
 <div id="wrap">
     <div id="container">
-        <form action="{%url 'member_join' %}" id="agree" method="GET" onsubmit="checkCheckBoxes();">
+        <form action="{% url 'member_join' %}" id="agree" method="GET" onsubmit="return checkCheckBoxes();">
             
             <div class="agree_all">
                 <input class="form-check-input" id="checkALL" type="checkbox" onclick="selectALL(this)">
@@ -51,11 +54,6 @@
             <input type="submit" class="btn btn-secondary join" value="회원가입"></input>
         </form>
     </div>
-    <!-- footer 시작 -->
-    <footer>
-
-    </footer>
-    <!-- footer 끝 -->
 </div>
 
 <script>
@@ -83,6 +81,4 @@
         }
 }
 </script>
-{% endblock %}
-{% block nav %}
 {% endblock %}

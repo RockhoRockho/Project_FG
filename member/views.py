@@ -9,8 +9,8 @@ def member_login(request):
         context = {
             'user': request.session.get('user'),
         }
-
         return render(request, 'member_login.html', context)
+
     elif request.method == "POST":
         login_username = request.POST.get('username', None)
         login_password = request.POST.get('password', None)
@@ -83,6 +83,8 @@ def member_join(request):
         return render(request, 'member/login.html')
 
 def member_terms(request):
+    print(request.session.get('user'))
+
     return render(request, "member_terms.html")
 
 def member_info(request):
