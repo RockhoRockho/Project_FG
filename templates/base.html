@@ -45,7 +45,7 @@
                 <div class="d-flex flex-row-reverse">
                     <div class="sch-service">
                         <span class="sch-text-side"> <a href="{% url 'member_login' %}" style="text-decoration: none; color: white;">로그인</a></span>
-                        <span class="sch-text-side"> <a href="#" style="text-decoration: none; color: white;">마이페이지</a></span>
+                        <span class="sch-text-side"> <a href="{% url 'order_list' %}" style="text-decoration: none; color: white;">마이페이지</a></span>
                         <span class="sch-text-side"> <a href="{% url 'order_cart' %}" style="text-decoration: none; color: white;">장바구니</a></span>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link link-dark">
+                                <a href="{% url 'order_list' %}" class="nav-link link-dark">
                                     <svg class="" width="0" height="0">
                                         <use xlink:href="#speedometer2" /></svg>
                                     구매/배송 조회
@@ -109,7 +109,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link link-dark">
+                                <a href="{% url 'question_main' %}" class="nav-link link-dark">
                                     <svg class="" width="0" height="0">
                                         <use xlink:href="#people-circle" /></svg>고객센터 문의
                                 </a>
@@ -191,7 +191,7 @@
             <p style="font-size: 9px;">
                 주소 : 서울특별시 강남구 테헤란로 146 현익빌딩 3층, 4층 (신한은행건물)
                 <br>Fax : 02-234-5678 / email : customerservice@fgmall.com <br>
-                <a href="#">고객센터 바로가기 ></a>
+                <a href="{% url 'question_main' %}">고객센터 바로가기 ></a>
             </p>
             <h6>전자금융거래분쟁담당</h6>
             <p style="font-size: 9px;">
