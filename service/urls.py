@@ -5,7 +5,7 @@ urlpatterns = [
     path('', views.question_main, name="question_main"),
     path('write/', views.question_write, name="question_write"),
     path('Ok/', views.questionOK, name="questionOK"),
-    path('detail/', views.question_detail, name="question_detail"),
+    path('detail/<int:id>/', views.question_detail, name="question_detail"),
     path('update/', views.question_update, name="question_update"),
     path('answer/', views.question_answer, name="question_answer"),
 ]

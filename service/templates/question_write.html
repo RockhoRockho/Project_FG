@@ -18,7 +18,7 @@
                     <h4>쇼핑몰 이용중에 생긴 불편한 점이나 문의사항을 보내주세요<br>
                     </h4>
             </div>
-            <form class="main_area" name="main_area" method="POST" action="{% url 'question_write' %}" enctype="multipart/form-data">
+            <form class="main_area" name="main_area" method="POST" action="{% url 'questionOK' %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="re">
                     <p>* 표시는 필수 입력 항목입니다.</p>

@@ -21,9 +21,9 @@
 
 <div class="col-md-10">
     <div style="width: 90%; margin: 0 auto;">
-        <h4 style="font-weight: bold; margin-top: 20px; margin-bottom: 20px;">내 상담내역</h4>
+        <h4 style="font-weight: bold; margin-top: 20px; margin-bottom: 20px;">내 상담내역 총{{ count }}</h4>
         <div style="width: 100%; height: 50px; text-align: center; color: rgb(126, 126, 118); font-size: 20px; font-weight: bold; line-height: 50px; background-color: #dcdcdc; border-radius: 5px;">
-            메일상담내역
+            메일상담내역{{ service.id }}
         </div>
         <div class="row d-flex" style="margin: auto; width: 100%; margin-top: 20px; justify-content: space-between;">
             <button class="col-md-2 btn-secondary date_btn" type="button">이번달</button>
@@ -38,16 +38,16 @@
                 <div class="col-md-5"><input type="date" style="border: none; height: 20px; color: rgb(255, 255, 255); font-weight: bold; margin-top: 15px; margin-bottom: 15px; float: right; background-color: #dcdcdc;" id="end_date;" value="2012-12-13"></div>
             </div>
         </div>
-        {% for i in range %}
+        {% for i in service %}
         <div style="height: 100px;  width: 100%; margin-top: 10px;">
             <div style="border: 1px solid black; width: 75px; height: 75px; margin: 12px; float: left;"></div>
             <div style="float: left; margin: 12px;">
                 <table>
                     <tbody>
-                        <tr><td style="border: 1px solid black; width: 80px; text-align: center; font-size: 13px;">답변상황</td></tr>
+                        <tr><td style="border: 1px solid black; width: 200px; text-align: center; font-size: 13px;">작성일 : {{ i.reg_date|date:"Y-m-d H:i:s" }}</td></tr>
                     </tbody>
                     <tbody>
-                        <tr><td>문의내용</td></tr>
+                        <tr><td style="width: 100%;"><a href="{% url 'question_detail' %}">문의내용 {{ i.title }}</a></td></tr>
                     </tbody>
                     <tbody>
                         <tr><td style="font-size: 11px; color: gray; padding-top: 5px;">선택상품</td></tr>

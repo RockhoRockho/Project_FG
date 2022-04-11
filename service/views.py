@@ -1,11 +1,19 @@
+from telnetlib import SE
 from django.shortcuts import render
 from service.models import Service
 from member.models import Member
+from django.http import Http404
 
 def question_main(request):
+
+    all_service = Service.objects.all().order_by('-id')
+    all_count = Service.objects.all().count()
+
     context = {
-        'range' : range(5),
+        'service' : all_service,
+        'count' : all_count,
     }
+    
     return render(request, "question_main.html", context)
 
 def question_write(request):
@@ -21,7 +29,7 @@ def question_write(request):
         email = request.POST['email']
         p_num = request.POST.get('p_num', None)
     
-        PN = Service(
+        context = Service(
             member = member,
             title = title,
             content = contents,
@@ -29,9 +37,10 @@ def question_write(request):
             phone = p_num,
             email = email
         )
-        PN.save()
+        context.save()
+        
         # PN = Document.objects.all().order_by("-pk")
-        return render(request, 'question_write.html')
+        return render(request, 'question_main.html')
 
 def questionOK(request):
     return render(request, "questionOK.html")
@@ -39,8 +48,15 @@ def questionOK(request):
 def question_update(request):
     return render(request, "question_update.html")
 
-def question_detail(request):
-    return render(request, "question_detail.html")
+def question_detail(request, id):
+    try:
+        service = Service.objects.get(id=id)
+        service.save()
+
+    except item.DoesNotExist:
+        raise Http404('게시글을 찾을 수 없습니다')
+
+    return render(request, "question_detail.html", {'services':service})
 
 def question_answer(request):
     return render(request, "question_answer.html")
