@@ -87,7 +87,7 @@ def member_join(request):
 
         memberT.save()
         
-        return render(request, 'member/login.html')
+        return render(request, 'main.html')
 
 def member_terms(request):
     context = {
