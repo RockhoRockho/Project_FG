@@ -2,21 +2,30 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from member.models import Member
 
+
+
 def member_login(request):
-    response_data = {}
-
+    context = {
+        'user': None,
+    }
+    
     if request.method == "GET":
-        context = {
-            'user': request.session.get('user'),
-        }
-
+        print(request.session.get('user'))
+        if request.session.get('user'):
+            context = {
+                'user': request.session.get('user'),
+            }
+        
         return render(request, 'member_login.html', context)
     elif request.method == "POST":
         login_username = request.POST.get('username', None)
         login_password = request.POST.get('password', None)
 
         if not (login_username and login_password):
-            response_data['error']="아이디와 비밀번호를 모두 입력하세요."
+            context = {
+                'user': request.session.get('user'),
+                'error': "아이디와 비밀번호를 모두 입력하세요."
+            }
     
         else:
             myuser = Member.objects.get(username = login_username)
@@ -26,9 +35,12 @@ def member_login(request):
                 print(request.session['user'])
                 return redirect('/')
             else:
-                response_data['error'] = '비밀번호가 틀립니다.'
+                context = {
+                    'user': request.session.get('user'),
+                    'error': '비밀번호가 틀립니다.'
+                }
         
-        return render(request, 'member_login.html', response_data)
+        return render(request, 'member_login.html', context)
 
 def home(request):
     user_id = request.session.get('user')
@@ -50,9 +62,12 @@ def member_logout(request):
 
 def member_join(request):
     if request.method =='GET':
-        return render(request, 'member_join.html')
+        context = {
+            'user': request.session.get('user'),
+        }
+        return render(request, 'member_join.html', context)
+
     elif request.method == 'POST':
-        # print(request.POST['username'])
         username = request.POST['username']
         pw = request.POST['pw']
         name = request.POST['name']
@@ -60,15 +75,7 @@ def member_join(request):
         birth = request.POST['birth']
         email = request.POST['email']
         phoneNum = request.POST['phoneNum']
-        
-        #username = request.POST.get('username')
-        #pw = request.POST.get('pw')
-        #name = request.POST.get('name')
-        #gender = 'w'
-        #birth = request.POST.get('birth')
-        #email = request.POST.get('email')
-        #phoneNum = request.POST.get('phoneNum')
-        
+    
         memberT = Member(
             username = username,
             pw= pw,
@@ -83,10 +90,22 @@ def member_join(request):
         return render(request, 'member/login.html')
 
 def member_terms(request):
-    return render(request, "member_terms.html")
+    context = {
+        'user': request.session.get('user'),
+    }
+
+    return render(request, "member_terms.html", context)
 
 def member_info(request):
-    return render(request, "member_info.html")
+    member = Member.objects.get(member_id = request.session.get('user'))
+
+    if request.method == "GET":
+        context = {
+            'user': member
+        }
+        return render(request, "member_info.html", context)
+    elif  request.method == "POST":
+        return render(request, "member_info.html")
 
 def member_check(request):
     return render(request, "member_check.html")

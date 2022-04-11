@@ -24,17 +24,18 @@ Login_Page
                     {% csrf_token %}
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">ID</span>
-                        <input type="text" class="id_input" name="username"  placeholder="ID를 입력하세요.">
+                        <input type="text" class="id_input" name="username" placeholder="ID를 입력하세요.">
                     </div>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">PW</span>
                         <input type="text" class="pw_input" name="password" placeholder="Password를 입력하세요.">
                     </div>
-                    <!-- <div> -->
-                        <!-- <button type="button" class="btn btn-secondary">Login</button> -->
-                    <!-- <span style="color:red;"><strong>{{ error }}</strong> </span> -->
-                    <input type="submit" class="btn btn-primary" value="Login">
-                    <!-- </div> -->
+                    <div>
+                        <input type="submit" class="btn btn-primary w-100" value="Login">
+                    </div>
+                    <div>
+                        <span style="color:red;"><strong>{{ error }}</strong> </span>
+                    </div>
                 </form>
                 <div class="btn_sub">
                     <div class="login_auto">
@@ -82,7 +83,8 @@ Login_Page
                             <div class="answer" id="ans-1">
                                 <div><input type="text" class="ininput" placeholder="이름을 입력하세요"></div>
                                 <div><input type="text" class="ininput" placeholder="휴대폰 번호를 입력하세요"></div>
-                                <button type="button" class="btn btn-secondary btnn" style="background-color: rgb(119, 118, 177)">인증번호 전송하기</button>
+                                <button type="button" class="btn btn-secondary btnn"
+                                    style="background-color: rgb(119, 118, 177)">인증번호 전송하기</button>
                             </div>
                         </div>
                         <div class="faq-content">
@@ -91,7 +93,8 @@ Login_Page
                             <div class="answer" id="ans-2">
                                 <div><input type="text" class="ininput" placeholder="이름을 입력하세요"></div>
                                 <div><input type="text" class="ininput" placeholder="이메일을 입력하세요"></div>
-                                <button type="button" class="btn btn-secondary btnn" style="background-color: rgb(119, 118, 177)">인증번호 전송하기</button>
+                                <button type="button" class="btn btn-secondary btnn"
+                                    style="background-color: rgb(119, 118, 177)">인증번호 전송하기</button>
                             </div>
                         </div>
                     </div>
@@ -109,7 +112,8 @@ Login_Page
                                 <div><input type="text" class="ininput" placeholder="아이디를 입력하세요"></div>
                                 <div><input type="text" class="ininput" placeholder="이름을 입력하세요"></div>
                                 <div><input type="text" class="ininput" placeholder="휴대폰 번호를 입력하세요"></div>
-                                <button type="button" class="btn btn-secondary btnn" style="background-color: rgb(119, 118, 177)">인증번호 전송하기</button>
+                                <button type="button" class="btn btn-secondary btnn"
+                                    style="background-color: rgb(119, 118, 177)">인증번호 전송하기</button>
                             </div>
                         </div>
                         <div class="faq-content">
@@ -119,7 +123,8 @@ Login_Page
                                 <div><input type="text" class="ininput" placeholder="아이디을 입력하세요"></div>
                                 <div><input type="text" class="ininput" placeholder="이름을 입력하세요"></div>
                                 <div><input type="text" class="ininput" placeholder="이메일을 입력하세요"></div>
-                                <button type="button" class="btn btn-secondary btnn" style="background-color: rgb(119, 118, 177)">인증번호 전송하기</button>
+                                <button type="button" class="btn btn-secondary btnn"
+                                    style="background-color: rgb(119, 118, 177)">인증번호 전송하기</button>
                             </div>
                         </div>
                     </div>
@@ -127,86 +132,88 @@ Login_Page
             </div>
         </div>
 
-        <script>
-            
-            var modal1 = document.getElementById("myModal1");
-            var modal2 = document.getElementById("myModal2");
-            var btn1 = document.getElementById("myBtn1");
-            var btn2 = document.getElementById("myBtn2");
-            var span1 = document.getElementsByClassName("close1")[0];
-            var span2 = document.getElementsByClassName("close2")[0];
-
-            btn1.onclick = function () {
-                modal1.style.display = "block";
-            }
-            btn2.onclick = function () {
-                modal2.style.display = "block";
-            }
-            span1.onclick = function () {
-                modal1.style.display = "none";
-                document.getElementById('ans-1').style.display = 'none';
-                document.getElementById('que-1-toggle').textContent = '∨';
-                document.getElementById('ans-2').style.display = 'none';
-                document.getElementById('que-2-toggle').textContent = '∨';
-            }
-            span2.onclick = function () {
-                modal2.style.display = "none";
-                document.getElementById('ansq-1').style.display = 'none';
-                document.getElementById('queq-1-toggle').textContent = '∨';
-                document.getElementById('ansq-2').style.display = 'none';
-                document.getElementById('queq-2-toggle').textContent = '∨';
-            }
-            window.onclick = function (event) {
-                if (event.target == modal1) {
-                    modal1.style.display = "none";
-                    document.getElementById('ans-1').style.display = 'none';
-                    document.getElementById('que-1-toggle').textContent = '∨';
-                    document.getElementById('ans-2').style.display = 'none';
-                    document.getElementById('que-2-toggle').textContent = '∨';
-                }
-                if (event.target == modal2) {
-                    modal2.style.display = "none";
-                    document.getElementById('ansq-1').style.display = 'none';
-                    document.getElementById('queq-1-toggle').textContent = '∨';
-                    document.getElementById('ansq-2').style.display = 'none';
-                    document.getElementById('queq-2-toggle').textContent = '∨';
-                }
-            }
-            
-
-            const items = document.querySelectorAll('.question');
-            function openCloseAnswer() {
-                const answerId = this.id.replace('que', 'ans');
-
-                if (document.getElementById(answerId).style.display === 'block') {
-                    document.getElementById(answerId).style.display = 'none';
-                    document.getElementById(this.id + '-toggle').textContent = '∨';
-                } else {
-                    document.getElementById(answerId).style.display = 'block';
-                    document.getElementById(this.id + '-toggle').textContent = '∧';
-                }
-            }
-            items.forEach(item => item.addEventListener('click', openCloseAnswer));
-
-            const itemss = document.querySelectorAll('.questionq');
-            function openCloseAnswerq() {
-                const answerId = this.id.replace('queq', 'ansq');
-                if (document.getElementById(answerId).style.display === 'block') {
-                    document.getElementById(answerId).style.display = 'none';
-                    document.getElementById(this.id + '-toggle').textContent = '∨';
-                } else {
-                    document.getElementById(answerId).style.display = 'block';
-                    document.getElementById(this.id + '-toggle').textContent = '∧';
-                }
-            }
-            itemss.forEach(item => item.addEventListener('click', openCloseAnswerq));
-
-        </script>
-        <!-- 로그인 끝 -->
-        <!-- footer 시작 -->
-        <footer>
-
-        </footer>
-        <!-- footer 끝 -->
     </div>
-    {% endblock %}
+</div>
+<!-- footer 시작 -->
+<footer>
+
+</footer>
+<!-- footer 끝 -->
+
+<script>
+    var modal1 = document.getElementById("myModal1");
+    var modal2 = document.getElementById("myModal2");
+    var btn1 = document.getElementById("myBtn1");
+    var btn2 = document.getElementById("myBtn2");
+    var span1 = document.getElementsByClassName("close1")[0];
+    var span2 = document.getElementsByClassName("close2")[0];
+
+    btn1.onclick = function () {
+        modal1.style.display = "block";
+    }
+    btn2.onclick = function () {
+        modal2.style.display = "block";
+    }
+    span1.onclick = function () {
+        modal1.style.display = "none";
+        document.getElementById('ans-1').style.display = 'none';
+        document.getElementById('que-1-toggle').textContent = '∨';
+        document.getElementById('ans-2').style.display = 'none';
+        document.getElementById('que-2-toggle').textContent = '∨';
+    }
+    span2.onclick = function () {
+        modal2.style.display = "none";
+        document.getElementById('ansq-1').style.display = 'none';
+        document.getElementById('queq-1-toggle').textContent = '∨';
+        document.getElementById('ansq-2').style.display = 'none';
+        document.getElementById('queq-2-toggle').textContent = '∨';
+    }
+    window.onclick = function (event) {
+        if (event.target == modal1) {
+            modal1.style.display = "none";
+            document.getElementById('ans-1').style.display = 'none';
+            document.getElementById('que-1-toggle').textContent = '∨';
+            document.getElementById('ans-2').style.display = 'none';
+            document.getElementById('que-2-toggle').textContent = '∨';
+        }
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+            document.getElementById('ansq-1').style.display = 'none';
+            document.getElementById('queq-1-toggle').textContent = '∨';
+            document.getElementById('ansq-2').style.display = 'none';
+            document.getElementById('queq-2-toggle').textContent = '∨';
+        }
+    }
+
+
+    const items = document.querySelectorAll('.question');
+
+    function openCloseAnswer() {
+        const answerId = this.id.replace('que', 'ans');
+
+        if (document.getElementById(answerId).style.display === 'block') {
+            document.getElementById(answerId).style.display = 'none';
+            document.getElementById(this.id + '-toggle').textContent = '∨';
+        } else {
+            document.getElementById(answerId).style.display = 'block';
+            document.getElementById(this.id + '-toggle').textContent = '∧';
+        }
+    }
+    items.forEach(item => item.addEventListener('click', openCloseAnswer));
+
+    const itemss = document.querySelectorAll('.questionq');
+
+    function openCloseAnswerq() {
+        const answerId = this.id.replace('queq', 'ansq');
+        if (document.getElementById(answerId).style.display === 'block') {
+            document.getElementById(answerId).style.display = 'none';
+            document.getElementById(this.id + '-toggle').textContent = '∨';
+        } else {
+            document.getElementById(answerId).style.display = 'block';
+            document.getElementById(this.id + '-toggle').textContent = '∧';
+        }
+    }
+    itemss.forEach(item => item.addEventListener('click', openCloseAnswerq));
+</script>
+
+{% endblock %}
