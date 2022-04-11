@@ -25,22 +25,21 @@ def question_write(request):
 
         title = request.POST['title']
         contents = request.POST['content']
-        file = request.POST.get('uploadedFile', None)
+        file = request.FILES['uploadedFile']
         email = request.POST['email']
         p_num = request.POST.get('p_num', None)
     
-        context = Service(
+        PN = Service(
             member = member,
             title = title,
             content = contents,
-            file = file,
+            file = file.name,
             phone = p_num,
             email = email
         )
-        context.save()
-        
+        PN.save()
         # PN = Document.objects.all().order_by("-pk")
-        return render(request, 'question_main.html')
+        return render(request, 'questionOKk.html', {'id':PN.id})
 
 def questionOK(request):
     return render(request, "questionOK.html")
@@ -50,15 +49,24 @@ def question_update(request):
 
 def question_detail(request, id):
     try:
-        service = Service.objects.get(id=id)
-        service.save()
+        ser = Service.objects.get(id=id)
 
-    except item.DoesNotExist:
+        ser.save()
+
+    except ser.DoesNotExist:
         raise Http404('게시글을 찾을 수 없습니다')
 
-    return render(request, "question_detail.html", {'services':service})
+    return render(request, 'question_detail.html', {'service': ser})
+
+def question_delete(request):
+    if request.method == "POST":
+        id = request.POST['id']
+        print('------------------------------------------')
+        ser = Service.objects.get(id=id)
+        ser.delete()
+
+        return render(request, 'deleteOK.html')
+
 
 def question_answer(request):
     return render(request, "question_answer.html")
-
-
