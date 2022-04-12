@@ -20,7 +20,7 @@ def pick(request):
 
 def pick_update(request, pk):
     if request.method == 'GET':
-        pickT = Pick.objects.get(pk=1)
+        pickT = Pick.objects.get(pk=pk)
         context = {
             'pick':pickT,
         }

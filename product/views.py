@@ -1,9 +1,11 @@
 from django.shortcuts import render
 import os, sys, json
 import urllib.request
-from member.models import Recent_search
+
 from .models import Product
 from order.models import Cart
+from pick.models import Pick
+from present.models import Present
 
 import requests
 
@@ -284,4 +286,39 @@ def before_cart(request, product_id):
         Cart(product_id = product_id, member_id=member_id).save()
         
 
-    return render(request, 'before_cart.html')
+    return render(request, 'before_cart.html', {'product_id' : product_id})
+
+def before_pick(request, product_id):
+
+    member_id = request.session.get('user')
+    if not Pick.objects.filter(product_id=product_id).exists():
+        Pick(product_id = product_id, member_id=member_id).save()
+        
+    context = {
+        'product_id': product_id
+    }        
+    return render(request, 'before_pick.html', context)
+
+def before_pay(request, product_id):
+
+    member_id = request.session.get('user')
+    quantity = request.POST['quantity']
+    if not Present.objects.filter(product_id=product_id).exists():
+        Present(product_id = product_id, member_id=member_id, quantity=quantity).save()
+        
+    context = {
+        'product_id': product_id
+    }        
+    return render(request, 'before_pay.html', context)
+
+def before_present(request, product_id):
+
+    member_id = request.session.get('user')
+    quantity = request.POST['quantity']
+    if not Present.objects.filter(product_id=product_id).exists():
+        Present(product_id = product_id, member_id=member_id, quantity=quantity).save()
+        
+    context = {
+        'product_id': product_id
+    }        
+    return render(request, 'before_present.html', context)

@@ -42,25 +42,25 @@
                         </p>
                     </div>
                     <!-- 선물 메세지폼 -->
-                    <div class="gift_form">
+                    <form class="gift_form" name="msgFrm" action="{% url 'present_send' product_id %}" method="POST">
                         <h3 class="subject">선물 받는 사람</h3>
                         <dl>
                             <dt>"선물 받는 분에게 배송지 입력을 위한 '<strong>문자메세지가 발송</strong>'됩니다.</dt>
-                            <dd><input type="text" placeholder="받는 사람">
+                            <dd><input type="text" placeholder="받는 사람" name="receiver" required>
                             <dt></dt>
                             </dd>
-                            <dd><input type="tel" placeholder="- 없이 휴대폰번호 입력">
+                            <dd><input type="tel" placeholder="- 없이 휴대폰번호 입력" name="phoneNm" required>
                             <dt></dt>
                             </dd>
                             <dd>
                                 <div class="box_message">
                                     <textarea class="gift_textarea" rows="4" cols="50"
-                                        placeholder="메세지 내용 입력"></textarea>
+                                        placeholder="메세지 내용 입력" name="context"></textarea>
                                 </div>
                             <dt></dt>
                             </dd>
                         </dl>
-                    </div>
+                    </form>
                 </div>
                 <!-- 선물하기 테마고르기 -->
                 <div class="select_theme col-md-12 mt-5">
@@ -474,34 +474,29 @@
                 <span>주문상품</span>
                 <span style="font-size: 13px; color: gray;">상품수량 및 옵션변경 상품상세 또는 장바구니에서 가능합니다</span>
             </div>
-            <div class="col-md-12">판매자이름</div>
-            {% for i in items %}
+            <div class="col-md-12">{{ product.seller }}</div>
             <div class="col-md-12 d-flex flex-row">
                 <div class="col-md-2">
-                    <img src="https://cdn.011st.com/11dims/thumbnail/120x120/11src/pd/21/4/1/8/5/1/2/OhMDg/2014418512_L300.jpg"
+                    <img src="{{ product.image }}"
                         alt="">
                 </div>
                 <div class="col-md-5">
-                    <div>상품이름</div>
-                    <div>상품옵션</div>
+                    <div>{{ product.name }}</div>
                 </div>
-                <div class="col-md-1">수량</div>
-                <div class="col-md-2">가격</div>
-                <div class="col-md-2">배송비</div>
+                <div class="col-md-1">{{ present.quantity }}</div>
+                <div class="col-md-2">{{ product.price }}</div>
+                <div class="col-md-2">{{ product.delivery }}</div>
             </div>
-            {% endfor %}
         </div>
-        <div class="col-md-12">
-            <div class="col-md-12 present_subtitle">결제방법</div>
-            <div></div>
+        <div class="col-md-12 present_subtitle">결제정보</div>
+        <div class="col-md-12 pad-10">
+            <input type="radio" class="form-check-label" name="purchase_type" checked> 계좌이체
+            <input type="radio" class="form-check-label" name="purchase_type"> 카드
+            <input type="radio" class="form-check-label" name="purchase_type"> 무통장입금
         </div>
-        <div class="col-md-12">
-            <div class="col-md-12 present_subtitle">결제방식</div>
-            <div></div>
-        </div>
-        <div class="col-md-12">
-            <div class="col-md-12 present_subtitle">할부방식</div>
-            <div></div>
+        <div class="d-flex justify-content-center p-3">
+            <button class="btn btn-primary col-md-1 mx-3" style="width: 100px;">주문하기</button>
+            <button class="btn btn-danger col-md-1 mx-3" style="width: 100px;">취소하기</button>
         </div>
     </div>
     <div class="order_side col-md-3 col-sm-3">
@@ -513,14 +508,14 @@
                 <div class="order_total_price">
                     <h4 class="txt_total">합계</h4>
                     <span class="price">
-                        <em class="number" id="CalcAmountInDsc"></em>원
+                        <em class="number" id="CalcAmountInDsc">{{ sum }}</em>원
                     </span>
                 </div>
             </div>
             <p class="order_text_agree">하기 필수약관을 확인하였으며 결제에 동의합니다.</p>
             <div class="order_button">
-                <button type="button" id="btnAccount" class="btn_purple" onclick="">
-                    <em class="number" id="FinalOrderPrice"></em>원 결제하기
+                <button type="button" id="btnAccount" class="btn_purple" onclick="chkOrder()">
+                    <em class="number" id="FinalOrderPrice">{{ sum }}</em>원 결제하기
                 </button>
             </div>
         </div>
@@ -528,6 +523,13 @@
 </div>
 
 <script src="{% static 'js/present.js' %}">
+    function chkOrder() {
+        var r = confirm('결제하시겠습니까?')
+        if (r) {
+            location.href = "{% url 'present_success' product_id %}"
+        }
+    }
+
     var nav_bar = document.getElementById("nav-category");
     nav_bar.classList.remove("d-none");
 </script>

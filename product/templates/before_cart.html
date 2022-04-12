@@ -1,3 +1,8 @@
 <script>
-    location.href = "{% url 'order_cart' %}"
+    var r = confirm('장바구니에 담겼습니다 \n장바구니 페이지로 이동하시겠습니까?')
+    if (r) {
+        location.href = "{% url 'order_cart' %}"
+    } else {
+        location.href = "{% url 'product_detail' product_id %}"
+    }
 </script>

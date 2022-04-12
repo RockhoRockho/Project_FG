@@ -35,6 +35,8 @@
             font-size: 0.7rem;
         }
     }
+
+
 </style>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
@@ -48,41 +50,37 @@
     <h4>{{d.name|striptags}}</h4>
     <br>
     <p>{{d.price}}</p>
-    <button type="button" class="btn btn-danger" style="float:right;">
+
+    <a onclick="chkPick()" class="btn btn-danger" style="float:right;">
         <i class="bi bi-box2-heart" ></i>
-    </button>
+    </a>
     <br><br><br><br>
     <!-- // 배송비 선택 필드 -->
-    <select class="form-select" name="delivery" id="delivery">
-        <option selected>
-            배송비
-        </option>
+    <select name="delivery" id="delivery">
         <option value="free">
             {{d.delivery}}
-        </option>
-        
-        <option value="onarrival">
-            {# 배송비 #} 착불
         </option>
     </select>
 
     <br><br>
     <!-- // 수량 선택 필드 -->
-    <select class="form-select" name="quantity" id="quantity">
-        <option selected>
-            수량
-        </option>
-        {% for i in range1 %}
-        <option value="{{i}}">
-            {{i}}
-        </option>
-        {% endfor %}
-    </select>
-    <br><br>
+    <form class="form-number" name="cartFrm" action="{% url 'before_cart' product_id %}" method="POST">
+        {% csrf_token %}
+        <input type="number" id="cart" name="quantity" placeholder="수량(기본값 : 1)">
+    </form>
+    <form name="payFrm" action="{% url 'before_pay' product_id %}" method="POST" style="display: none;">
+        {% csrf_token %}
+        <input type="number" id="pay" name="quantity" value="1">
+    </form>
+    <form name="presentFrm" action="{% url 'before_present' product_id %}" method="POST" style="display: none;">
+        {% csrf_token %}
+        <input type="number" id="present" name="quantity" value="1">
+    </form>
+    <br><br>    
     <div class="d-flex justify-content-center pad-10">
-        <button type="button" onclick="chkCart()" class="btn btn-secondary btn-md">장바구니</button>&emsp;&emsp;
-        <button type="button" class="btn btn-primary btn-md">바로결제</button>&emsp;&emsp;
-        <button type="button" class="btn btn-warning btn-md" id="present">선물하기</button>
+        <button type="button" onclick="goCart()" class="btn btn-secondary btn-md">장바구니</button>&emsp;&emsp;
+        <button type="button" onclick="goPay()" class="btn btn-primary btn-md">바로결제</button>&emsp;&emsp;
+        <button type="button" onclick="goPresent()" class="btn btn-warning btn-md" id="present">선물하기</button>
     </div>
 </div>
 {% endfor %}
@@ -109,12 +107,31 @@
 
     
 <script>
-    function chkCart() {
-        var r = confirm('장바구니에 담겼습니다 \n 장바구니 페이지로 이동하시겠습니까?')
+    function goCart() {
+        document.forms['cartFrm'].submit();
+    } 
+
+    function goPay() {
+        if (document.getElementById('cart').value) {
+            document.getElementById('pay').value = document.getElementById('cart').value;
+        }
+        document.forms['payFrm'].submit();
+    } 
+
+    function goPresent() {
+        if (document.getElementById('cart').value) {
+            document.getElementById('present').value = document.getElementById('cart').value;
+        }
+        document.forms['presentFrm'].submit();
+    } 
+
+    function chkPick() {
+        var r = confirm('찜을 등록하시겠습니까?')
         if (r) {
-            location.href = "{% url 'before_cart' product_id %}"
+            location.href = "{% url 'before_pick' product_id %}"
         }
     } 
+
 
     var nav_bar = document.getElementById("nav-category");
     nav_bar.classList.remove("d-none");

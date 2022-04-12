@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+선물완료
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block stylesheet %}
+{% load static %}
+<link href="{% static 'css/purchase_success.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block contents %}
+
+<div class="page col-md-12">
+    <div class="purchase_title">
+        <div class="d-flex">
+            <div class="col-xxl-8 col-md-5 col-sm-5 ft-xxl">주문결제</div>
+            <div class="col-xxl-4 col-md-7 col-sm-7 border text-center row order_procedure">
+                <span class="col-sm-4 order_procedure_left">1.장바구니</span>
+                <span class="col-sm-4 y-border">2.주문결제</span>
+                <span class="col-sm-4 bg-black text-white order_procedure_right">3.주문완료</span>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="col-md-12 d-flex success_box">
+        <div class="col-md-4 success_inner_box">
+            <div class="col-md-12 text-center">{# 선물번호 * 현재Datetime #}</div>
+            <div class="col-md-12 text-center">선물메세지가 {{ present.receiver_phone }}{# 휴대폰번호 #}(으)로 전달되었습니다.</div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 purchase_subtitle">주문상품</div>
+    <div class="col-sm-12">
+        <div class="product col-md-12 d-flex product">
+            <div class="col-md-2 outer">
+                <img class="col-md-12" src="" alt="">
+            </div>
+            <div class="col-md-6 outer">
+                <div class="inner"></div>
+            </div>
+            <div class="col-md-4 outer">
+                <div class="inner_2">%개{# 정가 #}</div>
+                <div class="inner_2">판매금액{# 판매금액 #}</div>
+            </div>
+        </div>
+    </div>
+    <div class="btn_container">
+        <button class="btn btn-primary col-md-1 mx-3" style="width: 110px;" onclick="location.href='{% url 'order_list' %}'">마이페이지</button>
+        <button class="btn btn-secondary col-md-1 mx-3" style="width: 110px;" onclick="location.href='{% url 'question_main ' %}'">고객센터</button>
+    </div>
+    <div class="col-md-12 cart_subtitle recommend_container">추천상품
+        <div class="d-flex col-md-12 recommend_product">
+            {% for i in recommend %}
+            <div class="col-md-3">
+                <img class="col-md-12 p-3"
+                    src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/dl/22/3/9/4/9/5/1/ZkDhq/2868394951_139190870_05.jpg"
+                    alt="">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

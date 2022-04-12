@@ -37,18 +37,3 @@ class Address(models.Model):
     
     def __str__(self):
         return f'{self.pk} : {self.post_num}'
-
-
-class Recent_search(models.Model):
-    search_word = models.CharField(max_length=30, unique=True, verbose_name='단어')
-    search_date = models.DateTimeField(auto_now_add=True, verbose_name='일자')
-    member = models.ForeignKey(Member, on_delete=models.CASCADE)
-
-
-    class Meta:
-        db_table = 'recent_search'
-        verbose_name='최근검색기록'
-        verbose_name_plural='최근검색기록들'
-    
-    def __str__(self):
-        return self.search_word
