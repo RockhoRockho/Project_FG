@@ -2,7 +2,7 @@ from django.urls import path
 from product import views
 
 urlpatterns = [
-    path('search/<str:product_name>/<int:page_number>/', views.product_search, name='product_search'),
+    path('search/<str:product_name>/<int:page_num>/', views.product_search, name='product_search'),
     path('search/lprice/<str:product_name>/', views.product_lprice, name='product_lprice'),
     path('search/view/<str:product_name>/', views.product_view, name="product_view"),
     path('search/error/<str:product_name>/', views.product_error, name='product_error'),
