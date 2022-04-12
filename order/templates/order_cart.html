@@ -39,19 +39,19 @@
             </div>
         </div>
         {% else %}
-        {% for i in items %}
+        {% for item in items %}
         <form class="product_form" action="#" method="POST">
             <div class="d-flex col-sm-12 product">
                 <div class="col-sm-2 outer">
                     {# 상품이미지 #}
-                    <img src="https://cdn.011st.com/11dims/resize/560x560/quality/75/11src/pd/22/2/6/4/0/0/9/vNTAr/3718264009_B.jpg"
+                    <img src="{{ i.image }}"
                         alt="">
                 </div>
                 <div class="col-sm-5 outer">
-                    <div class="inner">상품명{{ product_name }}</div>
+                    <div class="inner">{{ i.product_name }}</div>
                 </div>
                 <div class="col-sm-3 outer">
-                    <div class="inner">정가{{ product_price }}</div>
+                    <div class="inner">정가{{ i.product_price }}</div>
                     <div class="inner">판매금액{# 판매금액 #}</div>
                 </div>
                 <div class="col-sm-2 text-center p-2 outer">

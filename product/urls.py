@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.urls import path
 from product import views
 
@@ -9,4 +10,5 @@ urlpatterns = [
     path('best/', views.product_best, name='product_best'),
     path('category/<str:category>/', views.product_category, name='product_category'),
     path('detail/<int:product_id>/', views.product_detail, name='product_detail'),
+    path('before_cart/<int:product_id>/', views.before_cart, name='before_cart'),
 ]

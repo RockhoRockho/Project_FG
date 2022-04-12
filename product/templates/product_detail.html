@@ -80,7 +80,7 @@
     </select>
     <br><br>
     <div class="d-flex justify-content-center pad-10">
-        <button type="button" class="btn btn-secondary btn-md">장바구니</button>&emsp;&emsp;
+        <button type="button" onclick="chkCart()" class="btn btn-secondary btn-md">장바구니</button>&emsp;&emsp;
         <button type="button" class="btn btn-primary btn-md">바로결제</button>&emsp;&emsp;
         <button type="button" class="btn btn-warning btn-md" id="present">선물하기</button>
     </div>
@@ -109,6 +109,14 @@
 
     
 <script>
+    function chkCart() {
+        var r = confirm('장바구니에 담겼습니다 장바구니 페이지로 이동하시겠습니까?')
+        if (r) {
+            location.href = "{% url 'before_cart' product_id %}"
+        }
+    } 
+
+
     var nav_bar = document.getElementById("nav-category");
     nav_bar.classList.remove("d-none");
     

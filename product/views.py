@@ -1,9 +1,10 @@
 from django.shortcuts import render
 import os, sys, json
 import urllib.request
+
 from member.models import Recent_search
-from django.core.paginator import Paginator
 from .models import Product
+from order.models import Cart
 
 import requests
 
@@ -236,3 +237,16 @@ def product_detail(request, product_id):
     return render(request, 'product_detail.html', context) 
 
 
+def before_cart(request, product_id):
+
+    member_id = request.session.get('user')
+    
+    if Cart.objects.filter(product_id=product_id).exists():
+        cart = Cart.objects.get(product_id=product_id)
+        cart.quantity += 1
+        cart.save()
+    else:
+        Cart(product_id = product_id, member_id=member_id).save()
+        
+
+    return render(request, 'before_cart.html')

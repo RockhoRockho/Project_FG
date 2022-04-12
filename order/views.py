@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from .models import Cart
 
 def order_list(request):
     if request.session.get('user') :
@@ -23,8 +24,9 @@ def order_detail(request):
     return render(request, 'order_detail.html', context) 
 
 def order_cart(request):
+    cartNm = Cart.objects.count()
     context = {
-        'items' : range(3), # order_items_id 수
+        'items' : range(cartNm), # order_items_id 수
         'recommend': range(4),
         'zero' : range(0),
         'range' : range(25),
