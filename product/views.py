@@ -1,7 +1,6 @@
 from django.shortcuts import render
 import os, sys, json
 import urllib.request
-
 from member.models import Recent_search
 from .models import Product
 from order.models import Cart
@@ -102,11 +101,48 @@ def product_lprice(request, product_name, page_num):
 
 
 
-def product_view(request):
-    context = {
-        'range' : range(25),
-    }
-    return render(request, 'product_view.html', context)
+def product_view(request, product_name, page_num):
+    client_id = '1Go9cVzNHoC3yswLKLwt'
+    client_secret = "ozy_PNTen4"
+    url = "https://openapi.naver.com/v1/search/shop"
+    display = "&display=100"
+    start = "&start="
+    start_num = str(1 + (100 * (page_num-1)))
+    sort = "&sort=date"  
+    query = "?query=" + urllib.parse.quote('{}'.format(product_name))
+    url_query = url + query + display + start + start_num + sort
+     
+    #Open API 검색 요청 개체 설정
+    request1 = urllib.request.Request(url_query)
+    request1.add_header("X-Naver-Client-Id",client_id)
+    request1.add_header("X-Naver-Client-Secret",client_secret)
+
+    #검색 요청 및 처리
+    response = urllib.request.urlopen(request1)
+    rescode = response.getcode()
+    if(rescode == 200):
+        res = response.read().decode('utf-8')
+
+        items = json.loads(res)
+
+
+        for data in items['items']:
+            product = int(data['productId'])
+            name = data['title']
+            price = data['lprice']
+            category = data['category1']
+            image = data['image']
+            seller = data['mallName']
+            Product(product = product, name = name, price = price, category = category, image = image, seller=seller).save()
+
+
+        context = {
+            'items' : items['items'],
+            'product_name' : product_name,
+            'page_num' : page_num,           
+            'range' : range(25),
+        }
+        return render(request, 'product_view.html', context)
 
 
 def product_error(request):
@@ -228,7 +264,6 @@ def product_category(request, category):
 def product_detail(request, product_id):
     
     detail = Product.objects.filter(product=product_id)
-    print(detail)
     context = {
         'detail' : detail,
         'product_id' : product_id

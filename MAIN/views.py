@@ -112,7 +112,7 @@ def main(request):
             'items2' : items2,
         }
 
-
+ 
         return render(request, 'main.html', context)
 
     elif request.method == 'POST':
