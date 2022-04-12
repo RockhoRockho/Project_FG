@@ -242,9 +242,9 @@ def product_category(request, category):
     }
 
     params = {
-        'categoryCategoryId': 'ALL',
+        'categoryCategoryId': '{}'.format(category),
         'categoryDemo': 'A00',
-        'categoryRootCategoryId': 'ALL',
+        'categoryRootCategoryId': '{}'.format(category),
         'period': 'P1D',
     }
 
