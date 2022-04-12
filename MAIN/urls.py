@@ -27,5 +27,5 @@ urlpatterns = [
     path('review/', include("review.urls")),
     path('product/', include("product.urls")),
     path('service/', include("service.urls")),
-    
+    path('kakaopay/', include('kakaopay.urls')),
 ]

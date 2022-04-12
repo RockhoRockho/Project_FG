@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'present',
     'review',
     'service',
+    'kakaopay',
 ]
 
 MIDDLEWARE = [
