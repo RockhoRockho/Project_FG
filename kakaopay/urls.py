@@ -6,5 +6,5 @@ from kakaopay import views
 
 urlpatterns = [
     path('', views.kakaopay, name='kakaopay'),
-    path('approval', views.approval, name='approval'),
+    path('approval/', views.approval, name='approval'),
 ]
