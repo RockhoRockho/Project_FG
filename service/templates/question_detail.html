@@ -31,7 +31,7 @@
                 <div class="contents">
                     <div class="row">
                         <span class="col-md-3">상담내용 *</span>
-                        <div class="col-md-9">{{ service.content }}</div>
+                        <div class="col-md-9" style="text-align: left;">{{ service.content }}</div>
                     </div>
                 </div>
                 <hr>
@@ -63,16 +63,17 @@
                 <hr>
                 <div class="foo_btn" style="width: 100%;">
                     <div class="row">
-                        <button type="button" class="btn btn-primary btn-md active">수정</button>
+                        <button type="button" class="btn btn-primary btn-md active" onclick="location.href='{% url 'question_update' service.id %}'">수정</button>
                         <button type="button" onclick="location.href='{% url 'question_main' %}'" class="btn btn-primary btn-md active">목록</button>
                         <button type="button" onclick="chkDel()" class="btn btn-primary btn-md active">삭제</button>
 
-                        <form action="{% url 'question_delete' %}" name="delete" method="POST">
-                            {% csrf_token %}
-                            <input type="text" name="id" value="{{ service.id }}">
-                        </form>
+
                     </div>
                 </div>
+            </form>
+            <form action="{% url 'question_delete' %}" name="delete" method="POST" id="delete">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{ service.id }}">
             </form>
         </div>
         <div style="clear: both;"></div>
@@ -82,7 +83,8 @@
     function chkDel(){
         var r = confirm("삭제하시겠습니까?");
         if(r){
-            document.forms['delete'].submit();
+            // document.forms['delete'].submit();
+            document.getElementById("delete").submit();
         }
     }
 
