@@ -4,6 +4,27 @@
 검색 결과창
 {% endblock %}
 
+{%block nav%}
+  <!-- 카테고리 네비게이션  -->
+  <nav>
+    <div id="nav-category" class="d-none position-sticky pt-3">
+      <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1">
+          <span>정렬</span>
+      </h5>
+      <ul class="nav flex-column">
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'product_search' product_name page_num %}"><span>정확도순</span></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'product_lprice' product_name page_num %}"><span>최저가순</span></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'product_view' product_name page_num %}"><span>최근순</span></a>
+          </li>
+    </div>
+  </nav>
+{%endblock%}
+
 {% block contents %}
 <style>
   * {
@@ -76,6 +97,8 @@
 
   </div>
 </div>
+
+
 
 <script>
   var nav_bar = document.getElementById("nav-category");

@@ -25,7 +25,7 @@
 
 <div class="col-md-10 container">
     <div class="wrap">
-        <h4>{{pick.id}}번 찜 수정하기</h4>
+        <h4>{{pick.id}}번 찜</h4>
         <form name="pck" action="{% url 'pick_update' pick.id %}" method="POST" >
             {% csrf_token %}
             <input type="hidden" name="uid" value="#"/>   
@@ -38,7 +38,7 @@
                 <textarea class="form-control" rows="5" id="comment" placeholder="찜 코멘트를 입력하세요" name="comment">{{pick.comment}}</textarea>
             </div>
             <div style="text-align: center;">
-                <button type="submit" class="btn btn-primary btn-md">수정완료</button>&emsp;&emsp;
+                <button type="submit" class="btn btn-primary btn-md">수정하기</button>&emsp;&emsp;
                 <button type="button" class="btn btn-secondary btn-md" onclick="history.back()">이전으로</button>&emsp;&emsp;
                 <button type="button" class="btn btn-danger btn-md" onclick="jDelete()">삭제하기</button>
             </div>
