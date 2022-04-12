@@ -20,39 +20,35 @@
     }
 </style>
 
+
+
+
 <div class="col-md-10 container">
-    <div class="wrap table-responsive">
-        <h4><strong>찜</strong>한 상품</h4>
-        <table class="table table-bordered" style="word-break: keep-all;">
-            <thead>
-                <tr>
-                    <th>상품</th>
-                    <th>가격</th>
-                    <th>배송비</th>
-                    <th>평점</th>
-                    <th>My Comment</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for pick in picks %}
-                    {% for prod in prods%}
-                        {%if prod.pk == pick.product_id %}
-                            <tr>
-                                <td style="text-align: center;"><img src="{{prod.image}}" alt="..." class="img-fluid"> <br> {{prod.name | striptags}}</td>
-                                <td>{{prod.price}}원</td>
-                                <td>{{prod.delivery}}</td>
-                                <td>4.5/5</td>
-                                <td><a type="button" class="btn btn-primary" href="{% url 'pick_update' pick.id%}">My Comment</a>
-                            </tr>
-                        {%endif%}
-                    {% endfor %}
-                {% endfor %}
-            </tbody>
-        </table>
-            <!-- <span id="onv" onclick="opennav()">aaaa</span> -->
+    <div class="wrap">
+        <h4>{{pick.id}}번 찜 수정하기</h4>
+        <form name="pck" action="{% url 'pick_update' pick.id %}" method="POST" >
+            {% csrf_token %}
+            <input type="hidden" name="uid" value="#"/>   
+            <div class="mb-3 mt-3">
+                <label for="reason">찜 사유:</label>
+                <input type="text" class="form-control" id="reason" placeholder="찜사유을 입력하세요" name="reason" value="{{pick.reason}}">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="comment">찜 코멘트:</label>
+                <textarea class="form-control" rows="5" id="comment" placeholder="찜 코멘트를 입력하세요" name="comment">{{pick.comment}}</textarea>
+            </div>
+            <div style="text-align: center;">
+                <button type="submit" class="btn btn-primary btn-md">수정완료</button>&emsp;&emsp;
+                <button type="button" class="btn btn-secondary btn-md" onclick="history.back()">이전으로</button>&emsp;&emsp;
+                <button type="button" class="btn btn-danger btn-md" onclick="jDelete()">삭제하기</button>
+            </div>
+        </form>
+        <form action="{% url 'pick_delete' %}" name="delete" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{pick.id}}">
+        </form>
     </div>
 </div>
-
 
 <div id="sidenav" class="sidenav">
     <div class="modal-top row">
@@ -78,10 +74,10 @@
     <a href="#" class="little_menu">조회순</a>
 </div>
 
-
-
 <script>
-
+    $("#checkAll").click(function () {
+        $(".form-check-input").prop('checked', $(this).prop('checked'));
+    });
 
     
 
@@ -96,9 +92,13 @@
     var nav_bar = document.getElementById("nav-user");
     nav_bar.classList.remove("d-none");
 
-    
+    function jDelete(){
+        var r = confirm('삭제하시겠습니까?');
+        if(r){
+            document.forms['delete'].submit();
+        }
+    }
 </script>
-
 
 
 {% endblock %}
