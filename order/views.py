@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from product.models import Product
 from .models import Cart
 
 def order_list(request):
@@ -24,22 +25,39 @@ def order_detail(request):
     return render(request, 'order_detail.html', context) 
 
 def order_cart(request):
-    cartNm = Cart.objects.count()
+    items = []
+    prodItm = []    
+    sum = 0
+    all_cart = list(Cart.objects.all().order_by('id'))
+    for i in all_cart:
+        if i.member_id == request.session.get('user'):
+            prod = Product.objects.get(pk=i.product_id)
+            sum += int(prod.price) * i.quantity
+            prodItm.append(prod)
+            items.append(i)
     context = {
-        'items' : range(cartNm), # order_items_id 수
+        'items' : items,
+        'prods' : prodItm,
         'recommend': range(4),
         'zero' : range(0),
-        'range' : range(25),
-        'product_id' : '',
-        'product_name' : '',
-        'product_price' : '',
-        'product_count': '',
-        'order_items_price': '', # product_count * product_price
-        'product_rating' : '', # review 평점 평균으로 계산
-        'product_delivery': '',
-        'seller_name': '',
+        'sum' : format(sum, ',')
     }
+
     return render(request, 'order_cart.html', context)
+
+def cart_update(request, product_id):
+    stock = request.POST['stock']
+    cart = Cart.objects.get(product_id=product_id)
+    cart.quantity = stock
+    cart.save()
+
+    return render(request, 'cart_update.html')
+
+def cart_delete(request, product_id):
+    cart = Cart.objects.get(product_id=product_id)
+    cart.delete()
+
+    return render(request, 'cart_delete.html')
 
 def order_purchase(request):
     context = {

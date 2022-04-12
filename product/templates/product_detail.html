@@ -110,12 +110,11 @@
     
 <script>
     function chkCart() {
-        var r = confirm('장바구니에 담겼습니다 장바구니 페이지로 이동하시겠습니까?')
+        var r = confirm('장바구니에 담겼습니다 \n 장바구니 페이지로 이동하시겠습니까?')
         if (r) {
             location.href = "{% url 'before_cart' product_id %}"
         }
     } 
-
 
     var nav_bar = document.getElementById("nav-category");
     nav_bar.classList.remove("d-none");

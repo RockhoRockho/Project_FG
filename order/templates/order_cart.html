@@ -40,26 +40,34 @@
         </div>
         {% else %}
         {% for item in items %}
-        <form class="product_form" action="#" method="POST">
+        {% for prod in prods %}
+        {% if prod.pk == item.product_id %}
+        <div class="product_form">
             <div class="d-flex col-sm-12 product">
                 <div class="col-sm-2 outer">
-                    {# 상품이미지 #}
-                    <img src="{{ i.image }}"
-                        alt="">
+                    <img src="{{ prod.image }}" alt="">
                 </div>
                 <div class="col-sm-5 outer">
-                    <div class="inner">{{ i.product_name }}</div>
+                    <div class="inner">{{ prod.name }}</div>
                 </div>
                 <div class="col-sm-3 outer">
-                    <div class="inner">정가{{ i.product_price }}</div>
-                    <div class="inner">판매금액{# 판매금액 #}</div>
+                    <div class="inner">{{ prod.price }}</div>
                 </div>
                 <div class="col-sm-2 text-center p-2 outer">
-                    <input type="number" class="col-md-5 inner_2" placeholder="수량">
-                    <button type='button' class="btn btn-cancel inner_2">취소하기</button>
+                    <form name="frm1" action="/order/update/{{ prod.product }}/" method="POST">
+                        {% csrf_token %}
+                        <input type="number" class="col-md-6 inner_2" name="stock" placeholder="{{ item.quantity }}">
+                    </form>
+                    <button type='button' onclick="chkUpdate()" class="col-md-6 btn btn-cancel inner_2">변경</button>
+                    <form name="frm2" action="/order/delete/{{ prod.product }}/" method="POST">
+                        {% csrf_token %}
+                    </form>
+                    <button type='button' onclick="chkDelete()" class="btn btn-cancel inner_2">취소하기</button>
                 </div>
             </div>
-        </form>
+        </div>
+        {% endif %}
+        {% endfor %}
         {% endfor %}
         {% endif %}
         <hr style="margin: 0;">
@@ -85,13 +93,14 @@
                 <div class="order_total_price">
                     <h4 class="txt_total">합계</h4>
                     <span class="price">
-                        <em class="number" id="CalcAmountInDsc"></em>원
+                        <em class="number" id="CalcAmountInDsc">{{ sum }}</em> 원
                     </span>
                 </div>
             </div>
             <p class="order_text_agree">하기 필수약관을 확인하였으며 결제에 동의합니다.</p>
             <div class="order_button">
-                <button type="button" id="btnAccount" class="btn_purple" onclick="location.href='{% url 'order_purchase' %}'">
+                <button type="button" id="btnAccount" class="btn_purple"
+                    onclick="location.href='{% url 'order_purchase' %}'">
                     주문하기
                 </button>
             </div>
@@ -184,8 +193,24 @@
     </div>
 </div>
 
-<script src="{% static 'js/sticky.js' %}">
+<script src="{% static 'js/sticky.js' %}"></script>
+<script>
     var nav_bar = document.getElementById("nav-category");
     nav_bar.classList.remove("d-none");
+
+    function chkUpdate() {
+        var r = confirm('수량을 변경하시겠습니까?')
+        if (r){
+            document.forms['frm1'].submit()
+        }
+    };
+
+    function chkDelete() {
+        var r = confirm('장바구니에 항목을 삭제하시겠습니까?')
+        if (r) {
+            document.forms['frm2'].submit()
+        }
+    };
+
 </script>
 {% endblock %}
