@@ -8,18 +8,18 @@ from .models import Product
 import requests
 
 
-def product_search(request, product_name):
+def product_search(request, product_name, page_num):
 
     client_id = '1Go9cVzNHoC3yswLKLwt'
     client_secret = "ozy_PNTen4"
     url = "https://openapi.naver.com/v1/search/shop"
     display = "&display=100"
     start = "&start="
-    start_num = str(1)
+    start_num = str(1 + (100 * page_num))
     sort = "&sort=sim"    
     query = "?query=" + urllib.parse.quote('{}'.format(product_name))
     url_query = url + query + display + start + start_num + sort
-        
+    
     #Open API 검색 요청 개체 설정
     request1 = urllib.request.Request(url_query)
     request1.add_header("X-Naver-Client-Id",client_id)
@@ -33,10 +33,11 @@ def product_search(request, product_name):
 
         items = json.loads(res)
 
-        context = {
-            'items' : items['items'],
-            'product_name' : product_name,
-        }
+        # context = {
+        #     'items' : items['items'],
+        #     'product_name' : product_name,
+        #     'page_num' : page_num,
+        # }
 
         for data in items['items']:
             product = int(data['productId'])
@@ -51,11 +52,14 @@ def product_search(request, product_name):
         page_list = Product.objects.all()
         # 페이징 처리
         page = request.GET.get('page', '1') # GET 방식으로 정보 받아오기
-        paginator = Paginator(page_list, '10') # Paginator(분할될 객체, 페이지당 담길 객체수)
+        paginator = Paginator(page_list, '100') # Paginator(분할될 객체, 페이지당 담길 객체수)
         page_obj = paginator.get_page(page) # 페이지 번호를 받아 해당 페이지 리턴
 
         context = {
-            'page_obj' : page_obj
+            'items' : items['items'],
+            'product_name' : product_name,
+            'page_num' : page_num,
+            'page_obj' : page_obj,
         }
 
         return render(request, 'product_search.html', context)
