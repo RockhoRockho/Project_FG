@@ -14,16 +14,18 @@
     <div id="wrap">
         <div id="container">
             <div>
-                <h3>메일상담 수정</h4>
+                <h3>메일상담 수정</h3>
+                <p>작성일 : {{ service.reg_date|date:"Y-m-d H:i:s" }}</p>
             </div>
-            <form class="main_area" name="main_area">
+            <form class="main_area" name="main_area" method="POST" enctype="multipart/form-data" action="{% url 'question_update' service.id %}">
+                {% csrf_token %}
                 <div class="re">
                     <p>* 표시는 필수 입력 항목입니다.</p>
                 </div>
                 <div class="title">
                     <div class="row">
                         <span class="col-md-3">상담제목 *</span>
-                        <div class="col-md-9" style="height: 40px;"><input type="text" placeholder="상담제목을 입력주세요."></div>
+                        <div class="col-md-9" style="height: 40px;"><input type="text" placeholder="상담제목을 입력주세요." name="title"></div>
                     </div>
                 </div>
                 <hr>
@@ -38,7 +40,7 @@
                     <div class="row">
                         <span class="col-md-3">이미지파일 첨부</span>
                         <div class="col-md-9">
-                            <button type="button" class="btn btn-primary btn-lg active">파일첨부</button>
+                            <input type="file" name="uploadedFile">
                             <p>* 이미지파일 10MB 이내 첨부가능<br>
                                 * 내용과 첨부 이미지에 개인정보가 포함되지 않도록 주의해주십시오.</p>
                         </div>
@@ -48,7 +50,7 @@
                 <div class="email">
                     <div class="row">
                         <span class="col-md-3">답변받을 이메일</span>
-                        <div class="col-md-9"><input type="email" placeholder="사용자이메일"></div>
+                        <div class="col-md-9"><input type="email" name="email" placeholder="사용자이메일"></div>
                     </div>
                 </div>
                 <hr>
@@ -59,7 +61,8 @@
                     </div>
                 </div>
                 <hr>
-                <div style="width: 100%;"><button type="button" class="btn btn-primary btn-lg active">상담내용 수정완료</button></div>
+                <!-- <button type="button" class="btn btn-primary btn-lg active">상담내용 수정완료</button> -->
+                <input type="submit">
             </form>
         </div>
         <div style="clear: both;"></div>

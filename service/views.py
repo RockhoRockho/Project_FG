@@ -44,8 +44,30 @@ def question_write(request):
 def questionOK(request):
     return render(request, "questionOK.html")
 
-def question_update(request):
-    return render(request, "question_update.html")
+def question_update(request, id):
+    if request.method == "GET":
+        try:
+            ser = Service.objects.get(id=id)
+        except Service.DoesNotExist:
+            raise Http404('게시글을 찾을 수 없습니다.')
+        return render(request, "question_update.html", {'service':ser})
+    
+    elif request.method == "POST":
+        title = request.POST['title']
+        content = request.POST['content']
+        file = request.FILES['uploadedFile']
+        email = request.POST['email']
+        p_num = request.POST['phone_num']
+
+        ser = Service.objects.get(id=id)
+        ser.title = title
+        ser.content = content
+        ser.file = file
+        ser.email = email
+        ser.phone = p_num
+        ser.save()
+
+        return render(request, 'updateOK.html', {'id':ser.id})
 
 def question_detail(request, id):
     try:
@@ -61,7 +83,6 @@ def question_detail(request, id):
 def question_delete(request):
     if request.method == "POST":
         id = request.POST['id']
-        print('------------------------------------------')
         ser = Service.objects.get(id=id)
         ser.delete()
 
