@@ -14,7 +14,8 @@
 
 {% block contents %}
 <!-- // 주문 단계 표시 HTML -->
-<div class="page col-md-12">
+<form class="page col-md-12" name="msgFrm" action="{% url 'present_success' product_id %}" method="POST" onsubmit="return chkOrder()">
+    {% csrf_token %}
     <div class="present_title">
         <div class="d-flex">
             <div class="col-xxl-8 col-md-5 col-sm-5 ft-xxl">주문결제</div>
@@ -42,7 +43,7 @@
                         </p>
                     </div>
                     <!-- 선물 메세지폼 -->
-                    <form class="gift_form" name="msgFrm" action="{% url 'present_send' product_id %}" method="POST">
+                    <div class="gift_form">
                         <h3 class="subject">선물 받는 사람</h3>
                         <dl>
                             <dt>"선물 받는 분에게 배송지 입력을 위한 '<strong>문자메세지가 발송</strong>'됩니다.</dt>
@@ -55,12 +56,12 @@
                             <dd>
                                 <div class="box_message">
                                     <textarea class="gift_textarea" rows="4" cols="50"
-                                        placeholder="메세지 내용 입력" name="context"></textarea>
+                                        placeholder="메세지 내용 입력" name="msg"></textarea>
                                 </div>
                             <dt></dt>
                             </dd>
                         </dl>
-                    </form>
+                    </div>
                 </div>
                 <!-- 선물하기 테마고르기 -->
                 <div class="select_theme col-md-12 mt-5">
@@ -495,8 +496,7 @@
             <input type="radio" class="form-check-label" name="purchase_type"> 무통장입금
         </div>
         <div class="d-flex justify-content-center p-3">
-            <button class="btn btn-primary col-md-1 mx-3" style="width: 100px;">주문하기</button>
-            <button class="btn btn-danger col-md-1 mx-3" style="width: 100px;">취소하기</button>
+            <a class="btn btn-danger col-md-1 mx-3" onclick="chkDelete()" style="width: 100px;">취소하기</a>
         </div>
     </div>
     <div class="order_side col-md-3 col-sm-3">
@@ -514,19 +514,24 @@
             </div>
             <p class="order_text_agree">하기 필수약관을 확인하였으며 결제에 동의합니다.</p>
             <div class="order_button">
-                <button type="button" id="btnAccount" class="btn_purple" onclick="chkOrder()">
-                    <em class="number" id="FinalOrderPrice">{{ sum }}</em>원 결제하기
-                </button>
+                <input type="submit" id="btnAccount" class="btn_purple" value="{{ sum }} 원 결제하기">
             </div>
         </div>
     </div>
-</div>
+</form>
 
 <script src="{% static 'js/present.js' %}">
-    function chkOrder() {
-        var r = confirm('결제하시겠습니까?')
+    function chkDelete() {
+        var r = confirm('주문을 취소하시겠습니까?');
         if (r) {
-            location.href = "{% url 'present_success' product_id %}"
+            location.href = "{% url 'present_cancel' product_id %}"
+        }
+    }
+
+    function chkOrder() {
+        var r = confirm('결제하시겠습니까?');
+        if (r) {
+            document.forms['msgFrm'].submit();
         }
     }
 

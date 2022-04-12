@@ -120,4 +120,3 @@ def main(request):
 
         return render(request, 'search.html', {"product_name": product_name, "page_num" : page_num})
 
-        
