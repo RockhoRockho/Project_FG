@@ -34,7 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for i in range %}
+                {% for pick in picks %}
                 <tr>
                     <td><input class="form-check-input" type="checkbox" value="" id="" style="float: left;"><img
                             src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/pd/22/3/7/9/5/1/1/qEmIN/1431379511_B.jpg"
@@ -43,7 +43,7 @@
                     <td>무료</td>
                     <td>4.5/5</td>
                     <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jjim"
-                            data-bs-whatever="{{i}}">My Comment</button></td>
+                            data-bs-whatever="{{pick.id}}">My Comment</button></td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -65,22 +65,24 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><div>&times;</div></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{% url 'pick' %}" method="POST">
+                    {% csrf_token %}
+                    
                     <div class="mb-3">
                         <label for="reason" class="col-form-label">찜 사유</label>
-                        <input type="text" class="form-control" id="reason">
+                        <input type="text" class="form-control" id="reason" name="reason" value="{{ppp}}">
                     </div>
                     <div class="mb-3">
                         <label for="comment" class="col-form-label">찜 코멘트</label>
-                        <textarea class="form-control" id="comment"></textarea>
+                        <textarea class="form-control" id="comment" name="comment" >{{pick.comment}}</textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <div style="width: 100%;">
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                        </div>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <div style="width: 100%;">
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary btn-sm">Save</button>
-                </div>
             </div>
         </div>
     </div>
@@ -121,7 +123,7 @@
         var jjimNum = button.getAttribute('data-bs-whatever')
         var modalTitle = jjim.querySelector('.modal-title')
 
-        modalTitle.textContent = (parseInt(jjimNum)+1) + ' 번째 찜 사유 및 코멘트'
+        modalTitle.textContent = (parseInt(jjimNum)) + ' 번째 찜 사유 및 코멘트'
     });
 
     function opennav(){
