@@ -15,11 +15,11 @@ def product_search(request, product_name, page_num):
     url = "https://openapi.naver.com/v1/search/shop"
     display = "&display=100"
     start = "&start="
-    start_num = str(1 + (100 * page_num))
-    sort = "&sort=sim"    
+    start_num = str(1 + (100 * (page_num-1)))
+    sort = "&sort=sim"  
     query = "?query=" + urllib.parse.quote('{}'.format(product_name))
     url_query = url + query + display + start + start_num + sort
-    
+     
     #Open API 검색 요청 개체 설정
     request1 = urllib.request.Request(url_query)
     request1.add_header("X-Naver-Client-Id",client_id)
@@ -33,11 +33,7 @@ def product_search(request, product_name, page_num):
 
         items = json.loads(res)
 
-        # context = {
-        #     'items' : items['items'],
-        #     'product_name' : product_name,
-        #     'page_num' : page_num,
-        # }
+
 
         for data in items['items']:
             product = int(data['productId'])
@@ -49,53 +45,60 @@ def product_search(request, product_name, page_num):
             Product(product = product, name = name, price = price, category = category, image = image, seller=seller).save()
 
 
-        page_list = Product.objects.all()
-        # 페이징 처리
-        page = request.GET.get('page', '1') # GET 방식으로 정보 받아오기
-        paginator = Paginator(page_list, '100') # Paginator(분할될 객체, 페이지당 담길 객체수)
-        page_obj = paginator.get_page(page) # 페이지 번호를 받아 해당 페이지 리턴
-
         context = {
             'items' : items['items'],
             'product_name' : product_name,
-            'page_num' : page_num,
-            'page_obj' : page_obj,
+            'page_num' : page_num,           
+
         }
 
         return render(request, 'product_search.html', context)
 
 
-def product_lprice(request, product_name):
-    if request.method == 'GET':
-        return render(request, 'product_lprice.html')
+def product_lprice(request, product_name, page_num):
+    client_id = '1Go9cVzNHoC3yswLKLwt'
+    client_secret = "ozy_PNTen4"
+    url = "https://openapi.naver.com/v1/search/shop"
+    display = "&display=100"
+    start = "&start="
+    start_num = str(1 + (100 * (page_num-1)))
+    sort = "&sort=asc"  
+    query = "?query=" + urllib.parse.quote('{}'.format(product_name))
+    url_query = url + query + display + start + start_num + sort
+     
+    #Open API 검색 요청 개체 설정
+    request1 = urllib.request.Request(url_query)
+    request1.add_header("X-Naver-Client-Id",client_id)
+    request1.add_header("X-Naver-Client-Secret",client_secret)
 
-    # elif request.method == 'POST':
-    #     client_id = '1Go9cVzNHoC3yswLKLwt'
-    #     client_secret = "ozy_PNTen4"
-    #     cat_type = 'cartegories'
-    #     if 입력값 = 성별o:
-    #         cat_type = 'category/gender'
-    #     elif 입력값 = 나이:
-    #         cat_type = 'category/age'
-    #     url = f"https://openapi.naver.com/v1/datalab/shopping/{cat_type}";
-    #     body = "{\"startDate\":\"2017-08-01\",\"endDate\":\"2017-09-30\",\"timeUnit\":\"month\",\"category\":[{\"name\":\"패션의류\",\"param\":[\"50000000\"]},{\"name\":\"화장품/미용\",\"param\":[\"50000002\"]}],\"device\":\"pc\",\"ages\":[\"20\",\"30\"],\"gender\":\"f\"}";
+    #검색 요청 및 처리
+    response = urllib.request.urlopen(request1)
+    rescode = response.getcode()
+    if(rescode == 200):
+        res = response.read().decode('utf-8')
 
-    #     request = urllib.request.Request(url)
-    #     request.add_header("X-Naver-Client-Id",client_id)
-    #     request.add_header("X-Naver-Client-Secret",client_secret)
-    #     request.add_header("Content-Type","application/json")
-    #     response = urllib.request.urlopen(request, data=body.encode("utf-8"))
-    #     rescode = response.getcode()
-    #     if(rescode==200):
-    #         response_body = response.read().decode("utf-8")
-    #         items = json.loads(response_body)
+        items = json.loads(res)
 
-    #         context = {
-    #             'range' : range(25),
-    #             'items' : items['items']
-    #             }
 
-    #     return render(request, 'product_gender.html', context=context)
+        for data in items['items']:
+            product = int(data['productId'])
+            name = data['title']
+            price = data['lprice']
+            category = data['category1']
+            image = data['image']
+            seller = data['mallName']
+            Product(product = product, name = name, price = price, category = category, image = image, seller=seller).save()
+
+
+        context = {
+            'items' : items['items'],
+            'product_name' : product_name,
+            'page_num' : page_num,           
+
+        }
+
+        return render(request, 'product_lprice.html', context)
+
 
 
 def product_view(request):
@@ -231,6 +234,5 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'product_detail.html', context) 
-
 
 
