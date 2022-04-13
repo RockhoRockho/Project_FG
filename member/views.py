@@ -53,12 +53,11 @@ def home(request):
 def member_logout(request):
     if request.session.get('user'):
         del(request.session['user'])
-
     context = {
           'user': request.session.get('user'),
     }
 
-    return render(request, 'main.html', context)
+    return render(request, 'member_logout.html', context)
 
 def member_join(request):
     if request.method =='GET':
@@ -109,3 +108,6 @@ def member_info(request):
 
 def member_check(request):
     return render(request, "member_check.html")
+
+def member_needlogin(request):
+    return render(request, "member_needlogin.html")

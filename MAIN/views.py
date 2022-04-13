@@ -106,9 +106,17 @@ def main(request):
         items2 = itemlist2['pageProps']['dehydratedState']['queries'][2]['state']['data']['products']
              
 
+        flag = 1
+
+        if request.session.get('user') :
+            flag = 1
+        else:
+            flag = 0
+
         context = {
             'items' : items,
             'items2' : items2,
+            'flag' : flag
         }
 
  

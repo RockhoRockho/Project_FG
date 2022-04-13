@@ -1,20 +1,24 @@
 from telnetlib import SE
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from service.models import Service
 from member.models import Member
 from django.http import Http404
 
 def question_main(request):
 
-    all_service = Service.objects.all().order_by('-id')
-    all_count = Service.objects.all().count()
+    if request.session.get('user') :
+        all_service = Service.objects.all().order_by('-id')
+        all_count = Service.objects.all().count()
 
-    context = {
-        'service' : all_service,
-        'count' : all_count,
-    }
-    
-    return render(request, "question_main.html", context)
+        context = {
+            'service' : all_service,
+            'count' : all_count,
+        }
+        
+        return render(request, "question_main.html", context)
+
+    else:
+        return redirect('/member/needlogin/')
 
 def question_write(request):
     if request.method == "GET":
