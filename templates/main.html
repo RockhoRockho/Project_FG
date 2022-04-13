@@ -14,8 +14,8 @@
 
 {% block slideBar %}
 <div class="d-flex col-md-12 justify-content-center sb-color">
-    <img
-        src="https://cdn.011st.com/11dims/resize/1240x400/quality/99/11src/http://cdn.011st.com/ds/2022/02/28/1376/ca254f98c1cf9652431e09c9fee537a9.jpg" style="width: 68vw; height: 20vw">
+    <img src="https://cdn.011st.com/11dims/resize/1240x400/quality/99/11src/http://cdn.011st.com/ds/2022/02/28/1376/ca254f98c1cf9652431e09c9fee537a9.jpg"
+        style="width: 68vw; height: 20vw">
 </div>
 <div class="pb-3"></div>
 {% endblock %}
@@ -29,20 +29,19 @@
     <div class="d-none d-sm-block d-md-none d-flex col-12 justify-content-center">
         <h1>베스트 트렌드 상품</h1>
     </div>
-
-
     {% for item in items %}
     {% if forloop.counter <= 6 %}
     <div class="d-flex flex-wrap justify-content-center col-md-2 m-container-trand">
-        <div class="d-flex justify-content-center p-3">
-            <img src="{{item.imageUrl}}"
-                width="100%" height="100%" alt="">
-        </div>
-        <div class="px-3 pb-3">
-            <a>{{item.productTitle}}</a>
-        </div>
+        <a href="{% url 'product_detail' item.nvMid %}">
+            <div class="d-flex justify-content-center p-3">
+                <img src="{{item.imageUrl}}" width="100%" height="100%" alt="">
+            </div>
+            <div class="px-3 pb-3">
+                <a>{{item.productTitle}}</a>
+            </div>
+        </a>
     </div>
-    
+
     {% endif %}
     {% endfor %}
 
@@ -53,39 +52,22 @@
         <h3>가장 많이 구매한 상품</h3>
     </div>
     {% for item2 in items2 %}
-    {% if forloop.counter <= 6 %}
-    <div class="d-flex flex-wrap justify-content-center col-md-4 m-container-best">
-        <div class="d-flex justify-content-center p-3">
-            <img src="{{item2.imageUrl}}"
-                width="360" height="180" alt="">
+    {% if forloop.counter <= 3 %}
+    <a href="{% url 'product_detail' item2.nvMid %}">
+        <div class="d-flex flex-wrap justify-content-center col-md-4 m-container-best">
+            <div class="d-flex justify-content-center p-3">
+                <img src="{{item2.imageUrl}}" width="360" height="180" alt="">
+            </div>
+            <div class="px-3 pb-3">
+                <a>{{item2.productTitle}}</a>
+                <h4>{{item2.mobileLowPrice}}원 ~</h4>
+            </div>
         </div>
-        <div class="px-3 pb-3">
-            <a>{{item2.productTitle}}</a>
-            <h4>{{item2.mobileLowPrice}}원 ~</h4>
-        </div>
-    </div>
+    </a>
     {% endif %}
     {% endfor %}
-    <!-- <div class="d-flex flex-wrap justify-content-center col-md-4 m-container-best">
-        <div class="d-flex justify-content-center p-3">
-            <img src="//cdn.011st.com/11dims/resize/720x360/quality/75/11src/browsing/space/banner/2022/4/6/2204061313094400706_21.jpg"
-                width="360" height="180" alt="">
-        </div>
-        <div class="px-3 pb-3">
-            <a>[GSfresh] 밥값하는쌀20kg (21년산)</a>
-            <h4>11,200원 ~</h4>
-        </div>
-    </div>
-    <div class="d-flex flex-wrap justify-content-center col-md-4 m-container-best">
-        <div class="d-flex justify-content-center p-3">
-            <img src="//cdn.011st.com/11dims/resize/720x360/quality/75/11src/browsing/space/banner/2022/4/6/2204061143462400706_16.jpg"
-                width="360" height="180" alt="">
-        </div>
-        <div class="px-3 pb-3">
-            <a>[최종혜택가 15,730원]보타니컬테라피 대용량 베이비 로션 + 증정 외 썬케어</a>
-            <h4>11,200원 ~</h4>
-        </div>
-    </div> -->
+
+
 </div>
 
 {% endblock %}
