@@ -30,17 +30,20 @@ def order_cart(request):
         prodItm = []    
         sum = 0
         member_id = request.session['user']
+
         cart = Cart.objects.filter(member_id=member_id)
+
         for item in cart:
             prod = Product.objects.get(product=item.product_id)
             sum += int(prod.price) * item.quantity
             prodItm.append(prod)
             items.append(item)
+
         context = {
             'items' : items,
             'prods' : prodItm,
             'recommend': range(4),
-            'zero' : range(0),
+            'blank' : [],
             'sum' : format(sum, ',')
         }
 
@@ -51,8 +54,12 @@ def order_cart(request):
 
 def cart_update(request, product_id):
     stock = request.POST['stock']
+    print(stock)
     cart = Cart.objects.get(product_id=product_id)
+    print(cart)
+    print(cart.quantity)
     cart.quantity = stock
+    print(cart.quantity)
     cart.save()
 
     return render(request, 'cart_update.html')
