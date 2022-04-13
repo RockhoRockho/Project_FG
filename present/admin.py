@@ -2,7 +2,10 @@ from django.contrib import admin
 
 from .models import Present
 
-admin.site.register(Present)
+class PresentAdmin(admin.ModelAdmin):
+    list_display = ('product', 'receiver_name', 'quantity',)
+    list_filter = ('id',)
+admin.site.register(Present, PresentAdmin)
 
 
 
