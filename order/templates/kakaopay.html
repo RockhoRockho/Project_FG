@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'bs/css/bootstrap.min.css' %}" rel="stylesheet">
+    <script src="{% static 'bs/js/bootstrap.bundle.min.js' %}"></script>    
+    <title>카카오페이</title>
+</head>
+<body>
+    
+<div class="row mt-5 justify-content-center align-items-center">
+    <h1 class="col-12 text-center my-5">카카오페이로 결제하기</h1>
+    <form method="post" class="col-12 text-center">
+      {% csrf_token %}
+      <button class="btn mt-5"><img src="/static/img/payment_icon_yellow_medium.png" style="width:150px;"></button>
+    </form>
+  </div>
+
+</body>
+</html>

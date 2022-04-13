@@ -270,7 +270,6 @@ def product_category(request, category):
 
     context = {
         'items' : items,
-        
     }
     return render(request, 'product_category.html', context)
 
