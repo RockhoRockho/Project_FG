@@ -214,12 +214,8 @@ def order_success(request):
     return render(request, 'order_success.html', context)
 
 
-def kakaopay(request, product_id):
-    if request.method == "POST":
-
-        # 합칠 DB담기
-        order_items = list(Order_items.objects.all())
-
+def kakaopay(request):
+    if request.method == "POST":    
 
         url = 'https://kapi.kakao.com/v1/payment/ready'
         headers = {
