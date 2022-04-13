@@ -88,16 +88,17 @@ def order_purchase(request, product_id):
         return render(request, 'order_purchase.html', context)
 
     elif request.method == "POST":
+        # 유저아이디
+        member_id = request.session.get('user')
         # order 저장
-        member = Member.objects.get(member_id=request.session.get('user'))
         delivery_address = request.POST['delivery_address']
         detail_address = request.POST['detail_address']
         receiver_phone = request.POST['phone_firstNum']+'-'+request.POST['phone_secondNum']+'-'+request.POST['phone_threeNum']
         select_list = request.POST['select_list']
         receiver_name = request.POST['receiver_name']
-
+        print(delivery_address)
         ord = Order(
-            member = member,
+            member_id = member_id,
             delivery_address = delivery_address,
             detail_address = detail_address,
             receiver_phone = receiver_phone,
@@ -106,12 +107,13 @@ def order_purchase(request, product_id):
             number = int(datetime.today().strftime('%Y%m%d%H%M')),
         )
         ord.save()
+        print(ord.delivery_address)
 
         # order_items 저장
         price = TempOrder.objects.get(product_id=product_id).price
         quantity = TempOrder.objects.get(product_id=product_id).quantity
 
-        Order_items(member_id=member, product_id=product_id, price=price, quantity=quantity).save()
+        Order_items(member_id=member_id, product_id=product_id, price=price, quantity=quantity).save()
 
 
         # 세션으로 바로결제 값 넘기기
@@ -147,7 +149,9 @@ def cart_purchase(request):
         return render(request, 'cart_purchase.html', context)
 
     elif request.method == "POST":
-        member = Member.objects.get(member_id=request.session.get('user'))
+
+        # 유저아이디
+        member_id = request.session.get('user')
 
         # order 저장
         delivery_address = request.POST['delivery_address']
@@ -155,9 +159,9 @@ def cart_purchase(request):
         receiver_phone = request.POST['phone_firstNum']+'-'+request.POST['phone_secondNum']+'-'+request.POST['phone_threeNum']
         select_list = request.POST['select_list']
         receiver_name = request.POST['receiver_name']
-
+        print(type(delivery_address))
         ord = Order(
-            member = member,
+            member_id = member_id,
             delivery_address = delivery_address,
             detail_address = detail_address,
             receiver_phone = receiver_phone,
@@ -166,15 +170,16 @@ def cart_purchase(request):
             number = int(datetime.today().strftime('%Y%m%d%H%M')),
         )
         ord.save()
+        print(ord.delivery_address)
+        print(type(ord.delivery_address))
         
         # order_items 저장
-        member_id = request.session.get('user')
         prods = list(TempOrder.objects.all().order_by('id'))
 
         for prod in prods:
             Order_items(product_id=prod.product_id, member_id=member_id, quantity=prod.quantity, price=prod.price).save()   
 
-    return render(request, 'kakaopay.html')
+        return render(request, 'kakaopay.html')
 
 def order_cancel(request):
 
