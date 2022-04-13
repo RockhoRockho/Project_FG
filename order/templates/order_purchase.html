@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load humanize %}
 
 {% block title %}
 주문하기
@@ -11,7 +12,6 @@
 {% load static %}
 <link href="{% static 'css/purchase.css' %}" rel="stylesheet">
 {% endblock %}
-
 {% block contents %}
 
 <div class="page col-md-12">
@@ -34,66 +34,73 @@
             <input type="radio" class="form-check-label" name="add_type"> 최근배송지
             <input type="radio" class="form-check-label" name="add_type"> 직접입력
         </div>
-        <div class="col-md-12 pad-10">
-            <input type="text" class="form-control" placeholder="받는사람">
-        </div>
+        <form action="{% url 'order_purchase' %}" method="POST">
+            {% csrf_token %}
+            <div class="col-md-12 pad-10">
+                <input type="text" name="receiver_name" class="form-control" placeholder="받는사람">
+            </div>
 
-        <!-- // 주소 관련 HTML -->
-        <div class="col-md-12 pad-5 d-flex">
-            <input type="text" id=postcode class="form-control" placeholder="우편번호">
-            <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-        </div>
-        <div class="col-md-12 pad-5">
-            <input type="text" id="address" class="form-control" placeholder="주소">
-        </div>
-        <div class="col-md-12 pad-5">
-            <input type="text" id="detailAddress" class="form-control" placeholder="상세주소 및 상세건물명">
-        </div>
-        <div class="col-md-12 pad-5">
-            <input type="text" id="extraAddress" class="form-control" placeholder="참고항목">
-        </div>
+            <!-- // 주소 관련 HTML -->
+            <div class="col-md-12 pad-5 d-flex">
+                <input type="text" id=postcode class="form-control" placeholder="우편번호">
+                <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
+            </div>
+            <div class="col-md-12 pad-5">
+                <input type="text" name="delivery_address" id="address" class="form-control" placeholder="주소">
+            </div>
+            <div class="col-md-12 pad-5">
+                <input type="text" name="detail_address" id="detailAddress" class="form-control" placeholder="상세주소 및 상세건물명">
+            </div>
+            <div class="col-md-12 pad-5">
+                <input type="text" id="extraAddress" class="form-control" placeholder="참고항목">
+            </div>
 
-        <!-- // 상세정보 HTML -->
-        <div class="d-flex col-md-12 pad-5">
-            <select class="form-select" name="phone_firstNum" id="phone_firstNum" style="width: 200px;">
-                <option value="010" selected>010</option>
-                <option value="011">011</option>
-                <option value="012">012</option>
-                <option value="018">018</option>
-                <option value="019">019</option>
-            </select>
-            <input type="text" class="form-control" placeholder="휴대폰앞자리">
-            <input type="text" class="form-control" placeholder="휴대폰뒷자리">
-        </div>
+            <!-- // 상세정보 HTML -->
+            <div class="d-flex col-md-12 pad-5">
+                <select class="form-select" name="phone_firstNum" id="phone_firstNum" style="width: 200px;">
+                    <option value="010" selected>010</option>
+                    <option value="011">011</option>
+                    <option value="012">012</option>
+                    <option value="018">018</option>
+                    <option value="019">019</option>
+                </select>
+                <input type="text" name="phone_secondNum" class="form-control" placeholder="휴대폰앞자리">
+                <input type="text" name="phone_threeNum" class="form-control" placeholder="휴대폰뒷자리">
+            </div>
 
-        <div class="col-md-12 pad-5">
-            <select class="form-select" name="phone_firstNum" id="phone_firstNum">
-                <option value="1" selected>배송시 요청사항 선택하기</option>
-                <option value="2">부재시 전화/문자주세요</option>
-                <option value="3">집 앞에 놓고가주세요</option>
-                <option value="4">경비실에 맡겨주세요</option>
-                <option value="5">택배함에 넣어주세요</option>
-            </select>
-        </div>
+            <div class="col-md-12 pad-5">
+                <select class="form-select" name="select_list" id="select_list">
+                    <option value="1" selected>배송시 요청사항 선택하기</option>
+                    <option value="2">부재시 전화/문자주세요</option>
+                    <option value="3">집 앞에 놓고가주세요</option>
+                    <option value="4">경비실에 맡겨주세요</option>
+                    <option value="5">택배함에 넣어주세요</option>
+                </select>
+            </div>
+        </form>
         <!-- // 상품 이미지 등 상세정보 HTML -->
         <div class="col-md-12 purchase_subtitle">주문상품</div>
         <div class="col-md-12">
-            {% for i in items %}
-            <div class="product col-md-12 d-flex">
-                <div class="col-md-3 outer">
-                    {# 상품이미지 #}
-                    <img src="https://cdn.011st.com/11dims/resize/560x560/quality/75/11src/pd/22/2/6/4/0/0/9/vNTAr/3718264009_B.jpg"
-                        alt="">
-                </div>
-                <div class="col-md-5 outer">
-                    <div class="inner">상품명{# 상품명 #}</div>
-                    <div class="inner">상품옵션{# 상품옵션 #}</div>
-                </div>
-                <div class="col-md-4 outer">
-                    <div class="inner_2">%개{# 정가 #}</div>
-                    <div class="inner_2">판매금액{# 판매금액 #}</div>
-                </div>
-            </div>
+            {% for cart in cartt %}
+                {% for i in prods %}
+                    {% if i.pk == cart.product_id %}
+                            <div class="product col-md-12 d-flex">
+                                <div class="col-md-3 outer">
+                                    
+                                    <img src="{{ i.image }}"
+                                        alt="">
+                                </div>
+                                <div class="col-md-5 outer">
+                                    <div class="inner">상품명{{i.name | striptags}}</div>
+                                    <!-- <div class="inner">상품옵션{# 상품옵션 #}</div> -->
+                                </div>
+                                <div class="col-md-4 outer">
+                                    <div class="inner_2">{{ cart.quantity }}개</div>
+                                    <div class="inner_2">상품 판매금액<br>{{ i.price|intcomma }}원</div>
+                                </div>
+                            </div>
+                    {% endif %}
+                {% endfor %}                
             {% endfor %}
         </div>
         <!-- // 결제정보 HTML -->
@@ -112,10 +119,10 @@
         <div class="order_sticky">
             <div class="order_amount">
                 <div class="order_title">
-                    <h4 class="order_subtitle">결제 예정금액</h4>
+                    <h4 class="order_subtitle"></h4>
                 </div>
                 <div class="order_total_price">
-                    <h4 class="txt_total">합계</h4>
+                    <h4 class="txt_total">총 비용</h4>
                     <span class="price">
                         <em class="number" id="CalcAmountInDsc">{{ sum }}</em>원
                     </span>
@@ -125,7 +132,7 @@
             <div class="order_button">
                 <button type="button" id="btnAccount" class="btn_purple"
                     onclick="location.href='{% url 'order_success' %}'">
-                    <em class="number" id="FinalOrderPrice"></em>원 결제하기
+                    <em class="number" id="FinalOrderPrice"></em>{{sum }}원 결제하기
                 </button>
             </div>
         </div>
