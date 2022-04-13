@@ -19,21 +19,3 @@ class Member(models.Model):
     
     def __str__(self):
         return f'{self.pk} : {self.username}'
-
-
-class Address(models.Model):
-    post_num = models.IntegerField(verbose_name='우편번호')
-    address = models.CharField(max_length=70, verbose_name='주소')
-    address_detail = models.CharField(max_length=100, verbose_name='상세주소')
-    type = models.IntegerField(verbose_name='타입') #???
-    member = models.ForeignKey(Member, on_delete=models.CASCADE)
-    
-
-    class Meta:
-        db_table = 'address' 
-        verbose_name='주소' 
-        verbose_name_plural='주소들'
-
-    
-    def __str__(self):
-        return f'{self.pk} : {self.post_num}'
