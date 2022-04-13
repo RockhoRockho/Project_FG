@@ -17,7 +17,8 @@
 <div class="bg-light col-12 p-5" style="border-radius: 50px;">
     <div class="container space-2">
         <!-- Personal Info Form -->
-        <form class="user-info">
+        <form class="user-info" action="{% url 'member_info' %}" method="POST">
+            {% csrf_token %}
             <div class="row">
                 <!-- Input -->
                 <div class="col-sm-6 mb-6">
@@ -25,7 +26,7 @@
                         ID
                     </label>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" value="{{ user.username }}" readonly>
+                        <input type="text" class="form-control" name="username" id="username" value="{{ user.username }}" readonly>
                         <small class="form-text text-muted">사용자의 아이디를 표시합니다.</small>
                     </div>
                 </div>
@@ -37,7 +38,7 @@
                         이름
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control" name="username" value="{{ user.name }}" required>
+                    <input type="text" class="form-control" name="name" id="name" value="{{ user.name }}" required>
                 </div>
                 <!-- End Input -->
             </div>
@@ -50,8 +51,8 @@
                         Birth date
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="birth" class="form-control" name="email" value="{{ user.birth }}"
-                        placeholder="Enter your email address">
+                    <input type="text" class="form-control" name="birth" id="birth" value="{{ user.birth }}"
+                        placeholder="Enter your birth date" required>
                     <small class="form-text text-muted">생년월일을 입력해주세요 1990-01-01</small>
                 </div>
                 <!-- End Input -->
@@ -62,10 +63,8 @@
                         Gender
                         <span class="text-danger">*</span>
                     </label>
-                    <select class="form-control" required>
-                        <option value="genderSelect1">Male</option>
-                        <option value="genderSelect2">Female</option>
-                    </select>
+                    <input type="text" class="form-control" name="gender" id="gender" value="{{ user.gender }}" required>
+                    <small class="form-text text-muted">남자 : m / 여자 : w</small>
                 </div>
                 <!-- End Input -->
                 <!-- Input -->
@@ -74,8 +73,8 @@
                         Email
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="email" class="form-control" name="email" value="{{ user.email }}"
-                        placeholder="Enter your email address">
+                    <input type="email" class="form-control" name="email" id="email" value="{{ user.email }}"
+                        placeholder="Enter your email address" required>
                     <small class="form-text text-muted">이메일 주소를 입력해주세요</small>
                 </div>
                 <!-- End Input -->
@@ -87,7 +86,7 @@
                         주소
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control" name="location" value="" placeholder="지역을 입력해주세요" required>
+                    <input type="text" class="form-control" name="location" value="" placeholder="지역을 입력해주세요" disabled>
                 </div>
                 <!-- End Input -->
 
@@ -97,23 +96,21 @@
                         핸드폰 번호
                         <span class="text-danger">*</span>
                     </label>
-                    <input class="form-control" type="tel" name="phoneNumber" value="{{ user.phoneNum}}"
+                    <input class="form-control" type="tel" name="phoneNum" id="phoneNum" value="{{ user.phoneNum}}"
                         placeholder="Enter your phone number" required>
                 </div>
                 <!-- End Input -->
             </div>
             <!-- End Social Profiles Form -->
+            <div style="text-align: center; margin-top: 30px;">
+                <button type="submit" class="btn btn-primary btn-md">수정하기</button>&emsp;&emsp;
+                <a type="button" class="btn btn-secondary btn-md" href="{% url 'order_list' %}">이전으로</a>&emsp;&emsp;
+            </div>
         </form>
     </div>
 </div>
 
 <script>
-    function selectedDate() {
-        {
-            {
-                user.birth
-            }
-        }
-    }
+    
 </script>
 {% endblock %}
