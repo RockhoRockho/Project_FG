@@ -11,7 +11,7 @@
 {% block contents %}
 
 <div class="col-md-12">
-  <div class="container col-md-12 my-5">
+  <div class="row container col-md-12 my-5">
     <h2>베스트 상품전</h2>
   </div>
   <div class="container align-items-center">
@@ -19,12 +19,10 @@
       {% for item in items %}
       <div class="col-md-3">
         <div class="container row">
-          <a href="#" style="text-decoration: none; color: black;">
+          <a href="{% url 'product_detail' item.nvMid %}" style="text-decoration: none; color: black;">
             <span>{{ item.rank }}</span>
             <div class="container">
-              <img class="col-md-12"
-                src="{{item.imageUrl}}"
-                alt="...">
+              <img class="col-md-12" src="{{item.imageUrl}}" alt="...">
             </div>
             <div class="row">
               <p class="col-md-12">상품명 {{ item.productName }}</p>
@@ -33,12 +31,11 @@
             </div>
             <div class="col-md-3">판매자{{ item.mallName }}</div>
           </a>
-        </div>  
+        </div>
       </div>
       {% endfor %}
     </div>
     <hr>
-
   </div>
 </div>
 {% endblock %}

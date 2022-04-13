@@ -200,6 +200,16 @@ def product_best(request):
 
     items = itemlist['pageProps']['dehydratedState']['queries'][2]['state']['data']['products']
     
+    for data in items:
+        product = int(data['nvMid'])
+        name = data['productTitle']
+        price = data['mobileLowPrice']
+        category = data['productName']
+        image = data['imageUrl']
+        seller = data['mallName']
+        if seller is None:
+            seller = "네이버"
+        Product(product = product, name = name, price = price, category = category, image = image, seller=seller).save()
 
 
     context = {
