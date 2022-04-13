@@ -5,6 +5,7 @@ class ServiceAdmin(admin.ModelAdmin):
     
     list_display = ('member', 'title', 'content', 'reg_date')
     list_filter = ('reg_date',)
+    icon_name = 'report'
 admin.site.register(Service, ServiceAdmin)
 
 
