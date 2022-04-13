@@ -102,9 +102,23 @@ def member_info(request):
         context = {
             'user': member
         }
+        print(member.birth)
         return render(request, "member_info.html", context)
     elif  request.method == "POST":
-        return render(request, "member_info.html")
+
+        memberT = Member.objects.get(member_id = request.session.get('user'))
+        name = request.POST['name']
+        
+        birth = request.POST['birth']
+        email = request.POST['email']
+        phoneNum = request.POST['phoneNum']
+
+        memberT.name = name
+        memberT.birth = birth
+        memberT.email = email
+        memberT.phoneNum = phoneNum
+        memberT.save()
+        return render(request, "member_updateOK.html")
 
 def member_check(request):
     return render(request, "member_check.html")
