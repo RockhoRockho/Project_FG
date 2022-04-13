@@ -2,4 +2,7 @@ from django.contrib import admin
 
 from .models import Pick
 
-admin.site.register(Pick)
+class PickAdmin(admin.ModelAdmin):
+    list_display = ('member', 'product', 'comment')
+
+admin.site.register(Pick, PickAdmin)
