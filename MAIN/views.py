@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 import json
 import requests
-
+import re
 
 def main(request):
     if request.method == 'GET':
@@ -118,6 +118,9 @@ def main(request):
     elif request.method == 'POST':
         product_name = request.POST['sch_word']
         page_num = 1
-
-        return render(request, 'search.html', {"product_name": product_name, "page_num" : page_num})
+        pattern = '[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]\<\>`\'…》]'
+        if re.findall(pattern, product_name):
+            return render(request, 'product_error.html')
+        else:
+            return render(request, 'search.html', {"product_name": product_name, "page_num" : page_num})
 

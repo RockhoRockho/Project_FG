@@ -29,11 +29,12 @@
             <div class="col-md-8 h-100">
                 <div class="col-md-12">
                     <!-- search -->
-                    <form action="{% url 'main' %}" method="POST">
+                    <form onsubmit="return checkz()" action="{% url 'main' %}" method="POST">
                         {% csrf_token %}
-                        <div class="sch-search">
+                        <div class="sch-search d-flex">
                             <input type="text" class="form-control sch-search-box" id="text_search" name="sch_word"
                                 placeholder="검색어를 입력해 주세요">
+                            <button type="submit">검색</button>
                         </div>
                     </form>
                 </div>
@@ -266,6 +267,18 @@
     function closenav() {
         document.getElementById("sidenav").style.width = "0";
     }
+
+    function checkz() {
+        var search = $("#text_search").val()
+        var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+        if (search==''){
+            alert('검색어를 입력해주십시오');
+            $("#text_search").focus();
+            return false;
+        }
+
+    }
+
 </script>
 {% endblock %}
 
