@@ -84,7 +84,6 @@ def order_purchase(request):
                 pprod.append(prod)
                 cartt.append(i)
                 sum += int(prod.price) * i.quantity
-                print(pprod)
 
         context = {
             'cartt' : cartt,
@@ -119,8 +118,8 @@ def order_purchase(request):
         all_order = Order.objects.all().order_by('-id')
 
         context = {
-            'ood' : all_order,
-            'product' : product,
+            'orders' : all_order,
+            'products' : product,
         }
 
     return render(request, 'order_purchase.html', context)

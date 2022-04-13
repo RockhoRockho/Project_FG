@@ -3,7 +3,7 @@ import os, sys, json
 import urllib.request
 
 from .models import Product
-from order.models import Cart
+from order.models import Cart, Order_items
 from pick.models import Pick
 from present.models import Present
 
@@ -286,7 +286,7 @@ def product_category(request, category):
 
 def product_detail(request, product_id):
     if request.session.get('user') :
-        detail = Product.objects.filter(product=product_id)
+        detail = Product.objects.get(product=product_id)
         context = {
             'detail' : detail,
             'product_id' : product_id
@@ -326,13 +326,11 @@ def before_pay(request, product_id):
 
     member_id = request.session.get('user')
     quantity = request.POST['quantity']
-    if not Present.objects.filter(product_id=product_id).exists():
-        Present(product_id = product_id, member_id=member_id, quantity=quantity).save()
+    price = request.POST['price']
+    if not Order_items.objects.filter(product_id=product_id).exists():
+        Order_items(product_id=product_id, member_id=member_id, quantity=quantity, price=int(price)).save()
         
-    context = {
-        'product_id': product_id
-    }        
-    return render(request, 'before_pay.html', context)
+    return render(request, 'before_pay.html')
 
 def before_present(request, product_id):
 

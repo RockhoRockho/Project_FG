@@ -41,15 +41,14 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-{% for d in detail %}
 <div class="col-md-6">
-    <img src="{{d.image}}"
+    <img src="{{ detail.image }}"
     class="img-fluid" alt="">
 </div>
 <div class="p-4 col-md-6" id="a">
-    <h4>{{d.name|striptags}}</h4>
+    <h4>{{ detail.name|striptags }}</h4>
     <br>
-    <p>{{d.price}}</p>
+    <p>{{ detail.price }}</p>
 
     <a onclick="chkPick()" class="btn btn-danger" style="float:right;">
         <i class="bi bi-box2-heart" ></i>
@@ -58,7 +57,7 @@
     <!-- // 배송비 선택 필드 -->
     <select name="delivery" id="delivery">
         <option value="free">
-            {{d.delivery}}
+            {{ detail.delivery }}
         </option>
     </select>
 
@@ -70,6 +69,7 @@
     </form>
     <form name="payFrm" action="{% url 'before_pay' product_id %}" method="POST" style="display: none;">
         {% csrf_token %}
+        <input type="number" id="pay" name="price" value="{{ detail.price }}">
         <input type="number" id="pay" name="quantity" value="1">
     </form>
     <form name="presentFrm" action="{% url 'before_present' product_id %}" method="POST" style="display: none;">
@@ -83,7 +83,6 @@
         <button type="button" onclick="goPresent()" class="btn btn-warning btn-md" id="present">선물하기</button>
     </div>
 </div>
-{% endfor %}
 
 <div class="container p-4">
     <h4>상품리뷰/평점</h4>
