@@ -1,10 +1,14 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="{% static 'bs/css/bootstrap.min.css' %}" rel="stylesheet">
+    <script src="{% static 'bs/js/bootstrap.bundle.min.js' %}"></script>        
+    <title>카카오페이 결제완료</title>
 </head>
 <body>
 <div class="mt-5 pt-5 row justify-content-center">
@@ -30,7 +34,7 @@
             </div>
         </div>
         <div class="mt-5 pt-3 text-center">
-            <a href="#" class="btn btn-warning">메인으로 돌아가기</a>
+            <a href="{% url 'order_success' %}" class="btn btn-warning">완료</a>
         </div>
 
     </div>
