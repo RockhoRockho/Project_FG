@@ -55,9 +55,17 @@
         {% endfor %}
     </div>
     <div class="btn_container">
-        <button class="btn btn-primary col-md-1 mx-3" style="width: 110px;" onclick="location.href='{% url 'order_list' %}'">마이페이지</button>
-        <button class="btn btn-secondary col-md-1 mx-3" style="width: 110px;" onclick="location.href='{% url 'question_main ' %}'">고객센터</button>
+        <button class="btn btn-primary col-md-1 mx-3" style="width: 110px;" onclick="goMypage()">마이페이지</button>
+        <button class="btn btn-secondary col-md-1 mx-3" style="width: 110px;" onclick="goService()">고객센터</button>
     </div>
+    <script>
+        function goMypage(){
+            location.href="{% url 'order_list' %}"
+        }
+        function goService(){
+            location.href="{% url 'question_main' %}"
+        }
+    </script>
     <div class="col-md-12 cart_subtitle recommend_container">추천상품
         <div class="d-flex col-md-12 recommend_product">
             {% for i in recommend %}
