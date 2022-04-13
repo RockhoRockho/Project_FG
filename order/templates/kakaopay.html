@@ -15,7 +15,7 @@
     <h1 class="col-12 text-center my-5">카카오페이로 결제하기</h1>
     <form method="post" class="col-12 text-center">
       {% csrf_token %}
-      <button class="btn mt-5"><img src="/static/img/payment_icon_yellow_medium.png" style="width:150px;"></button>
+      <button class="btn mt-5"><img src="{% static 'img/payment_icon_yellow_medium.png' %}" style="width:150px;"></button>
     </form>
   </div>
 

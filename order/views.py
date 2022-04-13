@@ -116,8 +116,6 @@ def order_purchase(request, product_id):
         order_item.save()
 
         context = {
-            'order' : Order.objects.get(product_id=product_id),
-            'order_item' : Order_items.objects.get(product_id=product_id),
             'product_id' : product_id,
         }
 
@@ -125,7 +123,6 @@ def order_purchase(request, product_id):
 
 def cart_purchase(request):
     if request.method == "GET":
-        product = Cart.objects.all()
     
         cartt = []
         pprod = []
@@ -168,26 +165,26 @@ def cart_purchase(request):
             receiver_phone = receiver_phone,
             select_list = select_list,
             receiver_name = receiver_name,
+            number = int(datetime.today().strftime('%Y%m%d%H%M')),
         )
         ord.save()
         
         # order_items 저장
         member_id = request.session.get('user')
         prods = list(TempOrder.objects.all().order_by('-id'))
+        # context 용 order_items
+        order_items = []
 
         for prod in prods:
-            Order_items(product_id=prod.product_id, member_id=member_id, quantity=prod.quantity, price=prod.price).save()
-            # 해당 TempOrder 비우기 (approval때 조건문을 이용해 장바구니, 바로결제 구분하기 위함)
-            TempOrder.objects.get(product_id=prod.product_id).delete()
+            order_item = Order_items(product_id=prod.product_id, member_id=member_id, quantity=prod.quantity, price=prod.price)
+            order_item.save()
+            order_items.append(order_item)
 
-        all_order = Order.objects.all().order_by('-id')
-        all_order_item = Order_items.objects.all().order_by('-id')
+        order = Order.objects.last()
 
         context = {
-            'orders' : all_order,
-            'order_items' : all_order_item,
-            'products' : product,
-        }
+            'product_id' : 0,
+        }   
 
     return render(request, 'cart_purchase.html', context)
 
@@ -217,11 +214,11 @@ def order_success(request):
     return render(request, 'order_success.html', context)
 
 
-def kakaopay(request):
+def kakaopay(request, product_id):
     if request.method == "POST":
 
         # 합칠 DB담기
-        # order_items = list(Order_items.objects.all())
+        order_items = list(Order_items.objects.all())
 
 
         url = 'https://kapi.kakao.com/v1/payment/ready'

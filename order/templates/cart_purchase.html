@@ -34,7 +34,7 @@
             <input type="radio" class="form-check-label" name="add_type"> 최근배송지
             <input type="radio" class="form-check-label" name="add_type"> 직접입력
         </div>
-        <form name="cartFrm" action="{% url 'cart_purchase' %}" method="POST">
+        <form name="cartFrm" action="{% url 'kakaopay' %}" method="POST">
             {% csrf_token %}
             <div class="col-md-12 pad-10">
                 <input type="text" name="receiver_name" class="form-control" placeholder="받는사람">
