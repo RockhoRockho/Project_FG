@@ -34,7 +34,7 @@
             <input type="radio" class="form-check-label tabs" name="add_type" onclick="openAd(event, 'last')"> 최근배송지
             <input type="radio" class="form-check-label tabs" name="add_type" onclick="openAd(event, 'self')"> 직접입력
         </div>
-        <form class="tabcontent" name="pFrm1" id="default" action="{% url 'kakaopay' %}" method="POST">
+        <form class="tabcontent" name="pFrm1" id="default" action="{% url 'order_purchase' product_id %}" method="POST">
             {% csrf_token %}
             <div class="col-md-12 pad-10">
                 <input type="text" name="receiver_name" class="form-control" placeholder="받는사람"  value="홍길동" required>
@@ -78,7 +78,7 @@
                 </select>
             </div>
         </form>
-        <form class="tabcontent" name="pFrm2" id="last" action="{% url 'kakaopay' %}" method="POST">
+        <form class="tabcontent" name="pFrm2" id="last" action="{% url 'order_purchase' product_id %}" method="POST">
             {% csrf_token %}
             <div class="col-md-12 pad-10">
                 <input type="text" name="receiver_name" class="form-control" placeholder="받는사람" required>
@@ -122,7 +122,7 @@
                 </select>
             </div>
         </form>
-        <form class="tabcontent" name="pFrm3" id="self" action="{% url 'kakaopay' %}" method="POST">
+        <form class="tabcontent" name="pFrm3" id="self" action="{% url 'order_purchase' product_id %}" method="POST">
             {% csrf_token %}
             <div class="col-md-12 pad-10">
                 <input type="text" name="receiver_name" class="form-control" placeholder="받는사람" required>
