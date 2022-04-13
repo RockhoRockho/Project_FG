@@ -14,7 +14,7 @@ def order_list(request):
 
         return render(request, 'order_list.html', context) 
     else:
-        return redirect('/member/login/')
+        return redirect('/member/needlogin/')
 
 def order_detail(request):
     context = {
@@ -25,25 +25,29 @@ def order_detail(request):
     return render(request, 'order_detail.html', context) 
 
 def order_cart(request):
-    items = []
-    prodItm = []    
-    sum = 0
-    all_cart = list(Cart.objects.all().order_by('id'))
-    for i in all_cart:
-        if i.member_id == request.session.get('user'):
-            prod = Product.objects.get(pk=i.product_id)
-            sum += int(prod.price) * i.quantity
-            prodItm.append(prod)
-            items.append(i)
-    context = {
-        'items' : items,
-        'prods' : prodItm,
-        'recommend': range(4),
-        'zero' : range(0),
-        'sum' : format(sum, ',')
-    }
+    if request.session.get('user') :
+        items = []
+        prodItm = []    
+        sum = 0
+        all_cart = list(Cart.objects.all().order_by('id'))
+        for i in all_cart:
+            if i.member_id == request.session.get('user'):
+                prod = Product.objects.get(pk=i.product_id)
+                sum += int(prod.price) * i.quantity
+                prodItm.append(prod)
+                items.append(i)
+        context = {
+            'items' : items,
+            'prods' : prodItm,
+            'recommend': range(4),
+            'zero' : range(0),
+            'sum' : format(sum, ',')
+        }
 
-    return render(request, 'order_cart.html', context)
+        return render(request, 'order_cart.html', context)
+
+    else:
+        return redirect('/member/needlogin/')
 
 def cart_update(request, product_id):
     stock = request.POST['stock']
