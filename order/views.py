@@ -155,7 +155,7 @@ def kakaopay(request):
             "total_amount": "2200",        # 구매 물품 가격
             "tax_free_amount": "0",         # 구매 물품 비과세
             "approval_url": "http://127.0.0.1:8000/kakaopay/approval/", # 결제 성공시 넘어갈 URL
-            "cancel_url": "http://127.0.0.1:8000",  # 결제 취소시 넘어갈 URL
+            "cancel_url": "http://127.0.0.1:8000/order/cancel/",  # 결제 취소시 넘어갈 URL
             "fail_url": "http://127.0.0.1:8000", # 결제 실패시 넘어갈 URL
         }
 
