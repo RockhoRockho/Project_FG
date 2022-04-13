@@ -2,6 +2,9 @@ from django.urls import path
 from member import views
 
 urlpatterns = [
+    path('findusername/', views.member_findusername, name='member_findusername'),
+    path('findpw/', views.member_findpw, name='member_findpw'),
+    path('found/', views.member_found, name='member_found'),
     path('login/', views.member_login, name='member_login'),
     path('logout/', views.member_logout, name='member_logout'),
     path('join/', views.member_join, name='member_join'),

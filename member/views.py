@@ -42,6 +42,58 @@ def member_login(request):
         
         return render(request, 'member_login.html', context)
 
+def member_findusername(request):
+    name = request.POST['name']
+    phoneNum = request.POST.get('phoneNum', None)
+    email = request.POST.get('email', None)
+    ulst = []
+    memberT = Member.objects.all()
+    if (name and phoneNum):
+        for i in memberT:
+            if (i.name == name and i.phoneNum == int(phoneNum)):
+                ulst.append(i.username)
+                print(ulst)
+        context = {
+            'ulst' : ulst
+        }
+
+    elif (name and email):
+        for i in memberT:
+            if (i.name == name and i.email == email):
+                ulst.append(i.username)
+        context = {
+            'ulst' : ulst
+        }
+    return render(request, 'member_found.html', context)
+
+def member_findpw(request):
+    username = request.POST['username']
+    name = request.POST['name']
+    phoneNum = request.POST.get('phoneNum', None)
+    email = request.POST.get('email', None)
+    pwlst = []
+    memberT = Member.objects.all()
+    if (username and name and phoneNum):
+        for i in memberT:
+            if (i.name == name and i.phoneNum == int(phoneNum) and i.username == username):
+                pwlst.append(i.pw)
+        context = {
+            'pwlst' : pwlst
+        }
+
+    elif (username and name and email):
+        for i in memberT:
+            if (i.name == name and i.email == email and i.username == username):
+                pwlst.append(i.pw)
+        context = {
+            'pwlst' : pwlst
+        }
+    return render(request, 'member_found.html', context)
+
+def member_found(request):
+    return render(request, "member_found.html")
+
+
 def home(request):
     user_id = request.session.get('user')
     if user_id:
@@ -74,19 +126,28 @@ def member_join(request):
         birth = request.POST['birth']
         email = request.POST['email']
         phoneNum = request.POST['phoneNum']
-    
-        memberT = Member(
-            username = username,
-            pw= pw,
-            name = name,
-            gender = gender,
-            birth = birth, 
-            email = email, 
-            phoneNum = phoneNum)
-
-        memberT.save()
         
-        return render(request, 'main.html')
+        check = Member.objects.all()
+        for i in check:
+            if i.username == username:
+                context = {
+                    'error': '이미 존재하는 아이디입니다.'
+                }
+                print(i)
+                return render(request, 'member_join.html', context)
+            else:
+                memberT = Member(
+                    username = username,
+                    pw= pw,
+                    name = name,
+                    gender = gender,
+                    birth = birth, 
+                    email = email, 
+                    phoneNum = phoneNum)
+
+                memberT.save()
+            
+                return render(request, 'member_login.html')
 
 def member_terms(request):
     context = {

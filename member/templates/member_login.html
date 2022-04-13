@@ -81,20 +81,26 @@ Login_Page
                             <button class="question" id="que-1"><span>등록된 휴대폰번호로 찾기</span><span
                                     id="que-1-toggle">∨</span></button>
                             <div class="answer" id="ans-1">
-                                <div><input type="text" class="ininput" placeholder="이름을 입력하세요"></div>
-                                <div><input type="text" class="ininput" placeholder="휴대폰 번호를 입력하세요"></div>
-                                <button type="button" class="btn btn-secondary btnn"
-                                    style="background-color: rgb(119, 118, 177)">인증번호 전송하기</button>
+                                <form action="{% url 'member_findusername' %}" method="POST">
+                                {% csrf_token %}
+                                    <div><input type="text" class="ininput" name="name" id="name" placeholder="이름을 입력하세요" required></div>
+                                    <div><input type="text" class="ininput" name="phoneNum" id="phoneNum" placeholder="휴대폰 번호를 입력하세요"required></div>
+                                    <button type="submit" class="btn btn-secondary btnn"
+                                        style="background-color: rgb(119, 118, 177)">아이디 찾기</button>
+                                </form>
                             </div>
                         </div>
                         <div class="faq-content">
                             <button class="question" id="que-2"><span>등록된 이메일로 찾기</span><span
                                     id="que-2-toggle">∨</span></button>
                             <div class="answer" id="ans-2">
-                                <div><input type="text" class="ininput" placeholder="이름을 입력하세요"></div>
-                                <div><input type="text" class="ininput" placeholder="이메일을 입력하세요"></div>
-                                <button type="button" class="btn btn-secondary btnn"
-                                    style="background-color: rgb(119, 118, 177)">인증번호 전송하기</button>
+                                <form action="{% url 'member_findusername' %}" method="POST">
+                                {% csrf_token %}
+                                    <div><input type="text" class="ininput" name="name" id="name" placeholder="이름을 입력하세요" required></div>
+                                    <div><input type="text" class="ininput" name="email" id="email" placeholder="이메일을 입력하세요" required></div>
+                                    <button type="submit" class="btn btn-secondary btnn"
+                                        style="background-color: rgb(119, 118, 177)">아이디 찾기</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -109,22 +115,28 @@ Login_Page
                             <button class="questionq" id="queq-1"><span>등록된 휴대폰번호로 찾기</span><span
                                     id="queq-1-toggle">∨</span></button>
                             <div class="answer" id="ansq-1">
-                                <div><input type="text" class="ininput" placeholder="아이디를 입력하세요"></div>
-                                <div><input type="text" class="ininput" placeholder="이름을 입력하세요"></div>
-                                <div><input type="text" class="ininput" placeholder="휴대폰 번호를 입력하세요"></div>
-                                <button type="button" class="btn btn-secondary btnn"
-                                    style="background-color: rgb(119, 118, 177)">인증번호 전송하기</button>
+                                <form action="{% url 'member_findpw' %}" method="POST">
+                                    {% csrf_token %}
+                                    <div><input type="text" class="ininput" name="username" id="username" placeholder="아이디를 입력하세요" required></div>
+                                    <div><input type="text" class="ininput" name="name" id="name" placeholder="이름을 입력하세요" required></div>
+                                    <div><input type="text" class="ininput" name="phoneNum" id="phoneNum" placeholder="휴대폰 번호를 입력하세요" required></div>
+                                    <button type="submit" class="btn btn-secondary btnn"
+                                        style="background-color: rgb(119, 118, 177)">비밀번호 찾기</button>
+                                </form>
                             </div>
                         </div>
                         <div class="faq-content">
                             <button class="questionq" id="queq-2"><span>등록된 이메일로 찾기</span><span
                                     id="queq-2-toggle">∨</span></button>
                             <div class="answer" id="ansq-2">
-                                <div><input type="text" class="ininput" placeholder="아이디을 입력하세요"></div>
-                                <div><input type="text" class="ininput" placeholder="이름을 입력하세요"></div>
-                                <div><input type="text" class="ininput" placeholder="이메일을 입력하세요"></div>
-                                <button type="button" class="btn btn-secondary btnn"
-                                    style="background-color: rgb(119, 118, 177)">인증번호 전송하기</button>
+                                <form action="{% url 'member_findpw' %}" method="POST">
+                                    {% csrf_token %}
+                                    <div><input type="text" class="ininput" name="username" id="username" placeholder="아이디을 입력하세요" required></div>
+                                    <div><input type="text" class="ininput" name="name" id="name" placeholder="이름을 입력하세요" required></div>
+                                    <div><input type="text" class="ininput" name="email" id="email" placeholder="이메일을 입력하세요" required></div>
+                                    <button type="submit" class="btn btn-secondary btnn"
+                                        style="background-color: rgb(119, 118, 177)">비밀번호 찾기</button>
+                                </form>
                             </div>
                         </div>
                     </div>
