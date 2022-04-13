@@ -1,11 +1,21 @@
 from django.shortcuts import render
+from member.models import Member
 from product.models import Product
 from .models import Present
 
 def present_list(request):
+    pres = []
+    pprod = []
+    all_present = list(Present.objects.all().order_by('id'))
+    for i in all_present:
+        if i.member_id == request.session.get('user'):
+            pre = Product.objects.get(pk=i.product_id)
+            pres.append(pre) # 상품정보
+            pprod.append(i) # 선물정보
     context = {
-        'items' : range(4),
-        'recommend' : range(4),
+        'presents' : pres, # 상품
+        'products' : pprod, # 선물
+        'recommend' : range(4)
     }
     return render(request, 'present_list.html', context)
 
