@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 import os, sys, json
 import urllib.request
 
@@ -275,14 +275,16 @@ def product_category(request, category):
 
 
 def product_detail(request, product_id):
-    
-    detail = Product.objects.filter(product=product_id)
-    context = {
-        'detail' : detail,
-        'product_id' : product_id
-    }
+    if request.session.get('user') :
+        detail = Product.objects.filter(product=product_id)
+        context = {
+            'detail' : detail,
+            'product_id' : product_id
+        }
 
-    return render(request, 'product_detail.html', context) 
+        return render(request, 'product_detail.html', context) 
+    else:
+        return redirect('/member/needlogin/')
 
 
 def before_cart(request, product_id):
