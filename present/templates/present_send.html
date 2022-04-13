@@ -14,7 +14,7 @@
 
 {% block contents %}
 <!-- // 주문 단계 표시 HTML -->
-<form class="page col-md-12" name="msgFrm" action="{% url 'present_success' product_id %}" method="POST" onsubmit="return chkOrder()">
+<form class="page col-md-12" name="msgFrm" action="{% url 'present_send' product_id %}" method="POST" onsubmit="return chkOrder()">
     {% csrf_token %}
     <div class="present_title">
         <div class="d-flex">
