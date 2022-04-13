@@ -48,7 +48,7 @@
 <div class="p-4 col-md-6" id="a">
     <h4>{{ detail.name|striptags }}</h4>
     <br>
-    <p>{{ detail.price }}</p>
+    <p>{{ detail.price|intcomma }}</p>
 
     <a onclick="chkPick()" class="btn btn-danger" style="float:right;">
         <i class="bi bi-box2-heart" ></i>

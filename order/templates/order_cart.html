@@ -99,8 +99,7 @@
             </div>
             <p class="order_text_agree">하기 필수약관을 확인하였으며 결제에 동의합니다.</p>
             <div class="order_button">
-                <button type="button" id="btnAccount" class="btn_purple"
-                    onclick="goOrder()">
+                <button type="button" id="btnAccount" class="btn_purple" onclick="goOrder()">
                     주문하기
                 </button>
             </div>
@@ -210,7 +209,7 @@
     };
 
     function goOrder() {
-        location.href= "{% url 'order_purchase' %}"
+        location.href= "{% url 'cart_purchase' %}"
     }
     var nav_bar = document.getElementById("nav-category");
     nav_bar.classList.remove("d-none");

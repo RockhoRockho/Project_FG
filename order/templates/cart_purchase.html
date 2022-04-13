@@ -34,7 +34,7 @@
             <input type="radio" class="form-check-label" name="add_type"> 최근배송지
             <input type="radio" class="form-check-label" name="add_type"> 직접입력
         </div>
-        <form name="pFrm" action="{% url 'order_purchase' product_id %}" method="POST">
+        <form name="cartFrm" action="{% url 'cart_purchase' %}" method="POST">
             {% csrf_token %}
             <div class="col-md-12 pad-10">
                 <input type="text" name="receiver_name" class="form-control" placeholder="받는사람">
@@ -81,20 +81,25 @@
             <!-- // 상품 이미지 등 상세정보 HTML -->
             <div class="col-md-12 purchase_subtitle">주문상품</div>
             <div class="col-md-12">
+                {% for cart in cartt %}
+                {% for i in prods %}
+                {% if i.pk == cart.product_id %}
                 <div class="product col-md-12 d-flex">
                     <div class="col-md-3 outer">
-                        
-                        <img src="{{ prod.image }}"
+                        <img src="{{ i.image }}"
                         alt="">
                     </div>
                     <div class="col-md-5 outer">
-                        <div class="inner">상품명{{prod.name | striptags}}</div>
+                        <div class="inner">상품명{{i.name | striptags}}</div>
                     </div>
                     <div class="col-md-4 outer">
-                        <div class="inner_2">{{ item.quantity }}개</div>
-                        <div class="inner_2">상품 판매금액<br>{{ prod.price|intcomma }}원</div>
+                        <div class="inner_2">{{ cart.quantity }}개</div>
+                        <div class="inner_2">상품 판매금액<br>{{ i.price|intcomma }}원</div>
                     </div>
                 </div>
+                {% endif %}
+                {% endfor %}                
+                {% endfor %}
             </div>
         <!-- // 결제정보 HTML -->
         <div class="col-md-12 purchase_subtitle">결제정보</div>
@@ -176,9 +181,9 @@
     }
 
     function goKakao(){
-        document.forms['pFrm'].submit();
+        document.forms['cartFrm'].submit();
     }
-    
+
     function cancel() {
         location.href= "{% url 'order_cancel' %}"
     }
