@@ -9,12 +9,13 @@
 {% endblock %}
 
 {% block contents %}
+
 <div class="col-md-12">
   <div class="container col-md-12 my-5">
     <h2>베스트 상품전</h2>
   </div>
   <div class="container align-items-center">
-    <div class="container d-flex justify-content-around">
+    <div class="container d-flex flex-wrap justify-content-around">
       {% for item in items %}
       <div class="col-md-3">
         <div class="container row">
@@ -45,14 +46,4 @@
 <script>
   var nav_bar = document.getElementById("nav-category");
   nav_bar.classList.remove("d-none");
-
-  $(document).ready(function () {
-    $(document).height() = 1000
-
-    $(window).scroll(function () {
-      if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-        $(document).height() += 1000
-      }
-    });
-  });
 </script>

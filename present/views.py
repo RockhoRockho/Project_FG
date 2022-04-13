@@ -55,5 +55,5 @@ def present_success(request, present_id):
         'product' : product,
         'sum' : sum,
     }
-
+    
     return render(request, 'present_success.html', context)

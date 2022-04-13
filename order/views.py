@@ -29,14 +29,13 @@ def order_cart(request):
         items = []
         prodItm = []    
         sum = 0
-        all_cart = Cart.objects.get(member_id = request.session['user'])
-        all_cart = list(Cart.objects.all().order_by('id'))
-        for i in all_cart:
-            if i.member_id == request.session.get('user'):
-                prod = Product.objects.get(pk=i.product_id)
-                sum += int(prod.price) * i.quantity
-                prodItm.append(prod)
-                items.append(i)
+        member_id = request.session['user']
+        cart = Cart.objects.filter(member_id=member_id)
+        for item in cart:
+            prod = Product.objects.get(product=item.product_id)
+            sum += int(prod.price) * item.quantity
+            prodItm.append(prod)
+            items.append(item)
         context = {
             'items' : items,
             'prods' : prodItm,

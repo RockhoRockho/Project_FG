@@ -48,7 +48,7 @@
                     <img src="{{ prod.image }}" alt="">
                 </div>
                 <div class="col-sm-5 outer">
-                    <div class="inner">{{ prod.name }}</div>
+                    <div class="inner">{{ prod.name|striptags }}</div>
                 </div>
                 <div class="col-sm-3 outer">
                     <div class="inner">{{ prod.price }}</div>
