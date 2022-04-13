@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.urls import path
 from order import views
 
@@ -9,4 +10,5 @@ urlpatterns = [
     path('delete/<int:product_id>/', views.cart_delete, name='cart_delete'),
     path('purchase/', views.order_purchase, name='order_purchase'),
     path('purchase/success/', views.order_success, name='order_success'),
+    path('kakaopay/', views.kakaopay, name='kakaopay'),
 ]   

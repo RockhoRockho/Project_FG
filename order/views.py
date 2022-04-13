@@ -144,7 +144,6 @@ def order_success(request):
     return render(request, 'order_success.html', context)
 
 
-
 def kakaopay(request):
     if request.method == "POST":
         url = 'https://kapi.kakao.com/v1/payment/ready'
