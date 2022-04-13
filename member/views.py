@@ -52,18 +52,20 @@ def member_findusername(request):
         for i in memberT:
             if (i.name == name and i.phoneNum == int(phoneNum)):
                 ulst.append(i.username)
-                print(ulst)
-        context = {
-            'ulst' : ulst
-        }
+            
 
     elif (name and email):
         for i in memberT:
             if (i.name == name and i.email == email):
                 ulst.append(i.username)
-        context = {
-            'ulst' : ulst
-        }
+    
+    if len(ulst) == 0:
+        ulst.append('찾은 결과가 없습니다')
+        
+    context = {
+        'ulst' : ulst
+    }
+
     return render(request, 'member_found.html', context)
 
 def member_findpw(request):
@@ -77,17 +79,21 @@ def member_findpw(request):
         for i in memberT:
             if (i.name == name and i.phoneNum == int(phoneNum) and i.username == username):
                 pwlst.append(i.pw)
-        context = {
-            'pwlst' : pwlst
-        }
+
 
     elif (username and name and email):
         for i in memberT:
             if (i.name == name and i.email == email and i.username == username):
                 pwlst.append(i.pw)
-        context = {
-            'pwlst' : pwlst
-        }
+
+
+    if len(pwlst) == 0:
+        pwlst.append('찾은 결과가 없습니다')
+        
+    context = {
+        'pwlst' : pwlst
+    }
+
     return render(request, 'member_found.html', context)
 
 def member_found(request):
