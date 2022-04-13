@@ -46,7 +46,7 @@
                 <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
             </div>
             <div class="col-md-12 pad-5">
-                <input type="text" name="delivery_address" id="address" class="form-control" placeholder="주소" value="경기 성남시 분당구 중앙공원로 20" required>
+                <input type="text" name="delivery_address" id="delivery_address" class="form-control" placeholder="주소" value="경기" required>
             </div>
             <div class="col-md-12 pad-5">
                 <input type="text" name="detail_address" id="detailAddress" class="form-control" placeholder="상세주소 및 상세건물명" value="1동 101호" required>
@@ -267,7 +267,7 @@
 
 
                 document.getElementById('postcode').value = data.zonecode;
-                document.getElementById("address").value = addr;
+                document.getElementById("delivery_address").value = addr;
 
                 document.getElementById("detailAddress").focus();
             }

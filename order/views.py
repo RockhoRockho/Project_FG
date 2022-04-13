@@ -91,23 +91,30 @@ def order_purchase(request, product_id):
         # 유저아이디
         member_id = request.session.get('user')
         # order 저장
+        receiver_name = request.POST['receiver_name']
+        receiver_phone = request.POST['phone_firstNum']+'-'+request.POST['phone_secondNum']+'-'+request.POST['phone_threeNum']
         delivery_address = request.POST['delivery_address']
         detail_address = request.POST['detail_address']
-        receiver_phone = request.POST['phone_firstNum']+'-'+request.POST['phone_secondNum']+'-'+request.POST['phone_threeNum']
         select_list = request.POST['select_list']
-        receiver_name = request.POST['receiver_name']
-        print(delivery_address)
+
         ord = Order(
             member_id = member_id,
+            receiver_name = receiver_name,
+            receiver_phone = receiver_phone,
             delivery_address = delivery_address,
             detail_address = detail_address,
-            receiver_phone = receiver_phone,
             select_list = select_list,
-            receiver_name = receiver_name,
             number = int(datetime.today().strftime('%Y%m%d%H%M')),
         )
         ord.save()
-        print(ord.delivery_address)
+        print('----------------------')
+        print('----------------------')
+        print('----------------------')
+        for i in list(Order.objects.all()):
+            print(i)
+        print('----------------------')
+        print('----------------------')
+        print('----------------------')
 
         # order_items 저장
         price = TempOrder.objects.get(product_id=product_id).price
@@ -265,7 +272,7 @@ def kakaopay(request):
         return redirect(next_url)
 
 
-    return render(request, 'kakaopay.html')
+    return render(request, 'product_best.html')
 
 def approval(request):
 
