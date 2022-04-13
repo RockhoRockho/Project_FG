@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 import json
 import requests
 import re
+from product.models import Product
 
 def main(request):
     if request.method == 'GET':
@@ -52,6 +53,16 @@ def main(request):
 
         items = itemlist['pageProps']['dehydratedState']['queries'][2]['state']['data']['products']
         
+        for data in items:
+            product = int(data['nvMid'])
+            name = data['productTitle']
+            price = data['mobileLowPrice']
+            category = data['productName']
+            image = data['imageUrl']
+            seller = data['mallName']
+            if seller is None:
+                seller = "네이버"
+            Product(product = product, name = name, price = price, category = category, image = image, seller=seller).save()
 
 
         cookies = {
@@ -104,6 +115,18 @@ def main(request):
         itemlist2 = json.loads(response.text)
 
         items2 = itemlist2['pageProps']['dehydratedState']['queries'][2]['state']['data']['products']
+
+
+        for data in items2:
+            product = int(data['nvMid'])
+            name = data['productTitle']
+            price = data['mobileLowPrice']
+            category = data['productName']
+            image = data['imageUrl']
+            seller = data['mallName']
+            if seller is None:
+                seller = "네이버"
+            Product(product = product, name = name, price = price, category = category, image = image, seller=seller).save()
              
 
 
