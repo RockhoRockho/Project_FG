@@ -4,12 +4,12 @@
 선물완료
 {% endblock %}
 
-{% block nav %}
-{% endblock %}
-
 {% block stylesheet %}
 {% load static %}
 <link href="{% static 'css/purchase_success.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block nav %}
 {% endblock %}
 
 {% block contents %}
@@ -28,7 +28,7 @@
     <hr>
     <div class="col-md-12 d-flex success_box">
         <div class="col-md-4 success_inner_box">
-            <div class="col-md-12 text-center">{# 선물번호 * 현재Datetime #}</div>
+            <div class="col-md-12 text-center">주문번호 {{ present.id }} 가</div>
             <div class="col-md-12 text-center">선물메세지가 {{ present.receiver_phone }}{# 휴대폰번호 #}(으)로 전달되었습니다.</div>
         </div>
     </div>
@@ -37,21 +37,29 @@
     <div class="col-sm-12">
         <div class="product col-md-12 d-flex product">
             <div class="col-md-2 outer">
-                <img class="col-md-12" src="" alt="">
+                <img class="col-md-12" src="{{ product.image }}" alt="">
             </div>
             <div class="col-md-6 outer">
-                <div class="inner"></div>
+                <div class="inner">{{ product.name }}</div>
             </div>
             <div class="col-md-4 outer">
-                <div class="inner_2">%개{# 정가 #}</div>
-                <div class="inner_2">판매금액{# 판매금액 #}</div>
+                <div class="inner_2">{{ present.quantity }} 개</div>
+                <div class="inner_2">총 금액 : {{ sum }}</div>
             </div>
         </div>
     </div>
     <div class="btn_container">
-        <button class="btn btn-primary col-md-1 mx-3" style="width: 110px;" onclick="location.href='{% url 'order_list' %}'">마이페이지</button>
-        <button class="btn btn-secondary col-md-1 mx-3" style="width: 110px;" onclick="location.href='{% url 'question_main ' %}'">고객센터</button>
+        <button class="btn btn-primary col-md-1 mx-3" style="width: 110px;" onclick="goMypage()">마이페이지</button>
+        <button class="btn btn-secondary col-md-1 mx-3" style="width: 110px;" onclick="goService()">고객센터</button>
     </div>
+    <script>
+        function goMypage(){
+            location.href="{% url 'order_list' %}"
+        }
+        function goService(){
+            location.href="{% url 'question_main' %}"
+        }
+    </script>
     <div class="col-md-12 cart_subtitle recommend_container">추천상품
         <div class="d-flex col-md-12 recommend_product">
             {% for i in recommend %}

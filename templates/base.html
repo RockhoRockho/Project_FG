@@ -45,14 +45,12 @@
                 </div>
                 <div class="d-flex flex-row-reverse">
                     <div class="sch-service">
-                        {% if flag == 1 %}
-                        
+
+                        {% if user %}
                         <span class="sch-text-side"> <a href="{% url 'member_logout' %}"
-                            style="text-decoration: none; color: white;">로그아웃</a></span>
-                            
+                                style="text-decoration: none; color: white;">로그아웃</a></span>
                         {% endif %}
-                        {% if flag == 0 %}
-                        
+                        {% if not user %}
                         <span class="sch-text-side"> <a href="{% url 'member_login' %}"
                                 style="text-decoration: none; color: white;">로그인</a></span>
                         {% endif %}
@@ -129,8 +127,6 @@
                             </li>
                         </ul>
                     </div>
-
-                    
                 </nav>
             </div>
             {% endblock %}
@@ -166,14 +162,14 @@
         </div>
         <div class="d-flex flex-wrap col-8">
             <div class="d-flex flex-wrap justify-content-center col-12" id="fbuttons">
-                {% if flag == 1 %}
+                {% if user %}
                 <form class="d-flex" action="{% url 'member_logout' %}">
                     <button type="submit" class="btn">
                         로그아웃
                     </button>&emsp;
                 </form>
                 {% endif %}
-                {% if flag == 0 %}
+                {% if not user %}
                 <form class="d-flex" action="{% url 'member_login' %}">
                     <button type="submit" class="btn">
                         로그인
