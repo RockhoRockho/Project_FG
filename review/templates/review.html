@@ -6,7 +6,7 @@
 
 {% block stylesheet %}
 {% load static %}
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css'/>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css' />
 <link href="{% static 'css/review.css' %}" rel="stylesheet">
 {% endblock %}
 
@@ -19,47 +19,52 @@
         <hr><br>
         <div class="row col-md-10 border table-responsive" style="width:100%; margin-left:0; word-break: keep-all;">
             <table class="table table-bordered text-center reviewed_table" id="reviewed_table">
-                    <th class="col-md-2">작성일자</th>
+                <tr>
+                    <th class="col-md-2">이미지</th>
                     <th class="col-md-1">구분</th>
                     <th class="col-md-3">상품명</th>
-                    <th class="col-md-1">배송비</th>
+                    <th class="col-md-1">가격</th>
                     <th class="col-md-3">평점+내용</th>
                     <th class="col-md-2">수정/삭제</th>
-                    <form action="{% url 'review' %}" method="POST">
-                        {% csrf_token %}
-                        {% for i in review %}
+                </tr>
+                {% for item in items %}
+                    {% for prod in prods%}
+                        {% if prod.pk == item.product_id %}
+                        {% if item.id == forloop.counter %}
                         <tr class="align-middle text-center" style="height: 150px;">
                             <td>
-                                {{ review.reg_date }}
+                                <img style="width: 100%;" src="{{ prod.image }}" alt=""> 
                             </td>
                             <td>
-                                카테고리
+                                {{ item.id }}
                             </td>
                             <td>
-                                상품금액
+                                {{ prod.name }}
                             </td>
                             <td>
-                                배송비
+                                {{ sum }}
                             </td>
                             <td>
                                 <div class='RatingStar'>
                                     <div class='RatingScore'>
-                                    <div class='outer-star'><div class='inner-star'></div></div>
+                                        <div class='outer-star'>
+                                            <div class='inner-star'></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <br>
                                 대충 내용(간략히)
                             </td>
                             <td>
-                                <button id= "mod_btn" class="btn btn-primary btn-sm" style="margin-bottom: 5px;">수정</button>
+                                <button id="mod_btn" class="btn btn-primary btn-sm" style="margin-bottom: 5px;">수정</button>
                                 <button class="btn btn-primary btn-sm" style="margin-bottom: 5px;">삭제</button>
                             </td>
                         </tr>
-                        {% endfor %}
-                    </form>
-                </table>
-            <div><a class="btn btn_primary" href="{% url 'review_write' %}">작성하기</a></div>
-        
+                        {%endif%}
+                        {%endif%}
+                    {% endfor %}
+                {% endfor %}
+            </table>
             <div class="d-flex justify-content-center p-3">
                 pagination
             </div>
@@ -186,50 +191,50 @@
     var btn_close3 = document.getElementById('close3')
     var btn_close4 = document.getElementById('close4')
 
-    btn.onclick = function(){
+    btn.onclick = function () {
         modal.style.display = "block";
         $('body').css("overflow", "hidden");
     }
 
-    btn_close3.onclick = function() {
+    btn_close3.onclick = function () {
         modal.style.display = "none"
         $('body').css("overflow", "scroll");
     }
 
-    btn_close4.onclick = function() {
+    btn_close4.onclick = function () {
         modal.style.display = "none"
         $('body').css("overflow", "scroll");
     }
-    
-    window.onclick = function(event){
-        if(event.target == modal){
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
             modal.style.display = 'none';
             $('body').css("overflow", "scroll");
-	}
-}
+        }
+    }
 
 
     var review = document.getElementById('review1')
     var reviewed = document.getElementById('review2')
     var review_table = document.getElementById('reveiw_table')
     var reviewed_table = document.getElementById('reveiwed_table')
-    
-    
 
 
-    $(document).ready(function() {
+
+
+    $(document).ready(function () {
         $('.review_table').show();
         $('.reviewed_table').hide();
-        $('#review1').click(function(){
+        $('#review1').click(function () {
             $('#review1').css('background-color', '#4f008a')
             $('#review2').css('background-color', '#e2e2e2')
             $('#review1').css('color', 'white')
             $('#review2').css('color', 'black')
             $('.review_table').show()
             $('.reviewed_table').hide()
-            
+
         })
-        $('#review2').click(function(){
+        $('#review2').click(function () {
             $('#review2').css('background-color', '#4f008a')
             $('#review1').css('background-color', '#e2e2e2')
             $('#review2').css('color', 'white')
@@ -238,9 +243,12 @@
             $('.reviewed_table').show()
         })
     })
-    ratings = {RatingScore: 4.5} 
+    ratings = {
+        RatingScore: 4.5
+    }
     totalRating = 5;
     table = document.querySelector('.RatingStar');
+
     function rateIt() {
         for (rating in ratings) {
             ratingPercentage = ratings[rating] / totalRating * 100;
@@ -249,9 +257,8 @@
             numberRating = table.querySelector(`.${rating} .numberRating`);
             star.style.width = ratingRounded;
             numberRating.innerText = ratings[rating];
-        }}rateIt()
-
-
-
+        }
+    }
+    rateIt()
 </script>
 {% endblock %}

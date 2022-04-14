@@ -33,10 +33,11 @@ def order_cart(request):
         cart = Cart.objects.filter(member_id=member_id)
 
         for item in cart:
-            prod = Product.objects.get(product=item.product_id)
-            sum += int(prod.price) * item.quantity
-            prodItm.append(prod)
-            items.append(item)
+            if item.member_id == member_id:
+                prod = Product.objects.get(product=item.product_id)
+                sum += int(prod.price) * item.quantity
+                prodItm.append(prod)
+                items.append(item)
 
         context = {
             'items' : items,
@@ -126,13 +127,14 @@ def cart_purchase(request):
         # 상품나열
         all_product = list(Cart.objects.all())
         for item in all_product:
-            prod = Product.objects.get(pk=item.product_id)
-            pprod.append(prod)
-            cartt.append(item)
-            sum += int(prod.price) * item.quantity
+            if item.member_id == member_id:
+                prod = Product.objects.get(pk=item.product_id)
+                pprod.append(prod)
+                cartt.append(item)
+                sum += int(prod.price) * item.quantity
 
-            # TempOrder 저장
-            TempOrder(product_id=prod.pk, member_id=member_id, price=prod.price, quantity=item.quantity).save()
+                # TempOrder 저장
+                TempOrder(product_id=prod.pk, member_id=member_id, price=prod.price, quantity=item.quantity).save()
 
         context = {
             'cartt' : cartt,
@@ -213,18 +215,20 @@ def kakaopay(request):
         product_id = request.session.get('product')
         tmp = TempOrder.objects.get(product_id=product_id)
 
-        p_price += tmp.price
-        p_qauntity += tmp.quantity
-        p_name.append(Product.objects.get(product=product_id).name)
+        if tmp.member_id == member_id:
+            p_price += tmp.price
+            p_qauntity += tmp.quantity
+            p_name.append(Product.objects.get(product=product_id).name)
 
 
     # 장바구니 경로
     elif request.session.get('product') == None:
         # 리스트 담기
         for prod in list(TempOrder.objects.all().order_by('-id')):
-            p_name.append(Product.objects.get(product=prod.product_id).name)
-            p_price += prod.price
-            p_qauntity += prod.quantity
+            if prod.member_id == request.session.get('user'):
+                p_name.append(Product.objects.get(product=prod.product_id).name)
+                p_price += prod.price
+                p_qauntity += prod.quantity
 
     if request.method == "POST":    
 

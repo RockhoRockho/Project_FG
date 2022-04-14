@@ -10,9 +10,10 @@ def present_list(request):
     user = request.session['user']
     present = Present.objects.filter(member_id=user)
     for i in present:
-        pre = Product.objects.get(pk=i.product_id)
-        pprod.append(pre) # 상품정보
-        pres.append(i) # 선물정보
+        if i.member_id == user:
+            pre = Product.objects.get(pk=i.product_id)
+            pprod.append(pre) # 상품정보
+            pres.append(i) # 선물정보
 
     cookies = {
         'TODAY_PAGE_COOKIE_KEY': '12',
@@ -157,10 +158,11 @@ def present_kakaopay(request):
     prod = Present.objects.get(id=present_id)
 
     # 리스트 담기
-    product_id = prod.product_id
-    p_qauntity += prod.quantity
-    p_price += int(Product.objects.get(product=product_id).price)
-    p_name.append(Product.objects.get(product=product_id).name)
+    if prod.member_id == member_id:
+        product_id = prod.product_id
+        p_qauntity += prod.quantity
+        p_price += int(Product.objects.get(product=product_id).price)
+        p_name.append(Product.objects.get(product=product_id).name)
 
     if request.method == "POST":    
 
