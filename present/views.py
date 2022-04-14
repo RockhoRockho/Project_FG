@@ -45,7 +45,10 @@ def present_send(request, product_id):
         n_present.save()
 
         context['present'] = n_present
-        return render(request, 'sendOk.html', context)
+
+        request.session['present'] = n_present.id
+
+        return render(request, 'before_kakao.html', context)
 
 def present_cancel(request, product_id):
 

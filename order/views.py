@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Cart, Order_items, TempOrder, Order
 from product.models import Product
-from member.models import Member
+from present.models import Present
 from datetime import datetime
 import requests
 import json
@@ -97,17 +97,16 @@ def order_purchase(request, product_id):
         detail_address = request.POST['detail_address']
         select_list = request.POST['select_list']
 
-        if receiver_name != '' and receiver_phone != '' and delivery_address != '' and detail_address != '' and select_list != '':      
-            ord = Order(
-                member_id = member_id,
-                receiver_name = receiver_name,
-                receiver_phone = receiver_phone,
-                delivery_address = delivery_address,
-                detail_address = detail_address,
-                select_list = select_list,
-                number = int(datetime.today().strftime('%Y%m%d%H%M')),
-            )
-            ord.save()
+        ord = Order(
+            member_id = member_id,
+            receiver_name = receiver_name,
+            receiver_phone = receiver_phone,
+            delivery_address = delivery_address,
+            detail_address = detail_address,
+            select_list = select_list,
+            number = int(datetime.today().strftime('%Y%m%d%H%M')),
+        )
+        ord.save()
 
         # order_items 저장
         price = TempOrder.objects.get(product_id=product_id).price
@@ -117,7 +116,7 @@ def order_purchase(request, product_id):
 
 
         # 세션으로 바로결제 값 넘기기
-        request.session['product_id'] = product_id
+        request.session['product'] = product_id
 
         return render(request, 'before_kakao.html')
 
@@ -175,7 +174,7 @@ def cart_purchase(request):
         prods = list(TempOrder.objects.all().order_by('id'))
 
         for prod in prods:
-            Order_items(product_id=prod.product_id, member_id=member_id, quantity=prod.quantity, price=prod.price).save()   
+            Order_items(product_id=prod.product_id, member_id=member_id, quantity=prod.quantity, price=prod.price).save() 
 
         return render(request, 'before_kakao.html')
 
@@ -186,63 +185,64 @@ def order_cancel(request):
     return render(request, 'cancel.html')
 
 def order_success(request):
+    
+    # 가장최근 order 로 불러옴
+    order = Order.objects.last()
+
     context = {
-        'items' : range(2), # order_items_id 수
         'recommend': range(4),
-        'order_id': '',
-        'order_date': '',
-        'member_id': '',
-        'member_name': '',
-        'receiver_name': '',
-        'delivery_address': '',
-        'product_id' : '',
-        'product_name' : '',
-        'product_img' : '',
-        'seller_name': '',
-        'product_price' : '',
-        'cart_items_quantity': '',
+        'number': order.number,
+        'delivery_address': order.delivery_address,
+        'detail_address' : order.detail_address
     }
     return render(request, 'order_success.html', context)
 
 def before_kakao(request):
-
+    # 경로가 바뀌지 않아 POST가 2번 실행됨
     return render(request, 'before_kakao.html')
 
 def kakaopay(request):
     # 가장최근 order 로 불러옴
     order = Order.objects.last()
+    member_id = request.session.get('user')
 
-    if request.method == 'GET':
-        # 유저아이디
-        member_id = request.session.get('user')
-        # 리스트 저장
-        p_name = []
-        p_price = 0
-        p_qauntity = 0
-        # order 불러오기
+    # 유저아이디
+    # 리스트 저장
+    p_name = []
+    p_price = 0
+    p_qauntity = 0
+    # order 불러오기
 
-        # 바로결제 경로
-        if request.session.get('product_id') != None:
-            product_id = request.session.get('product_id')
-            prod = TempOrder.objects.get(product_id=product_id)
-            p_name.append(Product.objects.get(product=product_id).name)
+    # 바로결제 경로
+    if request.session.get('product') != None:
+
+        product_id = request.session.get('product')
+        tmp = TempOrder.objects.get(product_id=product_id)
+
+        p_price += tmp.price
+        p_qauntity += tmp.quantity
+        p_name.append(Product.objects.get(product=product_id).name)
+
+
+    # 장바구니 경로
+    elif request.session.get('product') == None:
+        # 리스트 담기
+        for prod in list(TempOrder.objects.all().order_by('-id')):
+            p_name.append(Product.objects.get(product=prod.product_id).name)
             p_price += prod.price
             p_qauntity += prod.quantity
 
+    # 선물결제 경로
+    elif request.session.get('present') != None:
+        present_id = request.session.get('present')
+        prod = Present.objects.get(id=present_id)
 
-        # 장바구니 경로
-        elif request.session.get('product_id') == None:
-            # 리스트 담기
-            for prod in list(TempOrder.objects.all().order_by('-id')):
-                p_name.append(Product.objects.get(product=prod.product_id).name)
-                p_price += prod.price
-                p_qauntity += prod.quantity
+        p_price += prod.price
+        p_qauntity += prod.quantity
+        product_id = prod.product_id
+        p_name.append(Product.objects.get(product=product_id).name)
 
-        # 선물결제 경로
-
-        return render(request, 'kakaopay.html')
-
-    elif request.method == "POST":    
+    if request.method == "POST":    
 
         url = 'https://kapi.kakao.com/v1/payment/ready'
         headers = {
@@ -254,10 +254,10 @@ def kakaopay(request):
             "partner_order_id": order.number,     # 주문번호
             "partner_user_id": member_id,    # 유저 아이디
             "item_name": p_name,        # 구매 물품 이름
-            "quantity": p_price,                # 구매 물품 수량
-            "total_amount": p_qauntity,        # 구매 물품 가격
+            "quantity": p_qauntity,                # 구매 물품 수량
+            "total_amount": p_price,        # 구매 물품 가격
             "tax_free_amount": "0",         # 구매 물품 비과세
-            "approval_url": "http://127.0.0.1:8000/kakaopay/approval/", # 결제 성공시 넘어갈 URL
+            "approval_url": "http://127.0.0.1:8000/order/kakaopay/approval/", # 결제 성공시 넘어갈 URL
             "cancel_url": "http://127.0.0.1:8000",  # 결제 취소시 넘어갈 URL
             "fail_url": "http://127.0.0.1:8000", # 결제 실패시 넘어갈 URL
         }
@@ -268,6 +268,8 @@ def kakaopay(request):
         next_url = result['next_redirect_pc_url']   # 결제 페이지로 넘어갈 url을 저장
 
         return redirect(next_url)
+
+    return render(request, 'kakaopay.html')
 
 def approval(request):
 
@@ -299,11 +301,16 @@ def approval(request):
 
     
     # 바로결제 경로 진행시 db 삭제
-    if request.session.get('product_id') != None:
-        del(request.session['product_id'])
+    if request.session.get('product') != None:
+        del(request.session['product'])
         TempOrder.objects.all().delete()
 
-    # 장바구니 경로 결제진행시 db 삭제 (선물하기는 temp_order가 없음)
+    # 선물경로 결제 진행시 db 삭제
+    elif request.session.get('present') != None:
+        del(request.session['present'])
+        TempOrder.objects.all().delete()
+    
+    # 장바구니 경로 결제진행시 db 삭제 
     else:
         Cart.objects.all().delete()
         TempOrder.objects.all().delete()

@@ -3,7 +3,6 @@ from django.db import models
 
 
 class Order(models.Model):
-    order_id = models.AutoField(primary_key=True, verbose_name='주문일련번호', default=1)
     date = models.DateTimeField(auto_now_add=True, verbose_name='주문날짜')
     delivery_address = models.CharField(max_length=30, verbose_name='배송지')
     detail_address = models.CharField(max_length=60, verbose_name='상세배송지', default='')

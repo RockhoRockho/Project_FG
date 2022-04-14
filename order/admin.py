@@ -2,9 +2,9 @@ from django.contrib import admin
 
 from .models import Order, Order_items, Cart, TempOrder
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('order_id', 'date', 'delivery_address', 'receiver_name')
+    list_display = ('id', 'date', 'delivery_address', 'receiver_name')
     icon_name = 'content_paste'
-    search_fields = ['order_id', 'receiver_name']
+    search_fields = ['id', 'receiver_name']
 
 class Order_itemsAdmin(admin.ModelAdmin):
     list_display = ('member','product','price', 'quantity')

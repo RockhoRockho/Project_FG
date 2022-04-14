@@ -13,4 +13,5 @@ urlpatterns = [
     path('cancel/', views.order_cancel, name='order_cancel'),
     path('before_kakao/', views.before_kakao, name='before_kakao'),
     path('kakaopay/', views.kakaopay, name='kakaopay'),
+    path('kakaopay/approval/', views.approval, name='approval'),
 ]   
