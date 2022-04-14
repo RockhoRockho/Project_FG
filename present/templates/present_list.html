@@ -92,14 +92,14 @@
                 <th>수량</th>
                 <th>받는이</th>
             </tr>
-            {% for product in products %}
             {% for present in presents %}
-            {%if product.pk == present.product_id %}
+            {% for product in products %}
+            {%if product.product == present.product_id %}
             <tr>
-                <td>{{product.product_id}}</td>
-                <td>{{present.name}}</td>
-                <td>{{product.quantity}}</td>
-                <td>{{product.receiver_name}}</td>
+                <td>{{present.id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{present.quantity}}</td>
+                <td>{{present.receiver_name}}</td>
             </tr>
             {% endif %}
             {% endfor %}
@@ -109,7 +109,7 @@
         <div class="container mt-1">
             <ul class="pagination justify-content-center">
                 <span>
-                    < 1>
+                    <1>
                 </span>
             </ul>
         </div>
