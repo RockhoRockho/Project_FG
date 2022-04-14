@@ -15,7 +15,7 @@ def question_main(request):
         all_count = Service.objects.all().count()
 
         write_pages = int(request.session.get('write_pages', 3))
-        per_page = int(request.session.get('per_page', 5))
+        per_page = int(request.session.get('per_page', 2))
         page = int(request.GET.get('page', 1))
 
         paginator = Paginator(all_service, per_page)

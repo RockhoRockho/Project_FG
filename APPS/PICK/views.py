@@ -7,7 +7,7 @@ def pick(request):
     ppick = []
     pprod = []
     all_pick = list(Pick.objects.all().order_by('id'))
-    all_count = Pick.objects.filter(member_id=request.session.get('user')).count()
+    all_count = Pick.objects.all().count()
     for i in all_pick:
         if i.member_id == request.session.get('user'):
             prod = Product.objects.get(pk=i.product_id)

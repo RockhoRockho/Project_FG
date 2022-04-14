@@ -85,7 +85,7 @@ FG MALL - 보낸 선물함 조회
                 <th>수량</th>
                 <th>받는이</th>
             </tr>
-            {% for present in presents %}
+            {% for present in boards %}
             {% for product in products %}
             {%if product.product == present.product_id %}
             <tr>
