@@ -9,18 +9,19 @@
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css' />
 <link href="{% static 'css/review.css' %}" rel="stylesheet">
 
-<!-- <style>
+<style>
     .starpoint_wrap{display:inline-block;}
     .starpoint_box{position:relative;background:url(https://hsecode.github.io/images_codepen/codepen_sp_star.png) 0 0}
     
     .RatingStar{
         position:relative; 
-        background:url(https://hsecode.github.io/images_codepen/codepen_sp_star.png) ; 
+        background:url(https://hsecode.github.io/images_codepen/codepen_sp_star.png) 100% 0; 
         height: 18px; 
         width: 100%;
-        margin: 0 auto;
+        /* margin: 0 auto; */
         /* outline: 1px solid black; */
         padding-bottom: 18px;
+        margin-left: 0;
     }
     .star{
         z-index: 5;
@@ -28,11 +29,12 @@
         /* outline: 1px solid black; */
         background:url(https://hsecode.github.io/images_codepen/codepen_sp_star.png) 100% 100%; 
         height: 18px; 
-        /* width: 20%; */
+        width: 20%;
         top: -18px;
         left: -1px;
+        margin-left: 0;
     }
-</style> -->
+</style>
 {% endblock %}
 
 
@@ -71,8 +73,11 @@
                         </td>
                         <td>
                             <div>
-                                <div class='RatingStar'>
-                                    {{ item.rating }} / 5    
+                                <div style="outline: 1px solid black; width: 100px; margin: 0 auto;">
+                                    <div class='RatingStar'>
+                                        {{ item.rating }} / 5    
+                                    </div>
+                                    <div class="star"><input type="hidden" id="star" value="{{ item.rating }}"></div>
                                 </div>
                             </div>
                             <br>
@@ -198,10 +203,14 @@
     var reviewed_table = document.getElementById('reveiwed_table')
 
 
-    // function(){
-    // var target = document.getElementByClass('.star').value;
-    //     star.style.width = "{{ rating }}*20%";
-
+    
+    var target = document.getElementById('star').value.onload;
+    window.onload=function(){
+        var stars = document.getElementById('star');
+        stars.style.width = "50px";
+        console.log('asdasdasdsadasdsadsaaddassadasda')
+    }
+    console.log(target)
 
     $(document).ready(function () {
         $('.review_table').show();
