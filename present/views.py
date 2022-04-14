@@ -6,15 +6,15 @@ from .models import Present
 def present_list(request):
     pres = []
     pprod = []
-    all_present = list(Present.objects.all().order_by('id'))
-    for i in all_present:
-        if i.member_id == request.session.get('user'):
-            pre = Product.objects.get(pk=i.product_id)
-            pres.append(pre) # 상품정보
-            pprod.append(i) # 선물정보
+    user = request.session['user']
+    present = Present.objects.filter(member_id=user)
+    for i in present:
+        pre = Product.objects.get(pk=i.product_id)
+        pprod.append(pre) # 상품정보
+        pres.append(i) # 선물정보
     context = {
-        'presents' : pres, # 상품
-        'products' : pprod, # 선물
+        'presents' : pres, # 선물
+        'products' : pprod, # 상품
         'recommend' : range(4)
     }
     return render(request, 'present_list.html', context)
