@@ -14,6 +14,7 @@ def review(request):
     all_items = Order_items.objects.all().order_by('id')
     all_count = Review.objects.all().count()
     user = request.session.get('user')
+    
 
     for i in all_items:
         if i.member_id == user:
@@ -100,7 +101,9 @@ def review_update(request, id):
         return render(request, 'review_updateOk.html')
 
     
-def review_delete(request, id):
-    reviews = Review.objects.get(id=id)
-    reviews.delete()
-    return render(request, 'review_deleteOK.html')
+def review_delete(request):
+    if request.method == "POST":
+        id = request.POST['id']
+        reviews = Review.objects.get(id=id)
+        reviews.delete()
+        return render(request, 'review_deleteOK.html')
