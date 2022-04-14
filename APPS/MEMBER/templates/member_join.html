@@ -10,16 +10,12 @@ FG MALL - 회원가입
         {% csrf_token %}
         <div class="pt-3">
             <span>아이디</span>
-            <input type="text" class="form-control" id="username" name="username" placeholder="6 ~ 20자 영문, 숫자">
+            <input type="text" class="form-control" id="username" name="username" placeholder="영문, 숫자">
             <span style="color:red;"><strong>{{ error }}</strong> </span>
         </div>
         <div class="pt-3">
             <span>비밀번호</span>
-            <input type="password" class="form-control" id="pw" name="pw" placeholder="8 ~ 12자 영문, 숫자, 특수문자">
-        </div>
-        <div class="pt-3">
-            <span>비밀번호 확인</span>
-            <input type="password" class="form-control" id="pwcheck" name="pwcheck" placeholder="6 ~ 20자 영문, 숫자, 특수문자">
+            <input type="password" class="form-control" id="pw" name="pw" placeholder="영문, 숫자, 특수문자">
         </div>
         <div class="pt-3">
             <span>이름</span>
@@ -27,7 +23,7 @@ FG MALL - 회원가입
         </div>
         <div class="pt-3">
             <span>생년월일</span>
-            <input type="text" class="form-control" id="birth" name="birth" placeholder="8자리 숫자 입력">
+            <input type="text" class="form-control" id="birth" name="birth" placeholder="YYYY-MM-DD">
         </div>
         <div class="pt-3">
             <span>이메일</span>
