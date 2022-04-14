@@ -75,9 +75,11 @@
         <div class="d-flex col-md-12 recommend-product">
             {% for i in recommend %}
             <div class="col-md-3">
-                <img class="col-md-12 p-3"
-                    src="{{i.image}}"
-                    alt="">
+                <a href="{% url 'product_detail' i.product %}">
+                    <img class="col-md-12 p-3"
+                        src="{{i.image}}"
+                        alt="">
+                </a>    
             </div>
             {% endfor %}
         </div>
