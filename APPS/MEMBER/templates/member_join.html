@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+FG MALL - 회원가입
+{% endblock %}
+
+{% block contents %}
+<div class="d-flex flex-wrap justify-content-center col-12 w-100">
+    <form name="memberinfo" action="{% url 'member_join' %}" method="POST">
+        {% csrf_token %}
+        <div class="pt-3">
+            <span>아이디</span>
+            <input type="text" class="form-control" id="username" name="username" placeholder="6 ~ 20자 영문, 숫자">
+            <span style="color:red;"><strong>{{ error }}</strong> </span>
+        </div>
+        <div class="pt-3">
+            <span>비밀번호</span>
+            <input type="password" class="form-control" id="pw" name="pw" placeholder="8 ~ 12자 영문, 숫자, 특수문자">
+        </div>
+        <div class="pt-3">
+            <span>비밀번호 확인</span>
+            <input type="password" class="form-control" id="pwcheck" name="pwcheck" placeholder="6 ~ 20자 영문, 숫자, 특수문자">
+        </div>
+        <div class="pt-3">
+            <span>이름</span>
+            <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요.">
+        </div>
+        <div class="pt-3">
+            <span>생년월일</span>
+            <input type="text" class="form-control" id="birth" name="birth" placeholder="8자리 숫자 입력">
+        </div>
+        <div class="pt-3">
+            <span>이메일</span>
+            <input type="email" class="form-control" id="email" name="email" placeholder="email을 입력하세요.">
+        </div>
+        <div class="pt-3">
+            <span>휴대폰 번호</span>
+            <input type="number" class="form-control" id="phoneNum" name="phoneNum"
+                placeholder='01012341234("-" 없이 입력)'>
+        </div>
+        <div class="pt-3">
+            <div><input type="checkbox" id="sns">
+                <label for="sns">SMS, 이메일로 상품 및 이벤트 정보를 받겠습니다.(선택)</label></div>
+            <div><small>만 14세 미만 회원은 회원가입이 불가능합니다.</small></div>
+        </div>
+        <div class="pt-3">
+            <div><button type="submit" class="btn btn-secondary">회원가입</button></div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+<script>
+</script>
+{% block nav %}
+{% endblock %}

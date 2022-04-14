@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load mathfilters %}
+
+{% block title %}
+FG MALL - 주문조회
+{% endblock %}  
+
+{% block contents %}
+
+<div class="col-md-10 col-12 container py-1 pt-3">
+    <h2>주문/배송 조회</h2>
+    <div class="b table-responsive">
+        <table class="table table-bordered" style="word-break: keep-all;">
+            <thead>
+                <tr>
+                    <th class="text-center">구분</th>
+                    <th class="text-center">주문번호</th>
+                    <th class="text-center">주문날짜</th>
+                    <th class="text-center">배송지</th>
+                    <th class="text-center">배송비</th>
+                    <th class="text-center">주문상태</th>
+                    <th class="text-center">확인/취소</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td class="text-center">{{ order.id }}</td>
+                    <td class="text-center">{{ order.number }}</a></td>
+                    <td class="text-center">{{ order.date }}</td>
+                    <td class="text-center">{{ order.delivery_address }} {{ order.detail_address }}</td>
+                    <td class="text-center">무료배송</td>
+                    <td class="text-center">배송중</td>
+                    <td class="text-center">취소불가</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    var nav_bar = document.getElementById("nav-user");
+    nav_bar.classList.remove("d-none");
+</script>
+{% endblock %}

@@ -103,12 +103,13 @@ ul {
     right: 0;
     z-index: 1;
     padding: 10px;
-    background-color: #fff;
+    /* background-color: #fff; */
 }
 
 .order_side .order_sticky {
-    background-color: #fff;
+    /* background-color: #fff; */
     height: 300px;
+    margin-top: 100px;
     padding-top: 30px;
 }
 
@@ -117,7 +118,7 @@ ul {
     width: 14.37%;
     position: fixed;
     z-index: 1100;
-    background-color: #fff;
+    /* background-color: #fff; */
 }
 
 .order_title {

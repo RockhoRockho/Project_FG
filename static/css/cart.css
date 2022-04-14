@@ -125,11 +125,10 @@
     right: 0;
     z-index: 1;
     padding: 10px;
-    background-color: #fff;
 }
 
 .order_side .order_sticky {
-    background-color: #fff;
+    margin-top: 100px;
     height: 300px;
     padding-top: 30px;
 }
@@ -140,7 +139,6 @@
     width: 14.37%;
     position: fixed;
     z-index: 1100;
-    background-color: #fff;
 }
 
 .order_title {
@@ -268,6 +266,5 @@
         width: 15%;
         position: fixed;
         z-index: 1100;
-        background-color: #fff;
     }
 }

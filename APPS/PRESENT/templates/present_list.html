@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% load mathfilters %}
+
+{% block title %}
+FG MALL - 보낸 선물함 조회
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+{% block contents %}
+<style>
+    .page {
+        padding-left: 30px;
+    }
+
+    .subtitle {
+        padding: 30px;
+        padding-left: 10px;
+        color: #4f008a;
+        font-weight: bold;
+    }
+
+    .table-hover th {
+        background-color: #f0e8ff;
+    }
+
+    .r_subtitle {
+        padding: 0 0 20px 10px;
+        margin: 40px 0 0 0;
+        font-size: large;
+        border-bottom: 1px solid rgb(235, 235, 235);
+    }
+
+    .r_container {
+        background-color: #e9ecef;
+        height: 400px;
+    }
+
+    .product {
+        background-color: white;
+        margin: 5px 0 0 9px;
+    }
+
+    .pup_info {
+        position: relative;
+        padding: 20px 0 15px 15px;
+        height: 170px;
+        text-align: left;
+    }
+
+    .pup_title {
+        position: absolute;
+        top: 12px;
+        height: 30px;
+        padding-right: 14px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .pup_price {
+        position: absolute;
+        top: 40px;
+        padding: 20px 14px 0 0;
+        font-weight: bold;
+    }
+
+    .satisf_wrap {
+        position: absolute;
+        bottom: 0;
+        padding-top: 20px;
+        color: #757575;
+        line-height: 30px;
+    }
+</style>
+
+<div class="page col-lg-10 col-12 mt-3">
+    <div class="col-md-12 mb-4 table-responsive" style="word-break: keep-all;">
+        <h4 class="subtitle border-bottom">보낸 선물함 조회</h4>
+        <table class="table table-hover text-center mt-5" style="overflow-x: auto;">
+            <tr style="background-color: #f0e8ff;">
+                <th>선물번호</th>
+                <th>보낸 선물</th>
+                <th>수량</th>
+                <th>받는이</th>
+            </tr>
+            {% for present in presents %}
+            {% for product in products %}
+            {%if product.product == present.product_id %}
+            <tr>
+                <td>{{present.id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{present.quantity}}</td>
+                <td>{{present.receiver_name}}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </table>
+        <!--Pagination-->
+        <div class="container mt-1">
+            <ul class="pagination justify-content-center">
+                {% if boards.number > 1 %}       
+                <li class="page-item"><a class="page-link" href="{% url 'present_list' %}" title="처음"><i class='fas fa-angle-double-left'>◀◀</i></a></li>
+                {% endif %}
+        
+                {% if start_page > 1%}
+                <li class="page-item"><a class="page-link" href="{% url 'present_list' %}?page={{ start_page|add:-1 }}" title="이전"><i class='fas fa-angle-left'></i>◀</a></li>
+                {% endif %}
+        
+                {% if boards.paginator.num_pages > 1 %}
+                    {% for p in page_range %}
+                        {% if boards.number != p %}
+                        <li class="page-item"><a class="page-link" href="{% url 'present_list' %}?page={{ p }}">{{ p }}</a></li>
+                        {% else %}
+                        <li class="page-item active"><a class="page-link" href="#" title="현재페이지">{{ p }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+        
+                {% if boards.paginator.num_pages > end_page %}
+                <li class="page-item"><a class="page-link" href="{% url 'present_list' %}?page={{ end_page|add:1 }}" title="다음"><i class='fas fa-angle-right'>▶</i></a></li>
+                {% endif %}
+                
+                {% if boards.number < boards.paginator.num_pages %}
+                <li class="page-item"><a class="page-link" href="{% url 'present_list' %}?page={{ boards.paginator.num_pages }}" title="마지막"><i class='fas fa-angle-double-right'>▶▶</i></a></li>
+                {% endif %}
+            </ul>
+        </div>
+        
+    </div>
+    <div class="d-flex flex-wrap col-12 h-4 subtitle">이런 상품은 어떠세요?</div>
+    <div class="d-flex flex-wrap col-12">
+        <div class="d-flex flex-wrap col-12">
+            {% for i in recommend %}
+            {% if forloop.counter <= 4 %}
+            <div class="d-flex flex-wrap col-lg-3 col-md-6 col-12 px-3 border">
+                <div class="d-flex justify-content-center col-12">
+                    <a href="{% url 'product_detail' i.nvMid %}">
+                        <img class="col-md-12" src="{{i.imageUrl}}" width="100vw" height="100vw" alt="...">
+                    </a>
+                </div>
+                <div class="d-flex flex-wrap col-12">
+                    <div class="d-flex col-12">{{i.productTitle}}</div>
+                    <div class="d-flex col-12">{{i.mobileLowPrice}}원</div>
+                    <div class="d-flex col-12 justify-content-between">
+                        <div class="rating">별점</div>
+                        <p class="seller_id">판매자{{i.mallName}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var nav_bar = document.getElementById("nav-user");
+    nav_bar.classList.remove("d-none");
+</script>
+
+
+
+
+{% endblock %}

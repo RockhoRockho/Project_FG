@@ -3,283 +3,322 @@
 <html lang="ko">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <link href="{% static 'css/sidenav.css' %}" rel="stylesheet">
-    <link href="{% static 'bs/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <script src="{% static 'bs/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    {% block stylesheet %}
-    {% endblock %}
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-        {% block title %}
-        {% endblock %}
-    </title>
+	<!-- style sheet -->
+	<link rel="shortcut icon" type="image/x-icon" href="/static/img/logo.png">
+	<link href="{% static 'bs/css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/base.css' %}" rel="stylesheet">
+	<script src="{% static 'bs/js/bootstrap.bundle.min.js' %}"></script>
+
+	<!-- google api ajax -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	<!-- custom style sheet -->
+	{% block stylesheet %}
+	{% endblock %}
+
+	<title>
+		{% block title %}
+		{% endblock %}
+	</title>
 </head>
 
+<body class="h-100 w-100">
+	{% block header %}
+	<header class="w-100 sticky-top">
+		<!-- header -->
+		<div class="d-flex flex-wrap w-100 overflow-hidden" style="background-color: #4f008a;">
+			<div class="col-xl-2"></div>
+			<div class="col-12 col-xl-8">
+				<div class="d-flex flex-wrap col-12 w-100 justify-content-between align-items-center pt-3 px-3">
+					<div class="d-flex flex-wrap align-items-center">
+						<span class="d-flex h1" onclick="opennav()" style="color: white">&#9776;</span>
+						<a href="{% url 'main' %}" class="d-flex align-items-center p-2">
+							<img src="/static/img/logo.png" width="50px" height="44px">
+						</a>
+					</div>
+					<div class="d-flex flex-wrap align-items-center">
+						{% if member %}
+						<span class="px-2">
+							<a href="{% url 'member_logout' %}" style="text-decoration: none; color: white;">로그아웃</a>
+						</span>
+						{% endif %}
+						{% if not member %}
+						<span class="px-2">
+							<a href="{% url 'member_login' %}" style="text-decoration: none; color: white;">로그인</a>
+						</span>
+						{% endif %}
+						<span class="px-2">
+							<a href="{% url 'order_list' %}" style="text-decoration: none; color: white;">마이페이지</a>
+						</span>
+						<span class="px-2">
+							<a href="{% url 'order_cart' %}" style="text-decoration: none; color: white;">장바구니</a>
+						</span>
+					</div>
+				</div>
+				<div class="col-12 pt-3 pb-3 px-3">
+					<form class="d-flex flex-wrap col-12" onsubmit="return checkz()" action="{% url 'main' %}"
+						method="POST">
+						{% csrf_token %}
+						<nav class="navbar navbar-light col-12">
+							<div class="d-flex flex-wrap form-inline col-12">
+								<div class="d-flex px-2 justify-content-center col-11">
+									<input type="text" class="form-control px-2" id="text_search" name="sch_word"
+										placeholder="검색어를 입력해 주세요">
+								</div>
+								<div class="d-flex px-2 justify-content-center col-1">
+									<button type="submit" class="btn btn-outline-secondary bg-light w-100">
+										<img src="/static/img/icon_search.png" width="20vw" height="20vw">
+									</button>
+								</div>
+							</div>
+						</nav>
+				</div>
+				</form>
+			</div>
+		</div>
+		<div class="col-lg-2"></div>
+		</div>
+	</header>
+	{% endblock %}
 
-{% block header %}
-<header style="width: 100%;">
-    <div class="header-container">
-        <div class="row w-100">
-            <div class="col-md-2"></div>
-            <div class="col-md-8 h-100">
-                <div class="col-md-12">
-                    <!-- search -->
-                    <form onsubmit="return checkz()" action="{% url 'main' %}" method="POST">
-                        {% csrf_token %}
-                        <div class="sch-search d-flex">
-                            <input type="text" class="form-control sch-search-box" id="text_search" name="sch_word"
-                                placeholder="검색어를 입력해 주세요">
-                            <button type="submit">검색</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="d-flex flex-row">
-                    <div class="sch-nav">
-                        <span class="sch-ico-side" onclick="opennav()"> &#9776;</span>
-                        <a href="{% url 'main' %}"><img class="sch-ico-logo" src="/static/img/logo.png" width="50px"
-                                height="44px"></a>
-                    </div>
-                </div>
-                <div class="d-flex flex-row-reverse">
-                    <div class="sch-service">
+	<!-- side nav -->
+	<div id="sidenav" class="sidenav" style="z-index: 1030">
+		<div class="d-flex flex-wrap sidenav-top">
+			<div class="d-flex justify-content-center align-items-center col-10"><img src="/static/img/login.png"
+					style="width: 2.6em;">{{member.name}}</div>
+			<div class="d-flex col-2"><a href="#" class="sidenav_close" onclick="closenav()">&times;</a></div>
+		</div>
+		<div class="d-flex col-12">
+			<p class="catego">카테고리</p>
+		</div>
+		<div class="d-flex col-12">
+			<a href="/product/category/50000000/" class="little_menu w-100">패션의류 </a>
+		</div>
+		<div class="d-flex col-12">
+			<a href="/product/category/50000001/" class="little_menu w-100">패션잡화</a>
+		</div>
+		<div class="d-flex col-12">
+			<a href="/product/category/50000002/" class="little_menu w-100">화장품/미용</a>
+		</div>
+		<div class="d-flex col-12">
+			<a href="/product/category/50000003/" class="little_menu w-100">디지털/가전</a>
+		</div>
+		<div class="d-flex col-12">
+			<a href="/product/category/50000004/" class="little_menu w-100">가구/인테리어</a>
+		</div>
+		<div class="d-flex col-12">
+			<a href="/product/category/50000005/" class="little_menu w-100">출산/육아</a>
+		</div>
+		<div class="d-flex col-12">
+			<a href="/product/category/50000006/" class="little_menu w-100">식품</a>
+		</div>
+		<div class="d-flex col-12">
+			<a href="/product/category/50000007/" class="little_menu w-100">스포츠/레저</a>
+		</div>
+		<div class="d-flex col-12">
+			<a href="/product/category/50000008/" class="little_menu w-100">생활/건강</a>
+		</div>
+		<div class="d-flex col-12">
+			<a href="/product/category/50000009/" class="little_menu w-100">여가/생활편의</a>
+		</div>
+		<div class="d-flex col-12">
+			<p class="catego">HOT</p>
+		</div>
+		<div class="d-flex col-12">
+			<a href="{%url 'product_best' %}" class="little_menu w-100">베스트 100</a>
+		</div>
+	</div>
 
-                        {% if flag == 1 %}
-                        <span class="sch-text-side"> <a href="{% url 'member_logout' %}"
-                                style="text-decoration: none; color: white;">로그아웃</a></span>
-                        {% endif %}
-                        {% if flag == 0 %}
-                        <span class="sch-text-side"> <a href="{% url 'member_login' %}"
-                                style="text-decoration: none; color: white;">로그인</a></span>
-                        {% endif %}
-                        <span class="sch-text-side"> <a href="{% url 'order_list' %}"
-                                style="text-decoration: none; color: white;">마이페이지</a></span>
-                        <span class="sch-text-side"> <a href="{% url 'order_cart' %}"
-                                style="text-decoration: none; color: white;">장바구니</a></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-{% endblock %}
+	<div class="d-flex flex-wrap w-100 overflow-hidden">
+		<div class="col-xl-2"></div>
+		<div class="d-flex flex-wrap col-12 col-xl-8 px-3">
+			{% block slideBar %}
+			{% endblock %}
 
-<body>
-    <div class="row pad-10 w-100 overflow-hidden">
-        {% block slideBar %}
-        {% endblock %}
-        <div class="col-xl-2">
-        </div>
-        <div class="d-flex flex-wrap col-xl-8 col-12">
-            {% block nav %}
-            <div class="d-none d-sm-block col-md-2 border">
-                <nav id="sidebarMenu" class="d-md-block bg-light sidebar collapse">
-                    <!-- 유저 정보 네비게이션 -->
-                    <div id="nav-user" class="d-none">
-                        <a href="/" class="d-flex align-items-center me-md-auto link-dark text-decoration-none">
-                            <svg class="" width="0" height="0">
-                                <use xlink:href="#bootstrap" /></svg>
-                            <span class="fs-4 d-flex mb-auto " style="text-align: center;">{{member.name}}님</span>
-                        </a>
-                        <hr>
-                        <ul class="nav nav-pills flex-column mb-auto ">
-                            <li class="nav-item">
-                                <a href="{% url 'member_info' %}" class="nav-link link-dark" aria-current="page">
-                                    <svg class="" width="0" height="0">
-                                        <use xlink:href="#home" /></svg>
-                                    개인정보 수정
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{% url 'order_list' %}" class="nav-link link-dark">
-                                    <svg class="" width="0" height="0">
-                                        <use xlink:href="#speedometer2" /></svg>
-                                    구매/배송 조회
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{% url 'present_list' %}" class="nav-link link-dark">
-                                    <svg class="" width="0" height="0">
-                                        <use xlink:href="#table" /></svg>
-                                    선물함
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{% url 'pick' %}" class="nav-link link-dark">
-                                    <svg class="" width="0" height="0">
-                                        <use xlink:href="#grid" /></svg>
-                                    찜 목록
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{% url 'review' %}" class="nav-link link-dark">
-                                    <svg class="" width="0" height="0">
-                                        <use xlink:href="#people-circle" /></svg>나의 상품 리뷰
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{% url 'question_main' %}" class="nav-link link-dark">
-                                    <svg class="" width="0" height="0">
-                                        <use xlink:href="#people-circle" /></svg>고객센터 문의
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-            {% endblock %}
-            <div id="sidenav" class="sidenav" style="word-break: keep-all;">
-                <div class="sidenav-top row">
-                    <div class="col-10"><img src="/static/img/login (1).png" style="width: 2.6em;"> {{ member.name }}</div>
-                    <div class="col-2"><a href="#" class="sidenav_close" onclick="closenav()">&times;</a></div>
-                </div>
-                <div style="clear: both;"></div>
-                <div class="cut"></div>
-                <a href="{%url 'product_best' %}" class="little_menu" style="font-size: 27.5px;"><i class="bi bi-stars"></i>베스트 100<i class="bi bi-stars"></i></a>
-                <p class="catego">&emsp;&emsp;카테고리</p>
-                <a href="/product/category/50000000/" class="little_menu">패션의류 </a>
-                <a href="/product/category/50000001/" class="little_menu">패션잡화</a>
-                <a href="/product/category/50000002/" class="little_menu">화장품/미용</a>
-                <a href="/product/category/50000003/" class="little_menu">디지털/가전</a>
-                <a href="/product/category/50000004/" class="little_menu">가구/인테리어</a>
-                <a href="/product/category/50000005/" class="little_menu">출산/육아</a>
-                <a href="/product/category/50000006/" class="little_menu">식품</a>
-                <a href="/product/category/50000007/" class="little_menu">스포츠/레저</a>
-                <a href="/product/category/50000008/" class="little_menu">생활/건강</a>
-                <a href="/product/category/50000009/" class="little_menu">여가/생활편의</a>
-            </div>
-            {% block contents %}
-            {% endblock %}
-        </div>
-    </div>
+			{% block nav %}
+			<!-- nav: user info -->
+			<div id="nav-user" class="d-none col-lg-2 col-12 d-flex justify-content-center">
+				<div class="d-none d-lg-block mt-3 w-100">
+					<ul class="nav nav-pills flex-column text-center py-3 bg-light">
+						<li class="nav-item">
+							<a href="{% url 'member_info' %}" class="nav-link link-dark little_menu"
+								aria-current="page">개인정보 수정</a>
+						</li>
+						<li class="nav-item">
+							<a href="{% url 'order_list' %}" class="nav-link link-dark little_menu">구매/배송 조회</a>
+						</li>
+						<li class="nav-item">
+							<a href="{% url 'present_list' %}" class="nav-link link-dark little_menu">선물함</a>
+						</li>
+						<li class="nav-item">
+							<a href="{% url 'pick' %}" class="nav-link link-dark little_menu">찜 목록</a>
+						</li>
+						<li class="nav-item">
+							<a href="{% url 'review' %}" class="nav-link link-dark little_menu">나의 상품 리뷰</a>
+						</li>
+						<li class="nav-item">
+							<a href="{% url 'question_main' %}" class="nav-link link-dark little_menu">고객센터 문의</a>
+						</li>
+					</ul>
+				</div>
+				<div class="d-lg-none d-block navbar navbar-expand-sm navbar-lgiht bg-light">
+					<div class="container-fluid">
+						<div class="collapse navbar-collapse">
+							<ul class="navbar-nav me-auto mb-lg-0">
+								<li class="nav-item">
+									<a class="nav-link link-dark" href="{% url 'member_info' %}">개인정보 수정</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link link-dark" href="{% url 'order_list' %}">구매/배송 조회</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link link-dark" href="{% url 'present_list' %}">선물함</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link link-dark" href="{% url 'pick' %}">찜 목록</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link link-dark" href="{% url 'review' %}">나의 상품 리뷰</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link link-dark" href="{% url 'question_main' %}">고객센터 문의</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endblock %}
+
+			{% block contents %}
+			{% endblock %}
+		</div>
+		<div class="col-xl-2"></div>
+	</div>
+
+	{% block footer %}
+	<footer class="w-100" style="margin-top: 100px; background-color: #f0e8ff;">
+		<div class="d-flex flex-wrap p-3 w-100 overflow-hidden">
+			<div class="col-xl-2"></div>
+			<div class="col-12 col-xl-8">
+				<div class="d-flex flex-wrap justify-content-center col-12">
+					{% if member %}
+					<form class="d-flex" action="{% url 'member_logout' %}">
+						<button type="submit" class="btn btn-primary">
+							로그아웃
+						</button>&emsp;
+					</form>
+					{% endif %}
+					{% if not member %}
+					<form class="d-flex" action="{% url 'member_login' %}">
+						<button type="submit" class="btn btn-primary">
+							로그인
+						</button>&emsp;
+					</form>
+					{% endif %}
+					<div class="d-flex">
+						<button type="submit" class="btn btn-primary" id="top">
+							위로
+						</button>&emsp;
+					</div>
+					<div class="d-flex">
+						<button type="submit" class="btn btn-primary" id="home">
+							홈으로
+						</button>
+					</div>
+				</div>
+				<div class="d-flex col-12 pt-5">
+					<div class="d-flex flex-wrap col-6 float-left">
+						<div class="d-flex col-12">
+							<h6>FG Mall(주)</h6>
+						</div>
+						<div class="d-flex col-12">
+							<p style="font-size: 9px;">
+								대표이사 : 홍길동, 주소 : 서울특별시 강남구 테헤란로 146 현익빌딩 3층, 4층 (신한은행건물)
+								<br>Tel : 1234-5678, 사업자등록번호 : 000-00-00000 <br><br>
+								FG Mall(주)는 통신판매중개자로서 오픈마켓 FG Mall의 거래당사자가 아니며, <br> 입점판매자가 등록한 상품정보 및 거래에 대해 FG
+								Mall(주)는 일체
+								책임을
+								지지
+								않습니다.
+							</p>
+						</div>
+					</div>
+					<div class="d-flex flex-wrap col-6 float-left">
+						<div class="d-flex col-12">
+							<h6>고객센터 1234-5678(유료)</h6>
+						</div>
+						<div class="d-flex col-12">
+							<p style="font-size: 9px;">
+								주소 : 서울특별시 강남구 테헤란로 146 현익빌딩 3층, 4층 (신한은행건물)
+								<br>Fax : 02-234-5678 / email : customerservice@fgmall.com <br>
+								<a href="{% url 'question_main' %}">고객센터 바로가기 ></a>
+							</p>
+						</div>
+						<div class="d-flex col-12">
+							<h6>전자금융거래분쟁담당</h6>
+						</div>
+						<div class="d-flex col-12">
+							<p style="font-size: 9px;">
+								Tel : 9876-5432 / Fax : 02-876-5432
+								<br>email : customerservice@fgmall.com
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-2"></div>
+		</div>
+		<div class="text-center p-2 w-100"
+			style="background-color: rgba(0, 0, 0, 0.05); font-size: 10px; color: rgba(0, 0, 0, 0.3);">
+			© 2022 Copyright: FG Mall Co.,Ltd. All Rights Reserved.
+		</div>
+	</footer>
+	{% endblock %}
 </body>
-{% block footer %}
 
-<footer style="margin-top: 100px; background-color: #f0e8ff;" class="w-100">
-    <div class="row pad-10 w-100 overflow-hidden">
-        <div class="col-2">
-        </div>
-        <div class="d-flex flex-wrap col-8">
-            <div class="d-flex flex-wrap justify-content-center col-12" id="fbuttons">
-                {% if flag == 1 %}
-                <form class="d-flex" action="{% url 'member_logout' %}">
-                    <button type="submit" class="btn">
-                        로그아웃
-                    </button>&emsp;
-                </form>
-                {% endif %}
-                {% if flag == 0 %}
-                <form class="d-flex" action="{% url 'member_login' %}">
-                    <button type="submit" class="btn">
-                        로그인
-                    </button>&emsp;
-                </form>
-                {% endif %}
-                <div class="d-flex">
-                    <button type="submit" class="btn" id="top">
-                        위로
-                    </button>&emsp;
-                </div>
-                <div class="d-flex">
-                    <button type="submit" class="btn" id="home">
-                        홈으로
-                    </button>
-                </div>
-            </div>
-            <div class="col-6 p-2" style="float: left;">
-                <h6>FG Mall(주)</h6>
-                <p style="font-size: 9px;">
-                    대표이사 : 홍길동, 주소 : 서울특별시 강남구 테헤란로 146 현익빌딩 3층, 4층 (신한은행건물)
-                    <br>Tel : 1234-5678, 사업자등록번호 : 000-00-00000 <br><br>
-                    FG Mall(주)는 통신판매중개자로서 오픈마켓 FG Mall의 거래당사자가 아니며, <br> 입점판매자가 등록한 상품정보 및 거래에 대해 FG Mall(주)는 일체 책임을 지지
-                    않습니다.
-                </p>
-            </div>
-            <div class="col-6 p-2" style="float: right;">
-                <h6>고객센터 1234-5678(유료)</h6>
-                <p style="font-size: 9px;">
-                    주소 : 서울특별시 강남구 테헤란로 146 현익빌딩 3층, 4층 (신한은행건물)
-                    <br>Fax : 02-234-5678 / email : customerservice@fgmall.com <br>
-                    <a href="{% url 'question_main' %}">고객센터 바로가기 ></a>
-                </p>
-                <h6>전자금융거래분쟁담당</h6>
-                <p style="font-size: 9px;">
-                    Tel : 9876-5432 / Fax : 02-876-5432
-                    <br>email : customerservice@fgmall.com
-                </p>
-            </div>
-            <div style="clear:both;"></div>
-        </div>
-        <div class="text-center p-2"
-            style="background-color: rgba(0, 0, 0, 0.05); font-size: 10px; color: rgba(0, 0, 0, 0.3);">
-            © 2022 Copyright: FG Mall Co.,Ltd. All Rights Reserved.
-        </div>
-    </div>
-</footer>
-
-{% endblock %}
-
-{% block script %}
 <script>
-    // function navigo() {
-    //     const header = document.querySelector('header');
-    //     const headerheight = header.clientHeight / 2;
-    //     console.log(headerheight);
-    //     document.addEventListener('scroll', onScroll, {
-    //         passive: true
-    //     }); //스크롤 이벤트
-    //     function onScroll() {
-    //         const scrollposition = pageYOffset;
-    //         const nav = document.querySelector('sch-nav');
-    //         if (headerheight <= scrollposition) {
-    //             nav.classList.add('sch-fix')
-    //         } else {
-    //             nav.classList.remove('sch-fix');
-    //         }
-    //     }
+	let upButton = document.getElementById("top");
+	let homeButton = document.getElementById("home");
 
-    // }
-    // navigo()
+	upButton.addEventListener("click", backToTop);
+	homeButton.addEventListener("click", home);
 
-    let upButton = document.getElementById("top");
-    let homeButton = document.getElementById("home");
+	function backToTop() {
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+	}
 
-    upButton.addEventListener("click", backToTop);
-    homeButton.addEventListener("click", home);
+	function home() {
+		location.href = "/";
+	}
 
-    function backToTop() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
+	function opennav() {
+		if (screen.width > 992)
+			document.getElementById("sidenav").style.width = " 16.66666667%";
+		else
+			document.getElementById("sidenav").style.width = " 100%";
+	}
 
-    function home() {
-        location.href = "/";
-    }
+	function closenav() {
+		document.getElementById("sidenav").style.width = "0";
+	}
 
-    function opennav() {
-        document.getElementById("sidenav").style.width = "20%";
-    }
-
-    function closenav() {
-        document.getElementById("sidenav").style.width = "0";
-    }
-
-    function checkz() {
-        var search = $("#text_search").val()
-        var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
-        if (search==''){
-            alert('검색어를 입력해주십시오');
-            $("#text_search").focus();
-            return false;
-        }
-
-    }
-
+	function checkz() {
+		var search = $("#text_search").val()
+		var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+		if (search == '') {
+			alert('검색어를 입력해주십시오');
+			$("#text_search").focus();
+			return false;
+		}
+	}
 </script>
+{% block script %}
 {% endblock %}
 
 </html>

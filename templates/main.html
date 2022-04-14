@@ -6,14 +6,11 @@
 {% endblock %}
 
 {% block title %}
-* FG MALL Main *
-{% endblock %}
-
-{% block nav %}
+FG MALL - 메인
 {% endblock %}
 
 {% block slideBar %}
-<div class="d-flex col-md-12 justify-content-center sb-color">
+<div class="d-flex col-12 justify-content-center sb-color">
     <img src="https://cdn.011st.com/11dims/resize/1240x400/quality/99/11src/http://cdn.011st.com/ds/2022/02/28/1376/ca254f98c1cf9652431e09c9fee537a9.jpg"
         style="width: 68vw; height: 20vw">
 </div>
@@ -21,53 +18,65 @@
 {% endblock %}
 
 {% block contents %}
-<!-- 베스트 트렌드 상품 -->
-<div class="d-flex flex-wrap justify-content-start col-12 pt-3">
-    <div class="d-sm-none d-md-block d-flex col-12">
+<div class="d-flex flex-wrap justify-content-start col-12 p-3">
+    <!-- 베스트 트렌드 상품 -->
+    <div class="d-sm-none d-xl-block d-flex col-12">
         <h3>베스트 트렌드 상품</h3>
     </div>
-    <div class="d-none d-sm-block d-md-none d-flex col-12 justify-content-center">
-        <h1>베스트 트렌드 상품</h1>
+    <div class="d-none d-sm-block d-xl-none d-flex col-12 my-3">
+        <h1 class="text-center">베스트 트렌드 상품</h1>
     </div>
     {% for item in items %}
     {% if forloop.counter <= 6 %}
-    <div class="d-flex flex-wrap justify-content-center col-md-2 m-container-trand">
-        <a href="{% url 'product_detail' item.nvMid %}">
-            <div class="d-flex justify-content-center p-3">
-                <img src="{{item.imageUrl}}" width="100%" height="100%" alt="">
+    <div class="d-flex flex-wrap align-content-start col-12 col-xl-2 m-container-trand overflow-hidden px-1">
+        <div class="d-xl-none col-1"></div>
+        <div class="d-flex col-2 col-xl-12 justify-content-center">
+            <a href="{% url 'product_detail' item.nvMid %}">
+                <img class="d-flex border" src="{{item.imageUrl}}" width="100vw" height="100vw" alt="">
+            </a>
+        </div>
+        <div class="d-flex flex-wrap col-8 col-xl-12">
+            <div class="d-flex col-12 text-left">
+                <a href="{% url 'product_detail' item.nvMid %}" class="link-dark"
+                    style="text-decoration: none;">{{item.productTitle}}</a>
             </div>
-            <div class="px-3 pb-3">
-                <a>{{item.productTitle}}</a>
-            </div>
-        </a>
-    </div>
-
-    {% endif %}
-    {% endfor %}
-
-</div>
-<!-- 검색 횟수가 가장 높은 상품 -->
-<div class="d-flex flex-wrap justify-content-center col-md-12 pt-3">
-    <div class="col-12">
-        <h3>가장 많이 구매한 상품</h3>
-    </div>
-    {% for item2 in items2 %}
-    {% if forloop.counter <= 3 %}
-    <a href="{% url 'product_detail' item2.nvMid %}">
-        <div class="d-flex flex-wrap justify-content-center col-md-4 m-container-best">
-            <div class="d-flex justify-content-center p-3">
-                <img src="{{item2.imageUrl}}" width="360" height="180" alt="">
-            </div>
-            <div class="px-3 pb-3">
-                <a>{{item2.productTitle}}</a>
-                <h4>{{item2.mobileLowPrice}}원 ~</h4>
+            <div class="d-flex col-12 text-right">
+                <h5>{{item.mobileLowPrice}}원 ~</h5>
             </div>
         </div>
-    </a>
+        <div class="d-xl-none col-1"></div>
+    </div>
     {% endif %}
     {% endfor %}
 
-
+    <!-- 검색 횟수가 가장 높은 상품 -->
+    <div class="d-sm-none d-xl-block d-flex col-12 mt-3">
+        <h3>가장 많이 구매한 상품</h3>
+    </div>
+    <div class="d-none d-sm-block d-xl-none d-flex col-12 my-3">
+        <h1 class="text-center">가장 많이 구매한 상품</h1>
+    </div>
+    {% for item2 in items2 %}
+    {% if forloop.counter <= 6 %}
+    <div class="d-flex flex-wrap align-content-start col-12 col-xl-2 m-container-trand overflow-hidden px-1">
+        <div class="d-xl-none col-1"></div>
+        <div class="d-flex col-2 col-xl-12 justify-content-center">
+            <a href="{% url 'product_detail' item2.nvMid %}">
+                <img class="d-flex border" src="{{item2.imageUrl}}" width="100vw" height="100vw" alt="">
+            </a>
+        </div>
+        <div class="d-flex flex-wrap col-8 col-xl-12">
+            <div class="d-flex col-12 text-left">
+                <a href="{% url 'product_detail' item2.nvMid %}" class="link-dark"
+                    style="text-decoration: none;">{{item2.productTitle}}</a>
+            </div>
+            <div class="d-flex col-12 text-right">
+                <h5>{{item2.mobileLowPrice}}원 ~</h5>
+            </div>
+        </div>
+        <div class="d-xl-none col-1"></div>
+    </div>
+    {% endif %}
+    {% endfor %}
 </div>
-
 {% endblock %}

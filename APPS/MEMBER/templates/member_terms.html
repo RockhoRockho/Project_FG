@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}
+FG MALL - 약관 동의
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block contents %}
+<div class="w-100 h-100">
+    <form action="{% url 'member_join' %}" id="agree" method="GET" onsubmit="return checkCheckBoxes();">
+        <div class="d-flex flex-wrap col-12 justify-content-center align-items-center">
+            <div class="col-2 col-md-4"></div>
+            <div class="d-flex flex-wrap col-8 col-md-4 pt-5">
+                <div class="d-flex flex-wrap col-12">
+                    <input class="form-check-input" id="checkALL" type="checkbox" onclick="selectALL(this)">
+                    <label for="checkALL">약관 전체 동의</label>
+                </div>
+                <div class="d-flex flex-wrap col-12 pt-3">
+                    <div class="d-flex col-12">
+                        <h4>필수 동의 항목</h4>
+                    </div>
+                    <div class="d-flex col-12">
+                        <input class="form-check-input" type="checkbox" id="Essential1" name="chk">
+                        <a href="{% url 'member_terms_detail' %}" target="_blank"  for="Essential1" style="color: black; text-decoration: none;">[필수] 쇼핑몰 이용약관 ></a>
+                    </div>
+                    <div class="d-flex col-12">
+                        <input class="form-check-input" type="checkbox" id="Essential2" name="chk">
+                        <a href="{% url 'member_terms_detail' %}" target="_blank"  for="Essential2" style="color: black; text-decoration: none;">[필수] 전자금융거래 이용약관 ></a>
+                    </div>
+                    <div class="d-flex col-12">
+                        <input class="form-check-input" type="checkbox" id="Essential3" name="chk">
+                        <a href="{% url 'member_terms_detail' %}" target="_blank" for="Essential3" style="color: black; text-decoration: none;">[필수] 개인정보 수집동의서 ></a>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap col-12 pt-3">
+                    <div class="d-flex col-12">
+                        <h4>선택 동의 사항</h4>
+                    </div>
+                    <div class="d-flex col-12">
+                        <input class="form-check-input" type="checkbox" id="select1" name="chk">
+                        <a href="{% url 'member_terms_detail' %}" target="_blank"  for="select1" style="color: black; text-decoration: none;">[선택] 개인정보 수집 동의서 ></a>
+                    </div>
+                    <div class="d-flex col-12">
+                        <input class="form-check-input" type="checkbox" id="select2" name="chk">
+                        <a href="{% url 'member_terms_detail' %}" target="_blank"  for="select2" style="color: black; text-decoration: none;">[선택] 위치기간 서비스 이용약관 ></a>
+                    </div>
+                    <div class="d-flex col-12">
+                        <input class="form-check-input" type="checkbox" id="select3" name="chk">
+                        <a href="{% url 'member_terms_detail' %}" target="_blank"  for="select3" style="color: black; text-decoration: none;">[선택] 제 3자 마케팅 활용동의서 전체동의 ></a>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap col-12 pt-3">
+                    <input type="submit" class="btn btn-secondary join" value="회원가입"
+                        style="width: 100%; margin-top: 20px;"></input>
+                </div>
+            </div>
+            <div class="col-2 col-md-4"></div>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#checkALL").click(function () {
+            if ($("#checkALL").is(":checked")) $("input[name=chk]").prop("checked", true);
+            else $("input[name=chk]").prop("checked", false);
+        });
+        $("input[name=chk]").click(function () {
+            var total = $("input[name=chk]").length;
+            var checked = $("input[name]:checked").length;
+
+            if (total != checked) $("#checkALL").prop("checked", false);
+            else $("#checkALL").prop("checked", true);
+        });
+    });
+
+    function checkCheckBoxes() {
+        if (agree.Essential1.checked == false || agree.Essential2.checked == false || agree.Essential3.checked ==
+            false) {
+            alert('필수항목에 동의해주세요');
+            return false;
+        } else {
+            alert('동의 확인');
+            return true;
+        }
+    }
+</script>
+{% endblock %}

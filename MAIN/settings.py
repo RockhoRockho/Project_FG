@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-==k^rk(7o2^$28%(!9v@pb*=cy+u=ihg3u@&0u^=a1(_oi&7%d'
+SECRET_KEY = 'django-insecure-z%gbpfs-p6!b56e!3xr6i1itfqgot)dj_(i0=-aoq4^xgwgvu&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,13 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mathfilters',
-    'member',
-    'product',
-    'order',
-    'pick',
-    'present',
-    'review',
-    'service',
+    'APPS.MEMBER',
+    'APPS.ORDER',
+    'APPS.PICK',
+    'APPS.PRESENT',
+    'APPS.PRODUCT',
+    'APPS.REVIEW',
+    'APPS.SERVICE'
 ]
 
 MIDDLEWARE = [
@@ -57,7 +57,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
 ]
 
 ROOT_URLCONF = 'MAIN.urls'
@@ -132,7 +131,6 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    
 ]
 
 # Default primary key field type
@@ -140,4 +138,4 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-TEMPLATES[0]['OPTIONS']['context_processors'].append("member.context_processors.flag_processor")
+TEMPLATES[0]['OPTIONS']['context_processors'].append("APPS.MEMBER.context_processors.flag_processor")
