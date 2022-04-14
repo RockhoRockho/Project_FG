@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from service.models import Service
 from member.models import Member
 from django.http import Http404
+from django.core.paginator import Paginator
 
 def question_main(request):
 
@@ -10,9 +11,27 @@ def question_main(request):
         all_service = Service.objects.all().order_by('-id')
         all_count = Service.objects.all().count()
 
+        write_pages = int(request.session.get('write_pages', 3))
+        per_page = int(request.session.get('per_page', 5))
+        page = int(request.GET.get('page', 1))
+
+        paginator = Paginator(all_service, per_page)
+        page_obj = paginator.get_page(page)
+        
+        start_page = ((int)((page_obj.number - 1) / write_pages) * write_pages) + 1
+        end_page = start_page + write_pages - 1
+
+        if end_page >= paginator.num_pages:
+            end_page = paginator.num_pages
+
         context = {
+            'boards' : page_obj,
             'service' : all_service,
             'count' : all_count,
+            'write_pages': write_pages,
+            'start_page': start_page,
+            'end_page': end_page,
+            'page_range': range(start_page, end_page + 1),
         }
         
         return render(request, "question_main.html", context)

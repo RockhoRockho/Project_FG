@@ -13,16 +13,13 @@
 {% block contents %}
 
 <div class="col-md-10">
-
-
-<!--작성모달-->
     <div id="write" class="col-md-11" style="margin: 10px auto;">
         <div class="modal-conten">
             <div class="title" style="border: none;">
                 <h3 class="pro_modi">상품리뷰 작성</h3>
             </div>
             <hr>
-            <form action="{% url 'review' %}">
+            <form action="{% url 'review_write' %}" method="POST">
                 {% csrf_token %}
                 <div class="content row" style="width: 96%; margin: auto;">
                     <div class="col-md-12 sub_title">
@@ -53,53 +50,13 @@
                 <div class="modal-footer justify-content-center">
                     <!-- <button type="button" id="close_sec" class="btn btn-primary btn-sm col-md-4">취소</button>
                     <button type="button" class="btn btn-primary btn-sm col-md-4">작성완료</button> -->
-                    <input type="submit" class="btn btn-secondary btn-sm col-md-4" value="취소" src="{% url 'review' %}">
+                    <!-- <input type="submit" class="btn btn-secondary btn-sm col-md-4" value="취소" src="{% url 'review' %}"> -->
+                    <a class="btn btn-primary" href="{% url 'review' %}">목록</a>
                     <input type="submit" class="btn btn-primary btn-sm col-md-4" value="작성완료">
                 </div>
             </form>
         </div>
     </div>
-
-<!-- 수정모달
-<div id="modify" class="modal" style="background-color: rgba(0,0,0,0.4);">
-    <div class="modal-content" style="width: 36%; margin: 13% auto; background-color: rgb(252, 252, 252);">
-        <div class="title" style="border: none; background-color: rgb(119, 118, 177); margin-top: 0;">
-            <span class="pro_modi col-10">상품리뷰 수정</span>
-            <span class="col-1 close" id="close3">&times;</span>
-        </div>
-        <div class="content row" style="width: 96%; margin: auto;">
-            <div class="col-md-12" style="margin-bottom: -15px;"><p>조회수 : </p></div>
-            <div class="col-md-12"><p>작성일 : </p></div>
-            <div class="col-md-12 sub_title">
-                <div class="row" style="width: 100%;">
-                    <div class="col-md-3">구매상품</div>
-                    <div class="col-md-3 prod"></div>
-                    <div class="col-md-6">
-                        <p style="margin-bottom: -0.03em; font-size: 12px;">상품명</p>
-                        <input type="text" width="100%">
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
-                    <div class="col-md-3">평점</div>
-                    <div class='col-md-9 RatingStar'>
-                        <div class='RatingScore'>
-                          <div class='outer-star'><div class='inner-star'></div></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" style="margin-bottom: 2%;">
-                    <div class="col-md-3">상세리뷰</div>
-                    <textarea name="review" id="reivew" class="col-md-9"></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer justify-content-center">
-            <button type="button" id = "close4" class="btn btn-primary btn-sm col-md-4">취소</button>
-            <button type="button" class="btn btn-primary btn-sm col-md-4">수정</button>
-        </div>
-    </div>
-</div> -->
-
 
 <script>
     // 작성모달
