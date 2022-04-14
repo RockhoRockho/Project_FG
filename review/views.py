@@ -5,6 +5,8 @@ from order.models import Order_items
 from review.models import Review
 from product.models import Product
 from django.http import Http404
+from django.core.paginator import Paginator
+
 
 def review(request):
     
@@ -23,11 +25,29 @@ def review(request):
     all_review = Review.objects.all().order_by('-id')
     all_count = Review.objects.all().count()
 
+    write_pages = int(request.session.get('write_pages', 3))
+    per_page = int(request.session.get('per_page', 3))
+    page = int(request.GET.get('page', 1))
+
+    paginator = Paginator(items, per_page)
+    page_obj = paginator.get_page(page)
+
+    start_page = ((int)((page_obj.number - 1) / write_pages) * write_pages) + 1
+    end_page = start_page + write_pages - 1
+
+    if end_page >= paginator.num_pages:
+        end_page = paginator.num_pages
+
     context = {
         'items' : items,
         'prods' : prods,
         'sum' : sum,
         'count' : all_count,
+        'boards': page_obj,
+        'write_pages': write_pages,
+        'start_page': start_page,
+        'end_page': end_page,
+        'page_range': range(start_page, end_page + 1),
     }
     return render(request, 'review.html', context)
 
