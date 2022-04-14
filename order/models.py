@@ -4,9 +4,9 @@ from django.db import models
 
 class Order(models.Model):
     date = models.DateTimeField(auto_now_add=True, verbose_name='주문날짜')
-    delivery_address = models.CharField(max_length=30, verbose_name='배송지')
-    detail_address = models.CharField(max_length=60, verbose_name='상세배송지', default='')
-    select_list = models.CharField(max_length=30, verbose_name='배송시요구사항', default='')
+    delivery_address = models.CharField(max_length=60, verbose_name='배송지')
+    detail_address = models.CharField(max_length=100, verbose_name='상세배송지', default='')
+    select_list = models.CharField(max_length=50, verbose_name='배송시요구사항', default='')
     receiver_name = models.CharField(max_length=30, verbose_name='수령인')
     receiver_phone = models.CharField(max_length=30, verbose_name='수령자전화번호')
     number = models.IntegerField(verbose_name='주문번호')
