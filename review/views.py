@@ -11,11 +11,9 @@ def review(request):
     items = []
     prods = []
 
-    all_items = Order_items.objects.all().order_by('id')
-    all_count = Review.objects.all().count()
     user = request.session.get('user')
+    all_items = Order_items.objects.filter(member_id=user)
     
-
     for i in all_items:
         if i.member_id == user:
             prod = Product.objects.get(pk=i.product_id)
@@ -62,7 +60,6 @@ def review(request):
         'items' : items,
         'prods' : prods,
         'sum' : sum,
-        'count' : all_count,
         'boards': page_obj,
         'write_pages': write_pages,
         'start_page': start_page,

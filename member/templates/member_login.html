@@ -236,7 +236,7 @@ Login_Page
         naverLogin.getLoginStatus(function (status) {
             if (status) {
                 var email = naverLogin.user.getEmail(); 
-                var age = naverLogin.user.getAge(); 
+                var gender = naverLogin.user.getGender(); 
                 var name = naverLogin.user.getName(); 
                 var birthday = naverLogin.user.getBirthday(); 
                 var mobile = naverLogin.user.getMobile(); 
@@ -248,8 +248,8 @@ Login_Page
                     naverLogin.reprompt();
                     return;
                 }
-                if( age == undefined || age == null) {
-                    alert("나이는 필수정보입니다. 정보제공을 동의해주세요.");
+                if( gender == undefined || gender == null) {
+                    alert("성별은 필수정보입니다. 정보제공을 동의해주세요.");
                     naverLogin.reprompt();
                     return;
                 }

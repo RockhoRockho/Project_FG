@@ -8,14 +8,11 @@ class Review(models.Model):
     product = models.ForeignKey('product.Product', on_delete=models.CASCADE)
     member = models.ForeignKey('member.Member', on_delete=models.CASCADE)
     order_items = models.ForeignKey('order.Order_items', on_delete=models.CASCADE)
-    
-    
 
     class Meta:
         db_table = 'review' 
         verbose_name='리뷰' 
         verbose_name_plural='리뷰들'
-
     
     def __str__(self):
         return f'{self.pk} : {self.rating}'

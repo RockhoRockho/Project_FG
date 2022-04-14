@@ -6,6 +6,7 @@ from .models import Product
 from order.models import Cart, TempOrder
 from pick.models import Pick
 from present.models import Present
+from review.models import Review
 
 import requests
 
@@ -146,12 +147,9 @@ def product_view(request, product_name, page_num):
         }
         return render(request, 'product_view.html', context)
 
-
 def product_error(request):
 
     return render(request, 'product_error.html')
-
-
 
 
 def product_best(request):
@@ -289,12 +287,15 @@ def product_category(request, category):
 def product_detail(request, product_id):
     if request.session.get('user') :
         detail = Product.objects.get(product=product_id)
+        reviews = Review.objects.filter(product_id=product_id)
         context = {
             'detail' : detail,
-            'product_id' : product_id
+            'product_id' : product_id,
+            'reviews' : reviews,
         }
 
         return render(request, 'product_detail.html', context) 
+        
     else:
         return redirect('/member/needlogin/')
 

@@ -89,7 +89,7 @@
             <tbody>
                 {% for order in boards %}
                 <tr>
-                    <td>{{ order.id }}</td>
+                    <td>{{ forloop.counter }}</td>
                     <td>{{ order.number }}</a></td>
                     <td>{{ order.date }}</td>
                     <td>{{ order.delivery_address }} {{ order.detail_address }}</td>
