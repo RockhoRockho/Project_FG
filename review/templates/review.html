@@ -67,8 +67,34 @@
                 {% endfor %}
                 {% endfor %}
             </table>
-            <div class="d-flex justify-content-center p-3">
-                pagination
+            <div class="container mt-1">
+                <ul class="pagination justify-content-center">
+                    {% if boards.number > 1 %}       
+                    <li class="page-item"><a class="page-link" href="{% url 'review' %}" title="처음"><i>◀◀</i></a></li>
+                    {% endif %}
+            
+                    {% if start_page > 1%}
+                    <li class="page-item"><a class="page-link" href="{% url 'review' %}?page={{ start_page|add:-1 }}" title="이전"><i></i>◀</a></li>
+                    {% endif %}
+            
+                    {% if boards.paginator.num_pages > 1 %}
+                        {% for p in page_range %}
+                            {% if boards.number != p %}
+                            <li class="page-item"><a class="page-link" href="{% url 'review' %}?page={{ p }}">{{ p }}</a></li>
+                            {% else %}
+                            <li class="page-item active"><a class="page-link" href="#" title="현재페이지">{{ p }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+            
+                    {% if boards.paginator.num_pages > end_page %}
+                    <li class="page-item"><a class="page-link" href="{% url 'review' %}?page={{ end_page|add:1 }}" title="다음"><i>▶</i></a></li>
+                    {% endif %}
+                    
+                    {% if boards.number < boards.paginator.num_pages %}
+                    <li class="page-item"><a class="page-link" href="{% url 'review' %}?page={{ boards.paginator.num_pages }}" title="마지막"><i>▶▶</i></a></li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </div>
