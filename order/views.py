@@ -7,22 +7,16 @@ import json
 import random
 
 def order_list(request):
-    if request.session.get('user') :
+    user = request.session.get('user')
+    if user :
+        orders = Order.objects.filter(member_id=user)
         context = {
-            'range' : range(3),
+            'orders' : orders,
         }
 
         return render(request, 'order_list.html', context) 
     else:
         return redirect('/member/needlogin/')
-
-def order_detail(request):
-    context = {
-        'range' : range(3),
-    }
-
-
-    return render(request, 'order_detail.html', context) 
 
 def order_cart(request):
     if request.session.get('user') :

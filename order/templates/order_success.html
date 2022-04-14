@@ -35,11 +35,15 @@
     </div>
     <div class="btn_container">
         <button class="btn btn-primary col-md-1 mx-3" style="width: 110px;" onclick="goMypage()">구매결제내역</button>
+        <button class="btn btn-primary col-md-1 mx-3" style="width: 110px;" onclick="goWrite()">리뷰쓰러가기</button>
         <button class="btn btn-secondary col-md-1 mx-3" style="width: 110px;" onclick="goService()">고객센터</button>
     </div>
     <script>
         function goMypage(){
             location.href="{% url 'order_list' %}"
+        }
+        function goWrite(){
+            location.href="{% url 'review' %}"
         }
         function goService(){
             location.href="{% url 'question_main' %}"

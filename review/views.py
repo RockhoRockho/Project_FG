@@ -100,9 +100,7 @@ def review_update(request, id):
         return render(request, 'review_updateOk.html')
 
     
-def review_delete(request):
-    if request.method == "POST":
-        id = request.POST['id']
-        reviews = Review.objects.get(id=id)
-        reviews.delete()
-        return render(request, 'review_deleteOK.html')
+def review_delete(request, id):
+    reviews = Review.objects.get(id=id)
+    reviews.delete()
+    return render(request, 'review_deleteOK.html')
