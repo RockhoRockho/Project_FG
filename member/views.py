@@ -128,10 +128,11 @@ def member_join(request):
         username = request.POST['username']
         pw = request.POST['pw']
         name = request.POST['name']
-        gender = 'w'
+        gender = 'm/w'
         birth = request.POST['birth']
         email = request.POST['email']
         phoneNum = request.POST['phoneNum']
+        pwcheck = request.POST['pwcheck']
         
         check = Member.objects.all()
         for i in check:
@@ -140,6 +141,12 @@ def member_join(request):
                     'error': '이미 존재하는 아이디입니다.'
                 }
                 print(i)
+                return render(request, 'member_join.html', context)
+
+            elif pw != pwcheck:
+                context = {
+                    'error2': '비밀번호가 일치하지 않습니다.'
+                }
                 return render(request, 'member_join.html', context)
             else:
                 memberT = Member(
@@ -175,12 +182,14 @@ def member_info(request):
 
         memberT = Member.objects.get(member_id = request.session.get('user'))
         name = request.POST['name']
+        pw = request.POST['pw']
         
         birth = request.POST['birth']
         email = request.POST['email']
         phoneNum = request.POST['phoneNum']
 
         memberT.name = name
+        memberT.pw = pw
         memberT.birth = birth
         memberT.email = email
         memberT.phoneNum = phoneNum

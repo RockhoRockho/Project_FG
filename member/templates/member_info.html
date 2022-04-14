@@ -83,10 +83,10 @@
                 <!-- Input -->
                 <div class="col-sm-6 mb-6">
                     <label class="form-label">
-                        주소
+                        비밀번호
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control" name="location" value="" placeholder="지역을 입력해주세요" disabled>
+                    <input type="text" class="form-control" name="pw" id="pw" minlength="4" maxlength="20" value="{{user.pw}}" placeholder="비밀번호 입력해주세요">
                 </div>
                 <!-- End Input -->
 
@@ -96,7 +96,7 @@
                         핸드폰 번호
                         <span class="text-danger">*</span>
                     </label>
-                    <input class="form-control" type="tel" name="phoneNum" id="phoneNum" value="{{ user.phoneNum}}"
+                    <input class="form-control" type="tel" maxlength="11" name="phoneNum" id="phoneNum" value="{{ user.phoneNum}}"
                         placeholder="Enter your phone number" required>
                 </div>
                 <!-- End Input -->

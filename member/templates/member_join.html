@@ -17,16 +17,17 @@
                 {% csrf_token %}
                 <div class="username">
                     <span>아이디</span>
-                    <input type="text" class="form-control" id="username" name = "username" placeholder="6 ~ 20자 영문, 숫자">
+                    <input type="text" class="form-control" id="username" name = "username" placeholder="4 ~ 20자 영문, 숫자">
                     <span style="color:red;"><strong>{{ error }}</strong> </span>
                 </div>
                 <div class="pw">
                     <span>비밀번호</span>
-                    <input type="password" class="form-control" id="pw" name = "pw" placeholder="8 ~ 12자 영문, 숫자, 특수문자">
+                    <input type="password" class="form-control" minlength="4" maxlength="20" id="pw" name = "pw" placeholder="4 ~ 20자 영문, 숫자, 특수문자">
                 </div>
                 <div class="pw_check">
                     <span>비밀번호 확인</span>
-                    <input type="password" class="form-control" id="pwcheck" name = "pwcheck" placeholder="6 ~ 20자 영문, 숫자, 특수문자">
+                    <input type="password" class="form-control" minlength="4" maxlength="20" id="pwcheck" name = "pwcheck" placeholder="4 ~ 20자 영문, 숫자, 특수문자">
+                    <span style="color:red;"><strong>{{ error2 }}</strong> </span>
                 </div>
                 <div class="name">
                     <span>이름</span>
@@ -34,7 +35,7 @@
                 </div>
                 <div>
                     <span>생년월일</span>
-                    <input type="text" class="form-control" id="birth" name = "birth" placeholder="8자리 숫자 입력">
+                    <input type="text" class="form-control" id="birth" name = "birth" placeholder="생년월일을 입력해주세요 1990-01-01">
                 </div>
                 <div class="email">
                     <span>이메일</span>
@@ -42,11 +43,13 @@
                 </div>
                 <div class="phone">
                     <span>휴대폰 번호</span>
-                    <input type="number" class="form-control" id="phoneNum" name = "phoneNum" placeholder='01012341234("-" 없이 입력)'>
+                    <input type="number" class="form-control" maxlength="11" id="phoneNum" name = "phoneNum" placeholder='01012341234("-" 없이 입력)'>
                 </div>
+                <br>
                 <div class="sub">
                     <div><input type="checkbox" id="sns">
                         <label for="sns">SMS, 이메일로 상품 및 이벤트 정보를 받겠습니다.(선택)</label></div>
+                        <br>
                     <div><small>만 14세 미만 회원은 회원가입이 불가능합니다.</small></div>
                     <div><button type="submit" class="btn btn-secondary">회원가입</button></div>
                 </div>
