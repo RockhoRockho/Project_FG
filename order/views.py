@@ -4,6 +4,7 @@ from product.models import Product
 from datetime import datetime
 import requests
 import json
+import random
 
 def order_list(request):
     if request.session.get('user') :
@@ -39,10 +40,22 @@ def order_cart(request):
                 prodItm.append(prod)
                 items.append(item)
 
+        # def random3():
+        #     rand_prod = Product.objects.all().aggregate(id=Product('product'))['product']
+        #     while True:
+        #         pk = random.randint(1, rand_prod)
+        #         product1 = Product.objects.filter(pk=pk).first()    
+        #         if product1:
+        #             return product1
+        random_object = []
+        count = Product.objects.count()
+        for i in range(4):
+            random_object.append(Product.objects.all()[random.randint(0, count - 1)]) 
+        
         context = {
             'items' : items,
             'prods' : prodItm,
-            'recommend': range(4),
+            'recommend': random_object,
             'blank' : [],
             'sum' : format(sum, ',')
         }
