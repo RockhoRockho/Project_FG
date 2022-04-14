@@ -92,7 +92,7 @@
                 <th>수량</th>
                 <th>받는이</th>
             </tr>
-            {% for present in presents %}
+            {% for present in boards %}
             {% for product in products %}
             {%if product.product == present.product_id %}
             <tr>
@@ -105,14 +105,36 @@
             {% endfor %}
             {% endfor %}
         </table>
-        <!--Pagination-->
         <div class="container mt-1">
             <ul class="pagination justify-content-center">
-                <span>
-                    <1>
-                </span>
+                {% if boards.number > 1 %}       
+                <li class="page-item"><a class="page-link" href="{% url 'present_list' %}" title="처음"><i class='fas fa-angle-double-left'>◀◀</i></a></li>
+                {% endif %}
+        
+                {% if start_page > 1%}
+                <li class="page-item"><a class="page-link" href="{% url 'present_list' %}?page={{ start_page|add:-1 }}" title="이전"><i class='fas fa-angle-left'></i>◀</a></li>
+                {% endif %}
+        
+                {% if boards.paginator.num_pages > 1 %}
+                    {% for p in page_range %}
+                        {% if boards.number != p %}
+                        <li class="page-item"><a class="page-link" href="{% url 'present_list' %}?page={{ p }}">{{ p }}</a></li>
+                        {% else %}
+                        <li class="page-item active"><a class="page-link" href="#" title="현재페이지">{{ p }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+        
+                {% if boards.paginator.num_pages > end_page %}
+                <li class="page-item"><a class="page-link" href="{% url 'present_list' %}?page={{ end_page|add:1 }}" title="다음"><i class='fas fa-angle-right'>▶</i></a></li>
+                {% endif %}
+                
+                {% if boards.number < boards.paginator.num_pages %}
+                <li class="page-item"><a class="page-link" href="{% url 'present_list' %}?page={{ boards.paginator.num_pages }}" title="마지막"><i class='fas fa-angle-double-right'>▶▶</i></a></li>
+                {% endif %}
             </ul>
         </div>
+
     </div>
     <div>
         <h4 class="r_subtitle">이런 상품은 어떠세요?</h4>
@@ -140,6 +162,7 @@
             </div>
         </div>
     </div>
+    
 
 </div>
 

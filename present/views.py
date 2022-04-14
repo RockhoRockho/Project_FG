@@ -3,6 +3,8 @@ from product.models import Product
 from .models import Present
 import requests
 import json
+from django.core.paginator import Paginator
+
 
 def present_list(request):
     pres = []
@@ -14,6 +16,22 @@ def present_list(request):
             pre = Product.objects.get(pk=i.product_id)
             pprod.append(pre) # 상품정보
             pres.append(i) # 선물정보
+
+    all_present = Present.objects.all().order_by('id')
+    all_count = Present.objects.all().count()
+    
+    write_pages = int(request.session.get('write_pages', 3))
+    per_page = int(request.session.get('per_page', 3))
+    page = int(request.GET.get('page', 1))
+
+    paginator = Paginator(all_present, per_page)
+    page_obj = paginator.get_page(page)
+
+    start_page = ((int)((page_obj.number - 1) / write_pages) * write_pages) + 1
+    end_page = start_page + write_pages - 1
+
+    if end_page >= paginator.num_pages:
+        end_page = paginator.num_pages
 
     cookies = {
         'TODAY_PAGE_COOKIE_KEY': '12',
@@ -81,7 +99,13 @@ def present_list(request):
     context = {
         'presents' : pres, # 선물
         'products' : pprod, # 상품
-        'recommend' : items2
+        'recommend' : items2,
+        'count' : all_count,
+        'boards': page_obj,
+        'write_pages': write_pages,
+        'start_page': start_page,
+        'end_page': end_page,
+        'page_range': range(start_page, end_page + 1),
     }
     return render(request, 'present_list.html', context)
 
