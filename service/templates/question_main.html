@@ -24,19 +24,7 @@
         <div style="width: 100%; height: 50px; text-align: center; color: rgb(126, 126, 118); font-size: 20px; font-weight: bold; line-height: 50px; background-color: #dcdcdc; border-radius: 5px;">
             메일상담내역
         </div>
-        <div class="row d-flex" style="margin: auto; width: 100%; margin-top: 20px; justify-content: space-between;">
-            <button class="col-md-2 btn-secondary date_btn" type="button">이번달</button>
-            <button class="col-md-2 btn-secondary date_btn"type="button">3개월</button>
-            <button class="col-md-2 btn-secondary date_btn" type="button">6개월</button>
-            <button class="col-md-2 btn-secondary date_btn" type="button">직접입력</button>
-        </div>
-        <div>
-            <div style="margin-top: 20px; width: 100%; margin-left: 0; border-radius: 5px; background-color: #dcdcdc;" class="row">
-                <div class="col-md-5"><input type="date" id="start_date" style="border: none; color: rgb(255, 255, 255); font-weight: bold; height: 20px; margin-top: 15px; margin-bottom: 15px; float: left; background-color: #dcdcdc;" value="2012-12-12"></div>
-                <div class="col-md-2"><h2 style="text-align: center; color: rgb(255, 255, 255); font-weight: bold;">~</h2></div>
-                <div class="col-md-5"><input type="date" style="border: none; height: 20px; color: rgb(255, 255, 255); font-weight: bold; margin-top: 15px; margin-bottom: 15px; float: right; background-color: #dcdcdc;" id="end_date;" value="2012-12-13"></div>
-            </div>
-        </div>
+
         {% for i in boards %}
         <div style="height: 100px;  width: 100%; margin-top: 10px;" id="li">
             <div style="border: none; width: 75px; height: 75px; margin: 12px; float: left; background: url(/static/img/FG.png) no-repeat; background-size:cover;"></div>
