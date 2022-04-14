@@ -23,46 +23,48 @@
                     <th class="col-md-2">이미지</th>
                     <th class="col-md-1">구분</th>
                     <th class="col-md-3">상품명</th>
-                    <th class="col-md-1">가격</th>
+                    <th class="col-md-1">상품번호</th>
                     <th class="col-md-3">평점+내용</th>
                     <th class="col-md-2">수정/삭제</th>
                 </tr>
                 {% for item in items %}
-                    {% for prod in prods%}
-                        {% if prod.pk == item.product_id %}
-                        {% if item.id == forloop.counter %}
-                        <tr class="align-middle text-center" style="height: 150px;">
-                            <td>
-                                <img style="width: 100%;" src="{{ prod.image }}" alt=""> 
-                            </td>
-                            <td>
-                                {{ item.id }}
-                            </td>
-                            <td>
-                                {{ prod.name }}
-                            </td>
-                            <td>
-                                {{ sum }}
-                            </td>
-                            <td>
-                                <div class='RatingStar'>
-                                    <div class='RatingScore'>
-                                        <div class='outer-star'>
-                                            <div class='inner-star'></div>
+                {% for prod in prods%}
+                {% if prod.pk == item.product_id %}
+                {% if item.order_items_id == forloop.counter %}
+                    <tr class="align-middle text-center" style="height: 150px;">
+                        <td>
+                            <img style="width: 100%;" src="{{ prod.image }}" alt="">
+                        </td>
+                        <td>
+                            {{ forloop.counter }}
+                        </td>
+                        <td>
+                            {{ prod.name }}
+                        </td>
+                        <td>
+                            {{ prod.pk }}
+                        </td>
+                        <td>
+                            <div class='RatingStar'>
+                                <div class='RatingScore'>
+                                    <div class='outer-star'>
+                                        <div class='inner-star'>
+                                            {{ item.rating }}
                                         </div>
                                     </div>
                                 </div>
-                                <br>
-                                대충 내용(간략히)
-                            </td>
-                            <td>
-                                <button id="mod_btn" class="btn btn-primary btn-sm" style="margin-bottom: 5px;">수정</button>
-                                <button class="btn btn-primary btn-sm" style="margin-bottom: 5px;">삭제</button>
-                            </td>
-                        </tr>
-                        {%endif%}
-                        {%endif%}
-                    {% endfor %}
+                            </div>
+                            <br>
+                            {{ item.detail }}
+                        </td>
+                        <td>
+                            <a href="/review/update/{{ item.id }}/" id="mod_btn" class="btn btn-primary btn-sm" style="margin-bottom: 5px;">수정</a>
+                            <button class="btn btn-primary btn-sm" onclick="" style="margin-bottom: 5px;">삭제</button>
+                        </td>
+                    </tr>
+                {%endif%}
+                {%endif%}
+                {% endfor %}
                 {% endfor %}
             </table>
             <div class="d-flex justify-content-center p-3">

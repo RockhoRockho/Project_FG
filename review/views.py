@@ -1,5 +1,3 @@
-import re
-from urllib.request import Request
 from django.shortcuts import render
 from order.models import Order_items
 from review.models import Review
@@ -10,69 +8,60 @@ def review(request):
     
     items = []
     prods = []
-    sum = 0
+
     all_items = Order_items.objects.all().order_by('id')
+    user = request.session.get('user')
 
     for i in all_items:
-        if i.member_id == request.session.get('user'):
+        if i.member_id == user:
             prod = Product.objects.get(pk=i.product_id)
             prods.append(prod)
-            items.append(i)
-            sum += i.price * i.quantity
 
-    all_review = Review.objects.all().order_by('-id')
-    all_count = Review.objects.all().count()
+            # 리뷰 데이터 저장하기 기존데이터 있으면 저장x
+            if not Review.objects.filter(order_items_id=i.id).exists():
+                Review(
+                    rating = 0,
+                    detail = '',
+                    member_id = user,
+                    order_items_id = i.id,
+                    product_id = i.product_id,
+                ).save()
+            items.append(Review.objects.get(order_items_id=i.id))
 
     context = {
         'items' : items,
         'prods' : prods,
-        'sum' : sum,
-        'count' : all_count,
     }
     return render(request, 'review.html', context)
 
-def review_detail(request, id):
-    try:
-        reviews = Review.objects.get(id=id)
-        reviews.save()
-
-    except Review.DoesNotExist:
-        raise Http404('게시글을 찾을 수 없습니다')
-
-    return render(request, 'review_detail.html', {'review': reviews})
-
 def review_update(request, id):
+    review = Review.objects.get(id=id)
+    product = Product.objects.get(product=review.product_id)
+
     if request.method == "GET":
         try:
-            reviews = Review.objects.get(id=id)
+            context = {
+                'review' : review,
+                'product' : product,
+                'id' : id
+            }
         except Review.DoesNotExist:
             raise Http404('게시글을 찾을 수 없습니다')
 
-        return render(request, 'review_update.html', {'review': reviews})
+        return render(request, 'review_update.html', context)
     
     elif request.method == "POST":
 
-        # member = Member.objects.get(member_id = request.session.get('user'))
-        # detail = request.POST['detail']
-        # rating = 4.5
-        # print(Order_items)
-        # products = Product.objects.get(product=product_id)
-        # order_itemss = '1'
-        
-        # a = Review(
-        #     detail = detail,
-        #     rating = rating,
-        #     member = member,
-        #     product = products,
-        #     order_items = order_itemss,
-        # )
-        # a.save()
-
+        # 정보가져오기
+        rating = request.POST['rating']
         detail = request.POST['detail']
-        reviews.detail = detail
-        items.save()
 
-        return render(request, 'review_updateOk.html', {"id": reviews.id})
+        # update
+        review.detail = detail
+        review.rating = rating
+        review.save()
+
+        return render(request, 'review_updateOk.html')
 
     
 def review_delete(request):
