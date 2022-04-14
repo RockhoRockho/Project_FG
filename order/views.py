@@ -97,24 +97,17 @@ def order_purchase(request, product_id):
         detail_address = request.POST['detail_address']
         select_list = request.POST['select_list']
 
-        ord = Order(
-            member_id = member_id,
-            receiver_name = receiver_name,
-            receiver_phone = receiver_phone,
-            delivery_address = delivery_address,
-            detail_address = detail_address,
-            select_list = select_list,
-            number = int(datetime.today().strftime('%Y%m%d%H%M')),
-        )
-        ord.save()
-        print('----------------------')
-        print('----------------------')
-        print('----------------------')
-        for i in list(Order.objects.all()):
-            print(i)
-        print('----------------------')
-        print('----------------------')
-        print('----------------------')
+        if receiver_name != '' and receiver_phone != '' and delivery_address != '' and detail_address != '' and select_list != '':      
+            ord = Order(
+                member_id = member_id,
+                receiver_name = receiver_name,
+                receiver_phone = receiver_phone,
+                delivery_address = delivery_address,
+                detail_address = detail_address,
+                select_list = select_list,
+                number = int(datetime.today().strftime('%Y%m%d%H%M')),
+            )
+            ord.save()
 
         # order_items 저장
         price = TempOrder.objects.get(product_id=product_id).price
@@ -126,7 +119,7 @@ def order_purchase(request, product_id):
         # 세션으로 바로결제 값 넘기기
         request.session['product_id'] = product_id
 
-        return render(request, 'kakaopay.html')
+        return render(request, 'before_kakao.html')
 
 def cart_purchase(request):
     if request.method == "GET":
@@ -166,7 +159,7 @@ def cart_purchase(request):
         receiver_phone = request.POST['phone_firstNum']+'-'+request.POST['phone_secondNum']+'-'+request.POST['phone_threeNum']
         select_list = request.POST['select_list']
         receiver_name = request.POST['receiver_name']
-        print(type(delivery_address))
+
         ord = Order(
             member_id = member_id,
             delivery_address = delivery_address,
@@ -177,8 +170,6 @@ def cart_purchase(request):
             number = int(datetime.today().strftime('%Y%m%d%H%M')),
         )
         ord.save()
-        print(ord.delivery_address)
-        print(type(ord.delivery_address))
         
         # order_items 저장
         prods = list(TempOrder.objects.all().order_by('id'))
@@ -186,7 +177,7 @@ def cart_purchase(request):
         for prod in prods:
             Order_items(product_id=prod.product_id, member_id=member_id, quantity=prod.quantity, price=prod.price).save()   
 
-        return render(request, 'kakaopay.html')
+        return render(request, 'before_kakao.html')
 
 def order_cancel(request):
 
@@ -213,26 +204,30 @@ def order_success(request):
     }
     return render(request, 'order_success.html', context)
 
+def before_kakao(request):
+
+    return render(request, 'before_kakao.html')
 
 def kakaopay(request):
-    if request.method == "POST":    
+    # 가장최근 order 로 불러옴
+    order = Order.objects.last()
 
+    if request.method == 'GET':
         # 유저아이디
         member_id = request.session.get('user')
-        # 리스트
+        # 리스트 저장
         p_name = []
         p_price = 0
         p_qauntity = 0
         # order 불러오기
-        order = Order.objects.order_by('order_id').last()
 
         # 바로결제 경로
         if request.session.get('product_id') != None:
             product_id = request.session.get('product_id')
-            for prod in TempOrder.objects.get(product_id=product_id):
-                p_name.append(Product.objects.get(product=product_id).name)
-                p_price += prod.price
-                p_qauntity += prod.quantity
+            prod = TempOrder.objects.get(product_id=product_id)
+            p_name.append(Product.objects.get(product=product_id).name)
+            p_price += prod.price
+            p_qauntity += prod.quantity
 
 
         # 장바구니 경로
@@ -242,9 +237,12 @@ def kakaopay(request):
                 p_name.append(Product.objects.get(product=prod.product_id).name)
                 p_price += prod.price
                 p_qauntity += prod.quantity
-            
 
         # 선물결제 경로
+
+        return render(request, 'kakaopay.html')
+
+    elif request.method == "POST":    
 
         url = 'https://kapi.kakao.com/v1/payment/ready'
         headers = {
@@ -270,9 +268,6 @@ def kakaopay(request):
         next_url = result['next_redirect_pc_url']   # 결제 페이지로 넘어갈 url을 저장
 
         return redirect(next_url)
-
-
-    return render(request, 'product_best.html')
 
 def approval(request):
 
