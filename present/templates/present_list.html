@@ -119,21 +119,23 @@
         <div class="r_container">
             <div class="product_list col-md-12">
                 {% for i in recommend %}
+                {% if forloop.counter <= 4 %}
                 <div class="product col-md-3">
-                    <a href="#">
+                    <a href="{% url 'product_detail' i.nvMid %}">
                         <img class="col-md-10"
-                            src="https://cdn.011st.com/11dims/resize/400x400/quality/75/11src/pd/20/9/5/2/3/7/9/oezvb/1024952379_L300.jpg"
+                            src="{{i.imageUrl}}"
                             alt="...">
                     </a>
                     <div class="pup_info">
-                        <div class="pup_title">상품명</div>
-                        <div class="pup_price">가격</div>
+                        <div class="pup_title">상품명{{i.productTitle}}</div>
+                        <div class="pup_price">가격{{i.mobileLowPrice}}</div>
                         <div class="satisf_wrap">
                             <div class="rating">별점</div>
-                            <p class="seller_id">판매자 이름</p>
+                            <p class="seller_id">판매자{{i.mallName}}</p>
                         </div>
                     </div>
                 </div>
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
