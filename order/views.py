@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Cart, Order_items, TempOrder, Order
 from product.models import Product
-from present.models import Present
 from datetime import datetime
 import requests
 import json
@@ -54,12 +53,8 @@ def order_cart(request):
 
 def cart_update(request, product_id):
     stock = request.POST['stock']
-    print(stock)
     cart = Cart.objects.get(product_id=product_id)
-    print(cart)
-    print(cart.quantity)
     cart.quantity = stock
-    print(cart.quantity)
     cart.save()
 
     return render(request, 'cart_update.html')
@@ -190,7 +185,6 @@ def order_success(request):
     order = Order.objects.last()
 
     context = {
-        'recommend': range(4),
         'number': order.number,
         'delivery_address': order.delivery_address,
         'detail_address' : order.detail_address
@@ -231,16 +225,6 @@ def kakaopay(request):
             p_name.append(Product.objects.get(product=prod.product_id).name)
             p_price += prod.price
             p_qauntity += prod.quantity
-
-    # 선물결제 경로
-    elif request.session.get('present') != None:
-        present_id = request.session.get('present')
-        prod = Present.objects.get(id=present_id)
-
-        p_price += prod.price
-        p_qauntity += prod.quantity
-        product_id = prod.product_id
-        p_name.append(Product.objects.get(product=product_id).name)
 
     if request.method == "POST":    
 
@@ -303,11 +287,6 @@ def approval(request):
     # 바로결제 경로 진행시 db 삭제
     if request.session.get('product') != None:
         del(request.session['product'])
-        TempOrder.objects.all().delete()
-
-    # 선물경로 결제 진행시 db 삭제
-    elif request.session.get('present') != None:
-        del(request.session['present'])
         TempOrder.objects.all().delete()
     
     # 장바구니 경로 결제진행시 db 삭제 
