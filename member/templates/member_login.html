@@ -283,7 +283,18 @@ Login_Page
         testPopUp.close();
     }
     
-
+    function naverLogout() {
+	openPopUp();
+	setTimeout(function() {
+		closePopUp();
+		}, 1000);
+	
+	function naverSignInCallback() {
+        alert(naverLogin.getProfileData('email'));
+        alert(naverLogin.getProfileData('age'));
+        alert(naverLogin.getProfileData('mobile'));
+    }
+}
         
     
 </script>
