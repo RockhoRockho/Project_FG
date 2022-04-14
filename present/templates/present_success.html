@@ -49,12 +49,12 @@
         </div>
     </div>
     <div class="btn_container">
-        <button class="btn btn-primary col-md-1 mx-3" style="width: 110px;" onclick="goMypage()">마이페이지</button>
+        <button class="btn btn-primary col-md-1 mx-3" style="width: 110px;" onclick="goMypage()">선물함</button>
         <button class="btn btn-secondary col-md-1 mx-3" style="width: 110px;" onclick="goService()">고객센터</button>
     </div>
     <script>
         function goMypage(){
-            location.href="{% url 'order_list' %}"
+            location.href="{% url 'present_list' %}"
         }
         function goService(){
             location.href="{% url 'question_main' %}"
