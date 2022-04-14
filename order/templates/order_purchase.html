@@ -27,32 +27,29 @@
     </div>
     <hr>
     <div class="purchase_side col-md-9 col-sm-9">
-        <!-- // 배송정보 HTML -->
+
         <div class="col-md-12 purchase_subtitle">배송정보</div>
         <div class="col-md-12 pad-10">
-            <input type="radio" class="form-check-label tabs" name="add_type" onclick="openAd(event, 'default')" id="defaultOpen"> 기본배송지
-            <input type="radio" class="form-check-label tabs" name="add_type" onclick="openAd(event, 'last')"> 최근배송지
-            <input type="radio" class="form-check-label tabs" name="add_type" onclick="openAd(event, 'self')"> 직접입력
+            <input type="radio" class="form-check-label tabs" name="add_type" onclick="openAd(event, 'default', 'bd')" id="defaultOpen" checked> 기본배송지
+            <input type="radio" class="form-check-label tabs" name="add_type" onclick="openAd(event, 'self', 'bs')"> 직접입력
         </div>
-        <form class="tabcontent" name="oFrm1" id="default" action="{% url 'order_purchase' product_id %}" method="POST">
+        <form class="tabcontent" name="pFrm1" id="default" action="{% url 'order_purchase' product_id %}" method="POST">
             {% csrf_token %}
             <div class="col-md-12 pad-10">
                 <input type="text" name="receiver_name" class="form-control" placeholder="받는사람"  value="홍길동" required>
             </div>
 
-            <!-- // 주소 관련 HTML -->
             <div class="col-md-12 pad-5 d-flex">
                 <input type="text" id=postcode class="form-control" placeholder="우편번호" value=13589 required>
                 <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
             </div>
             <div class="col-md-12 pad-5">
-                <input type="text" name="delivery_address" id="delivery_address" class="form-control" placeholder="주소" value="경기" required>
+                <input type="text" name="delivery_address" id="delivery_address" class="form-control" placeholder="주소" value="경기도 성남시 중앙공원로 20" required>
             </div>
             <div class="col-md-12 pad-5">
                 <input type="text" name="detail_address" id="detailAddress" class="form-control" placeholder="상세주소 및 상세건물명" value="1동 101호" required>
             </div>
 
-            <!-- // 상세정보 HTML -->
             <div class="d-flex col-md-12 pad-5">
                 <select class="form-select" name="phone_firstNum" id="phone_firstNum" style="width: 200px;">
                     <option value="010" selected>010</option>
@@ -75,13 +72,12 @@
                 </select>
             </div>
         </form>
-        <!-- <form class="tabcontent" name="pFrm2" id="last" action="{% url 'order_purchase' product_id %}" method="POST">
+        <form class="tabcontent" name="pFrm2" id="self" action="{% url 'order_purchase' product_id %}" method="POST">
             {% csrf_token %}
             <div class="col-md-12 pad-10">
                 <input type="text" name="receiver_name" class="form-control" placeholder="받는사람" required>
             </div>
 
-            // 주소 관련 HTML
             <div class="col-md-12 pad-5 d-flex">
                 <input type="text" id=postcode class="form-control" placeholder="우편번호" required>
                 <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
@@ -93,7 +89,6 @@
                 <input type="text" name="detail_address" id="detailAddress" class="form-control" placeholder="상세주소 및 상세건물명" required>
             </div>
 
-            // 상세정보 HTML
             <div class="d-flex col-md-12 pad-5">
                 <select class="form-select" name="phone_firstNum" id="phone_firstNum" style="width: 200px;">
                     <option value="010" selected>010</option>
@@ -116,47 +111,6 @@
                 </select>
             </div>
         </form>
-        <form class="tabcontent" name="pFrm3" id="self" action="{% url 'order_purchase' product_id %}" method="POST">
-            {% csrf_token %}
-            <div class="col-md-12 pad-10">
-                <input type="text" name="receiver_name" class="form-control" placeholder="받는사람" required>
-            </div>
-
-            // 주소 관련 HTML
-            <div class="col-md-12 pad-5 d-flex">
-                <input type="text" id=postcode class="form-control" placeholder="우편번호" required>
-                <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-            </div>
-            <div class="col-md-12 pad-5">
-                <input type="text" name="delivery_address" id="address" class="form-control" placeholder="주소" required>
-            </div>
-            <div class="col-md-12 pad-5">
-                <input type="text" name="detail_address" id="detailAddress" class="form-control" placeholder="상세주소 및 상세건물명" required>
-            </div>
-
-            // 상세정보 HTML
-            <div class="d-flex col-md-12 pad-5">
-                <select class="form-select" name="phone_firstNum" id="phone_firstNum" style="width: 200px;">
-                    <option value="010" selected>010</option>
-                    <option value="011">011</option>
-                    <option value="012">012</option>
-                    <option value="018">018</option>
-                    <option value="019">019</option>
-                </select>
-                <input type="text" maxlength="4" name="phone_secondNum" class="form-control" placeholder="휴대폰앞자리" required>
-                <input type="text" maxlength="4" name="phone_threeNum" class="form-control" placeholder="휴대폰뒷자리" required>
-            </div>
-
-            <div class="col-md-12 pad-5">
-                <select class="form-select" name="select_list" id="select_list">
-                    <option value="1" selected>배송시 요청사항 선택하기</option>
-                    <option value="2">부재시 전화/문자주세요</option>
-                    <option value="3">집 앞에 놓고가주세요</option>
-                    <option value="4">경비실에 맡겨주세요</option>
-                    <option value="5">택배함에 넣어주세요</option>
-                </select>
-            </div>
-        </form> -->
             <!-- // 상품 이미지 등 상세정보 HTML -->
             <div class="col-md-12 purchase_subtitle">주문상품</div>
             <div class="col-md-12">
@@ -201,18 +155,14 @@
             </div>
             <p class="order_text_agree">하기 필수약관을 확인하였으며 결제에 동의합니다.</p>
             <div class="order_button">
-                <button type="button" id="btnAccount" class="btn_purple"
-                    onclick="goKakao1()">
+                <button type="button" id="bd" class="btn_purple btnss"
+                    onclick="goKakao1()" >
                     <em class="number" id="FinalOrderPrice"></em>{{ sum }}원 결제하기
                 </button>
-                <!-- <button type="button" id="btnAccount" class="btn_purple"
+                <button type="button" id="bs" class="btn_purple btnss"
                     onclick="goKakao2()">
                     <em class="number" id="FinalOrderPrice"></em>{{ sum }}원 결제하기
                 </button>
-                <button type="button" id="btnAccount" class="btn_purple"
-                    onclick="goKakao3()">
-                    <em class="number" id="FinalOrderPrice"></em>{{ sum }}원 결제하기
-                </button> -->
             </div>
         </div>
     </div>
@@ -224,17 +174,24 @@
     nav_bar.classList.remove("d-none");
 </script>
 <script>
-    function openAd(evt, address) {
-        var i, tabcontent, tabs;
+    function openAd(evt, address, btts) {
+        var i, tabcontent, tabs, btnss;
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
+            console.log(tabcontent[i])
+        }
+        btnss = document.getElementsByClassName("btnss");
+        for (i = 0; i < btnss.length; i++) {
+            btnss[i].style.display = "none";
+            console.log(btnss[i])
         }
         tabs = document.getElementsByClassName("tabs");
         for (i = 0; i < tabs.length; i++) {
             tabs[i].className = tabs[i].className.replace(" active", "");
         }
         document.getElementById(address).style.display = "block";
+        document.getElementById(btts).style.display = "block";
         evt.currentTarget.className += " active";
     }
     document.getElementById("defaultOpen").click();
@@ -275,14 +232,11 @@
     }
 
     function goKakao1(){
-        document.forms['oFrm1'].submit();
+        document.forms['pFrm1'].submit();
     }
-    // function goKakao2(){
-    //     document.forms['pFrm2'].submit();
-    // }
-    // function goKakao3(){
-    //     document.forms['pFrm3'].submit();
-    // }
+    function goKakao2(){
+        document.forms['pFrm2'].submit();
+    }
     
     function cancel() {
         location.href= "{% url 'order_cancel' %}"
