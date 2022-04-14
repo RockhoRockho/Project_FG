@@ -19,7 +19,7 @@
     <div id="write" class="col-md-11" style="margin: 10px auto;">
         <div class="modal-conten">
             <div class="title" style="border: none;">
-                <h3 class="pro_modi">상품리뷰 작성</h3>
+                <h3 class="pro_modi">상품리뷰 작성 및 수정</h3>
             </div>
             <hr>
             <form name="rFrm" action="{% url 'review_update' id %}" method="POST">
@@ -28,11 +28,11 @@
                     <div class="col-md-12 sub_title">
                         <div class="row" style="width: 100%;">
                             <div class="col-md-6">상품 일련번호 : {{ product.pk }}</div>
-                            <div class="col-md-3 prod" style="width: 100%;">
+                            <div class="col-md-3 prod" style="width: 500px; height: 500px; margin-top: 20px;">
                                 <img src="{{ product.image }}" alt="" style="width: 100%;">
                             </div>
                             <div class="col-md-6">
-                                <p style="margin-bottom: -0.03em; font-size: 12px;">{{ product.name }}</p>
+                                <p style="margin-bottom: -0.03em; font-size: 16px;">상품명 : {{ product.name }}</p>
                                 <input type="text" style="margin-bottom: 70px; width: 100%; border: none;" readonly>
                             </div>
                         </div>
@@ -40,13 +40,14 @@
                         <div class="row" style="margin-top: 20px; margin-bottom: 70px;">
                             <div class="col-md-3">평점</div>
                             <div class='col-md-9 RatingStar'>
-                                <div class='RatingScore'>
+                                <!-- <div class='RatingScore'>
                                     <div class='outer-star'>
                                         <div class='inner-star'>
                                             <input type="number" value="{{ review.rating }}" name="rating">
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
+                                
                             </div>
                         </div>
                         <hr>
