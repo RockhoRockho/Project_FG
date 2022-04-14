@@ -46,7 +46,7 @@ Login_Page
                         </div>
                     </a>
                     <a href="#" class="naver">
-                        <div class="naver">
+                        <div class="naver" id="naverIdLogin_loginButton">
                             <strong>네이버로그인</strong>
                         </div>
                     </a>
@@ -142,7 +142,7 @@ Login_Page
 
 </footer>
 <!-- footer 끝 -->
-
+<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 <script>
     var modal1 = document.getElementById("myModal1");
     var modal2 = document.getElementById("myModal2");
@@ -218,5 +218,75 @@ Login_Page
     }
     itemss.forEach(item => item.addEventListener('click', openCloseAnswerq));
 </script>
+
+<script>
+
+    var naverLogin = new naver.LoginWithNaverId(
+            {
+                clientId: "1Go9cVzNHoC3yswLKLwt", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+                callbackUrl: "http://127.0.0.1:8000/", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+                isPopup: false,
+                callbackHandle: true
+            }
+        );	
+    
+    naverLogin.init();
+    
+    window.addEventListener('load', function () {
+        naverLogin.getLoginStatus(function (status) {
+            if (status) {
+                var email = naverLogin.user.getEmail(); 
+                var age = naverLogin.user.getAge(); 
+                var name = naverLogin.user.getName(); 
+                var birthday = naverLogin.user.getBirthday(); 
+                var mobile = naverLogin.user.getMobile(); 
+                
+                console.log(naverLogin.user); 
+                
+                if( email == undefined || email == null) {
+                    alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
+                    naverLogin.reprompt();
+                    return;
+                }
+                if( age == undefined || age == null) {
+                    alert("나이는 필수정보입니다. 정보제공을 동의해주세요.");
+                    naverLogin.reprompt();
+                    return;
+                }
+                if( name == undefined || name == null) {
+                    alert("이름은 필수정보입니다. 정보제공을 동의해주세요.");
+                    naverLogin.reprompt();
+                    return;
+                }
+                if( birthday == undefined || birthday == null) {
+                    alert("생년월일은 필수정보입니다. 정보제공을 동의해주세요.");
+                    naverLogin.reprompt();
+                    return;
+                }
+                if( mobile == undefined || mobile == null) {
+                    alert("전화번호은 필수정보입니다. 정보제공을 동의해주세요.");
+                    naverLogin.reprompt();
+                    return;
+                }
+            } else {
+                console.log("callback 처리에 실패하였습니다.");
+            }
+        });
+    });
+    
+    
+    var testPopUp;
+    function openPopUp() {
+        testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
+    }
+    function closePopUp(){
+        testPopUp.close();
+    }
+    
+
+        
+    
+</script>
+
 
 {% endblock %}
