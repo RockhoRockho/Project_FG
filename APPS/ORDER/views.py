@@ -5,35 +5,10 @@ from datetime import datetime
 import requests
 import json
 import random
-from django.core.paginator import Paginator
-
 
 def order_list(request):
-
-    all_order_items = Order_items.objects.all().order_by('id')
-    all_count = Order_items.objects.all().count()
-    
-    write_pages = int(request.session.get('write_pages', 3))
-    per_page = int(request.session.get('per_page', 2))
-    page = int(request.GET.get('page', 1))
-
-    paginator = Paginator(all_order_items, per_page)
-    page_obj = paginator.get_page(page)
-
-    start_page = ((int)((page_obj.number - 1) / write_pages) * write_pages) + 1
-    end_page = start_page + write_pages - 1
-
-    if end_page >= paginator.num_pages:
-        end_page = paginator.num_pages
-
     context = {
         'member': request.session.get('user'),
-        'count' : all_count,
-        'boards': page_obj,
-        'write_pages': write_pages,
-        'start_page': start_page,
-        'end_page': end_page,
-        'page_range': range(start_page, end_page + 1),
     }
     if context['member']:
         orders = Order.objects.filter(member_id=context['member'])

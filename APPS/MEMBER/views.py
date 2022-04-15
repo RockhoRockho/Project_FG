@@ -13,7 +13,7 @@ def member_login(request):
         memberID = request.POST.get('username', None)
         memberPW = request.POST.get('password', None)
 
-        if not memberID and memberPW:
+        if not memberID and  not memberPW:
             context['error'] = "아이디와 비밀번호를 모두 입력하세요."
         else:
             try:
@@ -64,12 +64,12 @@ def member_findusername(request):
 
     if name and phoneNum:
         if member.name == name and member.phoneNum == int(phoneNum):
-            ulst.append(member.pw)
+            ulst.append(member.username)
         else:
             ulst.append('찾은 결과가 없습니다')
     if name and email:
         if member.name == name and member.email == email:
-            ulst.append(member.pw)
+            ulst.append(member.username)
         else:
             ulst.append('찾은 결과가 없습니다')
 
@@ -146,7 +146,7 @@ def member_join(request):
         username = request.POST['username']
         pw = request.POST['pw']
         name = request.POST['name']
-        gender = 'w'
+        gender = 'm/w'
         birth = request.POST['birth']
         email = request.POST['email']
         phoneNum = request.POST['phoneNum']
@@ -195,8 +195,13 @@ def member_info(request):
         birth = request.POST['birth']
         email = request.POST['email']
         phoneNum = request.POST['phoneNum']
+        pw = request.POST['pw']
+        gender = request.POST['gender']
+        
 
         memberT.name = name
+        memberT.pw = pw
+        memberT.gender = gender
         memberT.birth = birth
         memberT.email = email
         memberT.phoneNum = phoneNum
