@@ -15,4 +15,4 @@ class Review(models.Model):
         verbose_name_plural='리뷰들'
     
     def __str__(self):
-        return f'{self.pk} : {self.rating}'
+        return f'{self.pk} : {self.reg_date}'

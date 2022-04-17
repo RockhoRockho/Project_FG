@@ -43,7 +43,7 @@ FG MALL - 검색 결과창
 				<div class="thumbnail">
 					<img class="col-md-12" src="{{ item.image }}" alt="...">
 					<div class="caption">
-						<h4>{{ item.title|striptags }}</h4>
+						<h4>{{ item.title|striptags|truncatewords:6 }}</h4>
 					</div>
 				</div>
 				<div class="row">
