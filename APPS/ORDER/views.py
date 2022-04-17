@@ -26,7 +26,6 @@ def order_list(request):
         end_page = paginator.num_pages
 
     context = {
-        'member': request.session.get('user'),
         'count' : all_count,
         'boards': page_obj,
         'write_pages': write_pages,
@@ -44,7 +43,6 @@ def order_list(request):
 
 def order_cart(request):
     context = {
-        'member': request.session.get('user'),
     }
 
     if request.session.get('user'):
@@ -94,7 +92,6 @@ def cart_delete(request, product_id):
 
 def order_purchase(request, product_id):
     context = {
-        'member': request.session.get('user'),
     }
 
     if request.method == "GET":
@@ -145,7 +142,6 @@ def order_purchase(request, product_id):
 
 def cart_purchase(request):
     context = {
-        'member': request.session.get('user'),
     }
 
     if request.method == "GET":
@@ -215,7 +211,6 @@ def order_success(request):
     order = Order.objects.last()
 
     context = {
-        'member': request.session.get('user'),
         'number': order.number,
         'delivery_address': order.delivery_address,
         'detail_address' : order.detail_address
@@ -312,7 +307,6 @@ def approval(request):
     amount = json.loads(res.text)['amount']['total']
     res = res.json()
     context = {
-        'member': request.session.get('user'),
         'res': res,
         'amount': amount,
     }

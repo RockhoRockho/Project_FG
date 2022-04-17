@@ -4,7 +4,6 @@ from APPS.MEMBER.models import Member
 
 def member_login(request):
     context = {
-        'member': request.session.get('user'),
         'error': '',
     }
     if request.method == 'GET':
@@ -33,7 +32,6 @@ def member_login(request):
 
 def member_terms(request):
     context = {
-        'member': request.session.get('user'),
         'error': '',
     }
 
@@ -41,14 +39,12 @@ def member_terms(request):
 
 def member_terms_detail(request):
     context = {
-        'member': request.session.get('user'),
         'error': '',
     }
     return render(request, 'member_terms_detail.html', context)
 
 def member_findusername(request):
     context = {
-        'member': request.session.get('user'),
         'error': '',
     }
 
@@ -79,7 +75,6 @@ def member_findusername(request):
 
 def member_findpw(request):
     context = {
-        'member': request.session.get('user'),
         'error': '',
     }
 
@@ -111,7 +106,6 @@ def member_findpw(request):
 
 def member_found(request):
     context = {
-        'member': request.session.get('user'),
         'error': '',
     }
     return render(request, "member_found.html", context)
@@ -129,7 +123,6 @@ def member_logout(request):
         del(request.session['user'])
 
     context = {
-        'member': request.session.get('user'),
         'error': '',
     }
 

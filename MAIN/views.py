@@ -6,7 +6,6 @@ from APPS.PRODUCT.models import Product
 
 def main(request):
     context = {
-        'member': request.session.get('user'),
     }
     if request.method == 'GET':
         cookies = {
