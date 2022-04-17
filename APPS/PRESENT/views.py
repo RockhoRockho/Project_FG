@@ -20,7 +20,7 @@ def present_list(request):
     all_count = Present.objects.all().count()
     
     write_pages = int(request.session.get('write_pages', 3))
-    per_page = int(request.session.get('per_page', 3))
+    per_page = int(request.session.get('per_page', 2))
     page = int(request.GET.get('page', 1))
 
     paginator = Paginator(all_present, per_page)
